@@ -81,21 +81,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-DATABASES = {
-    "default": env.db_url(),
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "invoices_db",
-    #     "USER": "invoicesuser",
-    #     "PASSWORD": "bribblegurk",
-    #     "HOST": "localhost",
-    #     "PORT": "5645",
-    # }
-}
+DATABASES = {"default": env.db_url()}
 
 
 # Password validation

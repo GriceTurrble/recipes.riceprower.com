@@ -11,7 +11,6 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("project_ids", nargs="+", type=int)
-
         parser.add_argument(
             "-d",
             "--date",
@@ -42,7 +41,7 @@ class Command(BaseCommand):
             except Project.DoesNotExist:
                 raise CommandError('Project "%s" not found' % project_id)
 
-        invoice = project.generate_invoice(invoice_date)
-        self.stdout.write(
-            self.style.SUCCESS(f'Invoice ID {invoice.id} created: "{invoice}"')
-        )
+            invoice = project.generate_invoice(invoice_date)
+            self.stdout.write(
+                self.style.SUCCESS(f'Invoice ID {invoice.id} created: "{invoice}"')
+            )

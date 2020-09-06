@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head_title %}Home{% endblock %}
+
+{% block body_content %}
+  {% url "invoices:invoice-list" as invoices_home_url %}
+  <h1>Hello world.</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Invoices</h5>
+      <p class="card-text">
+        App for Galen to organize contract work data and generate invoices.
+      </p>
+      {% if perms.invoices.add_invoice %}
+      <a href="{{ invoices_home_url }}" class="btn btn-primary stretched-link">Go</a>
+      {% else %}
+      <p class="card-text text-muted">
+        You are lacking a permission required to access this app.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block body_js %}
+  {# Add your JavaScript content here, where it will be included at the end of the <body> tag. #}
+{% endblock %}

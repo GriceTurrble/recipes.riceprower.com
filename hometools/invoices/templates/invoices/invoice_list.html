@@ -1,0 +1,58 @@
+{% extends "invoices/base.html" %}
+{% load humanize %}
+
+And feel free to remove blocks you don't need to change.
+
+{% block invoices_head_title %}All invoices{% endblock %}
+
+{% block body_content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Invoices</li>
+    </ol>
+  </nav>
+
+  <h1 class="display-1">
+    Invoices
+  </h1>
+
+  <div class="bg-light mb-2 p-3 rounded">
+    {% include "widgets/generic_pagination_controls.html" %}
+  </div>
+
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Period</th>
+        <th scope="col">Hours billed</th>
+        <th scope="col">Hourly rate</th>
+        <th scope="col">Amount billed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for invoice in invoices %}
+      <tr>
+        <td><a href="{{ invoice.get_absolute_url }}">{{ invoice }}</a></td>
+        <td>{{ invoice.cycle_start_date }}</td>
+        <td>{{ invoice.cycle_end_date }}</td>
+        <td>{{ invoice.cycle_end_date }}</td>
+        <td>{{ invoice.total_hours }} hours</td>
+        <td>${{ invoice.hourly_rate|floatformat:2|intcomma }}</td>
+        <td>${{ invoice.amount_billed|floatformat:2|intcomma }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="bg-light mb-2 p-3 rounded">
+    {% include "widgets/generic_pagination_controls.html" %}
+  </div>
+
+{% endblock %}
+
+{% block body_js %}
+{% endblock %}

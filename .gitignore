@@ -133,5 +133,7 @@ dmypy.json
 # Local
 .vscode/
 
-# Prod
+# Production directories
 hometools/static/
+hometools/media/
+hometools/logs/

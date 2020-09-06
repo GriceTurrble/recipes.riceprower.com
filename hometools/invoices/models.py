@@ -285,13 +285,13 @@ class Project(ProjectBaseModel):
         cycle_start = cycle_end - self.billing_cycle_delta + datetime.timedelta(days=1)
         return cycle_start, cycle_end
 
-    def curr_billing_cycle(self):
+    def current_billing_cycle(self):
         """Return the date range of the current billing cycle, as of today."""
         return self.billing_cycle_for_date(timezone.localtime().date())
 
     def prev_billing_cycle(self):
         """Return the date range of the previous billing cycle.
-        First gets the current billing cycle (`self.curr_billing_cycle`),
+        First gets the current billing cycle (`self.current_billing_cycle`),
         then moves both dates back by one delta (`self.billing_cycle` number of days).
         """
         start_date, end_date = self.billing_cycle_for_date(timezone.localtime().date())

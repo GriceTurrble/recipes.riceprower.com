@@ -4,3 +4,6 @@
 pylint
 pylint-django
 black
+
+# reStructuredText linting
+rstcheck

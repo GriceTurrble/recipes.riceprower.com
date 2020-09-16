@@ -4,26 +4,56 @@
 
 {% block body_content %}
   {% url "invoices:invoice-list" as invoices_home_url %}
-  <div class="jumbotron">
-    <h1 class="display-4">Hello {{ request.user.first_name }}!</h1>
-    <p class="lead">Welcome to HomeTools. Use the links below to get started.</p>
+
+  {% if request.user.is_authenticated %}
+
+  <div class="card bg-primary text-white text-center p-3 mt-3 mb-4">
+    <h1 class="h2">Hi, {{ request.user.first_name|default:request.user.username }}!</h1>
+    <p class="mb-0">Use the card links below to open the different tools available on the site.</p>
   </div>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Invoices</h5>
-      <p class="card-text">
-        App for Galen to organize contract work data and generate invoices.
-      </p>
-      {% if perms.invoices.add_invoice %}
-      <a href="{{ invoices_home_url }}" class="btn btn-primary stretched-link">Go</a>
-      {% else %}
-      <p class="card-text text-muted">
-        You are lacking a permission required to access this app.
-      </p>
-      {% endif %}
+  <div class="card-columns">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Invoices</h5>
+        <p class="card-text">
+          App for Galen to organize contract work data and generate invoices.
+        </p>
+        {% if perms.invoices.add_invoice %}
+        <a href="{{ invoices_home_url }}" class="btn btn-primary stretched-link">Go</a>
+        {% else %}
+        <p class="card-text text-muted">
+          You are lacking a permission required to access this app.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Recipes</h5>
+        <p class="card-text">
+          <em>Coming soon</em>
+        </p>
+      </div>
     </div>
   </div>
+
+  {% else %}
+
+  <div class="jumbotron mt-5">
+    <h1 class="display-4">Welcome to HomeTools</h1>
+    <p class="lead">Stuff that the Rice-Prowers use to do shit at home.</p>
+    <p>
+      Now hurry up and log in to get started
+      <span class="d-inline d-lg-none">(tap the <i class="fas fa-hamburger"></i> up top).</span>
+      <span class="d-none d-lg-inline">(use the <strong><i class="fas fa-sign-in-alt"></i> Login</strong> form up top).</span>
+    </p>
+    <p>Don't have a login? Ask Galen (who is too lazy to make a signup page).</p>
+  </div>
+
+  {% endif %}
 {% endblock %}
 
 {% block body_js %}

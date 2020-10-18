@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Put your new apps here!
-    "base_objects",
-    "invoices",
+    "base_objects.apps.BaseObjectsConfig",
+    "invoices.apps.InvoicesConfig",
 ]
 
 MIDDLEWARE = [

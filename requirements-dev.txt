@@ -5,6 +5,7 @@ pytest
 pytest-django
 flake8
 black
+pre-commit
 
 # reStructuredText linting
 # rstcheck

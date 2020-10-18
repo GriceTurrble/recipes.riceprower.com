@@ -1,0 +1,22 @@
+"""Models for `{{ app_name }}` app."""
+
+### WARNING ###
+# DO NOT use `django.contrib.auth.models.User` directly.
+# Instead, use `get_user_model`.
+# https://learndjango.com/tutorials/django-best-practices-referencing-user-model
+###############
+
+
+from django.contrib.auth import get_user_model
+
+from django.db import models
+from base_objects.models import HTBaseModel
+
+User = get_user_model()
+
+
+### EXAMPLE ###
+
+# class MyModel(HTBaseModel):
+#     """My model that does some things."""
+#     ...

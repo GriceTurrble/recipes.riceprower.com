@@ -1,9 +1,10 @@
 -r requirements.txt
 
 # Dev tools
-pylint
-pylint-django
+pytest
+pytest-django
+flake8
 black
 
 # reStructuredText linting
-rstcheck
+# rstcheck

@@ -1,15 +1,15 @@
 """Managers for models in invoices app."""
 
-from base_objects.managers import ProjectBaseManager
+from base_objects.managers import HTBaseManager
 
 from .querysets import InvoiceQuerySet, InvoiceItemLogQuerySet
 
 
-class InvoiceManager(ProjectBaseManager):
+class InvoiceManager(HTBaseManager):
     queryset_class = InvoiceQuerySet
 
 
-class InvoiceItemLogManager(ProjectBaseManager):
+class InvoiceItemLogManager(HTBaseManager):
     queryset_class = InvoiceItemLogQuerySet
 
     def within_cycle(self, cycle_start, cycle_end):

@@ -2,13 +2,13 @@
 from django.db import models
 
 from .typing import DTType
-from .querysets import ProjectBaseQuerySet
+from .querysets import HTBaseQuerySet
 
 
-class ProjectBaseManager(models.Manager):
-    """Manager for ProjectBaseModel."""
+class HTBaseManager(models.Manager):
+    """Manager for HTBaseModel."""
 
-    queryset_class = ProjectBaseQuerySet
+    queryset_class = HTBaseQuerySet
 
     def get_queryset(self):
         return self.queryset_class(self.model, using=self._db)

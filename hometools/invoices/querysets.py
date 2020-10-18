@@ -1,13 +1,13 @@
 """Querysets for models in invoices app."""
 
-from base_objects.querysets import ProjectBaseQuerySet
+from base_objects.querysets import HTBaseQuerySet
 
 
-class InvoiceQuerySet(ProjectBaseQuerySet):
+class InvoiceQuerySet(HTBaseQuerySet):
     pass
 
 
-class InvoiceItemLogQuerySet(ProjectBaseQuerySet):
+class InvoiceItemLogQuerySet(HTBaseQuerySet):
     def within_cycle(self, cycle_start, cycle_end):
         return self.filter(
             date__gte=cycle_start,

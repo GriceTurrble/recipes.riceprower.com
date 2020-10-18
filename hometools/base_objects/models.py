@@ -2,13 +2,13 @@
 
 from django.db import models
 
-from .managers import ProjectBaseManager
+from .managers import HTBaseManager
 
 
-class ProjectBaseModel(models.Model):
+class HTBaseModel(models.Model):
     """Base abstract model for all models used throughout the project."""
 
-    objects = ProjectBaseManager()
+    objects = HTBaseManager()
 
     ## Basic time tracking for all models ##
     time_created = models.DateTimeField("created", auto_now_add=True, db_index=True)

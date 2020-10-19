@@ -1,3 +1,10 @@
+# Django itself
 Django>=3.1.2,<3.2
+
+# Django extensions
 django-environ>=0.4.5,<0.5
+django-fractions>=2.0,<2.1
+django-tinymce>=3.1,<3.2
+
+# Other stuff
 psycopg2>=2.8.6,<2.9

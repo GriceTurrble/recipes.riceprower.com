@@ -14,6 +14,7 @@
 
   <div class="card-columns">
 
+    {# Invoices app #}
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Invoices</h5>
@@ -30,6 +31,7 @@
       </div>
     </div>
 
+    {# Recipes app #}
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Recipes</h5>
@@ -39,6 +41,27 @@
       </div>
     </div>
   </div>
+
+  {% load flatpages %}
+  {% get_flatpages as flatpages %}
+  {% for page in flatpages %}
+    {% if forloop.first %}
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-primary">
+              <h5 class="mb-0">
+                Other pages
+              </h5>
+            </div>
+    {% endif %}
+            <a href="/pages{{ page.url }}" class="list-group-item list-group-item-action">{{ page.title }}</a>
+    {% if forloop.last %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
 
   {% else %}
 

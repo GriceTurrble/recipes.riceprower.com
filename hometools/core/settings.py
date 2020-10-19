@@ -36,6 +36,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Application definition
 INSTALLED_APPS = [
+    # Django dependencies
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.humanize",
@@ -43,10 +44,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Put your new apps here!
+    # Flat pages requirements
+    "django.contrib.sites",
+    "django.contrib.flatpages",
+    # Other dependencies
+    "djfractions",
+    "tinymce",
+    # Base objects app, required by downstream.
     "base_objects.apps.BaseObjectsConfig",
+    # Put your new apps here!
     "invoices.apps.InvoicesConfig",
+    "recipes.apps.RecipesConfig",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

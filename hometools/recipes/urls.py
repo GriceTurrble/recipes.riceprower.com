@@ -11,5 +11,5 @@ from . import views
 app_name = "recipes"
 
 urlpatterns = [
-    # Standard view paths and other includes can go here!
+    path("", views.RecipeListView.as_view(), name="recipe-list"),
 ]

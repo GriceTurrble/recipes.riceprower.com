@@ -7,10 +7,17 @@
 
   {% if request.user.is_authenticated %}
 
-  <div class="card bg-primary text-white text-center p-3 mt-3 mb-4">
-    <h1 class="h2">Hi, {{ request.user.first_name|default:request.user.username }}!</h1>
-    <p class="mb-0">Use the card links below to open the different tools available on the site.</p>
-  </div>
+  {% include "widgets/breadcrumbs.html" with is_root=True %}
+
+  {% comment %}
+    Super complicated dumb title card thing that saves 0 code lines compared to original.
+    But, at least it's DRY. -G
+  {% endcomment %}
+  {% with user_name=request.user.first_name|default:request.user.username %}
+    {% with welcome_text="Hi, "|add:user_name|add:"!" %}
+      {% include "widgets/title_card.html" with title=welcome_text subtitle="Use the card links below to open the different tools available on the site." card_classes="bg-primary text-white text-center" %}
+    {% endwith %}
+  {% endwith %}
 
   <div class="card-columns">
 

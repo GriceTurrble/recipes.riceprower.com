@@ -6,16 +6,8 @@ And feel free to remove blocks you don't need to change.
 {% block invoices_head_title %}All invoices{% endblock %}
 
 {% block body_content %}
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Invoices</li>
-    </ol>
-  </nav>
-
-  <h1 class="display-1">
-    Invoices
-  </h1>
+  {% include "widgets/breadcrumbs.html" with page_title="Invoices" %}
+  {% include "widgets/title_card.html" with title="Invoices" card_classes="bg-secondary text-light" %}
 
   <div class="bg-light mb-2 p-3 rounded">
     {% include "widgets/generic_pagination_controls.html" %}

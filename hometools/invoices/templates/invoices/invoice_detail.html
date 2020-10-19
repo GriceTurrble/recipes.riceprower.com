@@ -3,15 +3,9 @@
 {% block invoices_head_title %}{{ invoice.name }}{% endblock %}
 
 {% block body_content %}
-  <nav aria-label="breadcrumb" class="d-print-none">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'invoices:invoice-list' %}">Invoices</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ invoice }}</li>
-    </ol>
-  </nav>
-
-  <h1>Invoice "{{ invoice.name }}"</h1>
+  {% url 'invoices:invoice-list' as invoices_list_url %}
+  {% include "widgets/breadcrumbs.html" with page_title=invoice extra_links=invoices_list_url|add:"|Invoices" %}
+  {% include "widgets/title_card.html" with title=invoice.name card_classes="bg-light" %}
 
   <div class="row">
     <div class="col">

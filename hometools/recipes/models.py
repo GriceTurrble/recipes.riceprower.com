@@ -52,6 +52,11 @@ class Recipe(HTBaseModel):
             "(must be unique!)"
         ),
     )
+    subtitle = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Short description for this recipe.",
+    )
     description = HTMLField()
     time_to_prep = models.DurationField(
         blank=True,

@@ -28,6 +28,7 @@ urlpatterns = [
     path("recipes/", include("recipes.urls")),
     path("tinymce/", include("tinymce.urls")),
     path("pages/", include("django.contrib.flatpages.urls")),
+    path('api-auth/', include('rest_framework.urls')),
     path("", TemplateView.as_view(template_name="homepage.html"), name="homepage"),
 ]
 # fmt: on

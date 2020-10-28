@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.flatpages",
     # Other dependencies
+    "rest_framework",
     "djfractions",
     "tinymce",
     # Base objects app, required by downstream.
@@ -86,6 +87,12 @@ TEMPLATES = [
         },
     },
 ]
+
+# Required by adminsortable
+# With this set, any use of CSRF token in AJAX must pull it from a form element:
+# it will NOT be available in a cookie.
+# (which is wonky anyhow)
+CSRF_COOKIE_HTTPONLY = True
 
 # Login/logout redirect links
 LOGIN_REDIRECT_URL = "/"

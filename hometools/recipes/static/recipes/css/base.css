@@ -1,0 +1,4 @@
+/* Base styles for pages in the Recipes app.
+   This file shouldn't be used directly,
+   but should get imported using `@import "base.css";`
+   in other stylesheets. */

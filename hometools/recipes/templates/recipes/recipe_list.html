@@ -1,15 +1,12 @@
 {% extends "recipes/base.html" %}
 {% load hometool_tags %}
 
-Making a new template? Follow my lead!
-
-1. Be sure the `extends` tag remains the first line in the file, as Django requires.
-2. Fill in your details as needed in the blocks below
-3. Add or comment out any blocks you won't be needing.
-4. Add HTML content to the `body_content` block, and JS content to `body_js`
-
 {# Overwrite the original head_title block so we don't have a hanging chad, so to speak. #}
 {% block head_title %}Recipes{% endblock %}
+
+{% block head_css %}
+  <link rel="stylesheet" href="{% static 'recipes/css/recipe_list.css' %}">
+{% endblock head_css %}
 
 {% block recipe_body_content %}
   {% include "widgets/breadcrumbs.html" with page_title="Recipes" %}

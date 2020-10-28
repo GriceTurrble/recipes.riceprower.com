@@ -1,4 +1,5 @@
 /*** Styles for recipe_detail.html template. ***/
+@import "base.css";
 
 /* Article container for a recipe detail */
 .rec-container {

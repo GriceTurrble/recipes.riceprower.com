@@ -11,6 +11,7 @@ from fractions import Fraction
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse as reverse_url
 
 from djfractions.models import DecimalFractionField
 from djfractions import get_fraction_parts
@@ -52,12 +53,17 @@ class Recipe(HTBaseModel):
             "(must be unique!)"
         ),
     )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        db_index=True,
+    )
     subtitle = models.CharField(
         max_length=255,
         blank=True,
         help_text="Short description for this recipe.",
     )
-    description = HTMLField()
+    description = HTMLField(blank=True)
     time_to_prep = models.DurationField(
         blank=True,
         default=datetime.timedelta(0),
@@ -68,9 +74,16 @@ class Recipe(HTBaseModel):
         default=datetime.timedelta(0),
         help_text="Estimated time to cook this recipe (not including prep time).",
     )
+    directions = HTMLField(blank=True)
+    footnotes = HTMLField(blank=True)
 
     def __str__(self) -> str:
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_url(
+            "recipes:recipe-detail", kwargs={"pk": self.pk, "slug": self.slug}
+        )
 
     @property
     def total_time(self) -> datetime.timedelta:
@@ -100,7 +113,9 @@ class RecipeIngredient(HTBaseModel):
         default=1,
         help_text=(
             "Order in which this ingredient appears in "
-            "the list of ingredients for a recipe."
+            "the list of ingredients for a recipe. "
+            "If ordering doesn't matter, just leave this alone; "
+            "but know that this list will sort based on this field"
         ),
     )
     amount = DecimalFractionField(
@@ -114,9 +129,57 @@ class RecipeIngredient(HTBaseModel):
     # Should be able to accept instances of `fractions.Fraction`
 
     # TODO create unit-of-measure choices for this option
-    amount_uom = models.CharField(
-        max_length=5, help_text="Unit of measure for 'amount'."
+    UOM_PINCH = "pinch"
+    UOM_DASH = "dash"
+    UOM_TEASPOON = "tsp"
+    UOM_TABLESPOON = "tbsp"
+    UOM_CUP = "cup"
+    UOM_PINT = "pint"
+    UOM_QUART = "quart"
+    UOM_GALLON = "gallon"
+    UOM_FLUID_OUNCE = "fluid-ounce"
+    UOM_WEIGHT_OUNCE = "weight-ounce"
+    UOM_POUND = "pound"
+    UOM_MILLILITER = "ml"
+    UOM_LITER = "liter"
+    UOM_GRAM = "gram"
+    UOM_KILOGRAM = "kilogram"
+    UOM_FUCKTON = "fuckton"
+    UOM_BLANK = "blank"
+    UOM_CHOICES = (
+        (UOM_PINCH, "pinch"),
+        (UOM_DASH, "dash"),
+        (UOM_TEASPOON, "teaspoon"),
+        (UOM_TABLESPOON, "tablespoon"),
+        (UOM_CUP, "cup"),
+        (UOM_PINT, "pint"),
+        (UOM_QUART, "quart"),
+        (UOM_GALLON, "gallon"),
+        (UOM_FLUID_OUNCE, "fluid ounce"),
+        (UOM_WEIGHT_OUNCE, "ounce"),
+        (UOM_POUND, "pound"),
+        (UOM_MILLILITER, "ml"),
+        (UOM_LITER, "liter"),
+        (UOM_GRAM, "gram"),
+        (UOM_KILOGRAM, "kilogram"),
+        (UOM_FUCKTON, "fuckton"),
+        (UOM_BLANK, "(blank)"),
     )
+    amount_uom = models.CharField(
+        max_length=20,
+        help_text="Unit of measure for 'amount'.",
+        choices=UOM_CHOICES,
+        default=UOM_FUCKTON,
+    )
+    preparation = models.CharField(max_length=255, default="", blank=True)
+
+    class Meta:
+        ordering = ["order", "pk"]
+        verbose_name = "Ingredient"
+
+    @property
+    def type(self):
+        return self.ingredient_type
 
     def amount_fraction_str(self):
         whole, numerator, denominator = get_fraction_parts(self.amount)
@@ -124,31 +187,11 @@ class RecipeIngredient(HTBaseModel):
         output = ""
         if whole:
             output += f"{whole} "
-        output += f"{fraction}"
+        if fraction:
+            output += f"{fraction}"
+        if not output:
+            output = "0"
         return output
 
     def __str__(self) -> str:
         return f'"{self.recipe}" - {self.amount_fraction_str()} {self.amount_uom} {self.ingredient_type}'
-
-
-class RecipeDirection(HTBaseModel):
-    """A direction provided for a Recipe.
-
-    Includes an ordering and text for the direction,
-    """
-
-    recipe = models.ForeignKey(
-        "recipes.Recipe", on_delete=models.CASCADE, related_name="directions"
-    )
-    order = models.PositiveIntegerField(default=1)
-    content = HTMLField()
-
-    def __str__(self) -> str:
-        return f'"{self.recipe}" - #{self.order} - {self.content}'
-
-
-# TODO:
-# RecipeDirection
-# - recipe FK
-# - content TextField
-# - order (int)

@@ -2,22 +2,22 @@
 
 from django.contrib import admin
 
-from .models import Recipe, RecipeDirection, RecipeIngredient, IngredientType
+from .models import Recipe, RecipeIngredient, IngredientType
+
+
+class RecipeIngredientInline(admin.TabularInline):
+    """Inline model for Ingredients attached to a Recipe."""
+
+    model = RecipeIngredient
+    extra = 0
 
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(RecipeDirection)
-class RecipeDirectionAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(RecipeIngredient)
-class RecipeIngredientAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = [
+        RecipeIngredientInline,
+    ]
 
 
 @admin.register(IngredientType)

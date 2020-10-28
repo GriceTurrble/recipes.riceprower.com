@@ -12,7 +12,5 @@ app_name = "recipes"
 
 urlpatterns = [
     path("", views.RecipeListView.as_view(), name="recipe-list"),
-    path(
-        "<int:pk>-<slug:slug>/", views.RecipeDetailView.as_view(), name="recipe-detail"
-    ),
+    path("<slug:slug>/", views.RecipeDetailView.as_view(), name="recipe-detail"),
 ]

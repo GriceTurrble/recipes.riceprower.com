@@ -81,9 +81,7 @@ class Recipe(HTBaseModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_url(
-            "recipes:recipe-detail", kwargs={"pk": self.pk, "slug": self.slug}
-        )
+        return reverse_url("recipes:recipe-detail", kwargs={"slug": self.slug})
 
     @property
     def total_time(self) -> datetime.timedelta:
@@ -129,41 +127,41 @@ class RecipeIngredient(HTBaseModel):
     # Should be able to accept instances of `fractions.Fraction`
 
     # TODO create unit-of-measure choices for this option
-    UOM_PINCH = "pinch"
-    UOM_DASH = "dash"
-    UOM_TEASPOON = "tsp"
-    UOM_TABLESPOON = "tbsp"
+    UOM_BLANK = "blank"
     UOM_CUP = "cup"
-    UOM_PINT = "pint"
-    UOM_QUART = "quart"
-    UOM_GALLON = "gallon"
+    UOM_DASH = "dash"
     UOM_FLUID_OUNCE = "fluid-ounce"
-    UOM_WEIGHT_OUNCE = "weight-ounce"
-    UOM_POUND = "pound"
-    UOM_MILLILITER = "ml"
-    UOM_LITER = "liter"
+    UOM_FUCKTON = "fuckton"
+    UOM_GALLON = "gallon"
     UOM_GRAM = "gram"
     UOM_KILOGRAM = "kilogram"
-    UOM_FUCKTON = "fuckton"
-    UOM_BLANK = "blank"
+    UOM_LITER = "liter"
+    UOM_MILLILITER = "ml"
+    UOM_PINCH = "pinch"
+    UOM_PINT = "pint"
+    UOM_POUND = "pound"
+    UOM_QUART = "quart"
+    UOM_TABLESPOON = "tbsp"
+    UOM_TEASPOON = "tsp"
+    UOM_WEIGHT_OUNCE = "weight-ounce"
     UOM_CHOICES = (
-        (UOM_PINCH, "pinch"),
-        (UOM_DASH, "dash"),
-        (UOM_TEASPOON, "teaspoon"),
-        (UOM_TABLESPOON, "tablespoon"),
+        (UOM_BLANK, "(blank)"),
         (UOM_CUP, "cup"),
-        (UOM_PINT, "pint"),
-        (UOM_QUART, "quart"),
-        (UOM_GALLON, "gallon"),
+        (UOM_DASH, "dash"),
         (UOM_FLUID_OUNCE, "fluid ounce"),
-        (UOM_WEIGHT_OUNCE, "ounce"),
-        (UOM_POUND, "pound"),
-        (UOM_MILLILITER, "ml"),
-        (UOM_LITER, "liter"),
+        (UOM_FUCKTON, "fuckton"),
+        (UOM_GALLON, "gallon"),
         (UOM_GRAM, "gram"),
         (UOM_KILOGRAM, "kilogram"),
-        (UOM_FUCKTON, "fuckton"),
-        (UOM_BLANK, "(blank)"),
+        (UOM_LITER, "liter"),
+        (UOM_MILLILITER, "ml"),
+        (UOM_PINCH, "pinch"),
+        (UOM_PINT, "pint"),
+        (UOM_POUND, "pound"),
+        (UOM_QUART, "quart"),
+        (UOM_TABLESPOON, "tablespoon"),
+        (UOM_TEASPOON, "teaspoon"),
+        (UOM_WEIGHT_OUNCE, "ounce"),
     )
     amount_uom = models.CharField(
         max_length=20,

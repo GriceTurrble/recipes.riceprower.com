@@ -20,7 +20,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ recipe.title }}</h5>
           <p class="card-text">{{ recipe.subtitle }}</p>
-          <a href="{% url 'recipes:recipe-detail' pk=recipe.pk slug=recipe.slug %}" class="btn btn-primary stretched-link">
+          <a href="{{ recipe.get_absolute_url }}" class="btn btn-primary stretched-link">
 
             See recipe
           </a>

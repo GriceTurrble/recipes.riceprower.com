@@ -1,7 +1,6 @@
 ---
 author: Galen Rice
 date: 2020-10-27
-updated: 2020-10-27
 ---
 
 # Recipe detail styling

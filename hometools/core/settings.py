@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.flatpages",
     # Other dependencies
+    "adminsortable2",
     "rest_framework",
     "djfractions",
     "tinymce",

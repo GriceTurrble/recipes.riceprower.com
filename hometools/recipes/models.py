@@ -108,13 +108,9 @@ class RecipeIngredient(HTBaseModel):
         help_text="The type of this ingredient. Please avoid duplicates!",
     )
     order = models.PositiveIntegerField(
-        default=1,
-        help_text=(
-            "Order in which this ingredient appears in "
-            "the list of ingredients for a recipe. "
-            "If ordering doesn't matter, just leave this alone; "
-            "but know that this list will sort based on this field"
-        ),
+        default=0,
+        blank=False,
+        null=False,
     )
     amount = DecimalFractionField(
         decimal_places=2,
@@ -167,12 +163,12 @@ class RecipeIngredient(HTBaseModel):
         max_length=20,
         help_text="Unit of measure for 'amount'.",
         choices=UOM_CHOICES,
-        default=UOM_FUCKTON,
+        default=UOM_BLANK,
     )
     preparation = models.CharField(max_length=255, default="", blank=True)
 
     class Meta:
-        ordering = ["order", "pk"]
+        ordering = ["order"]
         verbose_name = "Ingredient"
 
     @property

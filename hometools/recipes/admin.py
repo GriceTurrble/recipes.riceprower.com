@@ -2,14 +2,24 @@
 
 from django.contrib import admin
 
+from adminsortable2.admin import SortableInlineAdminMixin
+
 from .models import Recipe, RecipeIngredient, IngredientType
 
 
-class RecipeIngredientInline(admin.TabularInline):
+class RecipeIngredientInline(SortableInlineAdminMixin, admin.TabularInline):
     """Inline model for Ingredients attached to a Recipe."""
 
     model = RecipeIngredient
     extra = 0
+    autocomplete_fields = ["ingredient_type"]
+    fields = [
+        "order",
+        "ingredient_type",
+        "amount",
+        "amount_uom",
+        "preparation",
+    ]
 
 
 @admin.register(Recipe)
@@ -18,11 +28,15 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines = [
         RecipeIngredientInline,
     ]
+    list_display = [
+        "title",
+        "subtitle",
+    ]
 
 
 @admin.register(IngredientType)
 class IngredientTypeAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ["name"]
 
 
 ### EXAMPLE ###

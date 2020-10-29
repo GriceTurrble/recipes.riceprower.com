@@ -5,12 +5,13 @@ source config.sh
 # Config fills in:
 #   $S3_BUCKET - s3 bucket name, in format `s3://bucket-name`
 #   $PG_DATABASE - name of the database to dump, i.e. `mydatabase`
+#   $PG_USER - user role to use in the connection
 
 # Dump database backup to a file
 TIME=$(date "+%s")
 BACKUP_FILE="postgres_${PG_DATABASE}_${TIME}.pgdump"
 echo "Backing up $PG_DATABASE to $BACKUP_FILE"
-pg_dump --format=custom $PG_DATABASE > $BACKUP_FILE
+pg_dump --username $PG_USER --format=custom $PG_DATABASE > $BACKUP_FILE
 
 # Copy file to AWS S3 using awscli
 # Don't have awscli? Run `sudo apt-get install awscli` to install,

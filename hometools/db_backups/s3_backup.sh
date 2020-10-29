@@ -10,7 +10,7 @@ source config.sh
 TIME=$(date "+%s")
 BACKUP_FILE="postgres_${PG_DATABASE}_${TIME}.pgdump"
 echo "Backing up $PG_DATABASE to $BACKUP_FILE"
-pg_dump --format=custom > $BACKUP_FILE
+pg_dump --format=custom $PG_DATABASE > $BACKUP_FILE
 
 # Copy file to AWS S3 using awscli
 # Don't have awscli? Run `sudo apt-get install awscli` to install,

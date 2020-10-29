@@ -1,4 +1,3 @@
 #!/bin/bash
 S3_BUCKET=s3://bucket-name
 PG_DATABASE=mydatabase
-PG_USER=myuser

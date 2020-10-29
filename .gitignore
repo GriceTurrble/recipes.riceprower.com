@@ -137,3 +137,7 @@ dmypy.json
 hometools/static/
 hometools/media/
 hometools/logs/
+
+# DB backups, ignoring the config and dump files in production
+hometools/db_backups/config.sh
+hometools/db_backups/*.pgdump

@@ -142,7 +142,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # The main LOGGING config is stitched together in settings.__init__.
 # We define segments of it here, as well as in other environments,
 # then put the pieces together.
-LOGS_ROOT = BASE_DIR / "logs"
+LOGS_DIR = BASE_DIR / "logs"
+LOGGING_ROOT = {}
 LOGGING_FORMATTERS = {
     "verbose": {
         "format": "[{levelname}] [{asctime}] [{module}] {message}",

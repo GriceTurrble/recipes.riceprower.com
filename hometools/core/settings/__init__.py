@@ -25,6 +25,7 @@ except ImportError:
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
+    "root": LOGGING_ROOT,  # noqa
     "formatters": LOGGING_FORMATTERS,  # noqa
     "filters": LOGGING_FILTERS,  # noqa
     "handlers": LOGGING_HANDLERS,  # noqa

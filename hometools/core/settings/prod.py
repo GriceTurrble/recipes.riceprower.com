@@ -3,8 +3,12 @@
 Any settings defined here can override base settings implicitly.
 """
 
-from .base import LOGS_ROOT
+from .base import LOGS_DIR
 
+LOGGING_ROOT = {
+    "handlers": ["file"],
+    "level": "INFO",
+}
 LOGGING_HANDLERS = {
     # Security warnings logging
     "security_file": {
@@ -12,7 +16,7 @@ LOGGING_HANDLERS = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": str(LOGS_ROOT / "security.log"),
+        "filename": str(LOGS_DIR / "security.log"),
         "formatter": "verbose",
     },
     # Other general INFO messages in a main log
@@ -21,7 +25,7 @@ LOGGING_HANDLERS = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": str(LOGS_ROOT / "django.log"),
+        "filename": str(LOGS_DIR / "django.log"),
         "formatter": "verbose",
     },
     "null": {

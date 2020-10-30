@@ -143,5 +143,8 @@ hometools/logs/
 hometools/backups/config.sh
 hometools/backups/*.pgdump
 
+# Script files
+hometools/scripts/config.sh
+
 # Project local settings, intended for a local env only
 hometools/core/settings/local.py

@@ -1,8 +1,13 @@
 #!/bin/bash
 # Backs up the database to a file and then uploads it to AWS S3.
 
-source config.sh
-# Config fills in:
+CONFIG_FILE=$(dirname $(realpath $0))/config.sh
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Config missing, please make one by copying config.sh.template."
+    exit
+fi
+source $CONFIG_FILE
+# Adds:
 #   $S3_BUCKET - s3 bucket name, in format `s3://bucket-name`
 #   $PG_DATABASE - name of the database to dump, i.e. `mydatabase`
 #   $PG_USER - user role to use in the connection

@@ -4,12 +4,10 @@
 [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
 CONFIG_FILE=$(dirname $(realpath $0))/config.sh
-
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Config missing, please make one by copying config.sh.template."
     exit
 fi
-
 source $CONFIG_FILE
 # Adds:
 #   $MANAGE_DIR - full path to directory where manage.py can be found

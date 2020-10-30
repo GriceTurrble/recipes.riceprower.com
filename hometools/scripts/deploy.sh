@@ -3,7 +3,7 @@
 # Force sudo if not set
 [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
-CONFIG_FILE=$(realpath config.sh)
+CONFIG_FILE=$(dirname $(realpath $0))/config.sh
 
 if [ ! -f "$CONFIG_FILE" ]; then
     echo "Config missing, please make one by copying config.sh.template."

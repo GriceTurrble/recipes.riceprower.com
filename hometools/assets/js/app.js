@@ -1,3 +1,4 @@
-/**
- * Nothing here yet. Add some stuff?
- */
+// Run Bootstrap tooltips
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+})

@@ -6,6 +6,7 @@
 }
 
 /* FOR TESTING ONLY */
+.rec-container.show-boxes .rec-controls,
 .rec-container.show-boxes .rec-header,
 .rec-container.show-boxes .rec-description,
 .rec-container.show-boxes .rec-ingredients,
@@ -18,6 +19,10 @@
 }
 
 /* Sections containing different parts of the recipe */
+/* The edit and delete control links, conditionally added when a user has permissions to use them */
+.rec-container.show-boxes .rec-controls {
+}
+
 /* Header and description are easily accessible in the template using Bootstrap utility classes, as well. */
 .rec-container .rec-header {
 }

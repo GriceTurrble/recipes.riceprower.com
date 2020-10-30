@@ -3,6 +3,8 @@
 Any settings defined here can override base settings implicitly.
 """
 
+from .base import LOGS_ROOT
+
 # Logging handlers and loggers are imported direct in settings.__init__.
 # These are not standard settings, but we're using these to define the logging setup
 # relevant to this environment
@@ -21,7 +23,7 @@ LOGGING_HANDLERS = {
         "level": "DEBUG",
         "filters": ["require_debug_true"],
         "class": "logging.handlers.RotatingFileHandler",
-        "filename": "hometools/logs/debug.log",
+        "filename": str(LOGS_ROOT / "debug.log"),
         "maxBytes": 1024 * 1024 * 10,  # 10MB
         "backupCount": 10,
         "formatter": "verbose",

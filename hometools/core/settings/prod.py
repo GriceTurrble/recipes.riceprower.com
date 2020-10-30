@@ -3,6 +3,8 @@
 Any settings defined here can override base settings implicitly.
 """
 
+from .base import LOGS_ROOT
+
 LOGGING_HANDLERS = {
     # Server access logs from django.request
     "access_file": {
@@ -10,7 +12,7 @@ LOGGING_HANDLERS = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": "hometools/logs/access.log",
+        "filename": str(LOGS_ROOT / "access.log"),
         "formatter": "verbose",
     },
     # Other general INFO messages in a main log
@@ -19,7 +21,7 @@ LOGGING_HANDLERS = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": "hometools/logs/main.log",
+        "filename": str(LOGS_ROOT / "main.log"),
         "formatter": "verbose",
     },
 }

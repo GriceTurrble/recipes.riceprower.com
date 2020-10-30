@@ -6,16 +6,7 @@ Any settings defined here can override base settings implicitly.
 from .base import LOGS_ROOT
 
 LOGGING_HANDLERS = {
-    # Logs from django.request
-    "requests_file": {
-        "level": "INFO",
-        "filters": ["require_debug_false"],
-        "class": "logging.handlers.RotatingFileHandler",
-        "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": str(LOGS_ROOT / "requests.log"),
-        "formatter": "verbose",
-    },
-    # Logs from django.security
+    # Security warnings logging
     "security_file": {
         "level": "INFO",
         "filters": ["require_debug_false"],
@@ -30,7 +21,7 @@ LOGGING_HANDLERS = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
-        "filename": str(LOGS_ROOT / "main.log"),
+        "filename": str(LOGS_ROOT / "django.log"),
         "formatter": "verbose",
     },
     "null": {
@@ -38,24 +29,18 @@ LOGGING_HANDLERS = {
     },
 }
 LOGGING_LOGGERS = {
-    # Catch all in the main log if not configured otherwise
+    # Catch all in the main log
     "django": {
         "handlers": ["file"],
         "propagate": True,
     },
-    # Send request access logs to its own file
-    "django.request": {
-        "handlers": ["requests_file"],
-        "level": "INFO",
-        "propagate": False,
-    },
-    # Send security logs to its own file
+    # Capture security logs
     "django.security": {
         "handlers": ["security_file"],
         "level": "INFO",
         "propagate": False,
     },
-    # Ignore disallowed host errors
+    # Ignore DisallowedHost errors
     "django.security.DisallowedHost": {
         "handlers": ["null"],
         "propagate": False,

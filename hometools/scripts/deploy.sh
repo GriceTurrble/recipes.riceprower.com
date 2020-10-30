@@ -5,7 +5,10 @@
 
 CONFIG_FILE=$(realpath config.sh)
 
-if [ -f "$CONFIG_FILE" ]
+if [ -f "$CONFIG_FILE" ]; then
+    echo "Config missing, please make one by copying config.sh.template."
+    exit
+fi
 
 source $CONFIG_FILE
 # Adds:

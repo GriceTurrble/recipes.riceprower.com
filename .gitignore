@@ -139,5 +139,9 @@ hometools/media/
 hometools/logs/
 
 # DB backups, ignoring the config and dump files in production
-hometools/db_backups/config.sh
-hometools/db_backups/*.pgdump
+# (be careful not to ignore the other script files this dir will contain)
+hometools/backups/config.sh
+hometools/backups/*.pgdump
+
+# Project local settings, intended for a local env only
+hometools/core/settings/local.py

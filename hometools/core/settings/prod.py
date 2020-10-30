@@ -34,13 +34,7 @@ LOGGING_LOGGERS = {
     # Send server access logs to its own file
     "django.server": {
         "handlers": ["access_file"],
-        "level": "ERROR",
-        "propagate": False,
-    },
-    # Only show ERROR messages from the request logger in main log
-    "django.request": {
-        "handlers": ["file"],
-        "level": "ERROR",
+        "level": "INFO",
         "propagate": False,
     },
 }

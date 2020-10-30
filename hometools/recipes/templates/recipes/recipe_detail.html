@@ -57,7 +57,7 @@ And feel free to remove blocks you don't need to change.
           {% endcomment %}
           <span class="ingredient-amount">{{ ingredient.amount_fraction_str }} </span>
           {% if ingredient.amount_uom == ingredient.UOM_BLANK %}
-            <span class="ingredient-type" data-pluralize>{{ ingredient.type }}{{ ingredient.amount|pluralize }}</span>
+            <span class="ingredient-type" data-pluralize>{% if ingredient.type.plural_name %}{{ ingredient.type.plural_name }}{% else %}{{ ingredient.type.name }}{{ ingredient.amount|pluralize }}{% endif %}</span>
           {% else %}
             <span class="ingredient-amount-uom" data-pluralize>{{ ingredient.get_amount_uom_display }}{{ ingredient.amount|pluralize }} </span>
             <span class="ingredient-type">{{ ingredient.type }}</span>

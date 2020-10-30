@@ -33,6 +33,11 @@ class IngredientType(HTBaseModel):
         db_index=True,
         help_text="Name of this type of ingredient",
     )
+    plural_name = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Plural name of this type of ingredient",
+    )
 
     def __str__(self) -> str:
         return self.name

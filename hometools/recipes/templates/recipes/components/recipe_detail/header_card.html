@@ -1,0 +1,45 @@
+{% comment %}
+  The header section for the detail page, containing the title and some basic details,
+  like subtitle and prep times.
+
+  Context:
+    recipe - a Recipe model instance.
+{% endcomment %}
+
+<section class="rec-header"><!-- START header card -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-light">
+      <h1 class="card-title mb-0">{{ recipe.title }}</h1>
+    </div><!-- .card-header -->
+    <div class="card-body">
+      {% if recipe.subtitle %}<p class="lead">{{ recipe.subtitle }}</p>{% endif %}
+      <dl class="row mb-0">
+        {% if recipe.time_to_prep or recipe.time_to_cook %}
+        <div class="col-md-6">
+          <div class="row">
+          {% if recipe.time_to_prep %}
+            <dt class="col-sm-3 col-md-4">Prep time</dt>
+            <dd class="col-sm-9 col-md-8">{{ recipe.time_to_prep_str }}</dd>
+          {% endif %}
+
+          {% if recipe.time_to_cook %}
+            <dt class="col-sm-3 col-md-4">Cook time</dt>
+            <dd class="col-sm-9 col-md-8">{{ recipe.time_to_cook_str }}</dd>
+          {% endif %}
+          </div><!-- .col-md-6 -->
+        </div><!-- .row -->
+        {% endif %}
+
+        <div class="col-md-6">
+          <div class="row">
+            <dt class="col-sm-3 col-md-4 font-italic">Added</dt>
+            <dd class="col-sm-9 col-md-8 font-italic">{{ recipe.time_created|timesince }} ago</dd>
+
+            <dt class="col-sm-3 col-md-4 font-italic">Updated</dt>
+            <dd class="col-sm-9 col-md-8 font-italic">{{ recipe.time_modified|timesince }} ago</dd>
+          </div><!-- .row -->
+        </div><!-- .col-md-6 -->
+      </dl><!-- .row -->
+    </div><!-- .card-body -->
+  </div><!-- .card -->
+</section><!-- END header card -->

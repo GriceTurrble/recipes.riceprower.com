@@ -16,15 +16,20 @@
   <div class="col-lg-10 offset-lg-1">
     <div class="card-columns">
     {% for recipe in recipes %}
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ recipe.title }}</h5>
-          <p class="card-text">{{ recipe.subtitle }}</p>
-          <a href="{{ recipe.get_absolute_url }}" class="btn btn-primary stretched-link">
-
-            See recipe
+      <div class="card border-primary">
+        <div class="card-header">
+          <a href="{{ recipe.get_absolute_url }}" class="stretched-link">
+            <h5 class="card-title mb-0">{{ recipe.title }}</h5>
           </a>
-          {# TODO: make a fucking detail page #}
+          {% if recipe.total_time %}
+          <span class="badge badge-info">
+            <i class="fas fa-clock"></i>
+            {{ recipe.total_time_str }}
+          </span>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p class="mb-0">{{ recipe.subtitle }}</p>
         </div>
       </div>
     {% endfor %}

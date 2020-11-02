@@ -2,3 +2,14 @@
    This file shouldn't be used directly,
    but should get imported using `@import "base.css";`
    in other stylesheets. */
+
+
+/**
+ * Anchor target offset, borrowed from: https://stackoverflow.com/a/13184714/2488147
+ */
+a.anchor {
+  display: block;
+  position: relative;
+  top: -115px;
+  visibility: hidden;
+}

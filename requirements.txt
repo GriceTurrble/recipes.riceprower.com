@@ -15,3 +15,4 @@ Markdown~=3.3.3
 # Other stuff
 psycopg2~=2.8.6
 pytz>=2020.1
+Pillow~=8.0.1

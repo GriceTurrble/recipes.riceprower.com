@@ -8,6 +8,7 @@
 
 import datetime
 from fractions import Fraction
+from typing import Tuple
 
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -81,6 +82,9 @@ class Recipe(HTBaseModel):
     )
     directions = HTMLField(blank=True)
     footnotes = HTMLField(blank=True)
+    nutrition_label = models.ImageField(
+        upload_to="nutrition_labels/", blank=True, default=""
+    )
 
     def __str__(self) -> str:
         return self.title
@@ -88,9 +92,50 @@ class Recipe(HTBaseModel):
     def get_absolute_url(self):
         return reverse_url("recipes:recipe-detail", kwargs={"slug": self.slug})
 
+    @staticmethod
+    def delta_hours_minutes(delta: datetime.timedelta) -> Tuple[int, int]:
+        """Return hours and minutes within a timedelta object as integers."""
+        seconds = delta.total_seconds()
+        hours = int(seconds // 3600)
+        minutes = int((seconds // 60) - (hours * 60))
+        return hours, minutes
+
+    @classmethod
+    def delta_to_str(cls, delta: datetime.timedelta) -> str:
+        """Converts a timedelta object to a string output of hours / minutes.
+
+        Possible formats:
+        - "15 minutes"
+        - "1 hour"
+        - "2 hours 1 minute"
+        """
+        hours, minutes = cls.delta_hours_minutes(delta)
+        output = ""
+        if hours:
+            output += f"{hours} hour{'' if hours == 1 else 's'}{' ' if minutes else ''}"
+        if minutes:
+            output += f"{minutes} minute{'' if minutes == 1 else 's'}"
+        return output
+
+    @property
+    def time_to_prep_str(self) -> str:
+        """Return a string of hours and minutes for the prep time."""
+        return self.delta_to_str(self.time_to_prep)
+
+    @property
+    def time_to_cook_str(self) -> str:
+        """Return a string of hours and minutes for the cook time."""
+        return self.delta_to_str(self.time_to_cook)
+
     @property
     def total_time(self) -> datetime.timedelta:
+        """Return a timedelta combining the prep and cook times."""
         return self.time_to_prep + self.time_to_cook
+
+    @property
+    def total_time_str(self) -> str:
+        """Return a string of hours and minutes for the total time."""
+        return self.delta_to_str(self.total_time)
 
 
 class RecipeIngredient(HTBaseModel):

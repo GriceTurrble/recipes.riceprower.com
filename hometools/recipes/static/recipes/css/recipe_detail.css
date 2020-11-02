@@ -61,6 +61,14 @@
   font-style: italic;
   color: #6c757d;
 }
-.rec-container .rec-ingredients .ingredient-preparation::before {
-  content: ", ";
+
+/* Change the anchor offset to account for the controls bar */
+a.anchor {
+  top: -115px;
+}
+
+.fuck-the-description-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }

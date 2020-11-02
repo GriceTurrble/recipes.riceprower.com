@@ -38,6 +38,34 @@ class RecipeAdmin(admin.ModelAdmin):
         "title",
         "subtitle",
     ]
+    # fmt: off
+    fieldsets = (
+        (None, {
+            "fields": (
+                ("title", "slug"),
+                "subtitle",
+            ),
+        }),
+        ("Description", {
+            "classes": ("collapse",),
+            "fields": ("description",),
+        }),
+        ("Directions", {
+            "classes": ("collapse", "open"),
+            "fields": ("directions",),
+        }),
+        ("Footnotes", {
+            "classes": ("collapse",),
+            "fields": ("footnotes",),
+        }),
+        (None, {
+            "fields": (
+                ("time_to_prep", "time_to_cook"),
+                "nutrition_label",
+            ),
+        }),
+    )
+    # fmt: on
 
     def get_queryset(self, request: HttpRequest) -> QuerySet:
         qs = super().get_queryset(request)
@@ -51,6 +79,7 @@ class RecipeAdmin(admin.ModelAdmin):
 @admin.register(IngredientType)
 class IngredientTypeAdmin(admin.ModelAdmin):
     search_fields = ["name"]
+    list_display = ["name", "plural_name"]
 
 
 ### EXAMPLE ###

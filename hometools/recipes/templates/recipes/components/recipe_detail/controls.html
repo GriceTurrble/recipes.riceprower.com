@@ -9,6 +9,7 @@
     scrollspy_container - a string, either 'start', 'end', or empty.
       If 'start', opens the tag to start the appropriate ScrollSpy container
       If 'end', closes that tag.
+      If 'js', provides the JS controls to activate ScrollSpy.
       Otherwise, outputs the main page controls that go at the top of the page.
 {% endcomment %}
 
@@ -16,6 +17,13 @@
   <div data-spy="scroll" data-target="#inpage-navigation" data-offset="0"><!-- START scrollspy container -->
 {% elif scrollspy_container == 'end' %}
   </div><!-- END scrollspy container -->
+{% elif scrollspy_container == 'js' %}
+  <script>
+  $(function() {
+    $('body').css({"position": "relative"});
+    $('body').scrollspy({ target: '#inpage-navigation' });
+  });
+  </script>
 {% else %}
   <section class="rec-controls d-print-none sticky-top" style="top:55px;"><!-- START page controls -->
     {# Wrapped in a utility to give it some initial styling, but feel free to remove that container and make changes to the section tag in CSS rules. #}

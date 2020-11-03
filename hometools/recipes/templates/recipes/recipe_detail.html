@@ -47,10 +47,5 @@ And feel free to remove blocks you don't need to change.
 
 
 {% block recipe_body_js %}
-<script>
-$(function() {
-  $('body').css({"position": "relative"});
-  $('body').scrollspy({ target: '#inpage-navigation' });
-});
-</script>
+  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='js' %}
 {% endblock recipe_body_js %}

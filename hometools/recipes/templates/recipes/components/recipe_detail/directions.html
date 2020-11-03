@@ -1,0 +1,21 @@
+{% comment %}
+  The set of directions for the detail page.
+
+  Directions are treated as HTML, with |safe filter applied. Watch out for JS code injection!
+
+  Context:
+    recipe - a Recipe model instance.
+{% endcomment %}
+
+{% if recipe.directions %}
+<section class="rec-directions">
+  <div class="card mb-3">
+    <div class="card-header bg-info text-light font-weight-bold">
+      Directions
+    </div><!-- .card-header -->
+    <div class="card-body">
+      {{ recipe.directions|safe }}
+    </div><!-- .card-body -->
+  </div><!-- .card -->
+</section><!-- .rec-directions -->
+{% endif %}

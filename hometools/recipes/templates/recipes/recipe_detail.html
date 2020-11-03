@@ -25,133 +25,22 @@ And feel free to remove blocks you don't need to change.
 
 <article class="rec-container" data-recipe-id="{{ recipe.id }}">
 
-  {##### Control bar #####}
-  {% include 'recipes/components/recipe_detail/page_controls.html' with recipe=recipe %}
+  {# Control bar #}
+  {% include 'recipes/components/recipe_detail/controls.html' with recipe=recipe %}
 
-  {##### Header #####}
-  {% include 'recipes/components/recipe_detail/header_card.html' with recipe=recipe %}
+  {# Header #}
+  {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
 
-  {% include 'recipes/components/recipe_detail/page_controls.html' with scrollspy_container='start' %}
+  {# Scrollspy container for page controls #}
+  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='start' %}
+    {# Page sections #}
+    {% include 'recipes/components/recipe_detail/description.html' with recipe=recipe %}
+    {% include 'recipes/components/recipe_detail/ingredients.html' with recipe=recipe %}
+    {% include 'recipes/components/recipe_detail/directions.html' with recipe=recipe %}
+    {% include 'recipes/components/recipe_detail/footnotes.html' with recipe=recipe %}
+    {% include 'recipes/components/recipe_detail/nutrition.html' with recipe=recipe %}
+  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='end' %}
 
-  {# TODO turn these other sections into component templates #}
-
-  {##### Description #####}
-  {% if recipe.description %}
-  <section class="rec-description d-print-none">
-    <a class="anchor" id="description"></a>
-    <div class="card mb-3">
-      <div class="card-header bg-outline-info flex justify-content-between">
-        <strong>Description</strong>
-        <a class="btn btn-primary fuck-the-description-btn" data-toggle="collapse" data-target="#descriptionBody">
-          F*** this
-          <i class="fas fa-chevron-down" aria-hidden="true"></i>
-        </a>
-      </div>
-      <div id="descriptionBody" class="collapse show card-body">
-        {{ recipe.description|safe }}
-      </div>
-    </div>
-  </section><!-- .rec-description -->
-  {% endif %}
-
-
-  {##### Ingredients #####}
-  {% if recipe.ingredients.all %}<a class="anchor" id="actual-recipe"></a>{% endif %}
-  {% if recipe.ingredients.all %}
-  <section class="rec-ingredients">
-    <div class="card mb-3">
-      <div class="card-header bg-info text-light">
-        <strong>Ingredients</strong>
-      </div>
-      <div class="list-group list-group-flush">
-        {% for ingredient in recipe.ingredients.all %}
-          {# {% if forloop.first %}<ul class="rec-ingredient-list mb-0">{% endif %} #}
-          <div class="rec-ingredient-item list-group-item"
-              data-rec-ingredient-id="{{ ingredient.pk }}"
-              data-rec-ingredient-type-id="{{ ingredient.type.id }}">
-            {% spaceless %}
-              {% comment %}
-                Using spaceless, we wrap each part in a span so that we can control the spacing around them.
-                This means we need to add literal spaces at the end of some strings, before the closing tag,
-                in order for the spacing to work out right.
-
-                Meanwhile, we can also add classes to those elements to help target them in future,
-                either with CSS or JS.
-              {% endcomment %}
-              <span class="ingredient-amount">{{ ingredient.amount_fraction_str }} </span>
-              {% if ingredient.amount_uom == ingredient.UOM_BLANK %}
-                <span class="ingredient-type" data-pluralize>{% if ingredient.type.plural_name %}{{ ingredient.type.plural_name }}{% else %}{{ ingredient.type.name }}{{ ingredient.amount|pluralize }}{% endif %}</span>
-              {% else %}
-                <span class="ingredient-amount-uom" data-pluralize>{{ ingredient.get_amount_uom_display }}{{ ingredient.amount|pluralize }} </span>
-                <span class="ingredient-type">{{ ingredient.type }}</span>
-              {% endif %}
-              {% if ingredient.preparation %}
-              <span class="ingredient-preparation">, {{ ingredient.preparation }}</span>
-              {% endif %}
-            {% endspaceless %}
-          </div>
-          {# {% if forloop.last %}</ul>{% endif %} #}
-        {% empty %}
-        <p>
-          <em>None</em>
-        </p>
-        {% endfor %}
-      </div>
-    </div>
-
-  </section><!-- .rec-ingredients -->
-  {% endif %}
-
-
-  {##### Directions #####}
-  {% if recipe.directions %}
-  <section class="rec-directions">
-    <div class="card mb-3">
-      <div class="card-header bg-info text-light">
-        <strong>Directions</strong>
-      </div>
-      <div class="card-body">
-        {{ recipe.directions|safe }}
-      </div>
-    </div>
-  </section><!-- .rec-directions -->
-  {% endif %}
-
-
-  {##### Footnotes #####}
-  {% if recipe.footnotes %}
-  <section class="rec-footnotes">
-    <a class="anchor" id="footnotes"></a>
-    <div class="card mb-3">
-      <div class="card-header bg-info text-light">
-        <strong>Footnotes</strong>
-      </div>
-      <div class="card-body">
-        {{ recipe.footnotes|safe }}
-      </div>
-    </div>
-  </section><!-- .rec-footnotes -->
-  {% endif %}
-
-
-  {##### Nutrition information #####}
-  {% if recipe.nutrition_label %}
-  <section class="rec-nutrition">
-    <a class="anchor" id="nutrition"></a>
-    <div class="card mb-3">
-      <div class="card-header bg-info text-light">
-        <strong>Nutrition</strong>
-      </div>
-      <div class="card-body">
-        <div class="col-sm-8 col-md-6">
-          <img class="border border-info img-fluid" src="{{ recipe.nutrition_label.url }}"/>
-        </div>
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  {% include 'recipes/components/recipe_detail/page_controls.html' with scrollspy_container='end' %}
 </article><!-- .rec-container -->
 
 {% endblock recipe_body_content %}

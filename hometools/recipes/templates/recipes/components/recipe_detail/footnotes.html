@@ -1,0 +1,23 @@
+{% comment %}
+  Optional footnotes at the end of a recipe.
+  Data-wise, this is identical to a description, but obviously we treat them differently.
+
+  Footnotes are treated as HTML, with |safe filter applied. Watch out for JS code injection!
+
+  Context:
+    recipe - a Recipe model instance.
+{% endcomment %}
+
+{% if recipe.footnotes %}
+<section class="rec-footnotes">
+  <a class="anchor" id="footnotes"></a>
+  <div class="card mb-3">
+    <div class="card-header bg-info text-light">
+      <strong>Footnotes</strong>
+    </div>
+    <div class="card-body">
+      {{ recipe.footnotes|safe }}
+    </div>
+  </div>
+</section><!-- .rec-footnotes -->
+{% endif %}

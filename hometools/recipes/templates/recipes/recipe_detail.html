@@ -32,14 +32,14 @@ And feel free to remove blocks you don't need to change.
   {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
 
   {# Scrollspy container for page controls #}
-  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='start' %}
+  {% include 'recipes/components/recipe_detail/controls.html' with mode='start_scrollspy' %}
     {# Page sections #}
     {% include 'recipes/components/recipe_detail/description.html' with recipe=recipe %}
     {% include 'recipes/components/recipe_detail/ingredients.html' with recipe=recipe %}
     {% include 'recipes/components/recipe_detail/directions.html' with recipe=recipe %}
     {% include 'recipes/components/recipe_detail/footnotes.html' with recipe=recipe %}
     {% include 'recipes/components/recipe_detail/nutrition.html' with recipe=recipe %}
-  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='end' %}
+  {% include 'recipes/components/recipe_detail/controls.html' with mode='end_scrollspy' %}
 
 </article><!-- .rec-container -->
 
@@ -47,5 +47,5 @@ And feel free to remove blocks you don't need to change.
 
 
 {% block recipe_body_js %}
-  {% include 'recipes/components/recipe_detail/controls.html' with scrollspy_container='js' %}
+  {% include 'recipes/components/recipe_detail/controls.html' with mode='scrollspy_js' %}
 {% endblock recipe_body_js %}

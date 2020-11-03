@@ -6,28 +6,30 @@
 
   Context:
     recipe - a Recipe model instance.
-    scrollspy_container - a string, either 'start', 'end', or empty.
-      If 'start', opens the tag to start the appropriate ScrollSpy container
-      If 'end', closes that tag.
-      If 'js', provides the JS controls to activate ScrollSpy.
+    mode - a string that switches the output of this template.
+      If 'start_scrollspy', opens the tag to start the appropriate ScrollSpy container
+      If 'end_scrollspy', closes that tag.
+      If 'scrollspy_js', provides the JS controls to activate ScrollSpy.
       Otherwise, outputs the main page controls that go at the top of the page.
 {% endcomment %}
 
-{% if scrollspy_container == 'start' %}
-  <div data-spy="scroll" data-target="#inpage-navigation" data-offset="0"><!-- START scrollspy container -->
-{% elif scrollspy_container == 'end' %}
+{% with scrollspy_target='inpage-navigation' %}
+
+{% if mode == 'start_scrollspy' %}
+  <div data-spy="scroll" data-target="#{{ scrollspy_target }}" data-offset="0"><!-- START scrollspy container -->
+{% elif mode == 'end_scrollspy' %}
   </div><!-- END scrollspy container -->
-{% elif scrollspy_container == 'js' %}
+{% elif mode == 'scrollspy_js' %}
   <script>
   $(function() {
     $('body').css({"position": "relative"});
-    $('body').scrollspy({ target: '#inpage-navigation' });
+    $('body').scrollspy({ target: '#{{ scrollspy_target }}' });
   });
   </script>
 {% else %}
   <section class="rec-controls d-print-none sticky-top" style="top:55px;"><!-- START page controls -->
     {# Wrapped in a utility to give it some initial styling, but feel free to remove that container and make changes to the section tag in CSS rules. #}
-    <nav id="inpage-navigation" class="navbar navbar-light bg-light border border-primary mb-3 rounded-lg">
+    <nav id="{{ scrollspy_target }}" class="navbar navbar-light bg-light border border-primary mb-3 rounded-lg">
       <ul class="nav nav-pills" role="group" aria-label="Nav controls">
 
         {% if recipe.description %}
@@ -92,6 +94,8 @@
         </li>
         {% endif %}
       </ul>
-    </nav><!-- #inpage-navigation -->
+    </nav><!-- #{{ scrollspy_target }} -->
   </section><!-- END page controls -->
 {% endif %}
+
+{% endwith %}

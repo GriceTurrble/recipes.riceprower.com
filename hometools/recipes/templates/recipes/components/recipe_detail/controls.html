@@ -32,6 +32,34 @@
     <nav id="{{ scrollspy_target }}" class="navbar navbar-light bg-light border border-primary mb-3 rounded-lg">
       <ul class="nav nav-pills" role="group" aria-label="Nav controls">
 
+        {% if perms.recipes %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-1 bg-success text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+          <div class="dropdown-menu">
+            {% if perms.recipes.change_recipe %}
+            <a href="{% url "admin:recipes_recipe_change" recipe.pk %}" class="dropdown-item">
+              <i class="fas fa-edit"></i>
+              Edit this Recipe
+            </a>
+            {% endif %}
+            {% if perms.recipes.add_recipe %}
+            <a href="{% url "admin:recipes_recipe_add" %}" class="dropdown-item">
+              <i class="fas fa-plus-circle"></i>
+              Create a new Recipe
+            </a>
+            {% endif %}
+            {% if perms.recipes.delete_recipe %}
+            <a href="{% url "admin:recipes_recipe_delete" recipe.pk %}" class="dropdown-item text-wrap">
+              <i class="fas fa-trash"></i>
+              Delete this Recipe (confirmation required)
+            </a>
+            {% endif %}
+          </div><!-- .dropdown-menu -->
+        </li>
+        {% endif %}
+
         {% if recipe.description %}
         <li class="nav-item">
           <a class="nav-link" href="#description" data-toggle="tooltip" data-placement="bottom" title="Go to Description">
@@ -68,31 +96,6 @@
         </li>
         {% endif %}
 
-        {% if perms.recipes %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle ml-1 bg-primary text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-          <div class="dropdown-menu dropdown-menu-right">
-            {% if perms.recipes.change_recipe %}
-            <a href="{% url "admin:recipes_recipe_change" recipe.pk %}" class="dropdown-item">
-              <i class="fas fa-edit"></i>
-              Edit this Recipe
-            </a>
-            {% endif %}
-            {% if perms.recipes.add_recipe %}
-            <a href="{% url "admin:recipes_recipe_add" %}" class="dropdown-item">
-              <i class="fas fa-plus-circle"></i>
-              Create a new Recipe
-            </a>
-            {% endif %}
-            {% if perms.recipes.delete_recipe %}
-            <a href="{% url "admin:recipes_recipe_delete" recipe.pk %}" class="dropdown-item text-wrap">
-              <i class="fas fa-trash"></i>
-              Delete this Recipe (confirmation required)
-            </a>
-            {% endif %}
-          </div><!-- .dropdown-menu -->
-        </li>
-        {% endif %}
       </ul>
     </nav><!-- #{{ scrollspy_target }} -->
   </section><!-- END page controls -->

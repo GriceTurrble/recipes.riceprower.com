@@ -25,7 +25,7 @@
   <form action="{% url 'recipes:recipe-list' %}" method="GET">
     <div class="form-row align-items-center">
       <div class="col-auto flex-grow-1">
-        <input type="text" name="query" class="form-control" onFocus="this.select()" placeholder="Search for stuff" value="{{ search_term|default:"" }}"/>
+        <input type="text" name="query" class="form-control" onFocus="this.select()" placeholder="Search recipes by title, descriptions, and/or ingredients" value="{{ search_term|default:"" }}"/>
       </div>
       <div class="col-auto">
         <button type="submit" class="btn btn-primary">Go</button>

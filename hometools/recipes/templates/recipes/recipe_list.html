@@ -11,11 +11,38 @@
 
 {% block recipe_body_content %}
   {% include "widgets/breadcrumbs.html" with page_title="Recipes" %}
-  {% include 'widgets/title_card.html' with title='<i class="fas fa-utensils"></i> Recipes' subtitle="Things we've made that we think are pretty tasty." card_classes="bg-info text-white" %}
+
+  {# Custom list title thing #}
+  <div class="card mb-4 bg-info text-white">
+    <div class="card-header">
+      <h1 class="h2">
+        <i class="fas fa-utensils"></i>
+        Recipes
+      </h1>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md col-lg-8">
+          <p class="lead mb-md-0">
+            Things we've made that we think are pretty tasty.
+          </p>
+        </div>
+        <div class="col-md">
+          {% include 'recipes/components/recipe_list/search.html' with search_term=search_term %}
+        </div>
+      </div>
+    </div>
+    {% if search_term %}
+    <div class="card-footer bg-light text-dark">
+      {% include 'recipes/components/recipe_list/search.html' with search_term=search_term mode="result_notice" %}
+    </div>
+    {% endif %}
+  </div>
+
 
   <div class="col-lg-10 offset-lg-1">
-    <div class="card-columns">
     {% for recipe in recipes %}
+    {% if forloop.first %}<div class="card-columns">{% endif %}
       <div class="card border-primary">
         <div class="card-header">
           <a href="{{ recipe.get_absolute_url }}" class="stretched-link">
@@ -32,8 +59,12 @@
           <p class="mb-0">{{ recipe.subtitle }}</p>
         </div>
       </div>
-    {% endfor %}
+    {% if forloop.last %}</div>{% endif %}
+    {% empty %}
+    <div class="alert alert-warning font-italic">
+      No recipes found
     </div>
+    {% endfor %}
   </div>
 {% endblock recipe_body_content %}
 

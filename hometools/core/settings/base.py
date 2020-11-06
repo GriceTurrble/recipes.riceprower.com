@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Django dependencies
     "django.contrib.admin",
     "django.contrib.auth",
+    "django.contrib.postgres",
     "django.contrib.humanize",
     "django.contrib.contenttypes",
     "django.contrib.sessions",

@@ -1,0 +1,34 @@
+{% comment %}
+  Search form for recipes.
+
+  Context:
+    search_term - Term used in the original search, typically returned from the view as "search_term" anyway
+    mode - used to switch output modes for this feature.
+      Use 'result_notice' to display a notice of the search results in the page.
+      Any other value defaults to showing the search form itself.
+{% endcomment %}
+
+{% if mode == 'result_notice' %}
+  {# Outputs a small row the displays the search term and a "clear" button to return to the full list view #}
+  {# The outer call for this mode should test for `if search_term` before inclusion. #}
+  <div class="row">
+    <div class="col-auto font-italic">
+      Showing results for
+      "<strong>{{ search_term }}</strong>"
+    </div>
+    <div class="col-auto ml-auto">
+      <a class="bt btn-info btn-sm" href="{% url 'recipes:recipe-list' %}">Clear</a>
+    </div>
+  </div>
+{% else %}
+  <form action="{% url 'recipes:recipe-list' %}" method="GET">
+    <div class="form-row align-items-center">
+      <div class="col-auto flex-grow-1">
+        <input type="text" name="query" class="form-control" onFocus="this.select()" placeholder="Search for stuff" value="{{ search_term|default:"" }}"/>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Go</button>
+      </div>
+    </div>
+  </form>
+{% endif %}

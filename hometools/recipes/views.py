@@ -39,6 +39,7 @@ class RecipeListView(ListView):
             vector = (
                 SearchVector("title", weight="A")
                 + SearchVector("subtitle", weight="A")
+                + SearchVector("ingredients__ingredient_type__name", weight="A")
                 + SearchVector("description", weight="B")
                 + SearchVector("directions", weight="C")
                 + SearchVector("footnotes", weight="D")
@@ -48,7 +49,8 @@ class RecipeListView(ListView):
             qs = (
                 qs.annotate(rank=SearchRank(vector, query))
                 .filter(rank__gte=0.3)
-                .order_by("-rank")
+                .distinct("id")
+                .order_by("id", "-rank")
             )
         return qs
 

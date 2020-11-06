@@ -28,6 +28,11 @@ class IngredientType(HTBaseModel):
     ingredients of a recipe.
     """
 
+    # TODO Look more in depth at the Spoonacular API:
+    # https://spoonacular.com/food-api
+    # Particularly for ingredient searching (to standardize ingredient types)
+    # and recipe nutrition searching
+
     name = models.CharField(
         max_length=255,
         unique=True,

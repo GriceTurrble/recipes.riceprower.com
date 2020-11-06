@@ -15,9 +15,10 @@
     <div class="col-auto font-italic">
       Showing results for
       "<strong>{{ search_term }}</strong>"
+      ({{ return_count }} match{{ return_count|pluralize:'es' }} out of {{ all_recipes_count }} total recipe{{ all_recipes_count|pluralize }})
     </div>
     <div class="col-auto ml-auto">
-      <a class="bt btn-info btn-sm" href="{% url 'recipes:recipe-list' %}">Clear</a>
+      <a class="bt btn-info btn-sm" href="{% url 'recipes:recipe-list' %}">Clear search</a>
     </div>
   </div>
 {% else %}

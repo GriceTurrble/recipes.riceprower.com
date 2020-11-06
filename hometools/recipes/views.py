@@ -55,6 +55,7 @@ class RecipeListView(ListView):
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["search_term"] = self.request.GET.get("query")
+        context["all_recipes_count"] = self.model.objects.count()
         return context
 
 

@@ -34,7 +34,7 @@
     </div>
     {% if search_term %}
     <div class="card-footer bg-light text-dark">
-      {% include 'recipes/components/recipe_list/search.html' with search_term=search_term mode="result_notice" %}
+      {% include 'recipes/components/recipe_list/search.html' with search_term=search_term mode="result_notice" return_count=recipes.count all_recipes_count=all_recipes_count %}
     </div>
     {% endif %}
   </div>

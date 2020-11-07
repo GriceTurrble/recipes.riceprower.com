@@ -13,13 +13,13 @@
       Otherwise, outputs the main page controls that go at the top of the page.
 {% endcomment %}
 
-{% with scrollspy_target='inpage-navigation' %}
+{% with scrollspy_target="inpage-navigation" %}
 
-{% if mode == 'start_scrollspy' %}
+{% if mode == "start_scrollspy" %}
   <div data-spy="scroll" data-target="#{{ scrollspy_target }}" data-offset="0"><!-- START scrollspy container -->
-{% elif mode == 'end_scrollspy' %}
+{% elif mode == "end_scrollspy" %}
   </div><!-- END scrollspy container -->
-{% elif mode == 'scrollspy_js' %}
+{% elif mode == "scrollspy_js" %}
   <script>
   $(function() {
     $('body').css({"position": "relative"});

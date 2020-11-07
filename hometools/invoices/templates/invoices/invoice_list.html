@@ -6,11 +6,11 @@ And feel free to remove blocks you don't need to change.
 {% block invoices_head_title %}All invoices{% endblock %}
 
 {% block body_content %}
-  {% include "widgets/breadcrumbs.html" with page_title="Invoices" %}
-  {% include "widgets/title_card.html" with title="Invoices" card_classes="bg-secondary text-light" %}
+  {% include "components/breadcrumbs.html" with page_title="Invoices" %}
+  {% include "components/title_card.html" with title="Invoices" card_classes="bg-secondary text-light" %}
 
   <div class="bg-light mb-2 p-3 rounded">
-    {% include "widgets/generic_pagination_controls.html" %}
+    {% include "components/generic_pagination_controls.html" %}
   </div>
 
   <table class="table table-bordered">
@@ -41,7 +41,7 @@ And feel free to remove blocks you don't need to change.
   </table>
 
   <div class="bg-light mb-2 p-3 rounded">
-    {% include "widgets/generic_pagination_controls.html" %}
+    {% include "components/generic_pagination_controls.html" %}
   </div>
 
 {% endblock %}

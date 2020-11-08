@@ -21,12 +21,17 @@ def deploy(
     # See the type hint above?
     # If you use real type annotation syntax, Fabric throws a ValueError
     # because its usage appears to be out of date. So, we have to use a comment.
+    print("+---------------------+")
+    print("| Starting deployment |")
+    print("+---------------------+\n")
     s3_backup(c)
     update_from_github(c)
     update_venv(c)
     update_django_project(c)
     restart_services(c)
-    print("\nDeployment complete")
+    print("\n+---------------------+")
+    print("| Deployment complete |")
+    print("+---------------------+")
 
 
 def update_from_github(c: Connection):

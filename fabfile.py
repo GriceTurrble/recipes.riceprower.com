@@ -26,6 +26,7 @@ def deploy(
     update_venv(c)
     update_django_project(c)
     restart_services(c)
+    print("  Deployment complete")
 
 
 def update_from_github(c: Connection):

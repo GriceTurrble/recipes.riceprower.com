@@ -1,0 +1,8 @@
+user: myuser
+connect_kwargs:
+  password: mypassword
+dirs:
+  code_root: "path/to/base/of/git/repo"
+  manage_root: "path/to/dir/containing/managepy"
+  env_root: "/path/to/venv/"
+  # NOTE: /bin/activate will be appended to env_root automatically.

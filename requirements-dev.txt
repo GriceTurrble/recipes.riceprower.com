@@ -7,5 +7,8 @@ flake8
 black
 pre-commit
 
-# reStructuredText linting
+## reStructuredText linting
 # rstcheck
+
+# Fabric remote deployment
+fabric

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# MANAGE_DIR should not be changed. It is just shared between scripts.
-MANAGE_DIR=$(dirname $(dirname $(realpath $0)))
-ENV_ACTIVATE=/path/to/env/bin/activate

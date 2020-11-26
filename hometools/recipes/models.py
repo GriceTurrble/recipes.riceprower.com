@@ -188,6 +188,8 @@ class RecipeIngredient(HTBaseModel):
     UOM_KILOGRAM = "kilogram"
     UOM_LITER = "liter"
     UOM_MILLILITER = "ml"
+    UOM_PACKAGE = "package"
+    UOM_PACKET = "packet"
     UOM_PINCH = "pinch"
     UOM_PINT = "pint"
     UOM_POUND = "pound"
@@ -206,6 +208,8 @@ class RecipeIngredient(HTBaseModel):
         (UOM_KILOGRAM, "kilogram"),
         (UOM_LITER, "liter"),
         (UOM_MILLILITER, "ml"),
+        (UOM_PACKAGE, "package"),
+        (UOM_PACKET, "packet"),
         (UOM_PINCH, "pinch"),
         (UOM_PINT, "pint"),
         (UOM_POUND, "pound"),

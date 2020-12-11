@@ -50,7 +50,10 @@ def update_venv(c: Connection):
     )
     # fmt: on
     with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
+        # Upgrade pip first
+        c.run("python -m pip install --upgrade pip")
         for req_file in files:
+            # Install requirements
             c.run(f"pip install -r {req_file}")
 
 

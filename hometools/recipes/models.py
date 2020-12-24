@@ -12,6 +12,7 @@ from typing import Tuple
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models.fields import related
 from django.urls import reverse as reverse_url
 
 from djfractions.models import DecimalFractionField
@@ -19,6 +20,8 @@ from djfractions import get_fraction_parts
 from tinymce.models import HTMLField
 
 from base_objects.models import HTBaseModel
+
+from .managers import IngredientSectionManager
 
 User = get_user_model()
 
@@ -143,6 +146,47 @@ class Recipe(HTBaseModel):
         return self.delta_to_str(self.total_time)
 
 
+class IngredientSection(HTBaseModel):
+    """Most times, a recipe will have one set of ingredients.
+    Others, the ingredients may be split into multiple sections,
+    each one pertaining to a different subset of the recipe
+    (like a sauce).
+
+    This model is a target for RecipeIngredient instances to combine them
+    into a section.
+
+    Sections have a title and are orderable.
+
+    If an Ingredient has no Section assignment, then it is part of the main
+    ingredient list, even if other ingredients in the recipe are assigned to sections.
+    """
+
+    objects = IngredientSectionManager()
+
+    recipe = models.ForeignKey(
+        "recipes.Recipe",
+        on_delete=models.CASCADE,
+        related_name="ingredient_sections",
+        help_text="The Recipe this section of Ingredients belongs to",
+    )
+    name = models.CharField(
+        max_length=255,
+        db_index=True,
+        help_text=(
+            "Name of this section of Ingredients, "
+            "used as the section title when displayed on the frontend."
+        ),
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self) -> str:
+        return f"RecipeID={self.recipe.id} Section='{self.name}'"
+
+
 class RecipeIngredient(HTBaseModel):
     """A specific ingredient for a given recipe.
 
@@ -155,6 +199,14 @@ class RecipeIngredient(HTBaseModel):
         on_delete=models.CASCADE,
         related_name="ingredients",
         help_text="The Recipe this ingredient goes in.",
+    )
+    section = models.ForeignKey(
+        "recipes.IngredientSection",
+        on_delete=models.SET_NULL,
+        related_name="sectioned_ingredients",
+        null=True,
+        blank=True,
+        help_text="Section of ingredients that this Ingredient falls under.",
     )
     ingredient_type = models.ForeignKey(
         "recipes.IngredientType",

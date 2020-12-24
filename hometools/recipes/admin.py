@@ -4,10 +4,11 @@ from django.contrib import admin
 from django.db import models
 
 from adminsortable2.admin import SortableInlineAdminMixin
+from django.db.models import query
 from django.db.models.query import QuerySet
 from django.http.request import HttpRequest
 
-from .models import Recipe, RecipeIngredient, IngredientType
+from .models import Recipe, RecipeIngredient, IngredientType, IngredientSection
 
 
 class RecipeIngredientInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -15,9 +16,10 @@ class RecipeIngredientInline(SortableInlineAdminMixin, admin.TabularInline):
 
     model = RecipeIngredient
     extra = 0
-    autocomplete_fields = ["ingredient_type"]
+    autocomplete_fields = ["ingredient_type", "section"]
     fields = [
         "order",
+        "section",
         "ingredient_type",
         "amount",
         "amount_uom",
@@ -38,6 +40,7 @@ class RecipeAdmin(admin.ModelAdmin):
         "title",
         "subtitle",
     ]
+    search_fields = ["title", "subtitle"]
     # fmt: off
     fieldsets = (
         (None, {
@@ -80,6 +83,12 @@ class RecipeAdmin(admin.ModelAdmin):
 class IngredientTypeAdmin(admin.ModelAdmin):
     search_fields = ["name"]
     list_display = ["name", "plural_name"]
+
+
+@admin.register(IngredientSection)
+class IngredientSectionAdmin(admin.ModelAdmin):
+    search_fields = ["name"]
+    autocomplete_fields = ["recipe"]
 
 
 ### EXAMPLE ###

@@ -12,34 +12,36 @@
 <section class="rec-ingredients">
   <div class="card mb-3">
     <div class="card-header bg-info text-light font-weight-bold">
+      <i class="fas fa-list-ul"></i>
       Ingredients
     </div><!-- .card-header -->
     <div class="list-group list-group-flush">
       {% for ingredient in recipe.ingredients.all %}
-        <div class="rec-ingredient-item list-group-item p-1 px-3"
-            data-rec-ingredient-id="{{ ingredient.pk }}"
-            data-rec-ingredient-type-id="{{ ingredient.type.id }}">
-          {% spaceless %}
-            {% comment %}
-              Using spaceless, we wrap each part in a span so that we can control the spacing around them.
-              This means we need to add literal spaces at the end of some strings, before the closing tag,
-              in order for the spacing to work out right.
+        {% if ingredient.section is None or ingredient.section.recipe != ingredient.recipe %}
+          {% comment %}
+            Hack.
+            Possible for an ingredient to be assigned to this Recipe, but then assigned
+            to some section that itself is assigned to a different recipe.
+            This check should not have to exist, but for now just in case, we'll avoid
+            some frontend confusion if the backend is all fucky.
+          {% endcomment %}
+          {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+        {% endif %}
+      {% endfor %}
 
-              Meanwhile, we can also add classes to those elements to help target them in future,
-              either with CSS or JS.
-            {% endcomment %}
-            <span class="ingredient-amount">{{ ingredient.amount_fraction_str }} </span>
-            {% if ingredient.amount_uom == ingredient.UOM_BLANK %}
-              <span class="ingredient-type" data-pluralize>{% if ingredient.type.plural_name %}{{ ingredient.type.plural_name }}{% else %}{{ ingredient.type.name }}{{ ingredient.amount|pluralize }}{% endif %}</span>
-            {% else %}
-              <span class="ingredient-amount-uom" data-pluralize>{{ ingredient.get_amount_uom_display }}{{ ingredient.amount|pluralize }} </span>
-              <span class="ingredient-type">{{ ingredient.type }}</span>
-            {% endif %}
-            {% if ingredient.preparation %}
-            <span class="ingredient-preparation">, {{ ingredient.preparation }}</span>
-            {% endif %}
-          {% endspaceless %}
+      {% for ingredient_section in recipe.ingredient_sections.with_ingredients %}
+        <div class="list-group-item list-group-item-info font-weight-bold">
+          <i class="fas fa-puzzle-piece"></i>
+          {{ ingredient_section.name }}
         </div><!-- .list-group-item -->
+        {% for ingredient in ingredient_section.sectioned_ingredients.all %}
+          {% comment %}
+            Hack. Same shit as above.
+          {% endcomment %}
+          {% if ingredient.recipe == recipe %}
+            {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+          {% endif %}
+        {% endfor %}
       {% endfor %}
     </div><!-- .list-group -->
   </div><!-- .card -->

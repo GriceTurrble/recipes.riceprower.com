@@ -65,4 +65,7 @@ class RecipeDetailView(DetailView):
     """Detail view for a Recipe instance."""
 
     context_object_name = "recipe"
-    queryset = Recipe.objects.prefetch_related("ingredients")
+    queryset = Recipe.objects.prefetch_related(
+        "ingredients",
+        "ingredient_sections__sectioned_ingredients",
+    )

@@ -166,3 +166,39 @@ LOGGING_FILTERS = {
 # Handlers and Loggers are defined and overwritten in the environments.
 LOGGING_HANDLERS = {}
 LOGGING_LOGGERS = {}
+
+# TinyMCE adjustments
+# The real default is:
+# TINYMCE_DEFAULT_CONFIG = {
+#     "theme": "silver",
+#     "height": 500,
+#     "menubar": False,
+#     "plugins": (
+#         "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+#         "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+#         "code,help,wordcount"
+#     ),
+#     "toolbar": (
+#         "undo redo | formatselect | "
+#         "bold italic backcolor | alignleft aligncenter "
+#         "alignright alignjustify | bullist numlist outdent indent | "
+#         "removeformat | help"
+#     ),
+# }
+# More details can be found here: https://www.tiny.cloud/docs-4x/
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": False,
+    "plugins": (
+        "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+        "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+        "code,help,wordcount"
+    ),
+    "toolbar": (
+        "code | undo redo | formatselect | "
+        "bold italic backcolor | alignleft aligncenter "
+        "alignright alignjustify | bullist numlist outdent indent | "
+        "removeformat | help"
+    ),
+}

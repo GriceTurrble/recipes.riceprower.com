@@ -183,6 +183,10 @@ class IngredientSection(HTBaseModel):
         null=False,
     )
 
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Ingredient Section"
+
     def __str__(self) -> str:
         return f"RecipeID={self.recipe.id} Section='{self.name}'"
 

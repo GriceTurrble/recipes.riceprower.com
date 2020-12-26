@@ -21,13 +21,22 @@ from django.views.generic import TemplateView
 
 # (Skip Black formatting in this section)
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # Admin at a non-"admin/" endpoint.
+    # Attackers try to hit the common endpoints for the admin, so renaming it something
+    # other than the obvious "admin/" is recommended.
+    path("nyx/", admin.site.urls),
+    # Django account endpoints.
     path("accounts/", include("django.contrib.auth.urls")),
+    # TinyMCE's URLs.
+    path("tinymce/", include("tinymce.urls")),
+    # Stuff for Django REST Framework
+    path("api-auth/", include("rest_framework.urls")),
+    # Flat pages
+    path("pages/", include("django.contrib.flatpages.urls")),
+    # Internal apps
     path("invoices/", include("invoices.urls")),
     path("recipes/", include("recipes.urls")),
-    path("tinymce/", include("tinymce.urls")),
-    path("pages/", include("django.contrib.flatpages.urls")),
-    path("api-auth/", include("rest_framework.urls")),
+    # Home page
     path("", TemplateView.as_view(template_name="homepage.html"), name="homepage"),
 ]
 

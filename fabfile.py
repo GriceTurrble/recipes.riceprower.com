@@ -44,11 +44,12 @@ def update_from_github(c: Connection):
 
 def update_venv(c: Connection):
     """Update pip dependencies."""
-    with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
-        # Upgrade pip first
-        c.run("python -m pip install --upgrade pip")
-        # Install dependencies using Poetry
-        c.run("poetry install --no-dev")
+    with c.cd(c.config.dirs.code_root):
+        with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
+            # Upgrade pip first
+            c.run("python -m pip install --upgrade pip")
+            # Install dependencies using Poetry
+            c.run("poetry install --no-dev")
 
 
 def update_django_project(c: Connection):

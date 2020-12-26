@@ -2,8 +2,10 @@
 name = "hometools"
 version = "0.1.0"
 description = "A collection of tools used in the Rice-Prower home on their server and stuff."
-authors = ["Galen Rice <galen.rice@atumbomb.com>"]
 license = "MIT"
+authors = ["Galen Rice <galen.rice@atumbomb.com>"]
+readme = "README.md"
+repository = "https://github.com/GriceTurrble/hometools"
 
 [tool.poetry.dependencies]
 python = "^3.9"

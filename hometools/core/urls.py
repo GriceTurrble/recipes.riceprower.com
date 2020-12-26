@@ -19,7 +19,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 
-# fmt: off
 # (Skip Black formatting in this section)
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,10 +27,9 @@ urlpatterns = [
     path("recipes/", include("recipes.urls")),
     path("tinymce/", include("tinymce.urls")),
     path("pages/", include("django.contrib.flatpages.urls")),
-    path('api-auth/', include('rest_framework.urls')),
+    path("api-auth/", include("rest_framework.urls")),
     path("", TemplateView.as_view(template_name="homepage.html"), name="homepage"),
 ]
-# fmt: on
 
 if settings.DEBUG:
     # Serve media files in development server.

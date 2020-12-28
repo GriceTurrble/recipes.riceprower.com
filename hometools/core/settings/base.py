@@ -167,6 +167,15 @@ LOGGING_FILTERS = {
 LOGGING_HANDLERS = {}
 LOGGING_LOGGERS = {}
 
+
+# DRF settings
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",
+    ],
+}
+
+
 # TinyMCE adjustments
 # The real default is:
 # TINYMCE_DEFAULT_CONFIG = {

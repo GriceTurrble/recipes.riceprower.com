@@ -49,7 +49,7 @@ def update_venv(c: Connection):
             # Upgrade pip first
             c.run("python -m pip install --upgrade pip")
             # Install dependencies using Poetry
-            c.run(f"{c.config.poetry_bin} install --no-dev --no-interaction")
+            c.run(f"{c.config.poetry_bin} install --no-dev --no-root --no-interaction")
 
 
 def update_django_project(c: Connection):

@@ -19,6 +19,7 @@ django-filter = "^2.4.0"
 Markdown = "^3.3.3"
 psycopg2 = "^2.8.6"
 Pillow = "^8.1.0"
+wheel = "^0.36.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"

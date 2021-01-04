@@ -13,6 +13,36 @@ def filename_time_str():
     return eastern.localize(datetime.datetime.now()).strftime("%Y-%m-%dT%H%M%S%z")
 
 
+def pull_from_github(c: Connection):
+    with c.cd(c.config.dirs.code_root):
+        c.run("git fetch")
+        c.run("git checkout main")
+        c.run("git reset --hard origin/main")
+        c.run("find . -name '*.pyc' -delete")
+
+
+def update_dependencies(c: Connection):
+    """Update pip dependencies."""
+    with c.cd(c.config.dirs.code_root):
+        # Upgrade pip first
+        c.run(f"{c.config.python_bin} -m pip install --upgrade pip")
+        # Install dependencies using Poetry
+        c.run(f"{c.config.poetry_bin} install --no-dev --no-root --no-interaction")
+
+
+def run_django_manage_steps(c: Connection):
+    """Run migrate and collectstatic."""
+    with c.cd(c.config.dirs.manage_root):
+        with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
+            c.run("python manage.py collectstatic  --clear --noinput")
+            c.run("python manage.py migrate --noinput")
+
+
+def restart_services(c: Connection):
+    c.sudo("sudo systemctl daemon-reload")
+    c.sudo("sudo systemctl restart gunicorn nginx")
+
+
 @task
 def deploy(
     c,  # type: Connection
@@ -25,44 +55,13 @@ def deploy(
     print("| Starting deployment |")
     print("+---------------------+\n")
     s3_backup(c)
-    update_from_github(c)
-    update_venv(c)
-    update_django_project(c)
+    pull_from_github(c)
+    update_dependencies(c)
+    run_django_manage_steps(c)
     restart_services(c)
     print("\n+---------------------+")
     print("| Deployment complete |")
     print("+---------------------+")
-
-
-def update_from_github(c: Connection):
-    with c.cd(c.config.dirs.code_root):
-        c.run("git fetch")
-        c.run("git checkout main")
-        c.run("git reset --hard origin/main")
-        c.run("find . -name '*.pyc' -delete")
-
-
-def update_venv(c: Connection):
-    """Update pip dependencies."""
-    with c.cd(c.config.dirs.code_root):
-        with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
-            # Upgrade pip first
-            c.run("python -m pip install --upgrade pip")
-            # Install dependencies using Poetry
-            c.run(f"{c.config.poetry_bin} install --no-dev --no-root --no-interaction")
-
-
-def update_django_project(c: Connection):
-    """Run migrate and collectstatic."""
-    with c.cd(c.config.dirs.manage_root):
-        with c.prefix(f"source {c.config.dirs.env_root}/bin/activate"):
-            c.run("python manage.py collectstatic  --clear --noinput")
-            c.run("python manage.py migrate --noinput")
-
-
-def restart_services(c):
-    c.sudo("sudo systemctl daemon-reload")
-    c.sudo("sudo systemctl restart gunicorn nginx")
 
 
 ### S3 BACKUP AND RESTORE ###

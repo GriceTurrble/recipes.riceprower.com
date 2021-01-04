@@ -10,6 +10,7 @@ dirs:
   # NOTE: "/bin/activate" will be appended to env_root automatically.
   backups: "/path/to/db/backups/on/server"
 
+python_bin: "/path/to/python"
 poetry_bin: "/path/to/poetry"
 
 # Postgres connection details for the server

@@ -2,11 +2,11 @@
 
 from django.db import models
 
-from base_objects.managers import HTBaseManager
+from base_objects.managers import TimeTrackedModelManager
 from .querysets import IngredientSectionQueryset
 
 
-class IngredientSectionManager(HTBaseManager):
+class IngredientSectionManager(TimeTrackedModelManager):
     """Manager for IngredientSection model."""
 
     queryset_class = IngredientSectionQueryset

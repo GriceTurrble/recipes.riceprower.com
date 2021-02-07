@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.utils.encoding import escape_uri_path
 from django.utils.functional import cached_property
 
-from base_objects.models import HTBaseModel
+from base_objects.models import TimeTrackedModel
 
 from .managers import InvoiceManager, InvoiceItemLogManager
 
@@ -82,7 +82,7 @@ def _address_fields_to_str(
 ############
 
 
-class Address(HTBaseModel):
+class Address(TimeTrackedModel):
     line_1 = models.CharField(max_length=255)
     line_2 = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255)
@@ -185,7 +185,7 @@ class Address(HTBaseModel):
         return _google_map_search_url(self.address_str)
 
 
-class UserProfile(HTBaseModel):
+class UserProfile(TimeTrackedModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
     )
@@ -198,7 +198,7 @@ class UserProfile(HTBaseModel):
         return self.user.username
 
 
-class Client(HTBaseModel):
+class Client(TimeTrackedModel):
     name = models.CharField(max_length=255, unique=True, db_index=True)
     address = models.ForeignKey(
         Address, on_delete=models.SET_NULL, null=True, blank=True
@@ -209,7 +209,7 @@ class Client(HTBaseModel):
         return self.name
 
 
-class Project(HTBaseModel):
+class Project(TimeTrackedModel):
     name = models.CharField(max_length=255, unique=True, db_index=True)
     client = models.ForeignKey(
         Client, on_delete=models.CASCADE, related_name="projects"
@@ -355,7 +355,7 @@ class Project(HTBaseModel):
         return new_invoice
 
 
-class Item(HTBaseModel):
+class Item(TimeTrackedModel):
     """Definition for items that can be billed in the project."""
 
     NAME_MAXLENGTH = 50
@@ -387,7 +387,7 @@ class Item(HTBaseModel):
         return output
 
 
-class ItemLog(HTBaseModel):
+class ItemLog(TimeTrackedModel):
     """An instance of an Item related to a date and number of hours worked."""
 
     objects = InvoiceItemLogManager()
@@ -431,7 +431,7 @@ class ItemLog(HTBaseModel):
         return self._item_description
 
 
-class Invoice(HTBaseModel):
+class Invoice(TimeTrackedModel):
     """A generated object containing copies of all relevant work data
     for historical records, showing all work performed within a specified timeframe,
     for whom, total billable hours, rates, and total invoiced amount.
@@ -685,7 +685,7 @@ class Invoice(HTBaseModel):
             )
 
 
-class InvoiceItem(HTBaseModel):
+class InvoiceItem(TimeTrackedModel):
     """Essentially a copied version of an Item, related only to a specific Invoice."""
 
     invoice = models.ForeignKey(
@@ -718,7 +718,7 @@ class InvoiceItem(HTBaseModel):
     amount_billed_str = property(_amount_billed_str)
 
 
-class InvoiceItemLog(HTBaseModel):
+class InvoiceItemLog(TimeTrackedModel):
     invoice_item = models.ForeignKey(
         InvoiceItem, on_delete=models.CASCADE, related_name="invoice_item_logs"
     )

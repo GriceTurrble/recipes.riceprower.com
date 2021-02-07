@@ -19,12 +19,12 @@
 
 <h2>
   <i class="fas fa-hard-hat"></i>
-  Using <code>HTBaseModel</code>
+  Using <code>TimeTrackedModel</code>
 </h2>
 <p>
   You'll notice one app already included in this project, called <code>base_objects</code>.
   This app includes helpers to use in your own apps on this site, including
-  the abstract model <code>base_objects.models.HTBaseModel</code>
+  the abstract model <code>base_objects.models.TimeTrackedModel</code>
   (read more about abstract models
   <a href="https://docs.djangoproject.com/en/3.0/topics/db/models/#abstract-base-classes" target="_blank" rel="nofollow">here</a>).
 </p>
@@ -33,7 +33,7 @@
   all of your models will share some basic, custom functionality.
   For starters, each model includes the time-tracking fields <code>time_created</code>
   and <code>time_modified</code>; as well as a custom QuerySet manager,
-  <code>base_objects.managers.HTBaseQuerySet</code>
+  <code>base_objects.managers.TimeTrackedModelQuerySet</code>
   (read more about custom managers
   <a href="https://docs.djangoproject.com/en/3.0/topics/db/managers/#custom-managers" target="_blank" rel="nofollow">here</a>).
 </p>
@@ -51,7 +51,7 @@
 MyModel.objects.filter(...).created_before(...)</code></pre>
 
 <p>
-  Following are the methods currently available in <code>HTBaseQuerySet</code>:
+  Following are the methods currently available in <code>TimeTrackedModelQuerySet</code>:
 </p>
 
 <div class="card mb-2 mx-5">
@@ -120,21 +120,21 @@ MyModel.objects.filter(...).created_before(...)</code></pre>
 </div>
 
 <h3>
-  Extending <code>HTBaseModel</code>
+  Extending <code>TimeTrackedModel</code>
 </h3>
 <p>
-  To add new functionality to all models that subclass <code>HTBaseModel</code>,
-  simply add new fields to the model and, optionally, new methods to <code>HTBaseQuerySet</code>
+  To add new functionality to all models that subclass <code>TimeTrackedModel</code>,
+  simply add new fields to the model and, optionally, new methods to <code>TimeTrackedModelQuerySet</code>
   in the same style as those for <code>time_created</code> and <code>time_modified</code>.
 </p>
 <p>
-  Whenever you change fields in <code>HTBaseModel</code>, you should run <code>manage.py makemigrations</code> and <code>manage.py migrate</code>
-  for your entire project. Note that this will generate new migrations for <strong>every model</strong> that subclasses from <code>HTBaseModel</code>,
+  Whenever you change fields in <code>TimeTrackedModel</code>, you should run <code>manage.py makemigrations</code> and <code>manage.py migrate</code>
+  for your entire project. Note that this will generate new migrations for <strong>every model</strong> that subclasses from <code>TimeTrackedModel</code>,
   so you may have a lot of new migrations to run!
 </p>
 
 <h3>
-  Extending <code>HTBaseQuerySet</code> on a subclassed model
+  Extending <code>TimeTrackedModelQuerySet</code> on a subclassed model
 </h3>
 <div class="alert alert-info">
   This is the author's opinion on a best practice, so please take the following as a recommendation only.
@@ -154,13 +154,13 @@ MyModel.objects.filter(...).created_before(...)</code></pre>
   Instead, the author recommends the following strategy:
 </p>
 <p>
-  <strong>1.</strong> Create your new custom QuerySet as a subclass of <code>base_objects.managers.HTBaseQuerySet</code>:
+  <strong>1.</strong> Create your new custom QuerySet as a subclass of <code>base_objects.managers.TimeTrackedModelQuerySet</code>:
 </p>
 
 <pre class="bg-light p-3"><code><em># my_app/managers.py</em>
-from base_objects.managers import HTBaseQuerySet
+from base_objects.managers import TimeTrackedModelQuerySet
 
-class MyNewQuerySet(HTBaseQuerySet):
+class MyNewQuerySet(TimeTrackedModelQuerySet):
     def new_method(self):
         ...</code></pre>
 
@@ -169,15 +169,15 @@ class MyNewQuerySet(HTBaseQuerySet):
 </p>
 
 <pre class="bg-light p-3"><code><em># my_app/models.py</em>
-from base_objects.models import HTBaseModel
+from base_objects.models import TimeTrackedModel
 from .managers import MyNewQuerySet
 
-class MyModel(HTBaseModel):
+class MyModel(TimeTrackedModel):
     objects = MyNewQuerySet.as_manager()
     ...</code></pre>
 
 <p>
-  Setting up your new custom QuerySet this way makes every method from <code>HTBaseQuerySet</code>
+  Setting up your new custom QuerySet this way makes every method from <code>TimeTrackedModelQuerySet</code>
   available to the subclassed QuerySet, neatly ties everything to the <code>objects</code> default manager,
   and allows for QuerySet method chaining:
 </p>

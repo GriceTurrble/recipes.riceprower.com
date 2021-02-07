@@ -19,14 +19,14 @@ from djfractions.models import DecimalFractionField
 from djfractions import get_fraction_parts
 from tinymce.models import HTMLField
 
-from base_objects.models import HTBaseModel
+from base_objects.models import TimeTrackedModel
 
 from .managers import IngredientSectionManager
 
 User = get_user_model()
 
 
-class IngredientType(HTBaseModel):
+class IngredientType(TimeTrackedModel):
     """A type of an ingredient, used to hold common details about the
     ingredients of a recipe.
     """
@@ -52,7 +52,7 @@ class IngredientType(HTBaseModel):
         return self.name
 
 
-class Recipe(HTBaseModel):
+class Recipe(TimeTrackedModel):
     """A full recipe.
 
     Contains info about ingredients, directions, etc.
@@ -146,7 +146,7 @@ class Recipe(HTBaseModel):
         return self.delta_to_str(self.total_time)
 
 
-class IngredientSection(HTBaseModel):
+class IngredientSection(TimeTrackedModel):
     """Most times, a recipe will have one set of ingredients.
     Others, the ingredients may be split into multiple sections,
     each one pertaining to a different subset of the recipe
@@ -191,7 +191,7 @@ class IngredientSection(HTBaseModel):
         return f"RecipeID={self.recipe.id} Section='{self.name}'"
 
 
-class RecipeIngredient(HTBaseModel):
+class RecipeIngredient(TimeTrackedModel):
     """A specific ingredient for a given recipe.
 
     Links to an IngredientType to get that information,

@@ -3,11 +3,15 @@
 import datetime
 
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from .typing import DTType
 
 
-class HTBaseQuerySet(models.QuerySet):
+User = get_user_model()
+
+
+class TimeTrackedModelQuerySet(models.QuerySet):
     """Base queryset with custom filtering methods for base abstract models."""
 
     ## `time_created` command-style filtering ##
@@ -49,3 +53,11 @@ class HTBaseQuerySet(models.QuerySet):
     def modified_between(self, dt_one: DTType, dt_two: DTType) -> models.QuerySet:
         """Returns instances modified within the range (dt_one, dt_two)."""
         return self.filter(time_modified__range=(dt_one, dt_two))
+
+
+class OwnedModelQuerySet(models.QuerySet):
+    """Base queryset with for models owned by particular users."""
+
+    def owned_by(self, user: User) -> models.QuerySet:
+        """Returns instances owned by the designated user."""
+        return self.filter(owner=user)

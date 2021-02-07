@@ -1,15 +1,15 @@
 """Managers for models in invoices app."""
 
-from base_objects.managers import HTBaseManager
+from base_objects.managers import TimeTrackedModelManager
 
 from .querysets import InvoiceQuerySet, InvoiceItemLogQuerySet
 
 
-class InvoiceManager(HTBaseManager):
+class InvoiceManager(TimeTrackedModelManager):
     queryset_class = InvoiceQuerySet
 
 
-class InvoiceItemLogManager(HTBaseManager):
+class InvoiceItemLogManager(TimeTrackedModelManager):
     queryset_class = InvoiceItemLogQuerySet
 
     def within_cycle(self, cycle_start, cycle_end):

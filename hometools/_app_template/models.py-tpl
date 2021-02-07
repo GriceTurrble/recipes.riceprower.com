@@ -10,13 +10,13 @@
 from django.contrib.auth import get_user_model
 
 from django.db import models
-from base_objects.models import HTBaseModel
+from base_objects.models import TimeTrackedModel
 
 User = get_user_model()
 
 
 ### EXAMPLE ###
 
-# class MyModel(HTBaseModel):
+# class MyModel(TimeTrackedModel):
 #     """My model that does some things."""
 #     ...

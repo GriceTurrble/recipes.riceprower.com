@@ -1,0 +1,22 @@
+"""Signal receivers for `hunnydo` app."""
+
+### WARNING ###
+# If you remove this module, also remove its import from:
+# `apps.HunnydoConfig.ready`.
+###############
+
+from django.dispatch import receiver
+
+from django.db.models.signals import post_save
+
+# for all Django signals:
+# https://docs.djangoproject.com/en/3.0/ref/signals/
+
+### EXAMPLE ###
+# from .models import MyModel
+
+# @receiver(post_save, sender=MyModel)
+# def any_name_i_want(sender, instance, created, *args, **kwargs):
+#     """Signal to do something."""
+#     print(instance.time_updated)
+#     instance.save()

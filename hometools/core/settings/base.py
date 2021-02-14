@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     # Put your new apps here!
     "invoices.apps.InvoicesConfig",
     "recipes.apps.RecipesConfig",
+    "hunnydo.apps.HunnyDoConfig",
 ]
 
 SITE_ID = 1

@@ -1,9 +1,14 @@
 """Custom querysets and managers for base abstract models."""
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
 from .typing import DTType
-from .querysets import TimeTrackedModelQuerySet, OwnedModelQuerySet
+from .querysets import (
+    OwnedModelQuerySet,
+    OwnedTimeTrackedModelQuerySet,
+    TimeTrackedModelQuerySet,
+)
 
 
 User = get_user_model()
@@ -59,10 +64,20 @@ class TimeTrackedModelManager(SiteBaseManager):
 
 
 class OwnedModelManager(SiteBaseManager):
-    """Manager for OwnedModelBase."""
+    """Manager for OwnedModel."""
 
     queryset_class = OwnedModelQuerySet
 
     def owned_by(self, user: User) -> models.QuerySet:
         """Returns instances owned by the designated user."""
         return self.filter(owner=user)
+
+
+### Combo classes ###
+# Add as needed in downstream apps.
+
+
+class OwnedTimeTrackedModelManager(OwnedModelManager, TimeTrackedModelManager):
+    """Manager for OwnedTimeTrackedModel."""
+
+    queryset_class = OwnedTimeTrackedModelQuerySet

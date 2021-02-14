@@ -61,3 +61,13 @@ class OwnedModelQuerySet(models.QuerySet):
     def owned_by(self, user: User) -> models.QuerySet:
         """Returns instances owned by the designated user."""
         return self.filter(owner=user)
+
+
+### Combo classes ###
+# Add as needed in downstream apps.
+
+
+class OwnedTimeTrackedModelQuerySet(OwnedModelQuerySet, TimeTrackedModelQuerySet):
+    """Base queryset for models that are both owned and timetracked."""
+
+    pass

@@ -3,7 +3,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-from .managers import TimeTrackedModelManager, OwnedModelManager
+from .managers import (
+    OwnedModelManager,
+    OwnedTimeTrackedModelManager,
+    TimeTrackedModelManager,
+)
 
 
 User = get_user_model()
@@ -32,6 +36,19 @@ class OwnedModel(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
     """User who owns this model instance."""
+
+    class Meta:
+        abstract = True
+
+
+### Combo classes ###
+# Add as needed in downstream apps.
+
+
+class OwnedTimeTrackedModel(OwnedModel, TimeTrackedModel):
+    """Base abstract model for both ownership and time tracking."""
+
+    objects = OwnedTimeTrackedModelManager()
 
     class Meta:
         abstract = True

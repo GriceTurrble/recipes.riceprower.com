@@ -7,6 +7,8 @@ services:
       && poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./recipesite:/app/recipesite
+      - ./recipesite/logs:/app/recipesite/logs/
+      - ./recipesite/media:/app/recipesite/media/
       - ./recipesite/static:/app/recipesite/static/
     ports:
       - 8000:8000

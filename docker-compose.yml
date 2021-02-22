@@ -15,9 +15,6 @@ services:
     ports:
       - 8000:8000
     env_file: .recipes.env
-    # Different user ID:
-    # https://medium.com/redbubble/running-a-docker-container-as-a-non-root-user-7d2e00f8ee15
-    user: ${CURRENT_UID}
     depends_on:
       - db
   db:

@@ -1,7 +1,7 @@
 services:
   nginx:
     build: ./nginx
-    # container_name: test_deploy_nginx
+    container_name: test_deploy_nginx
     volumes:
       - ./recipesite/static:/app/recipesite/static/
     ports:

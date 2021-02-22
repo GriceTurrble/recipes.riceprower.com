@@ -1,1 +1,0 @@
-"""`hunnydo` app."""

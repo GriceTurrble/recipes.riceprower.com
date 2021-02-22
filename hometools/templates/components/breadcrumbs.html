@@ -25,7 +25,7 @@
     {% if is_root %}
     <li class="breadcrumb-item active" aria-current="page">Home</li>
     {% else %}
-    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
     {% for link in extra_links|split:";" %}
       {% with partial=link|split:"|" %}
         <li class="breadcrumb-item"><a href="{{ partial.0 }}">{{ partial.1 }}</a></li>

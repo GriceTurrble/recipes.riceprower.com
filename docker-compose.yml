@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    command: >
+      bash -c "cd hometools
+      && poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+    # command: >
+    #   poetry run python /app/hometools/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./hometools:/app/hometools
+      - ./hometools/static:/app/hometools/static/
+    ports:
+      - "8000:8000"
+    env_file: .hometools.env
+    depends_on:
+      - db
+  db:
+    image: postgres
+    env_file: .postgres.env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  nginx:
+    build: ./nginx
+    # container_name: test_deploy_nginx
+    volumes:
+      - ./hometools/static:/app/hometools/static/
+    ports:
+      - 8008:80
+    depends_on:
+      - web

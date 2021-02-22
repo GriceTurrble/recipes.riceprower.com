@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.views.generic import TemplateView
 
 # (Skip Black formatting in this section)
 urlpatterns = [
@@ -29,15 +28,18 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     # TinyMCE's URLs.
     path("tinymce/", include("tinymce.urls")),
-    # Stuff for Django REST Framework
-    path("api-auth/", include("rest_framework.urls")),
-    # Flat pages
-    path("pages/", include("django.contrib.flatpages.urls")),
+    # Flat pages (TODO out for now)
+    # path("pages/", include("django.contrib.flatpages.urls")),
     # Internal apps
-    path("invoices/", include("invoices.urls")),
-    path("recipes/", include("recipes.urls")),
+    # path("invoices/", include("invoices.urls")),
+    path("", include("recipes.urls")),
     # Home page
-    path("", TemplateView.as_view(template_name="homepage.html"), name="homepage"),
+    # Django REST Framework
+    # TODO not using REST at this time. Do this later, though!
+    # path("api-auth/", include("rest_framework.urls")),
+    # path("api/v1/", include("core.api_v1.urls")),
+    # path("api/auth/", include("djoser.urls.authtoken")),
+    # path("api/", RedirectView.as_view(url='/api/v1/')),
 ]
 
 if settings.DEBUG:

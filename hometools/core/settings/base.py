@@ -10,27 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
-
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-env = environ.Env(
-    DEBUG=(bool, False),
-    ALLOWED_HOSTS=(list, []),
-)
-env.read_env(str(BASE_DIR / ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.environ.get("HT_SECRET_KEY", "insecure-please-change-this")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = os.environ.get("HT_ALLOWED_HOSTS", "").split()
 
 # Application definition
 INSTALLED_APPS = [
@@ -45,18 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Flat pages requirements
     "django.contrib.sites",
-    "django.contrib.flatpages",
     # Other dependencies
     "adminsortable2",
-    "rest_framework",
     "djfractions",
     "tinymce",
     # Base objects app, required by downstream.
     "base_objects.apps.BaseObjectsConfig",
     # Put your new apps here!
-    "invoices.apps.InvoicesConfig",
     "recipes.apps.RecipesConfig",
-    "hunnydo.apps.HunnyDoConfig",
 ]
 
 SITE_ID = 1
@@ -104,7 +93,17 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-DATABASES = {"default": env.db_url()}
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get("HT_DB_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DB_NAME", "db.sqlite3"),
+        "USER": os.environ.get("DB_USER", ""),
+        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+        "HOST": os.environ.get("DB_HOST", None),
+        "PORT": os.environ.get("DB_PORT", None),
+        "CONN_MAX_AGE": 600,
+    }
+}
 
 
 # Password validation
@@ -122,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = env("TIME_ZONE")
+TIME_ZONE = os.environ.get("HT_TIME_ZONE", "US/Eastern")
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -145,36 +144,45 @@ MEDIA_ROOT = BASE_DIR / "media"
 # We define segments of it here, as well as in other environments,
 # then put the pieces together.
 LOGS_DIR = BASE_DIR / "logs"
-LOGGING_ROOT = {}
-LOGGING_FORMATTERS = {
-    "verbose": {
-        "format": "[{levelname}] [{asctime}] [{module}] {message}",
-        "style": "{",
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "root": {},
+    "formatters": {
+        "verbose": {
+            "format": "[{levelname}] [{asctime}] [{module}] {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "[{levelname}] {message}",
+            "style": "{",
+        },
     },
-    "simple": {
-        "format": "[{levelname}] {message}",
-        "style": "{",
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
     },
+    "handlers": {},
+    "loggers": {},
 }
-LOGGING_FILTERS = {
-    "require_debug_true": {
-        "()": "django.utils.log.RequireDebugTrue",
-    },
-    "require_debug_false": {
-        "()": "django.utils.log.RequireDebugFalse",
-    },
-}
-# Handlers and Loggers are defined and overwritten in the environments.
-LOGGING_HANDLERS = {}
-LOGGING_LOGGERS = {}
 
 
 # DRF settings
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",
-    ],
-}
+# REST_FRAMEWORK = {
+#     "DEFAULT_PERMISSION_CLASSES": [
+#         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+#     ],
+#     "DEFAULT_AUTHENTICATION_CLASSES": [
+#         "rest_framework.authentication.TokenAuthentication",
+#         "rest_framework.authentication.SessionAuthentication",
+#     ],
+#     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+#     "PAGE_SIZE": 10,
+# }
 
 
 # TinyMCE adjustments

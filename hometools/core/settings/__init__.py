@@ -3,31 +3,17 @@
 Most are defined within base, with some defined conditionally within debug and prod.
 """
 
-from .base import env
-from .base import *
+import os
 
-DEBUG = env.bool("DEBUG")
+# from .base import env
+# from .base import *
 
-if DEBUG:
-    from .dev import *
-else:
-    from .prod import *
+DEBUG = bool(os.environ.get("HT_DEBUG", True) == "True")
+
 try:
-    # Attempt to pull settings overrides from a local file, if any is present
     from .local import *  # type: ignore
 except ImportError:
-    pass
-
-
-# Do not attempt to define LOGGING in any of the environments above,
-# as the definition below will simply overwrite it.
-# Instead, use these `LOGGING_foo` constants to change different pieces of the config.
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": LOGGING_ROOT,  # noqa
-    "formatters": LOGGING_FORMATTERS,  # noqa
-    "filters": LOGGING_FILTERS,  # noqa
-    "handlers": LOGGING_HANDLERS,  # noqa
-    "loggers": LOGGING_LOGGERS,  # noqa
-}
+    if DEBUG:
+        from .dev import *
+    else:
+        from .prod import *

@@ -3,12 +3,13 @@
 Any settings defined here can override base settings implicitly.
 """
 
-from .base import LOGS_DIR
+from .base import *
+from .base import LOGGING, LOGS_DIR
 
 # Logging handlers and loggers are imported direct in settings.__init__.
 # These are not standard settings, but we're using these to define the logging setup
 # relevant to this environment
-LOGGING_HANDLERS = {
+LOGGING["handlers"] = {
     # Set up a console handler to show INFO in the terminal
     "console": {
         "level": "INFO",
@@ -29,7 +30,7 @@ LOGGING_HANDLERS = {
         "formatter": "verbose",
     },
 }
-LOGGING_LOGGERS = {
+LOGGING["loggers"] = {
     # Send general messages to console and the debug file
     "django": {
         "handlers": ["console", "debug_file"],

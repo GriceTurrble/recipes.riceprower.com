@@ -3,13 +3,14 @@
 Any settings defined here can override base settings implicitly.
 """
 
-from .base import LOGS_DIR
+from .base import *
+from .base import LOGGING, LOGS_DIR
 
-LOGGING_ROOT = {
+LOGGING["root"] = {
     "handlers": ["file"],
     "level": "INFO",
 }
-LOGGING_HANDLERS = {
+LOGGING["handlers"] = {
     # Security warnings logging
     "security_file": {
         "level": "INFO",
@@ -32,7 +33,7 @@ LOGGING_HANDLERS = {
         "class": "logging.NullHandler",
     },
 }
-LOGGING_LOGGERS = {
+LOGGING["loggers"] = {
     # Catch all in the main log
     "django": {
         "handlers": ["file"],

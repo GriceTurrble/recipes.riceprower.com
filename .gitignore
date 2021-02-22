@@ -151,3 +151,6 @@ hometools/core/settings/local.py
 
 # Fabric config for deployment
 fabric.yml
+
+*.env
+postgres-data/

@@ -10,7 +10,7 @@
 {% endblock head_css %}
 
 {% block recipe_body_content %}
-  {% include "components/breadcrumbs.html" with page_title="Recipes" %}
+  {% include "components/breadcrumbs.html" with is_root=True %}
   {% include "recipes/components/recipe_list/title_card.html" with recipes=recipes search_term=search_term all_recipes_count=all_recipes_count %}
 
   <div class="col-lg-10 offset-lg-1">

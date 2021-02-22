@@ -32,6 +32,11 @@ RUN poetry install --no-dev --no-root --no-interaction
 RUN mkdir /app/recipesite
 COPY ./recipesite /app/recipesite
 
+# Create directories for logs, media, and static as needed
+RUN mkdir /app/recipesite/logs
+RUN mkdir /app/recipesite/media
+RUN mkdir /app/recipesite/static
+
 # Collect static files and run migrations
 RUN poetry run python /app/recipesite/manage.py collectstatic --clear --noinput
 RUN poetry run python /app/recipesite/manage.py migrate --noinput

@@ -17,6 +17,7 @@ LOGGING["handlers"] = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
+        "backupCount": 10,
         "filename": str(LOGS_DIR / "security.log"),
         "formatter": "verbose",
     },
@@ -26,6 +27,7 @@ LOGGING["handlers"] = {
         "filters": ["require_debug_false"],
         "class": "logging.handlers.RotatingFileHandler",
         "maxBytes": 1024 * 1024 * 10,  # 10MB
+        "backupCount": 10,
         "filename": str(LOGS_DIR / "django.log"),
         "formatter": "verbose",
     },

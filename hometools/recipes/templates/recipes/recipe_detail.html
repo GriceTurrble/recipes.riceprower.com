@@ -6,7 +6,7 @@ Making a new template? Copy the blocks from this file, then fill in your details
 Be sure the `extends` tag remains the first line in the file, as Django requires.
 And feel free to remove blocks you don't need to change.
 
-{% block recipe_head_title %}{{ recipe.title }}{% endblock %}
+{% block head_title %}{{ recipe.title }}{% endblock %}
 {% block head_css %}
   <link rel="stylesheet" href="{% static 'recipes/css/recipe_detail.css' %}?v=0.1.0">
 {% endblock head_css %}

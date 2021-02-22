@@ -3,8 +3,12 @@ services:
     build: ./nginx
     # container_name: test_deploy_nginx
     volumes:
-      - ./hometools/static:/app/hometools/static/
+      - ./recipesite/static:/app/recipesite/static/
     ports:
       - 8008:80
     depends_on:
       - web
+  web:
+    environment:
+      - HT_DEBUG=True
+    command: poetry run python /app/recipesite/manage.py runserver 0.0.0.0:8000

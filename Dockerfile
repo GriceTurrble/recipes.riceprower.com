@@ -29,13 +29,13 @@ COPY pyproject.toml .
 RUN poetry install --no-dev --no-root --no-interaction
 
 # Copy code to the container
-RUN mkdir /app/hometools
-COPY ./hometools /app/hometools
+RUN mkdir /app/recipesite
+COPY ./recipesite /app/recipesite
 
 # Collect static files and run migrations
-RUN poetry run python /app/hometools/manage.py collectstatic --clear --noinput
-RUN poetry run python /app/hometools/manage.py migrate --noinput
+RUN poetry run python /app/recipesite/manage.py collectstatic --clear --noinput
+RUN poetry run python /app/recipesite/manage.py migrate --noinput
 
 EXPOSE 8000
 
-CMD ["poetry", "run", "python", "/app/hometools/manage.py", "runserver"]
+CMD ["poetry", "run", "python", "/app/recipesite/manage.py", "runserver"]

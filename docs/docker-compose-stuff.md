@@ -2,6 +2,11 @@
 
 ## Basics
 
+We've complicated things a little bit by having two docker-compose config files, one meant to override the other.
+
+- For development, run `docker-compose ...` by itself.
+- For production, run `docker-compose -f docker-compose.yml`, specifying the main config file. This should ignore the `.override` file, so we use production settings only.
+
 ```bash
 # Startup
 docker-compose up -d
@@ -10,15 +15,15 @@ docker-compose up -d
 docker-compose down
 
 # Run a command inside one of the services
-# Example: run migrations manually
-docker-compose exec web poetry run python /app/hometools/manage.py migrate
+# Example: create superuser in the web service container
+# (remember we use poetry, and try to specify the full path for completeness)
+docker-compose exec web poetry run python /app/recipesite/manage.py createsuperuser
 
-# Container seems out-of-sync? Rebuild it:
-docker-compose up -d --no-deps --build web
+# Container seems out-of-sync? Build them:
+docker-compose build
+# Can also pass `--no-cache` to skip any cached steps
+# and completely rebuild those containers from scratch
+
+# Show the full config:
+docker-compose config
 ```
-
-## TODO
-
-Nginx is messing up at the root, redirecting to browser to `https://app`. What?
-
-Go back to basics on it, try to reconfigure that kajigger?

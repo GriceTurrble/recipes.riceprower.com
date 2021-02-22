@@ -1,3 +1,0 @@
-"""Tests for `{{ app_name }}` app."""
-
-from django.test import TestCase

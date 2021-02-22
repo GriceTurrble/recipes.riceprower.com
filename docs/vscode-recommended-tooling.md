@@ -23,7 +23,7 @@ If you are _not_ using VS Code, well, this isn't for you. Though perhaps in read
     + [Editing your settings](#editing-your-settings)
   * [Recommended settings](#recommended-settings)
     + [User settings](#user-settings)
-    + [Workspace settings for HomeTools project](#workspace-settings-for-hometools-project)
+    + [Workspace settings for RecipeSite project](#workspace-settings-for-recipesite-project)
 - [Extensions](#extensions)
 
 ## Settings
@@ -224,9 +224,9 @@ The following is my full set of recommended settings, which can be copy-pasted r
 }
 ```
 
-#### Workspace settings for HomeTools project
+#### Workspace settings for RecipeSite project
 
-And the following are what I use in the workspace settings for HomeTools:
+And the following are what I use in the workspace settings for RecipeSite:
 
 ```json
 {
@@ -235,13 +235,13 @@ And the following are what I use in the workspace settings for HomeTools:
   // and that file is usually one folder down.
   // This specifies where the command line starts from when we open a terminal, so we don't
   // have to add the step of navigating to that subfolder every time.
-  "terminal.integrated.cwd": "${workspaceFolder}\\hometools",
+  "terminal.integrated.cwd": "${workspaceFolder}\\recipesite",
 
   // These extra paths help our autocompletion and Pylance tooling to know where to find stuff
   // within the project. Otherwise, it would throw errors like "cannot resolve this import"
   // even though project has no problem doing so at runtime.
-  "python.autoComplete.extraPaths": ["./hometools"],
-  "python.analysis.extraPaths": ["./hometools"],
+  "python.autoComplete.extraPaths": ["./recipesite"],
+  "python.analysis.extraPaths": ["./recipesite"],
 
   // The default linter in VS Code is pylint, but I've started preferring flake8, instead.
   // This swaps pylint off and flake8 on.

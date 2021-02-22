@@ -1,33 +1,62 @@
-# HomeTools
+# Rice-Prower Family Recipes
 
-A collection of tools used in the Rice-Prower home on their server and stuff.
+A collection of recipes made in the Rice-Prower home and associated nerdy tools.
 
 ## Getting started
 
-1. Install [Python](https://python.org) (latest is 3.9).
-2. Install [Visual Studio Code](https://code.visualstudio.com/).
-3. Clone this repo somewhere on your machine.
-4. Using PowerShell, navigate to the root directory of the project, then create a **Python virtual environment**, or **venv**.
-    - I recommend doing so with this command: `python -m venv .venv --prompt hometools`
-5. Activate the venv by running command: `.venv/Scripts/Activate.ps1`
-    - The beginning of the command prompt should read `(hometools)`. If it doesn't, back up and ask for assistance from G.
-6. Upgrade `pip` in the venv: `python -m pip install --upgrade pip`
-7. Install the project dev requirements: `pip install -r requirements-dev.txt`
-8. "cd" into the project source directory: `cd hometools`
-9. Generate a `.env` file containing local environment settings: `python generate_env.py`
-    - This is necessary to get the local database settings straightened out.
-10. "Migrate" the database, so it builds its schema: `python manage.py migrate`
-11. Create your superuser account: `python manage.py createsuperuser`
-    - Follow the prompts to enter your details. Username, email, and password
-    - The password can be as simple as you want it, like "what" or "something". It will warn you about using an unsafe password, but you can type "y" and hit Enter to acknowledge that, as I recall.
-12. Start running the app: `python manage.py runserver`
-13. Open your browser to http://localhost:8000, and you should see the home page come up.
+1. Install [Visual Studio Code](https://code.visualstudio.com/).
+2. Install [Docker](https://www.docker.com/) on your desktop.
+3. Write environment files within the project root, at the same level as this README file:
 
-### Development tooling
+   - Create a `.recipes.env` file containing the following:
+
+     ```
+     HT_SECRET_KEY=<some-random-long-string-of-characters>
+     HT_TIME_ZONE=US/Eastern
+     HT_ALLOWED_HOSTS=*
+
+     # Database:
+     HT_DB_ENGINE=django.db.backends.postgresql
+     DB_NAME=postgres
+     DB_USER=postgres
+     DB_PASSWORD=postgres
+     DB_HOST=db
+     DB_PORT=5432
+     ```
+
+     Write whatever long string of random characters you like for `HT_SECRET_KEY`, then save the file as-is.
+
+   - Create a `.postgres.env` file containing:
+
+     ```
+     POSTGRES_DB=postgres
+     POSTGRES_USER=postgres
+     POSTGRES_PASSWORD=postgres
+     ```
+
+     Note these should all match the corresponding values shown in `.recipes.env`.
+
+     These values are all the basics used in development. These do not match production credentials (as that would be silly).
+
+4. Start up the services using:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+5. Create your superuser account within the running `web` container using:
+
+   ```bash
+   docker-compose exec web poetry run python /app/recipesite/manage.py createsuperuser
+   ```
+
+6. Open your browser to http://localhost:8008, and you should see the home page come up.
+
+## Development tooling
 
 Talk to G to have him set up VSCode with some extra tools to run the project, including the following stuff.
 
-#### .vscode/launch.json
+### .vscode/launch.json
 
 ```json
 {
@@ -40,7 +69,7 @@ Talk to G to have him set up VSCode with some extra tools to run the project, in
       "name": "Django: Runserver",
       "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}\\hometools\\manage.py",
+      "program": "${workspaceFolder}\\recipesite\\manage.py",
       "args": ["runserver"],
       "django": true
     }
@@ -48,13 +77,13 @@ Talk to G to have him set up VSCode with some extra tools to run the project, in
 }
 ```
 
-#### Extensions
+### Extensions
 
 - "Django" [batisteo.vscode-django]
 - "Prettier - Code formatter" [esbenp.prettier-vscode]
 - "GitLens — Git supercharged" [eamodio.gitlens]
 
-#### Settings
+### Settings
 
 **User settings:**
 
@@ -137,20 +166,10 @@ Talk to G to have him set up VSCode with some extra tools to run the project, in
 
 ```json
 {
-  "terminal.integrated.cwd": "${workspaceFolder}\\hometools",
+  "terminal.integrated.cwd": "${workspaceFolder}\\recipesite",
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true
 }
 ```
 
 *I can explain everything going on if you like, but somehow I doubt you'll take me up on the offer.*
-
-## Applications
-
-### Invoices
-
-Builds invoices and timesheets for contract projects.
-
-### Recipes
-
-A collection of recipes the family likes.

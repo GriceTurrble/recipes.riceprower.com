@@ -16,7 +16,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set up working directory
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 
 # Upgrade pip
@@ -29,13 +29,13 @@ COPY pyproject.toml .
 RUN poetry install --no-dev --no-root --no-interaction
 
 # Copy code to the container
-RUN mkdir /app/recipesite
+RUN mkdir -p /app/recipesite
 COPY ./recipesite /app/recipesite
 
 # Create directories for logs, media, and static as needed
-RUN mkdir /app/recipesite/logs
-RUN mkdir /app/recipesite/media
-RUN mkdir /app/recipesite/static
+RUN mkdir -p /app/recipesite/logs
+RUN mkdir -p /app/recipesite/media
+RUN mkdir -p /app/recipesite/static
 
 # Collect static files and run migrations
 RUN poetry run python /app/recipesite/manage.py collectstatic --clear --noinput

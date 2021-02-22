@@ -1,0 +1,10 @@
+services:
+  nginx:
+    build: ./nginx
+    # container_name: test_deploy_nginx
+    volumes:
+      - ./hometools/static:/app/hometools/static/
+    ports:
+      - 8008:80
+    depends_on:
+      - web

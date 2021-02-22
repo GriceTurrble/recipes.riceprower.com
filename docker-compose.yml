@@ -6,7 +6,7 @@ services:
     # https://pythonspeed.com/articles/gunicorn-in-docker/
     command: >
       bash -c "cd recipesite
-      && poetry run gunicorn --log-file=- --worker-tmp-dir /dev/shm --workers=2 --threads=4 --worker-class=gthread core.wsgi:application --bind [::]:8000"
+      && poetry run gunicorn --log-file=- --worker-tmp-dir /dev/shm --workers=2 --threads=4 --worker-class=gthread core.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./recipesite:/app/recipesite
       - ./recipesite/logs:/app/recipesite/logs/

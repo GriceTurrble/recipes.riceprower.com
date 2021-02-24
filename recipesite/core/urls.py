@@ -23,7 +23,7 @@ urlpatterns = [
     # Admin at a non-"admin/" endpoint.
     # Attackers try to hit the common endpoints for the admin, so renaming it something
     # other than the obvious "admin/" is recommended.
-    path("nyx/", admin.site.urls),
+    path("admit-tenant-tiger/", admin.site.urls),
     # Django account endpoints.
     path("accounts/", include("django.contrib.auth.urls")),
     # TinyMCE's URLs.

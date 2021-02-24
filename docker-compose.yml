@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web:
+    build: .
+    # Taking some recommendations for gunicorn from:
+    # https://pythonspeed.com/articles/gunicorn-in-docker/
+    command: >
+      bash -c "cd recipesite
+      && poetry run gunicorn --log-file=- --worker-tmp-dir /dev/shm --workers=2 --threads=4 --worker-class=gthread core.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - ./recipesite:/app/recipesite
+      - ./recipesite/logs:/app/recipesite/logs/
+      - ./recipesite/media:/app/recipesite/media/
+      - ./recipesite/static:/app/recipesite/static/
+    ports:
+      - 8000:8000
+    env_file: .recipes.env
+    depends_on:
+      - db
+  db:
+    image: postgres
+    env_file: .postgres.env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

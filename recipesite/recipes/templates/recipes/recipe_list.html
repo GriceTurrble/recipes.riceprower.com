@@ -1,0 +1,29 @@
+{% extends "recipes/base.html" %}
+{% load static %}
+{% load hometool_tags %}
+
+{# Overwrite the original head_title block so we don't have a hanging chad, so to speak. #}
+{% block head_title %}Home{% endblock %}
+
+{% block head_css %}
+  <link rel="stylesheet" href="{% static 'recipes/css/recipe_list.css' %}">
+{% endblock head_css %}
+
+{% block recipe_body_content %}
+  {% include "components/breadcrumbs.html" with is_root=True %}
+  {% include "recipes/components/recipe_list/title_card.html" with recipes=recipes search_term=search_term all_recipes_count=all_recipes_count %}
+
+  <div class="col-lg-10 offset-lg-1">
+    {% for recipe in recipes %}
+    {% if forloop.first %}<div class="card-columns">{% endif %}
+      {% include "recipes/components/recipe_list/recipe_card.html" with recipe=recipe %}
+    {% if forloop.last %}</div>{% endif %}
+    {% empty %}
+    <div class="alert alert-warning font-italic">
+      No recipes found
+    </div>
+    {% endfor %}
+  </div>
+{% endblock recipe_body_content %}
+
+{% block recipe_body_js %}{% endblock recipe_body_js %}

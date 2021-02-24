@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+Making a new template? Copy the blocks from this file, then fill in your details as needed.
+Be sure the `extends` tag remains the first line in the file, as Django requires.
+And feel free to remove blocks you don't need to change.
+
+{% block head_extra_meta %}
+  {% block recipe_head_extra_meta %}{% endblock recipe_head_extra_meta %}
+{% endblock head_extra_meta %}
+
+{% block head_js %}
+  {% block recipe_head_js %}{% endblock recipe_head_js %}
+{% endblock head_js %}
+
+{% block body_container_classes %}
+  {% block recipe_body_container_classes %}{% endblock recipe_body_container_classes %}
+{% endblock body_container_classes %}
+
+{% block body_content %}
+  {% block recipe_body_content %}{% endblock recipe_body_content %}
+{% endblock body_content %}
+
+{% block body_js %}
+  {% block recipe_body_js %}{% endblock recipe_body_js %}
+{% endblock body_js %}

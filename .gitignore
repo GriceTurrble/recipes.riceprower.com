@@ -134,20 +134,23 @@ dmypy.json
 .vscode/
 
 # Production directories
-hometools/static/
-hometools/media/
-hometools/logs/
+recipesite/static/
+recipesite/media/
+recipesite/logs/
 
 # DB backups, ignoring the config and dump files in production
 # (be careful not to ignore the other script files this dir will contain)
-hometools/backups/config.sh
-hometools/backups/*.pgdump
+recipesite/backups/config.sh
+recipesite/backups/*.pgdump
 
 # Script files
-hometools/scripts/config.sh
+recipesite/scripts/config.sh
 
 # Project local settings, intended for a local env only
-hometools/core/settings/local.py
+recipesite/core/settings/local.py
 
 # Fabric config for deployment
 fabric.yml
+
+*.env
+postgres-data/

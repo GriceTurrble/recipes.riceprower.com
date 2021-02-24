@@ -58,7 +58,7 @@ Talk to G to have him set up VSCode with some extra tools to run the project, in
 
 ### .vscode/launch.json
 
-```json
+```jsonc
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.

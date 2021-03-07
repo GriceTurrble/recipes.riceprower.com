@@ -26,4 +26,4 @@ MAIN_DIR="$(dirname $THIS_DIR)"
 COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
 
 # Bring services up
-docker-compose -f $COMPOSE_FILE up
+docker-compose -f $COMPOSE_FILE up -d

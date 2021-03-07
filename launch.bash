@@ -24,6 +24,8 @@ APP_MANAGE_PY=/app/recipesite/manage.py
 # Bring services up
 docker-compose -f $COMPOSE_FILE up
 
+# Update python packages
+docker-compose -f $COMPOSE_FILE exec web poetry install --no-dev --no-root --no-interaction
 # Migrate database changes
 docker-compose -f $COMPOSE_FILE exec web poetry run python $APP_MANAGE_PY migrate --noinput
 # Collect static files

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###
+# Runs update tasks for this application.
+###
+
 # Detects if script are not running as root
 if [ "$UID" != "0" ]; then
     if whereis sudo &>/dev/null; then
@@ -17,12 +21,10 @@ if [ "$UID" != "0" ]; then
     fi
 fi
 
-DIR="$(dirname "$(readlink -f "$0")")"
-COMPOSE_FILE=$DIR/docker-compose.yml
+THIS_DIR="$(dirname "$(readlink -f "$0")")"
+MAIN_DIR="$(dirname $THIS_DIR)"
+COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
 APP_MANAGE_PY=/app/recipesite/manage.py
-
-# Bring services up
-docker-compose -f $COMPOSE_FILE up
 
 # Update python packages
 docker-compose -f $COMPOSE_FILE exec web poetry install --no-dev --no-root --no-interaction

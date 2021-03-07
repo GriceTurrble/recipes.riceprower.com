@@ -23,4 +23,4 @@ fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
-./$THIS_DIR/docker-compose-cmd.sh build --no-cache web
+exec $THIS_DIR/docker-compose-cmd.sh build --no-cache web

@@ -37,9 +37,8 @@ RUN mkdir -p /app/recipesite/logs
 RUN mkdir -p /app/recipesite/media
 RUN mkdir -p /app/recipesite/static
 
-# Collect static files and run migrations
+# Collect static files
 RUN poetry run python /app/recipesite/manage.py collectstatic --clear --noinput
-RUN poetry run python /app/recipesite/manage.py migrate --noinput
 
 EXPOSE 8000
 

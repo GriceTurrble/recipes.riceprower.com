@@ -22,16 +22,14 @@ if [ "$UID" != "0" ]; then
 fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
-MAIN_DIR="$(dirname $THIS_DIR)"
-COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
-APP_MANAGE_PY=/app/recipesite/manage.py
 
 # Update python packages
-docker-compose -f $COMPOSE_FILE exec web poetry install --no-dev --no-root --no-interaction
+exec $THIS_DIR/docker-compose-cmd.sh exec web poetry install --no-dev --no-root --no-interaction
+
 # Migrate database changes
-docker-compose -f $COMPOSE_FILE exec web poetry run python $APP_MANAGE_PY migrate --noinput
+exec $THIS_DIR/django-cmd.sh migrate --noinput
 # Collect static files
-docker-compose -f $COMPOSE_FILE exec web poetry run python $APP_MANAGE_PY collectstatic --clear --noinput
+exec $THIS_DIR/django-cmd.sh collectstatic --clear --noinput
 
 # Restart Nginx
 systemctl restart nginx

@@ -22,8 +22,6 @@ if [ "$UID" != "0" ]; then
 fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
-MAIN_DIR="$(dirname $THIS_DIR)"
-COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
 
-# Bring services down
-docker-compose -f $COMPOSE_FILE down
+# Bring services up
+exec $THIS_DIR/docker-compose-cmd.sh down

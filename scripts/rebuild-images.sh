@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###
-# Rebuilds our service images
+# Rebuilds our images and re-ups services, forcing container recreation
 ###
 
 # Detects if script are not running as root
@@ -23,4 +23,5 @@ fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
-exec $THIS_DIR/docker-compose-cmd.sh build --no-cache web
+exec $THIS_DIR/docker-compose-cmd.sh build --no-cache
+exec $THIS_DIR/docker-compose-cmd.sh up --force-recreate -d

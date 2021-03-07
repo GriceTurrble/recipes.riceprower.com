@@ -26,8 +26,6 @@ if [ "$UID" != "0" ]; then
 fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
-MAIN_DIR="$(dirname $THIS_DIR)"
-COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
 APP_MANAGE_PY=/app/recipesite/manage.py
 
-docker-compose -f $COMPOSE_FILE exec web poetry run python $APP_MANAGE_PY $@
+exec $THIS_DIR/docker-compose-cmd.sh exec web poetry run python $APP_MANAGE_PY $@

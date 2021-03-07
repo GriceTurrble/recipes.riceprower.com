@@ -28,4 +28,4 @@ fi
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 APP_MANAGE_PY=/app/recipesite/manage.py
 
-exec $THIS_DIR/docker-compose-cmd.sh exec web poetry run python $APP_MANAGE_PY $@
+. $THIS_DIR/docker-compose-cmd.sh exec web poetry run python $APP_MANAGE_PY $@

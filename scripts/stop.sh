@@ -24,4 +24,4 @@ fi
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
 # Bring services up
-exec $THIS_DIR/docker-compose-cmd.sh down
+. $THIS_DIR/docker-compose-cmd.sh down

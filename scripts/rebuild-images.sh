@@ -23,5 +23,5 @@ fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
-exec $THIS_DIR/docker-compose-cmd.sh build --no-cache
-exec $THIS_DIR/docker-compose-cmd.sh up --force-recreate -d
+. $THIS_DIR/docker-compose-cmd.sh build --no-cache
+. $THIS_DIR/docker-compose-cmd.sh up --force-recreate -d

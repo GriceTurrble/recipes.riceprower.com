@@ -24,12 +24,12 @@ fi
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
 # Update python packages
-exec $THIS_DIR/docker-compose-cmd.sh exec web poetry install --no-dev --no-root --no-interaction
+. $THIS_DIR/docker-compose-cmd.sh exec web poetry install --no-dev --no-root --no-interaction
 
 # Migrate database changes
-exec $THIS_DIR/django-cmd.sh migrate --noinput
+. $THIS_DIR/django-cmd.sh migrate --noinput
 # Collect static files
-exec $THIS_DIR/django-cmd.sh collectstatic --clear --noinput
+. $THIS_DIR/django-cmd.sh collectstatic --clear --noinput
 
 # Restart Nginx
 systemctl restart nginx

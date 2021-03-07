@@ -1,7 +1,11 @@
 #!/bin/bash
 
 ###
-# Runs django commands against manage.py within the web container
+# Runs django commands against manage.py within the web container.
+# Example:
+#   ./django-manage createsuperuser
+# Equivalent to:
+#   sudo docker-compose -f /path/to/docker-compose.yml exec web poetry run python /app/recipesite/manage.py createsuperuser
 ###
 
 # Detects if script are not running as root

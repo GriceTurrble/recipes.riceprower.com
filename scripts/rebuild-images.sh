@@ -22,7 +22,5 @@ if [ "$UID" != "0" ]; then
 fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
-MAIN_DIR="$(dirname $THIS_DIR)"
-COMPOSE_FILE=$MAIN_DIR/docker-compose.yml
 
-docker-compose -f $COMPOSE_FILE build --no-cache web
+./$THIS_DIR/docker-compose-cmd.sh build --no-cache web

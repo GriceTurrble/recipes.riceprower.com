@@ -20,11 +20,17 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .models import Recipe
 
 
-class RecipeListView(ListView):
+class RecipeBaseViewMixin(PermissionRequiredMixin):
+    permission_required = "recipes.view_recipe"
+    login_url = "/accounts/login/"
+
+
+class RecipeListView(RecipeBaseViewMixin, ListView):
     """List view for Recipe collection."""
 
     model = Recipe
@@ -61,7 +67,7 @@ class RecipeListView(ListView):
         return context
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(RecipeBaseViewMixin, DetailView):
     """Detail view for a Recipe instance."""
 
     context_object_name = "recipe"

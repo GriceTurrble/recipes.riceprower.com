@@ -1,13 +1,4 @@
 services:
-  nginx:
-    build: ./nginx
-    container_name: test_deploy_nginx
-    volumes:
-      - ./recipesite/static:/app/recipesite/static/
-    ports:
-      - 8008:80
-    depends_on:
-      - web
   web:
     environment:
       - HT_DEBUG=True

@@ -19,10 +19,6 @@ And feel free to remove blocks you don't need to change.
 
 {% block recipe_body_content %}
 
-{##### Breadcrumbs #####}
-{% url "recipes:recipe-list" as recipes_list_url %}
-{% include "components/breadcrumbs.html" with page_title=recipe.title %}
-
 <article class="rec-container" data-recipe-id="{{ recipe.id }}">
 
   {# Control bar #}

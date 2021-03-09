@@ -36,12 +36,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Flat pages requirements
     "django.contrib.sites",
     # Other dependencies
     "adminsortable2",
     "djfractions",
     "tinymce",
+    # Accounts app, for custom user authentication
+    "accounts.apps.AccountsConfig",
     # Base objects app, required by downstream.
     "base_objects.apps.BaseObjectsConfig",
     # Put your new apps here!
@@ -106,6 +107,10 @@ DATABASES = {
 }
 
 
+# Authentication
+AUTH_USER_MODEL = "accounts.CustomUser"
+AUTHENTICATION_BACKENDS = ["accounts.backends.EmailBackend"]
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 # fmt: off
@@ -130,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [(BASE_DIR / "assets")]
+STATICFILES_DIRS = [(BASE_DIR / "assets" / "dist")]
 STATIC_ROOT = BASE_DIR / "static"
 
 

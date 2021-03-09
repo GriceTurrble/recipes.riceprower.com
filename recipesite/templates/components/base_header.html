@@ -1,0 +1,39 @@
+{% load static %}
+
+<header>
+  <nav class="flex p-6 items-center justify-between flex-wrap from-indigo-700 bg-gradient-to-r to-red-700">
+    <div class="flex items-center flex-no-shrink text-white mr-6">
+      {% include "components/logo_svg.html" with classes="fill-current h-12 mr-4" %}
+      <span class="font-semibold text-xl tracking-tight">RicePrower Recipes</span>
+    </div>
+    <div class="block lg:hidden">
+      <button class="top-bar-btn flex items-center px-3 py-2">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div class="text-sm lg:flex-grow">
+        <a href="/" class="block text-white lg:inline-block lg:mt-0 mr-4 mt-4">
+          Home
+        </a>
+        <a href="#" class="block text-white lg:inline-block lg:mt-0 mr-4 mt-4">
+          About
+        </a>
+      </div>
+      <div>
+        {% if request.user.is_staff %}
+        <a href="{% url 'admin:index' %}" class="top-bar-btn inline-block leading-none lg:mt-0 mt-4 px-4 py-2 text-sm">
+          <i class="fas fa-fw fa-user-cog"></i>
+          Admin
+        </a>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="top-bar-btn inline-block leading-none lg:mt-0 mt-4 px-4 py-2 text-sm">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          Logout
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>

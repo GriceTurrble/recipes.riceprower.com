@@ -18,14 +18,19 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from accounts.views import LoginView, RegisterView, logout_view
+
 # (Skip Black formatting in this section)
 urlpatterns = [
     # Admin at a non-"admin/" endpoint.
     # Attackers try to hit the common endpoints for the admin, so renaming it something
     # other than the obvious "admin/" is recommended.
     path("admit-tenant-tiger/", admin.site.urls),
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", logout_view, name="logout"),
+    # path("register/", RegisterView.as_view(), name="register"),
     # Django account endpoints.
-    path("accounts/", include("django.contrib.auth.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")),
     # TinyMCE's URLs.
     path("tinymce/", include("tinymce.urls")),
     # Flat pages (TODO out for now)

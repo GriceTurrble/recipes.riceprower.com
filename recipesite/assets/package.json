@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "buildtailwind": "tailwindcss build src/styles.css -o dist/css/styles.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^2.0.3",
+    "material-ui-colors": "^1.0.0"
+  }
+}

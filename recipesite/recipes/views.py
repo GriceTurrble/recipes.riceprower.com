@@ -27,7 +27,7 @@ from .models import Recipe
 
 class RecipeBaseViewMixin(PermissionRequiredMixin):
     permission_required = "recipes.view_recipe"
-    login_url = "/accounts/login/"
+    login_url = "/login/"
 
 
 class RecipeListView(RecipeBaseViewMixin, ListView):

@@ -154,3 +154,6 @@ fabric.yml
 
 *.env
 postgres-data/
+
+# JS stuff
+node_modules/

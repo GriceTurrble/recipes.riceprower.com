@@ -17,8 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.shortcuts import redirect, render
 
 from accounts.views import LoginView, RegisterView, logout_view
+
+
+def index_view(request):
+    """Quick index template view that redirects to recipes
+    if the user is already logged in.
+    """
+    if request.user.is_authenticated:
+        return redirect("recipes:recipe-list")
+    return render(request, "index.html", {})
+
 
 # (Skip Black formatting in this section)
 urlpatterns = [
@@ -26,18 +37,16 @@ urlpatterns = [
     # Attackers try to hit the common endpoints for the admin, so renaming it something
     # other than the obvious "admin/" is recommended.
     path("admit-tenant-tiger/", admin.site.urls),
+    # Custom account handling views
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", logout_view, name="logout"),
     # path("register/", RegisterView.as_view(), name="register"),
-    # Django account endpoints.
-    # path("accounts/", include("django.contrib.auth.urls")),
     # TinyMCE's URLs.
     path("tinymce/", include("tinymce.urls")),
-    # Flat pages (TODO out for now)
-    # path("pages/", include("django.contrib.flatpages.urls")),
     # Internal apps
-    # path("invoices/", include("invoices.urls")),
-    path("", include("recipes.urls")),
+    path("recipes/", include("recipes.urls")),
+    # Other views
+    path("", index_view, name="index"),
     # Home page
     # Django REST Framework
     # TODO not using REST at this time. Do this later, though!

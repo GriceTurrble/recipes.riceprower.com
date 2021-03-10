@@ -1,5 +1,6 @@
 from django.contrib.auth import logout
-from django.contrib import messages
+
+# from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.views.generic import CreateView
 from django.shortcuts import redirect
@@ -21,5 +22,5 @@ class RegisterView(CreateView):
 
 def logout_view(request):
     logout(request)
-    messages.info(request, "You have been logged out. Come back soon!")
+    # messages.info(request, "You have been logged out. Come back soon!")
     return redirect("/")

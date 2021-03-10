@@ -24,18 +24,21 @@
 
   <title>{% block head_title_override %}{% block head_title %}{% endblock head_title %} | Rice-Prower Recipes{% endblock head_title_override %}</title>
 </head>
-<body class="flex flex-col h-full">
+<body class="flex flex-col h-full" id="recipe-site-app">
   {% block full_body_override %}
   {% include "components/base_header.html" %}
 
   {# All main content resides within a container #}
-  <main role="main" class="flex-1 mx-auto p-8 container">
+  <main role="main" class="{% block main_body_classes %}flex-1 mx-auto p-8 container{% endblock main_body_classes %}">
     {% block body_content %}{% endblock body_content %}
   </main>
 
   {% include "components/base_footer.html" %}
 
   {## JAVASCRIPT LOADED AFTER BODY ##}
+  {# Vue #}
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> {# DEV version #}
+  {# <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> {# PROD version #}
   {# App JavaScript #}
   <script src="{% static 'js/app.js' %}?v=0.2.0"></script>  {# Tip: update the `?v` param to force browsers to recache a new file version. #}
 

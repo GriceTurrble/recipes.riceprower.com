@@ -5,7 +5,6 @@ services:
         - NODE_ENV=production
     environment:
       - HT_DEBUG=True
-      - NODE_ENV=production
     command: poetry run python /app/recipesite/manage.py runserver 0.0.0.0:8000
     depends_on:
       - db

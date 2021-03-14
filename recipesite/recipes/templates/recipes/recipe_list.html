@@ -14,17 +14,13 @@
 
   {# TODO add more here #}
 
-  <div class="col-lg-10 offset-lg-1">
-    {% for recipe in recipes %}
-    {% if forloop.first %}<div class="card-columns">{% endif %}
-      {% include "recipes/components/recipe_list/recipe_card.html" with recipe=recipe %}
-    {% if forloop.last %}</div>{% endif %}
-    {% empty %}
-    <div class="alert alert-warning font-italic">
-      No recipes found
-    </div>
-    {% endfor %}
+  {% for recipe in recipes %}
+    {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
+  {% empty %}
+  <div class="alert alert-warning font-italic">
+    No recipes found
   </div>
+  {% endfor %}
 {% endblock recipe_body_content %}
 
 {% block recipe_body_js %}{% endblock recipe_body_js %}

@@ -1,17 +1,21 @@
 {% load static %}
 
-<header>
+{% comment %}
+  Using alpineJs for open/close control
+  https://github.com/alpinejs/alpine/
+{% endcomment %}
+<header x-data="{ isOpen: false }">
   <nav class="flex p-6 items-center justify-between flex-wrap bg-indigo-500">
     <div class="flex items-center flex-no-shrink text-white mr-6">
       {% include "components/logo_svg.html" with classes="fill-current h-12 mr-4" %}
       <span class="font-semibold text-xl tracking-tight">RicePrower Recipes</span>
     </div>
     <div class="block lg:hidden">
-      <button class="top-bar-btn flex items-center px-3 py-2">
+      <button class="top-bar-btn flex items-center px-3 py-2" @click="isOpen = !isOpen">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" :class="{ 'hidden': !isOpen }">
       <div class="text-sm lg:flex-grow">
         <a href="{% url 'index' %}" class="block text-white lg:inline-block lg:mt-0 mr-4 mt-4">
           Home

@@ -36,11 +36,8 @@
   {% include "components/base_footer.html" %}
 
   {## JAVASCRIPT LOADED AFTER BODY ##}
-  {# Vue #}
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> {# DEV version #}
-  {# <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> {# PROD version #}
-  {# App JavaScript #}
-  <script src="{% static 'js/app.js' %}?v=0.2.0"></script>  {# Tip: update the `?v` param to force browsers to recache a new file version. #}
+  {# Alpine JS #}
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 
   {% block body_js %}{% endblock body_js %}
   {% endblock full_body_override %}

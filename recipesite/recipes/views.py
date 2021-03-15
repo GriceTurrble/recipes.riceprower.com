@@ -35,6 +35,7 @@ class RecipeListView(RecipeBaseViewMixin, ListView):
 
     model = Recipe
     context_object_name = "recipes"
+    paginate_by = 10
 
     def get_queryset(self) -> QuerySet:
         """Add a search capacity to the list view."""

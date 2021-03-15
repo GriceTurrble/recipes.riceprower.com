@@ -10,10 +10,10 @@
 {% endblock head_css %}
 
 {% block recipe_body_content %}
+  {# Search bar #}
   {% include "recipes/components/recipe_list/search.html" with search_term=search_term %}
 
-  {# TODO add more here #}
-
+  {# Search results #}
   {% for recipe in recipes %}
     {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
   {% empty %}
@@ -21,6 +21,9 @@
     No recipes found
   </div>
   {% endfor %}
+
+  {# Pagination #}
+  {% include "recipes/components/recipe_list/pagination_controls.html" %}
 {% endblock recipe_body_content %}
 
 {% block recipe_body_js %}{% endblock recipe_body_js %}

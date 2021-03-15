@@ -18,11 +18,13 @@
   >
     {# TODO incorporate hero image option to recipe model, add here. #}
     {# Currently just showing placeholder, would need to change to hero if available. #}
-    <img
-      class="max-w-full mb-2 sm:max-w-xs sm:mr-2 sm:mb-0"
-      src="{% static 'recipes/img/food-placeholder.png' %}"
-      alt=""
-    />
+    <div class="w-full sm:w-44">
+      <img
+        class="max-w-full mb-2 sm:mr-2 sm:mb-0"
+        src="{% static 'recipes/img/food-placeholder.png' %}"
+        alt=""
+      />
+    </div>
     <div
       class="flex flex-col justify-center"
     >
@@ -42,17 +44,6 @@
 
       <div class="mb-1 leading-6">
         {{ recipe.subtitle }}
-      </div>
-      <div class="">
-        {# TODO turn button to link, send to recipe detail. Should be done. #}
-        <button
-          type="button"
-          class="rounded px-3 py-2 text-sm
-            bg-indigo-500 text-white border border-transparent
-            hover:bg-indigo-200"
-        >
-          Get the recipe!
-        </button>
       </div>
     </div>
   </div>

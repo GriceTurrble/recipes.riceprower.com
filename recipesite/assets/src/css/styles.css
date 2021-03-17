@@ -5,3 +5,20 @@
 .top-bar-btn {
   @apply border rounded text-indigo-100 border-indigo-100 hover:bg-white hover:text-indigo-500 hover:border-transparent;
 }
+
+.rec-directions ol {
+  @apply list-decimal ml-5;
+}
+
+.rec-directions ul {
+  @apply list-disc ml-5;
+}
+
+.rec-directions ul li,
+.rec-directions ol li {
+  @apply mb-2;
+}
+
+.rec-directions ol li::marker {
+  @apply font-bold italic;
+}

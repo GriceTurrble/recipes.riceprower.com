@@ -21,27 +21,63 @@ And feel free to remove blocks you don't need to change.
 
 <article class="rec-container" data-recipe-id="{{ recipe.id }}">
 
-  {# Control bar #}
-  {% include "recipes/components/recipe_detail/controls.html" with recipe=recipe %}
+  <section class="rec-header flex justify-between">
+    {# TODO the whole header and image thing is borked, fix up #}
+    {# Header, description, and ingredients #}
+    <div class="flex flex-col py-4">
+      {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
+      {% if recipe.description %}
+      <div class="rec-description bg-gray-100 border border-transparent px-4 py-3 rounded-lg text-sm">
+        {{ recipe.description|safe }}
+      </div>
+      {% endif %}
+    </div>
 
-  {# Header #}
-  {% include "recipes/components/recipe_detail/header.html" with recipe=recipe %}
+    {# Hero image #}
+    <div class="w-full sm:w-1/2">
+      {% include 'recipes/components/recipe_detail/hero_image.html' with recipe=recipe %}
+    </div>
+  </section>
 
-  {# Scrollspy container for page controls #}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="start_scrollspy" %}
-    {# Page sections #}
-    {% include "recipes/components/recipe_detail/description.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/ingredients.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/directions.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/footnotes.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/nutrition.html" with recipe=recipe %}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="end_scrollspy" %}
+  {% if recipe.ingredients.all %}
+  <h2 class="text-2xl text-gray-500 uppercase">
+    Ingredients
+  </h2>
+  <section class="rec-ingredients">
+    {% include 'recipes/components/recipe_detail/ingredients.html' with recipe=recipe %}
+  </section>
+  {% endif %}
+
+  {# Directions #}
+  {% if recipe.directions %}
+  <section class="rec-directions">
+    <h2 class="text-2xl text-gray-500 uppercase">
+      Directions
+    </h2>
+    {{ recipe.directions|safe }}
+  </section>
+  {% endif %}
+
+  {# Footnotes #}
+  {% if recipe.footnotes %}
+  <section class="rec-footnotes">
+    <h2 class="text-2xl text-gray-500 uppercase">
+      Footnotes
+    </h2>
+    {{ recipe.footnotes|safe }}
+  </section>
+  {% endif %}
+
+  {# Nutrition label #}
+  {% if recipe.nutrition_label %}
+  <section class="rec-nutrition">
+    <h2 class="text-2xl text-gray-500 uppercase">
+      Nutrition
+    </h2>
+    <img class="border border-info img-fluid" src="{{ recipe.nutrition_label.url }}"/>
+  </section>
+  {% endif %}
 
 </article><!-- .rec-container -->
 
 {% endblock recipe_body_content %}
-
-
-{% block recipe_body_js %}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="scrollspy_js" %}
-{% endblock recipe_body_js %}

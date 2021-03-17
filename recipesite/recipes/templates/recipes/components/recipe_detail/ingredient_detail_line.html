@@ -6,9 +6,10 @@
     ingredient - a RecipeIngredient model instance.
 {% endcomment %}
 
-<div class="rec-ingredient-item list-group-item p-1 px-3"
-            data-rec-ingredient-id="{{ ingredient.pk }}"
-            data-rec-ingredient-type-id="{{ ingredient.type.id }}">
+<li
+  data-rec-ingredient-id="{{ ingredient.pk }}"
+  data-rec-ingredient-type-id="{{ ingredient.type.id }}"
+>
   {% spaceless %}
     {% comment %}
       Using spaceless, we wrap each part in a span so that we can control the spacing around them.
@@ -29,4 +30,4 @@
     <span class="ingredient-preparation">, {{ ingredient.preparation }}</span>
     {% endif %}
   {% endspaceless %}
-</div><!-- .list-group-item -->
+</li><!-- .list-group-item -->

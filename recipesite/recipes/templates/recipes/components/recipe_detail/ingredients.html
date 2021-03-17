@@ -7,43 +7,31 @@
       so it is best to prefetch these from the view code!
 {% endcomment %}
 
-{% if recipe.ingredients.all %}<a class="anchor" id="actual-recipe"></a>{% endif %}
-{% if recipe.ingredients.all %}
-<section class="rec-ingredients">
-  <div class="card mb-3">
-    <div class="card-header bg-info text-light font-weight-bold">
-      <i class="fas fa-list-ul"></i>
-      Ingredients
-    </div><!-- .card-header -->
-    <div class="list-group list-group-flush">
-      {% for ingredient in recipe.ingredients.all %}
-        {% if ingredient.section is None or ingredient.section.recipe != ingredient.recipe %}
-          {% comment %}
-            Hack.
-            Possible for an ingredient to be assigned to this Recipe, but then assigned
-            to some section that itself is assigned to a different recipe.
-            This check should not have to exist, but for now just in case, we'll avoid
-            some frontend confusion if the backend is all fucky.
-          {% endcomment %}
-          {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
-        {% endif %}
-      {% endfor %}
+{% for ingredient in recipe.ingredients.all %}
+  {% if forloop.first %}<ul>{% endif %}
+  {% if ingredient.section is None or ingredient.section.recipe != ingredient.recipe %}
+    {% comment %}
+      Hack.
+      Possible for an ingredient to be assigned to this Recipe, but then assigned
+      to some section that itself is assigned to a different recipe.
+      This check should not have to exist, but for now just in case, we'll avoid
+      some frontend confusion if the backend is all fucky.
+    {% endcomment %}
+    {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+  {% endif %}
+  {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
 
-      {% for ingredient_section in recipe.ingredient_sections.with_ingredients %}
-        <div class="list-group-item list-group-item-info font-weight-bold">
-          <i class="fas fa-puzzle-piece"></i>
-          {{ ingredient_section.name }}
-        </div><!-- .list-group-item -->
-        {% for ingredient in ingredient_section.sectioned_ingredients.all %}
-          {% comment %}
-            Hack. Same shit as above.
-          {% endcomment %}
-          {% if ingredient.recipe == recipe %}
-            {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-    </div><!-- .list-group -->
-  </div><!-- .card -->
-</section><!-- .rec-ingredients -->
-{% endif %}
+{% for ingredient_section in recipe.ingredient_sections.with_ingredients %}
+  <h3>{{ ingredient_section.name }}</h3>
+  {% for ingredient in ingredient_section.sectioned_ingredients.all %}
+    {% if forloop.first %}<ul>{% endif %}
+    {% comment %}
+      Hack. Same shit as above.
+    {% endcomment %}
+    {% if ingredient.recipe == recipe %}
+      {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+    {% endif %}
+    {% if forloop.first %}</ul>{% endif %}
+  {% endfor %}
+{% endfor %}

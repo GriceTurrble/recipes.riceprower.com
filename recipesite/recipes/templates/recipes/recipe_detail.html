@@ -19,27 +19,22 @@ And feel free to remove blocks you don't need to change.
 
 {% block recipe_body_content %}
 
-<article class="rec-container" data-recipe-id="{{ recipe.id }}">
+<article class="rec-container m-auto max-w-5xl" data-recipe-id="{{ recipe.id }}">
 
-  <section class="rec-header flex justify-between">
-    {# TODO the whole header and image thing is borked, fix up #}
-    {# Header, description, and ingredients #}
-    <div class="flex flex-col py-4">
-      {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
-      {% if recipe.description %}
-      <div class="rec-description bg-gray-100 border border-transparent px-4 py-3 rounded-lg text-sm">
-        {{ recipe.description|safe }}
-      </div>
-      {% endif %}
-    </div>
-
-    {# Hero image #}
-    <div class="w-full sm:w-1/2">
-      {% include 'recipes/components/recipe_detail/hero_image.html' with recipe=recipe %}
-    </div>
+  {# Header #}
+  <section class="rec-header">
+    {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
   </section>
 
+  {% if recipe.description %}
+  {# Description #}
+  <section class="rec-description">
+    {{ recipe.description|safe }}
+  </section>
+  {% endif %}
+
   {% if recipe.ingredients.all %}
+  {# Ingredients #}
   <h2 class="text-2xl text-gray-500 uppercase">
     Ingredients
   </h2>
@@ -48,8 +43,8 @@ And feel free to remove blocks you don't need to change.
   </section>
   {% endif %}
 
-  {# Directions #}
   {% if recipe.directions %}
+  {# Directions #}
   <section class="rec-directions">
     <h2 class="text-2xl text-gray-500 uppercase">
       Directions
@@ -58,8 +53,8 @@ And feel free to remove blocks you don't need to change.
   </section>
   {% endif %}
 
-  {# Footnotes #}
   {% if recipe.footnotes %}
+  {# Footnotes #}
   <section class="rec-footnotes">
     <h2 class="text-2xl text-gray-500 uppercase">
       Footnotes
@@ -68,8 +63,8 @@ And feel free to remove blocks you don't need to change.
   </section>
   {% endif %}
 
-  {# Nutrition label #}
   {% if recipe.nutrition_label %}
+  {# Nutrition label #}
   <section class="rec-nutrition">
     <h2 class="text-2xl text-gray-500 uppercase">
       Nutrition

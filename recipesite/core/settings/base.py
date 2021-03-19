@@ -262,3 +262,4 @@ CSP_IMG_SRC = [
     "https:",
     "data:",
 ]
+# TODO this still isn't working for Alpine's unsafe-eval. Check the content coming through frontend, see what's missing.

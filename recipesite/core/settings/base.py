@@ -251,10 +251,13 @@ CSP_DEFAULT_SRC = [
 # Allow unsafe-eval and unsafe-inline scripting
 # Note: CSP directives do not inherit, but we can approximate it
 # by combining lists:
-CSP_STYLE_SRC = CSP_DEFAULT_SRC + [
+CSP_STYLE_SRC = [
+    "'self'",
+    "https:",
     "https://kit.fontawesome.com",
+    "'unsafe-inline'",
 ]
-CSP_IMG_SRC = CSP_DEFAULT_SRC + [
+CSP_IMG_SRC = [
     "'self'",
     "https:",
     "data:",

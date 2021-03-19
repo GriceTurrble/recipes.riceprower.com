@@ -5,10 +5,6 @@
 {# Overwrite the original head_title block so we don't have a hanging chad, so to speak. #}
 {% block head_title %}Home{% endblock %}
 
-{% block head_css %}
-  <link rel="stylesheet" href="{% static 'recipes/css/recipe_list.css' %}">
-{% endblock head_css %}
-
 {% block recipe_body_content %}
   {# Search bar #}
   {% include "recipes/components/recipe_list/search.html" with search_term=search_term %}

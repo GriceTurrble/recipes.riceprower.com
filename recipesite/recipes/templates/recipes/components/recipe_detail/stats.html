@@ -5,12 +5,12 @@
     alt="prep time"
     class="w-8 mr-2"
   >
-  <div class="uppercase">
-    <span class="text-xs font-bold">
+  <div>
+    <span class="text-xs font-bold uppercase">
       Prep time
     </span>
-    <h6 class="text-indigo-500 font-bold text-xl leading-none">
-      {{ recipe.time_to_prep }}
+    <h6 class="text-indigo-500 font-bold leading-none">
+      {{ recipe.time_to_prep_str }}
     </h6>
   </div>
 </div>
@@ -22,11 +22,11 @@
     class="w-8 mr-2"
   >
   <div>
-    <span class="text-xs font-bold">
+    <span class="text-xs font-bold uppercase">
       Cook time
     </span>
-    <h6 class="text-indigo-500 font-bold text-xl leading-none">
-      {{ recipe.time_to_cook }}
+    <h6 class="text-indigo-500 font-bold leading-none">
+      {{ recipe.time_to_cook_str }}
     </h6>
   </div>
 </div>
@@ -38,10 +38,10 @@
     class="w-8 mr-2"
   >
   <div>
-    <span class="text-xs font-bold">
+    <span class="text-xs font-bold uppercase">
       Total time
     </span>
-    <h6 class="text-indigo-500 font-bold text-xl leading-none">
+    <h6 class="text-indigo-500 font-bold leading-none">
       {{ recipe.total_time_str }}
     </h6>
   </div>
@@ -54,10 +54,10 @@
     class="w-8 mr-2"
   >
   <div>
-    <span class="text-xs font-bold">
+    <span class="text-xs font-bold uppercase">
       Servings
     </span>
-    <h6 class="text-indigo-500 font-bold text-xl leading-none">
+    <h6 class="text-indigo-500 font-bold leading-none">
       ##
     </h6>
   </div>

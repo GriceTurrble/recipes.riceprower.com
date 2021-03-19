@@ -129,6 +129,8 @@ class Recipe(TimeTrackedModel):
             output += f"{hours} hour{'' if hours == 1 else 's'}{' ' if minutes else ''}"
         if minutes:
             output += f"{minutes} minute{'' if minutes == 1 else 's'}"
+        if not output:
+            output = "0 minutes"
         return output
 
     @property

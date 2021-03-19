@@ -20,6 +20,8 @@
   <script src="https://kit.fontawesome.com/4f678b0cb8.js" crossorigin="anonymous"></script>
 
   {## HEAD JS - deferred scripts only! ##}
+  {# Alpine JS #}
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
   {% block head_js %}{% endblock head_js %}
 
   <title>{% block head_title_override %}{% block head_title %}{% endblock head_title %} | Rice-Prower Recipes{% endblock head_title_override %}</title>
@@ -36,10 +38,8 @@
   {% include "components/base_footer.html" %}
 
   {## JAVASCRIPT LOADED AFTER BODY ##}
-  {# Alpine JS #}
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
-
   {% block body_js %}{% endblock body_js %}
+
   {% endblock full_body_override %}
 </body>
 </html>

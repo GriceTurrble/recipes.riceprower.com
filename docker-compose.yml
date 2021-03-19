@@ -3,8 +3,6 @@ services:
   web:
     build:
       context: .
-      labels:
-        com.riceprower.recipes.description: "Recipe storage web application used privately by Rice-Prower family"
       args:
         - NODE_ENV=production
     # Taking some recommendations for gunicorn from:

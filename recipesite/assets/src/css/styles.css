@@ -38,3 +38,9 @@
 .rec-search-result-line:hover::after {
   @apply top-2 -left-2;
 }
+
+
+/* This shit right here */
+.hide-for-print-because-alpine-tries-to-interpret-tailwind-modifiers {
+  @apply print:hidden;
+}

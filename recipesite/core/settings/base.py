@@ -244,11 +244,12 @@ TINYMCE_DEFAULT_CONFIG = {
 CSP_DEFAULT_SRC = [
     "'self'",
     "https:",
+    "'unsafe-inline'",
 ]
 # Allow unsafe-eval and unsafe-inline scripting
 # Note: CSP directives do not inherit, but we can approximate it
 # by combining lists:
 CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
-    "'unsafe-inline'",
+    "https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js",
     "'unsafe-eval'",
 ]

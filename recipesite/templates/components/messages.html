@@ -1,0 +1,17 @@
+<div class="flex flex-col max md:max-w-screen-sm mx-auto">
+  {% for message in messages %}
+  <span class="border border-transparent p-2 px-4 rounded
+              {% if message.level_tag == 'debug' %}bg-gray-400 text-white
+              {% elif message.level_tag == 'info' %}bg-blue-400 text-white
+              {% elif message.level_tag == 'success' %}bg-green-400 text-white
+              {% elif message.level_tag == 'warning' %}bg-orange-400 text-white
+              {% elif message.level_tag == 'error' %}bg-red-400 text-white
+              {% endif %}">
+    {% if message.level_tag == 'debug' %}<strong>DEBUG:</strong>
+    {% elif message.level_tag == 'warning' %}<strong>Warning:</strong>
+    {% elif message.level_tag == 'error' %}<strong>Error:</strong>
+    {% endif %}
+    {{ message }}
+  </span>
+  {% endfor %}
+</div>

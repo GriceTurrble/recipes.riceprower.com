@@ -20,15 +20,22 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .models import Recipe
 
 
-class RecipeListView(ListView):
+class RecipeBaseViewMixin(PermissionRequiredMixin):
+    permission_required = "recipes.view_recipe"
+    login_url = "/login/"
+
+
+class RecipeListView(RecipeBaseViewMixin, ListView):
     """List view for Recipe collection."""
 
     model = Recipe
     context_object_name = "recipes"
+    paginate_by = 10
 
     def get_queryset(self) -> QuerySet:
         """Add a search capacity to the list view."""
@@ -61,7 +68,7 @@ class RecipeListView(ListView):
         return context
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(RecipeBaseViewMixin, DetailView):
     """Detail view for a Recipe instance."""
 
     context_object_name = "recipe"

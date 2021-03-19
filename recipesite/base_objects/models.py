@@ -1,16 +1,13 @@
 """Base abstract models that all project models should inherit from."""
 
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.conf import settings
 
 from .managers import (
     OwnedModelManager,
     OwnedTimeTrackedModelManager,
     TimeTrackedModelManager,
 )
-
-
-User = get_user_model()
 
 
 class TimeTrackedModel(models.Model):
@@ -34,7 +31,9 @@ class OwnedModel(models.Model):
 
     objects = OwnedModelManager()
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="+"
+    )
     """User who owns this model instance."""
 
     class Meta:

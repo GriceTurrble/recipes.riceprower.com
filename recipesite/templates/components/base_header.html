@@ -1,0 +1,44 @@
+{% load static %}
+
+{% comment %}
+  Using alpineJs for open/close control
+  https://github.com/alpinejs/alpine/
+{% endcomment %}
+<header class="print:hidden" x-data="{ isOpen: false }">
+  <nav class="flex p-6 items-center justify-between flex-wrap bg-indigo-500">
+    <a
+      href="{% url 'recipes:recipe-list' %}"
+      class="flex items-center flex-no-shrink text-white mr-6"
+    >
+      {% include "components/logo_svg.html" with classes="fill-current h-12 mr-4" %}
+      <span class="font-semibold text-xl tracking-tight">RicePrower Recipes</span>
+    </a>
+    <div class="block lg:hidden">
+      <button class="top-bar-btn flex items-center px-3 py-2" @click="isOpen = !isOpen">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="w-full block lg:flex lg:items-center lg:w-auto" :class="{ 'hidden': !isOpen }">
+      <div class="flex flex-col lg:block text-center">
+        {% if request.user.is_staff %}
+        <a
+          href="{% url 'admin:index' %}"
+          class="top-bar-btn inline-block lg:mt-0 mt-4 px-4 py-2 lg:text-sm"
+        >
+          <i class="fas fa-fw fa-user-cog"></i>
+          Admin
+        </a>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <a
+          href="{% url 'logout' %}"
+          class="top-bar-btn inline-block lg:mt-0 mt-4 px-4 py-2 lg:text-sm"
+        >
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          Logout
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>

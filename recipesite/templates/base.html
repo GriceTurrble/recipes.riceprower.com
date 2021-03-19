@@ -4,19 +4,15 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {# Extra meta tags per page can go here #}
   {% block head_extra_meta %}{% endblock %}
 
-  {## HEAD CSS ##}
-  {# Bootstrap v4.5.2 via CDN #}
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
   {# App CSS #}
-  <link rel="stylesheet" href="{% static 'css/app.css' %}?v=0.1.0">  {# Tip: update the `?v` param to force browsers to recache a new file version. #}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=0.2.0">  {# Tip: update the `?v` param to force browsers to recache a new file version. #}
   {# Extra JS from downstream apps goes here #}
   {% block head_css %}{% endblock %}
 
@@ -26,32 +22,24 @@
   {## HEAD JS - deferred scripts only! ##}
   {% block head_js %}{% endblock head_js %}
 
-  <title>{% block head_title %}{% endblock %} | Rice-Prower Recipes</title>
+  <title>{% block head_title_override %}{% block head_title %}{% endblock head_title %} | Rice-Prower Recipes{% endblock head_title_override %}</title>
 </head>
-<body>
-  <a class="anchor" id="top-of-page"></a>
-
-  <header>
-    {% include "components/base_navbar.html" %}
-  </header>
+<body class="flex flex-col h-full" id="recipe-site-app">
+  {% block full_body_override %}
+  {% include "components/base_header.html" %}
 
   {# All main content resides within a container #}
-  <main role="main" class="container {% block body_container_classes %}{% endblock %}">
-    {% block body_content %}{% endblock %}
+  <main role="main" class="{% block main_body_classes %}flex-1 mx-auto p-8 container{% endblock main_body_classes %}">
+    {% block body_content %}{% endblock body_content %}
   </main>
 
-  <footer class="footer">
-    {% include "components/base_footer.html" %}
-  </footer>
+  {% include "components/base_footer.html" %}
 
   {## JAVASCRIPT LOADED AFTER BODY ##}
-  {# Bootstrap v4.5.2 via CDN #}
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  {# App JavaScript #}
-  <script src="{% static 'js/app.js' %}?v=0.2.0"></script>  {# Tip: update the `?v` param to force browsers to recache a new file version. #}
+  {# Alpine JS #}
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
 
-  {% block body_js %}{% endblock %}
+  {% block body_js %}{% endblock body_js %}
+  {% endblock full_body_override %}
 </body>
 </html>

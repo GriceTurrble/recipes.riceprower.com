@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block head_title %}Welcome!{% endblock head_title %}
+
+<div>
+  <h2 class="font-semibold sm:text-3xl text-2xl">
+    Not your grandma's recipe book
+  </h1>
+  <p class="mt-2">
+    We cook things. We usually eat the things we cook. And sometimes we like to
+    cook those things again.
+  </p>
+  <p class="mt-2">
+    And we tend to forget things, so sometimes we need a reference point.
+  </p>
+  <p class="mt-2">
+    Well ... that and big G is a nerd who has to over-engineer everything he touches.
+  </p>
+  <hr />
+  <p class="mt-2">
+    This site is built to indulge those desires, catalog the things we like, and
+    help us eat better and healthier as a family.
+  </p>
+  <p class="mt-2">
+    If you're reading this, it means <strong>we like you</strong> enough to share
+    these recipes with you. No need to feel honored, but still.
+  </p>
+</div>
+
+{# {% block main_body_classes %}flex-1{% endblock main_body_classes %} #}
+
+{% block full_body_override %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+  <div class="max-h-96 md:h-screen">
+    <img class="w-screen h-screen object-cover object-top" src="https://images.pexels.com/photos/2762942/pexels-photo-2762942.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="">
+  </div>
+  <div class="flex bg-indigo-500 text-white p-10">
+    <div class="mb-auto mt-auto max-w-lg">
+      <h1 class="font-semibold sm:text-4xl text-3xl">
+        {% include 'components/logo_svg.html' with classes="fill-current h-10 inline-block sm:h-14" %}
+        RP Recipes
+      </h1>
+      <a
+        href="{% url 'recipes:recipe-list' %}"
+        class="block sm:inline-block text-center rounded-md py-3 px-7 mt-6 border
+          bg-transparent
+          border-white
+          text-white
+          hover:bg-white
+          hover:text-indigo-500"
+      >
+        <i class="fas fa-utensils"></i>
+        What's on the menu?
+      </a>
+      <p class="mt-4">
+        We cook things. We eat those things. Occasionally we like them, and want to cook them again.
+      </p>
+      <p class="mt-4">
+        Here's where our family stores their best recipes for all occasions.
+        And since big G is a nerd who has to over-engineer everything he touches,
+        there are some other nifty automation tools in here, as well.
+      </p>
+      <p class="mt-4 text-gray-300 text-sm">
+        This site is semi-private.
+        Account login is required, and accounts are invite-only.
+      </p>
+      <p class="mt-1 text-gray-300 text-sm">
+        By entering this site, you agree that big G's chili is the best in the world.
+      </p>
+      <p class="mt-1 text-gray-300 text-sm">
+        No, that's not my pizza, it's just stock art from <a class="text-gray-100" href="https://pexels.com" target="_blank">pexels</a>.
+      </p>
+      <p class="mt-1 text-gray-300 text-sm">
+        © 2020-{% now 'Y' %}. All bites reserved.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock full_body_override %}

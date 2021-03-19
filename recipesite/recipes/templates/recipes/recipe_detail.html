@@ -19,33 +19,78 @@ And feel free to remove blocks you don't need to change.
 
 {% block recipe_body_content %}
 
-{##### Breadcrumbs #####}
-{% url "recipes:recipe-list" as recipes_list_url %}
-{% include "components/breadcrumbs.html" with page_title=recipe.title %}
+<article class="rec-container m-auto max-w-4xl" data-recipe-id="{{ recipe.id }}">
 
-<article class="rec-container" data-recipe-id="{{ recipe.id }}">
-
-  {# Control bar #}
-  {% include "recipes/components/recipe_detail/controls.html" with recipe=recipe %}
+  {# Controls #}
+  <section class="rec-controls">
+    {% include 'recipes/components/recipe_detail/controls.html' with recipe=recipe %}
+  </section>
 
   {# Header #}
-  {% include "recipes/components/recipe_detail/header.html" with recipe=recipe %}
+  <section class="rec-header">
+    {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
+  </section>
 
-  {# Scrollspy container for page controls #}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="start_scrollspy" %}
-    {# Page sections #}
-    {% include "recipes/components/recipe_detail/description.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/ingredients.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/directions.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/footnotes.html" with recipe=recipe %}
-    {% include "recipes/components/recipe_detail/nutrition.html" with recipe=recipe %}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="end_scrollspy" %}
+  <div class="m-auto max-w-2xl">
+    {# Stats #}
+    <section class="rec-stats flex md:justify-between flex-wrap m-auto my-4 print:my-0">
+      {% include 'recipes/components/recipe_detail/stats.html' with recipe=recipe %}
+    </section>
+
+    {% if recipe.description %}
+    {# Description #}
+    <section class="rec-description mb-5 p-3 rounded bg-gray-50 print:hidden">
+      <div class="tiny-mce-content">
+        {{ recipe.description|safe }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if recipe.ingredients.all %}
+    {# Ingredients #}
+    <section class="rec-ingredients mb-10">
+      <h2 class="text-2xl text-indigo-500 uppercase font-bold mb-2">
+        Ingredients
+      </h2>
+      {% include 'recipes/components/recipe_detail/ingredients.html' with recipe=recipe %}
+    </section>
+    {% endif %}
+
+    {% if recipe.directions %}
+    {# Directions #}
+    <section class="rec-directions mb-10">
+      <h2 class="text-2xl text-indigo-500 uppercase font-bold mb-2">
+        Directions
+      </h2>
+      <div class="tiny-mce-content pl-4">
+        {{ recipe.directions|safe }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if recipe.footnotes %}
+    {# Footnotes #}
+    <section class="rec-footnotes mb-10">
+      <h2 class="text-2xl text-indigo-500 uppercase font-bold mb-2">
+        Footnotes
+      </h2>
+      <div class="tiny-mce-content pl-4">
+        {{ recipe.footnotes|safe }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if recipe.nutrition_label %}
+    {# Nutrition label #}
+    <section class="rec-nutrition mb-10">
+      <h2 class="text-2xl text-indigo-500 uppercase font-bold mb-2">
+        Nutrition
+      </h2>
+      <img class="border border-info img-fluid" src="{{ recipe.nutrition_label.url }}"/>
+    </section>
+    {% endif %}
+  </div>
 
 </article><!-- .rec-container -->
 
 {% endblock recipe_body_content %}
-
-
-{% block recipe_body_js %}
-  {% include "recipes/components/recipe_detail/controls.html" with mode="scrollspy_js" %}
-{% endblock recipe_body_js %}

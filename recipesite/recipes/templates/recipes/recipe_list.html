@@ -10,20 +10,20 @@
 {% endblock head_css %}
 
 {% block recipe_body_content %}
-  {% include "components/breadcrumbs.html" with is_root=True %}
-  {% include "recipes/components/recipe_list/title_card.html" with recipes=recipes search_term=search_term all_recipes_count=all_recipes_count %}
+  {# Search bar #}
+  {% include "recipes/components/recipe_list/search.html" with search_term=search_term %}
 
-  <div class="col-lg-10 offset-lg-1">
-    {% for recipe in recipes %}
-    {% if forloop.first %}<div class="card-columns">{% endif %}
-      {% include "recipes/components/recipe_list/recipe_card.html" with recipe=recipe %}
-    {% if forloop.last %}</div>{% endif %}
-    {% empty %}
-    <div class="alert alert-warning font-italic">
-      No recipes found
-    </div>
-    {% endfor %}
+  {# Search results #}
+  {% for recipe in recipes %}
+    {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
+  {% empty %}
+  <div class="alert alert-warning font-italic">
+    No recipes found
   </div>
+  {% endfor %}
+
+  {# Pagination #}
+  {% include "recipes/components/recipe_list/pagination_controls.html" %}
 {% endblock recipe_body_content %}
 
 {% block recipe_body_js %}{% endblock recipe_body_js %}

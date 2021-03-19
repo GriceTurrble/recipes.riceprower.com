@@ -1,5 +1,8 @@
 services:
   web:
+    build:
+      args:
+        - NODE_ENV=production
     environment:
       - HT_DEBUG=True
     command: poetry run python /app/recipesite/manage.py runserver 0.0.0.0:8000

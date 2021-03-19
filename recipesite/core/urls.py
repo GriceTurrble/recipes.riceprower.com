@@ -19,7 +19,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import redirect, render
 
-from accounts.views import LoginView, RegisterView, logout_view
+from accounts.views import LoginView
+
+# from accounts.views import RegisterView
+from accounts.views import logout_view
 
 
 def index_view(request):

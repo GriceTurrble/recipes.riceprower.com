@@ -2,11 +2,15 @@ from django.contrib.auth import logout
 
 # from django.contrib import messages
 from django.contrib.auth import views as auth_views
-from django.views.generic import CreateView
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
 
-from .forms import LoginForm, RegisterForm
+# from django.views.generic import CreateView
+from django.shortcuts import redirect
+
+# from django.urls import reverse_lazy
+
+from .forms import LoginForm
+
+# from .forms import RegisterForm
 
 
 class LoginView(auth_views.LoginView):
@@ -14,10 +18,10 @@ class LoginView(auth_views.LoginView):
     template_name = "accounts/login.html"
 
 
-class RegisterView(CreateView):
-    form_class = RegisterForm
-    template_name = "accounts/register.html"
-    success_url = reverse_lazy("login")
+# class RegisterView(CreateView):
+#     form_class = RegisterForm
+#     template_name = "accounts/register.html"
+#     success_url = reverse_lazy("login")
 
 
 def logout_view(request):

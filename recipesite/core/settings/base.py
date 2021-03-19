@@ -56,6 +56,8 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    # CSP middleware: https://django-csp.readthedocs.io/en/latest/installation.html
+    "csp.middleware.CSPMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -225,3 +227,28 @@ TINYMCE_DEFAULT_CONFIG = {
         "removeformat | help"
     ),
 }
+
+
+## CSP policies via django-csp
+# See: https://django-csp.readthedocs.io/en/latest/configuration.html
+
+# Enabled by the MIDDLEWARE "csp.middleware.CSPMiddleware"
+
+# Details on CSP via Google Web Fundamentals, which is great reading material:
+# https://developers.google.com/web/fundamentals/security/csp
+
+# Spec from W3:
+# https://www.w3.org/TR/CSP3/
+
+# Set default to self domain and https: only
+CSP_DEFAULT_SRC = [
+    "'self'",
+    "https:",
+]
+# Allow unsafe-eval and unsafe-inline scripting
+# Note: CSP directives do not inherit, but we can approximate it
+# by combining lists:
+CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+]

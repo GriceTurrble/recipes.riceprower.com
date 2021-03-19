@@ -168,6 +168,21 @@ python-versions = "*"
 Django = ">=1.8,<3.2"
 
 [[package]]
+name = "django-csp"
+version = "3.7"
+description = "Django Content Security Policy support."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.8"
+
+[package.extras]
+jinja2 = ["jinja2 (>=2.9.6)"]
+tests = ["pytest (<4.0)", "pytest-django", "pytest-flakes (==1.0.1)", "pytest-pep8 (==1.0.6)", "pep8 (==1.4.6)", "mock (==1.0.1)", "six (==1.12.0)", "jinja2 (>=2.9.6)"]
+
+[[package]]
 name = "django-filter"
 version = "2.4.0"
 description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
@@ -588,7 +603,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "4a3b8860dcd4b5c208dbf5688b2b5b5383573b4748d2b517f05fa0c9d653c411"
+content-hash = "9c27b1941993eeedff805ecce97e75a052a3f9ffcaa67bbfc7392f8203052e6d"
 
 [metadata.files]
 appdirs = [
@@ -691,6 +706,10 @@ django = [
 django-admin-sortable2 = [
     {file = "django-admin-sortable2-0.7.8.tar.gz", hash = "sha256:d523388976c9254f130375cb16c636369e89a5fd1db7a025253aeb497ce6018e"},
     {file = "django_admin_sortable2-0.7.8-py3-none-any.whl", hash = "sha256:b51a161b6dc69aedcba3c216df4aef58d54f389d0c4d2c720f59cf2d3f594c00"},
+]
+django-csp = [
+    {file = "django_csp-3.7-py2.py3-none-any.whl", hash = "sha256:01443a07723f9a479d498bd7bb63571aaa771e690f64bde515db6cdb76e8041a"},
+    {file = "django_csp-3.7.tar.gz", hash = "sha256:01eda02ad3f10261c74131cdc0b5a6a62b7c7ad4fd017fbefb7a14776e0a9727"},
 ]
 django-filter = [
     {file = "django-filter-2.4.0.tar.gz", hash = "sha256:84e9d5bb93f237e451db814ed422a3a625751cbc9968b484ecc74964a8696b06"},

@@ -4,7 +4,7 @@
   Using alpineJs for open/close control
   https://github.com/alpinejs/alpine/
 {% endcomment %}
-<header class="hide-for-print-because-alpine-tries-to-interpret-tailwind-modifiers" x-data="{ isOpen: false }">
+<header class="print:hidden" x-data="{ isOpen: false }">
   <nav class="flex p-6 items-center justify-between flex-wrap bg-indigo-500">
     <a
       href="{% url 'recipes:recipe-list' %}"

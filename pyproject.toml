@@ -27,9 +27,9 @@ markers = "platform_system == 'Linux'"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
 pytest-django = "^4.1.0"
-flake8 = "^3.8.4"
+flake8 = "^3.9.0"
 black = "^20.8b1"
-pre-commit = "^2.11.0"
+pre-commit = "^2.11.1"
 fabric = "^2.6.0"
 
 [build-system]

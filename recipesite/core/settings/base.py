@@ -250,6 +250,14 @@ CSP_DEFAULT_SRC = [
 # Note: CSP directives do not inherit, but we can approximate it
 # by combining lists:
 CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
-    "https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js",
+    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
     "'unsafe-eval'",
+]
+CSP_STYLE_SRC = CSP_DEFAULT_SRC + [
+    "https://kit.fontawesome.com",
+]
+CSP_IMG_SRC = CSP_DEFAULT_SRC + [
+    "'self'",
+    "https:",
+    "data:",
 ]

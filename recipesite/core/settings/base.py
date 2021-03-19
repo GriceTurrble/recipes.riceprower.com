@@ -244,15 +244,13 @@ TINYMCE_DEFAULT_CONFIG = {
 CSP_DEFAULT_SRC = [
     "'self'",
     "https:",
+    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
     "'unsafe-inline'",
+    "'unsafe-eval'",
 ]
 # Allow unsafe-eval and unsafe-inline scripting
 # Note: CSP directives do not inherit, but we can approximate it
 # by combining lists:
-CSP_SCRIPT_SRC = CSP_DEFAULT_SRC + [
-    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
-    "'unsafe-eval'",
-]
 CSP_STYLE_SRC = CSP_DEFAULT_SRC + [
     "https://kit.fontawesome.com",
 ]

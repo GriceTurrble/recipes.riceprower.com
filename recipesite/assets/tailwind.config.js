@@ -15,9 +15,27 @@ module.exports = {
     extend: {
       colors: { ...colors },
       screens: {
-        // print styles
+        // Print utility styles
+        // https://tailwindcss.com/docs/breakpoints#styling-for-print
         'print': {'raw': 'print'},
       },
+      transitionProperty: {
+        // Transform property utilities for inset properties
+        // https://tailwindcss.com/docs/transition-property#property-values
+        'top': 'top',
+        'left': 'left',
+        'right': 'right',
+        'bottom': 'bottom',
+        'top-left': 'top, left',
+        'top-right': 'top, right',
+        'bottom-left': 'bottom, left',
+        'bottom-right': 'bottom, right',
+      },
+      zIndex: {
+        // Negative value z-index utility
+        // https://tailwindcss.com/docs/z-index#negative-values
+        '-10': '-10',
+      }
     },
   },
   variants: {

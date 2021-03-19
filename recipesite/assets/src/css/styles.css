@@ -23,3 +23,18 @@
 .rec-directions .tiny-mce-content ol li::marker {
   @apply font-bold italic;
 }
+
+
+/* Recipe search result lines with some snazzy hover effects */
+.rec-search-result-line {
+  @apply relative block transform transition-transform hover:-translate-y-2 hover:translate-x-2;
+}
+
+.rec-search-result-line::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full -z-10 bg-indigo-500 transition-top-left;
+}
+
+.rec-search-result-line:hover::after {
+  @apply top-2 -left-2;
+}

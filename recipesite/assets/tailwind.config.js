@@ -13,7 +13,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      colors: { ...colors }
+      colors: { ...colors },
+      screens: {
+        // print styles
+        'print': {'raw': 'print'},
+      },
     },
   },
   variants: {

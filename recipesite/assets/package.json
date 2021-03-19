@@ -5,8 +5,7 @@
   "dependencies": {
     "autoprefixer": "^10.2.5",
     "material-ui-colors": "^1.0.0",
-    "postcss": "^8.2.7",
-    "tailwindcss": "^2.0.3",
-    "vue": "^3.0.7"
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.4"
   }
 }

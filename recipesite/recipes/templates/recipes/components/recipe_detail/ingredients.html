@@ -8,7 +8,9 @@
 {% endcomment %}
 
 {% for ingredient in recipe.ingredients.all %}
-  {% if forloop.first %}<ul>{% endif %}
+  {% if forloop.first %}
+  <ul class="list-disc list-outside ml-10">
+  {% endif %}
   {% if ingredient.section is None or ingredient.section.recipe != ingredient.recipe %}
     {% comment %}
       Hack.
@@ -19,19 +21,25 @@
     {% endcomment %}
     {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
   {% endif %}
-  {% if forloop.last %}</ul>{% endif %}
+  {% if forloop.last %}
+  </ul>
+  {% endif %}
 {% endfor %}
 
 {% for ingredient_section in recipe.ingredient_sections.with_ingredients %}
   <h3>{{ ingredient_section.name }}</h3>
   {% for ingredient in ingredient_section.sectioned_ingredients.all %}
-    {% if forloop.first %}<ul>{% endif %}
+    {% if forloop.first %}
+    <ul class="list-disc list-outside ml-10">
+    {% endif %}
     {% comment %}
       Hack. Same shit as above.
     {% endcomment %}
     {% if ingredient.recipe == recipe %}
       {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
     {% endif %}
-    {% if forloop.first %}</ul>{% endif %}
+    {% if forloop.first %}
+    </ul>
+    {% endif %}
   {% endfor %}
 {% endfor %}

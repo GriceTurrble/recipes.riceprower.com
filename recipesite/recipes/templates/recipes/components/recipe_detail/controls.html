@@ -1,0 +1,28 @@
+{% comment %}
+  Controls for the recipe detail page
+{% endcomment %}
+
+<div class="flex flex-row justify-between mb-5 print:hidden">
+  <div>
+    {# Print button #}
+    <button
+      onclick="window.print();"
+      class="bg-indigo-500 border border-transparent px-2 py-1 rounded text-white"
+    >
+      <i class="fas fa-print"></i>
+      Print
+    </button>
+  </div>
+
+  {% if perms.recipes.change_recipe %}
+  <div>
+    <a
+      href="{% url 'admin:recipes_recipe_change' recipe.id %}"
+      class="bg-green-500 border border-transparent px-2 py-1 rounded text-white"
+    >
+      <i class="far fa-edit"></i>
+      Edit
+    </a>
+  </div>
+  {% endif %}
+</div>

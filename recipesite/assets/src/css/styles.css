@@ -7,16 +7,29 @@
 }
 
 .tiny-mce-content ol {
-  @apply list-decimal ml-5;
+  @apply list-decimal;
 }
 
 .tiny-mce-content ul {
-  @apply list-disc ml-5;
+  @apply list-disc;
+}
+
+.tiny-mce-content ul,
+.tiny-mce-content ol {
+  @apply ml-5;
 }
 
 .tiny-mce-content ul li,
 .tiny-mce-content ol li {
-  @apply mb-3 pl-3;
+  @apply pl-3;
+}
+
+.tiny-mce-content ul:not(:last-child),
+.tiny-mce-content ol:not(:last-child),
+.tiny-mce-content ul li:not(:last-child),
+.tiny-mce-content ol li:not(:last-child),
+.tiny-mce-content p:not(:last-child) {
+  @apply mb-3;
 }
 
 /* Special styles for ordered lists in directions only */

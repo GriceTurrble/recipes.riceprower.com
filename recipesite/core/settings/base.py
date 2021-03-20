@@ -243,7 +243,6 @@ TINYMCE_DEFAULT_CONFIG = {
 # Set default to self domain and https: only
 CSP_DEFAULT_SRC = [
     "'self'",
-    "https:",
     "'unsafe-inline'",
     "'unsafe-eval'",
 ]
@@ -257,7 +256,6 @@ CSP_SCRIPT_SRC = [
 # by combining lists:
 CSP_STYLE_SRC = [
     "'self'",
-    "https:",
     "https://kit.fontawesome.com",
     "'unsafe-inline'",
 ]

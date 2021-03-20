@@ -249,6 +249,7 @@ CSP_DEFAULT_SRC = [
 CSP_SCRIPT_SRC = [
     "https:",
     "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
+    "'unsafe-inline'",
     "'unsafe-eval'",
 ]
 # Allow unsafe-eval and unsafe-inline scripting
@@ -263,5 +264,8 @@ CSP_IMG_SRC = [
     "'self'",
     "https:",
     "data:",
+]
+CSP_CONNECT_SRT = [
+    "https://ka-f.fontawesome.com",
 ]
 # TODO this still isn't working for Alpine's unsafe-eval. Check the content coming through frontend, see what's missing.

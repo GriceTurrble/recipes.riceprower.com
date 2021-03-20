@@ -35,9 +35,6 @@ echo ">> Updating python packages"
 echo ">> Migrating database changes"
 . $THIS_DIR/django-cmd.sh migrate --noinput
 
-echo ">> Rebuilding NPM assets"
-. $THIS_DIR/rebuild-npm.sh
-
 echo ">> Collecting static files"
 . $THIS_DIR/django-cmd.sh collectstatic --clear --noinput
 

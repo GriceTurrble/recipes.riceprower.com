@@ -244,8 +244,12 @@ TINYMCE_DEFAULT_CONFIG = {
 CSP_DEFAULT_SRC = [
     "'self'",
     "https:",
-    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
     "'unsafe-inline'",
+    "'unsafe-eval'",
+]
+CSP_SCRIPT_SRC = [
+    "https:",
+    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
     "'unsafe-eval'",
 ]
 # Allow unsafe-eval and unsafe-inline scripting

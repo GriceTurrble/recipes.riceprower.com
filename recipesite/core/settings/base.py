@@ -247,8 +247,10 @@ CSP_DEFAULT_SRC = [
     "'unsafe-eval'",
 ]
 CSP_SCRIPT_SRC = [
+    "'self'",
     "https:",
     "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
+    "'sha256-eB8zFOmMMFp7pQaAQ9h2C1RxNPAUVRUQdUd5E1pXghc='",
     "'unsafe-eval'",
 ]
 # Allow unsafe-eval and unsafe-inline scripting
@@ -256,6 +258,7 @@ CSP_SCRIPT_SRC = [
 # by combining lists:
 CSP_STYLE_SRC = [
     "'self'",
+    "'unsafe-inline'",
     "https://kit.fontawesome.com",
 ]
 CSP_IMG_SRC = [

@@ -268,4 +268,7 @@ CSP_IMG_SRC = [
 CSP_CONNECT_SRC = [
     "https://ka-f.fontawesome.com",
 ]
+CSP_FONT_SRC = [
+    "https://ka-f.fontawesome.com",
+]
 # TODO this still isn't working for Alpine's unsafe-eval. Check the content coming through frontend, see what's missing.

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###
-# Rebuilds our images and re-ups services, forcing container recreation
+# Rebuilds NPM styles
 ###
 
 # Detects if script are not running as root
@@ -23,4 +23,4 @@ fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
-. $THIS_DIR/docker-compose-cmd.sh build --no-cache
+. $THIS_DIR/docker-compose-cmd.sh exec web bash -c "cd /app/recipesite/assets && NODE_ENV=production npm run build"

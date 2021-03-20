@@ -23,13 +23,28 @@ fi
 
 THIS_DIR="$(dirname "$(readlink -f "$0")")"
 
-# Update python packages
+echo ">> Bringing services down"
+. $THIS_DIR/stop.sh
+
+echo ">> Rebuilding images"
+. $THIS_DIR/rebuild-images.sh
+
+echo ">> Updating python packages"
 . $THIS_DIR/docker-compose-cmd.sh exec web poetry install --no-dev --no-root --no-interaction
 
-# Migrate database changes
+echo ">> Migrating database changes"
 . $THIS_DIR/django-cmd.sh migrate --noinput
-# Collect static files
+
+echo ">> Rebuilding NPM assets"
+. $THIS_DIR/rebuild-npm.sh
+
+echo ">> Collecting static files"
 . $THIS_DIR/django-cmd.sh collectstatic --clear --noinput
 
-# Restart Nginx
+echo ">> Restarting Nginx"
 systemctl restart nginx
+
+echo ">> Bringing services up"
+. $THIS_DIR/start.sh
+
+echo ">> Update complete. Check the live site now!"

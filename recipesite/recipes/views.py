@@ -20,13 +20,12 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Recipe
 
 
-class RecipeBaseViewMixin(PermissionRequiredMixin):
-    permission_required = "recipes.view_recipe"
+class RecipeBaseViewMixin(LoginRequiredMixin):
     login_url = "/login/"
 
 
@@ -40,6 +39,11 @@ class RecipeListView(RecipeBaseViewMixin, ListView):
     def get_queryset(self) -> QuerySet:
         """Add a search capacity to the list view."""
         qs = super().get_queryset()
+
+        if not self.request.user.is_authenticated:
+            # Remove private recipes from the results
+            qs = qs.filter(is_private=False)
+
         query_term = self.request.GET.get("query")
         if query_term:
             # fmt: off

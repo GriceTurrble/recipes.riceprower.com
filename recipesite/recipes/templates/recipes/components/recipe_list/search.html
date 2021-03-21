@@ -30,10 +30,7 @@
     whereas `recipes.count` shows number of items in current page (which is irrelevant).
   {% endcomment %}
   {% with return_count=paginator.count %}
-  <div
-    class="flex justify-between px-5 py-2 rounded-sm text-sm
-           text-gray-400"
-  >
+  <div class="flex justify-between items-center px-5 my-3 text-sm text-gray-500">
     <div>
       Showing results for
       "<strong>{{ search_term }}</strong>"
@@ -41,9 +38,7 @@
     </div>
     <a
       href="{% url 'recipes:recipe-list' %}"
-      class="flex items-center px-2 py-1 rounded text-xs whitespace-nowrap
-             border border-gray-400
-             hover:bg-gray-400 hover:border-transparent hover:text-white"
+      class="flex items-center px-2 py-1 rounded text-xs whitespace-nowrap border border-transparent bg-gray-500 text-white hover:bg-gray-400"
     >
       <span>
         <i class="fas fa-ban"></i>

@@ -39,6 +39,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "subtitle",
+        "is_private",
     ]
     search_fields = ["title", "subtitle"]
     # fmt: off
@@ -47,6 +48,7 @@ class RecipeAdmin(admin.ModelAdmin):
             "fields": (
                 ("title", "slug"),
                 "subtitle",
+                "is_private",
             ),
         }),
         ("Description", {

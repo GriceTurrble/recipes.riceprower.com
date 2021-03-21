@@ -6,20 +6,29 @@
 {% block head_title %}Home{% endblock %}
 
 {% block recipe_body_content %}
+  {# Admin controls #}
+  {% if perms.recipes.add_recipe %}
+  <div class="-mt-5 mb-3">
+    {% include "recipes/components/admin_control.html" with mode="add" %}
+  </div>
+  {% endif %}
+
   {# Search bar #}
   {% include "recipes/components/recipe_list/search.html" with search_term=search_term %}
 
-  {# Search results #}
-  {% for recipe in recipes %}
-    {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
-  {% empty %}
-  <div class="alert alert-warning font-italic">
-    No recipes found
-  </div>
-  {% endfor %}
+  <div class="px-5">
+    {# Search results #}
+    {% for recipe in recipes %}
+      {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
+    {% empty %}
+    <div class="my-2 px-3 py-2 border border-indigo-100 rounded-md bg-gray-50 text-lg">
+      No recipes found{% if search_term %} matching <strong>{{ search_term }}</strong>{% endif %}.
+    </div>
+    {% endfor %}
 
-  {# Pagination #}
-  {% include "recipes/components/recipe_list/pagination_controls.html" %}
+    {# Pagination #}
+    {% include "recipes/components/recipe_list/pagination_controls.html" %}
+  </div>
 {% endblock recipe_body_content %}
 
 {% block recipe_body_js %}{% endblock recipe_body_js %}

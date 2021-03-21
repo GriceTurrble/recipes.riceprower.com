@@ -99,6 +99,14 @@ class Recipe(TimeTrackedModel):
     nutrition_label = models.ImageField(
         upload_to="nutrition_labels/", blank=True, default=""
     )
+    is_private = models.BooleanField(
+        "members only",
+        default=True,
+        help_text=(
+            "If True (default), this recipe can only be viewed by logged-in members of "
+            "this site. If False, unauthenticated guests can view this recipe, as well."
+        ),
+    )
 
     def __str__(self) -> str:
         return self.title

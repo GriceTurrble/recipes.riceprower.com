@@ -37,6 +37,14 @@
           <i class="fas fa-fw fa-sign-out-alt"></i>
           Logout
         </a>
+        {% else %}
+        <a
+          href="{% url 'login' %}"
+          class="top-bar-btn inline-block lg:mt-0 mt-4 px-4 py-2 lg:text-sm"
+        >
+          <i class="fas fa-fw fa-sign-in-alt"></i>
+          Login
+        </a>
         {% endif %}
       </div>
     </div>

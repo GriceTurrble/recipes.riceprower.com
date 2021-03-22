@@ -21,8 +21,14 @@
     {% for recipe in recipes %}
       {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
     {% empty %}
-    <div class="my-2 px-3 py-2 border border-indigo-100 rounded-md bg-gray-50 text-lg">
-      No recipes found{% if search_term %} matching <strong>{{ search_term }}</strong>{% endif %}.
+    <div class="flex justify-between items-center my-2 px-3 py-2 border border-indigo-100 rounded-md bg-gray-50 text-lg">
+      <div class="italic">
+        No recipes {% if search_term %}found matching <strong>{{ search_term }}</strong>{% else %}available{% if not request.user.is_authenticated %} for public viewing{% endif %}{% endif %}.</div>
+      {% if search_term %}
+      <div>
+        {% include "recipes/components/recipe_list/clear_search_btn.html" %}
+      </div>
+      {% endif %}
     </div>
     {% endfor %}
 

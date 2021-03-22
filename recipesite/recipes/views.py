@@ -23,11 +23,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 
 
-class RecipeBaseViewMixin(LoginRequiredMixin):
-    login_url = "/login/"
-
-
-class RecipeListView(RecipeBaseViewMixin, ListView):
+class RecipeListView(ListView):
     """List view for Recipe collection."""
 
     model = Recipe
@@ -66,15 +62,29 @@ class RecipeListView(RecipeBaseViewMixin, ListView):
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["search_term"] = self.request.GET.get("query")
-        context["all_recipes_count"] = self.model.objects.count()
+        count_qs = self.model.objects.all()
+        if not self.request.user.is_authenticated:
+            # Count only public recipes.
+            # Counting all would be a data leak.
+            count_qs = count_qs.filter(is_private=False)
+        context["all_recipes_count"] = count_qs.count()
         return context
 
 
-class RecipeDetailView(RecipeBaseViewMixin, DetailView):
+class RecipeDetailView(DetailView):
     """Detail view for a Recipe instance."""
 
     context_object_name = "recipe"
-    queryset = Recipe.objects.prefetch_related(
-        "ingredients",
-        "ingredient_sections__sectioned_ingredients",
-    )
+
+    def get_queryset(self) -> QuerySet:
+        qs = Recipe.objects.prefetch_related(
+            "ingredients",
+            "ingredient_sections__sectioned_ingredients",
+        )
+        if not self.request.user.is_authenticated:
+            # Filter out private recipes.
+            # The view will naturally throw a 404 error when a non-auth user
+            # tries to access a private recipe in some way.
+            # TODO create a nifty-looking 404 page
+            qs = qs.filter(is_private=False)
+        return qs

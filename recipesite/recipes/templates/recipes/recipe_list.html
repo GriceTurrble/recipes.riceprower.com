@@ -8,7 +8,7 @@
 {% block recipe_body_content %}
   {# Admin controls #}
   {% if perms.recipes.add_recipe %}
-  <div class="-mt-5 mb-3">
+  <div class="flex justify-end -mt-5 mb-3">
     {% include "recipes/components/admin_control.html" with mode="add" %}
   </div>
   {% endif %}

@@ -41,29 +41,36 @@
         {% include 'components/logo_svg.html' with classes="fill-current h-10 inline-block sm:h-14" %}
         RP Recipes
       </h1>
-      <a
-        href="{% url 'recipes:recipe-list' %}"
-        class="block sm:inline-block text-center rounded-md py-3 px-7 mt-6 border
-          bg-transparent
-          border-white
-          text-white
-          hover:bg-white
-          hover:text-indigo-500"
-      >
-        <i class="fas fa-utensils"></i>
-        What's on the menu?
-      </a>
+      <div class="mt-6">
+        {# Buttons #}
+        <a
+          href="{% url 'recipes:recipe-list' %}"
+          class="block sm:inline-block text-center rounded-md py-3 px-5 border bg-indigo-300 border-transparent text-white hover:bg-white hover:text-indigo-500 text-lg"
+        >
+          <i class="fas fa-utensils"></i>
+          What's on the menu?
+        </a>
+      </div>
+      <div class="mt-6">
+        <a
+          href="{% url 'login' %}"
+          class="block sm:inline-block text-center rounded-md py-2 px-3 border bg-transparent border-white text-white hover:bg-white hover:text-indigo-500 text-sm"
+        >
+          <i class="fas fa-sign-in-alt"></i>
+          Member login
+        </a>
+      </div>
       <p class="mt-4">
         We cook things. We eat those things. Occasionally we like them, and want to cook them again.
       </p>
       <p class="mt-4">
-        Here's where our family stores their best recipes for all occasions.
+        Here's where our family stores our best recipes for all occasions.
         And since big G is a nerd who has to over-engineer everything he touches,
         there are some other nifty automation tools in here, as well.
       </p>
       <p class="mt-4 text-gray-300 text-sm">
         This site is semi-private.
-        Account login is required, and accounts are invite-only.
+        Only certain recipes may be available for public viewing.
       </p>
       <p class="mt-1 text-gray-300 text-sm">
         By entering this site, you agree that big G's chili is the best in the world.

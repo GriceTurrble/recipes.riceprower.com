@@ -24,32 +24,19 @@
   </div>
 </form>
 
-{% if search_term %}
+{% if recipes and search_term %}
   {% comment %}
     Paginated results show total number of objects in `paginator.count`.
     whereas `recipes.count` shows number of items in current page (which is irrelevant).
   {% endcomment %}
   {% with return_count=paginator.count %}
-  <div
-    class="flex justify-between px-5 py-2 rounded-sm text-sm
-           text-gray-400"
-  >
+  <div class="flex justify-between items-center px-5 my-3 text-sm text-gray-500">
     <div>
       Showing results for
       "<strong>{{ search_term }}</strong>"
       ({{ return_count }} match{{ return_count|pluralize:'es' }} out of {{ all_recipes_count }} total recipe{{ all_recipes_count|pluralize }})
     </div>
-    <a
-      href="{% url 'recipes:recipe-list' %}"
-      class="flex items-center px-2 py-1 rounded text-xs whitespace-nowrap
-             border border-gray-400
-             hover:bg-gray-400 hover:border-transparent hover:text-white"
-    >
-      <span>
-        <i class="fas fa-ban"></i>
-        Clear search
-      </span>
-    </a>
+    {% include "recipes/components/recipe_list/clear_search_btn.html" %}
   </div>
   {% endwith %}
 {% endif %}

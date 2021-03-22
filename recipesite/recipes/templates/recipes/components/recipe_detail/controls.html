@@ -2,27 +2,20 @@
   Controls for the recipe detail page
 {% endcomment %}
 
-<div class="flex flex-row justify-between mb-5 print:hidden">
-  <div>
-    {# Print button #}
-    <button
-      id="print-recipe-btn"
-      class="bg-indigo-500 border border-transparent px-2 py-1 rounded text-white"
-    >
-      <i class="fas fa-print"></i>
-      Print
-    </button>
-  </div>
+<div class="flex justify-end mb-5 print:hidden">
+  {# Print button #}
+  {# TODO make a class specific to these types of buttons? #}
+  <button
+    id="print-recipe-btn"
+    class="rounded-md px-2 py-1 border border-transparent bg-indigo-500 text-white hover:bg-indigo-400 text-sm"
+  >
+    <i class="fas fa-print"></i>
+    Print
+  </button>
 
   {% if perms.recipes.change_recipe %}
-  <div>
-    <a
-      href="{% url 'admin:recipes_recipe_change' recipe.id %}"
-      class="bg-green-500 border border-transparent px-2 py-1 rounded text-white"
-    >
-      <i class="far fa-edit"></i>
-      Edit
-    </a>
+  <div class="ml-3">
+    {% include "recipes/components/admin_control.html" with mode="edit" recipe_pk=recipe.pk %}
   </div>
   {% endif %}
 </div>

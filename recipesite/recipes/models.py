@@ -249,7 +249,6 @@ class RecipeIngredient(TimeTrackedModel):
     )
     # Should be able to accept instances of `fractions.Fraction`
 
-    # TODO create unit-of-measure choices for this option
     UOM_BLANK = "blank"
     UOM_CUP = "cup"
     UOM_DASH = "dash"

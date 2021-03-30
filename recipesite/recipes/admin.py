@@ -63,9 +63,12 @@ class RecipeAdmin(admin.ModelAdmin):
             "classes": ("collapse",),
             "fields": ("footnotes",),
         }),
-        (None, {
+        ("Stats", {
             "fields": (
                 ("time_to_prep", "time_to_cook"),
+                "num_servings",
+                "num_servings_text",
+                "num_servings_text_plural",
                 "nutrition_label",
             ),
         }),

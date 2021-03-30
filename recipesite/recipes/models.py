@@ -11,6 +11,7 @@ from fractions import Fraction
 from typing import Tuple
 
 from django.contrib.auth import default_app_config, get_user_model
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models.fields import related
 from django.urls import reverse as reverse_url
@@ -108,9 +109,37 @@ class Recipe(TimeTrackedModel):
         ),
     )
     # TODO adjust and migrate these:
-    num_servings = models.PositiveIntegerField(default=1)
-    num_servings_text = models.CharField(max_length=255, null=True, blank=True)
-    num_servings_text_plural = models.CharField(max_length=255, null=True, blank=True)
+    num_servings = models.PositiveIntegerField(
+        "servings",
+        default=1,
+        validators=[MinValueValidator(1, message="Cannot have less than 1 serving.")],
+        help_text="Number of servings this recipe makes.",
+    )
+    num_servings_text = models.CharField(
+        "serving description",
+        max_length=255,
+        null=True,
+        blank=True,
+        help_text=(
+            "An optional name for the type of serving this recipe makes, "
+            "i.e. 'cupcake'."
+            "<br/>If none provided, defaults to 'serving' in output."
+            "<br/><strong>Please only use the SINGULAR form in this field.</strong>"
+        ),
+    )
+    num_servings_text_plural = models.CharField(
+        "serving description (plural)",
+        max_length=255,
+        null=True,
+        blank=True,
+        help_text=(
+            "An optional name for the type of serving this recipe makes in its "
+            "plural form, i.e. 'cupcakes'."
+            "<br/>If none provided, <strong>Serving description</strong> will be "
+            "pluralized automatically (or the default 'servings' will be used)."
+            "<br/><strong>Please only use the PLURAL form in this field.</strong>"
+        ),
+    )
 
     def __str__(self) -> str:
         return self.title
@@ -164,6 +193,15 @@ class Recipe(TimeTrackedModel):
     def total_time_str(self) -> str:
         """Return a string of hours and minutes for the total time."""
         return self.delta_to_str(self.total_time)
+
+    @property
+    def num_servings_str(self) -> str:
+        """Return a string of number of servings and its text, with pluralization."""
+        suffix = self.num_servings_text or "serving"
+        if self.num_servings != 1:
+            # If plural exists in db, use it; otherwise add 's' to above
+            suffix = self.num_servings_text_plural or suffix + "s"
+        return f"{self.num_servings} {suffix}"
 
 
 class IngredientSection(TimeTrackedModel):

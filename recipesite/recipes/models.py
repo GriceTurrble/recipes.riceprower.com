@@ -10,7 +10,7 @@ import datetime
 from fractions import Fraction
 from typing import Tuple
 
-from django.contrib.auth import get_user_model
+from django.contrib.auth import default_app_config, get_user_model
 from django.db import models
 from django.db.models.fields import related
 from django.urls import reverse as reverse_url
@@ -107,6 +107,10 @@ class Recipe(TimeTrackedModel):
             "this site. If False, unauthenticated guests can view this recipe, as well."
         ),
     )
+    # TODO adjust and migrate these:
+    num_servings = models.PositiveIntegerField(default=1)
+    num_servings_text = models.CharField(max_length=255, null=True, blank=True)
+    num_servings_text_plural = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title

@@ -29,7 +29,7 @@ markers = "platform_system == 'Linux'"
 pytest = "^6.2.4"
 pytest-django = "^4.3.0"
 flake8 = "^3.9.0"
-black = "^21.5b1"
+black = "^21.5b2"
 pre-commit = "^2.13.0"
 
 [build-system]

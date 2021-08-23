@@ -3,7 +3,7 @@
     "build": "tailwindcss build src/css/styles.css -o dist/css/styles.css"
   },
   "dependencies": {
-    "autoprefixer": "^10.3.1",
+    "autoprefixer": "^10.3.2",
     "material-ui-colors": "^1.0.0",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.7"

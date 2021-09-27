@@ -6,6 +6,6 @@
     "autoprefixer": "^10.3.5",
     "material-ui-colors": "^1.0.0",
     "postcss": "^8.3.7",
-    "tailwindcss": "^2.2.15"
+    "tailwindcss": "^2.2.16"
   }
 }

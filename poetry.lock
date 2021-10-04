@@ -117,7 +117,7 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-admin-sortable2"
-version = "1.0.1"
+version = "1.0.2"
 description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
 category = "main"
 optional = false
@@ -539,8 +539,8 @@ django = [
     {file = "Django-3.1.13.tar.gz", hash = "sha256:9f8be75646f62204320b195062b1d696ba28aa3d45ee72fb7c888ffaebc5bdb2"},
 ]
 django-admin-sortable2 = [
-    {file = "django-admin-sortable2-1.0.1.tar.gz", hash = "sha256:302768cfd8ea2d807d0f1de1b44eaa2703d22dbe2f6420efe974610e28801d76"},
-    {file = "django_admin_sortable2-1.0.1-py3-none-any.whl", hash = "sha256:eedffeab3f6c670986ece8fde4b8ffb86524753560b4d106cdc1c0c15f89798d"},
+    {file = "django-admin-sortable2-1.0.2.tar.gz", hash = "sha256:669e47c908d1ae5dd77876bb6bf369b3c333e013b98f0a8b6da42da83cf6440c"},
+    {file = "django_admin_sortable2-1.0.2-py3-none-any.whl", hash = "sha256:0108b003907fcdaf18af4f7bf4a84599e1ebd789c6be9fcd0dd86555f9526fc5"},
 ]
 django-csp = [
     {file = "django_csp-3.7-py2.py3-none-any.whl", hash = "sha256:01443a07723f9a479d498bd7bb63571aaa771e690f64bde515db6cdb76e8041a"},

@@ -9,8 +9,20 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+      time: "08:00"
+      timezone: "US/Eastern"
+    reviewers:
+    - griceturrble
+    assignees:
+    - griceturrble
 
   - package-ecosystem: "npm"
     directory: "/recipesite/assets"
     schedule:
       interval: "daily"
+      time: "08:00"
+      timezone: "US/Eastern"
+    reviewers:
+    - griceturrble
+    assignees:
+    - griceturrble

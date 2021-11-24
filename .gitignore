@@ -154,3 +154,6 @@ postgres-data/
 
 # JS stuff
 node_modules/
+
+# Local Docker stuff
+db-data/

@@ -1,20 +1,26 @@
 version: "3"
 services:
   web:
-    build:
-      context: .
-      args:
-        - NODE_ENV=production
-    # Taking some recommendations for gunicorn from:
-    # https://pythonspeed.com/articles/gunicorn-in-docker/
-    command: >
-      bash -c "cd /app/recipesite
-      && poetry run gunicorn --log-file=- --worker-tmp-dir /dev/shm --workers=2 --threads=4 --worker-class=gthread core.wsgi:application --bind 0.0.0.0:8000"
-    volumes:
-      - ./recipesite:/app/recipesite
-      - ./recipesite/logs:/app/recipesite/logs/
-      - ./recipesite/media:/app/recipesite/media/
-      - ./recipesite/static:/app/recipesite/static/
+    build: .
     ports:
-      - 8000:8000
-    env_file: .recipes.env
+      - "8000:8000"
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=Tot4llyInsecur3SecretKey-DO-NOT-USE-IN-PRODUCTION
+      - DJANGO_POSTGRES_URL=postgresql://django_app_user:django_app_password@database:5432/django_app_db
+    volumes:
+      - ./recipesite:/home/appuser/recipesite
+    depends_on:
+      - "database"
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+  database:
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=django_app_db
+      - POSTGRES_USER=django_app_user
+      - POSTGRES_PASSWORD=django_app_password
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/

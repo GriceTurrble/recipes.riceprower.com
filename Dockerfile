@@ -48,5 +48,5 @@ COPY --from=nodeassets /code/recipesite/static/ /home/appuser/recipesite/static/
 
 WORKDIR /home/appuser/recipesite
 
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "core.asgi:application", "-k", "uvicorn.workers.UvicornWorker"]
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "core.asgi:application"]
 # TODO implement logging out from the Docker container, to see all this in action

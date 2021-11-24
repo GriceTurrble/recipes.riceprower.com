@@ -61,6 +61,8 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    # Security headers added to requests
+    "core.securemiddleware.set_secure_headers",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -153,38 +155,6 @@ STATIC_ROOT = BASE_DIR / "static"
 # Media files (uploads and such)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-
-# Logging.
-# The main LOGGING config is stitched together in settings.__init__.
-# We define segments of it here, as well as in other environments,
-# then put the pieces together.
-LOGS_DIR = BASE_DIR / "logs"
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {},
-    "formatters": {
-        "verbose": {
-            "format": "[{levelname}] [{asctime}] [{module}] {message}",
-            "style": "{",
-        },
-        "simple": {
-            "format": "[{levelname}] {message}",
-            "style": "{",
-        },
-    },
-    "filters": {
-        "require_debug_true": {
-            "()": "django.utils.log.RequireDebugTrue",
-        },
-        "require_debug_false": {
-            "()": "django.utils.log.RequireDebugFalse",
-        },
-    },
-    "handlers": {},
-    "loggers": {},
-}
 
 
 # DRF settings

@@ -146,9 +146,6 @@ recipesite/backups/*.pgdump
 # Script files
 recipesite/scripts/config.sh
 
-# Project local settings, intended for a local env only
-recipesite/core/settings/local.py
-
 # Fabric config for deployment
 fabric.yml
 

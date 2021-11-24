@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build:dev && onchange \"tailwind.config.js\" \"../recipesite/**/*.html\" -- npm run build:dev",
+    "postinstall": "copy-files-from-to",
+    "build:dev": "postcss ./src/**/*.css -o ../recipesite/static/css/tailwind/styles.css",
+    "build:prod": "postcss ./src/**/*.css -o ../recipesite/static/css/tailwind/styles.css --env production"
+  },
+  "copyFiles": [
+    {
+      "from": "node_modules/htmx.org/dist/**/*",
+      "to": "../recipesite/static/js/htmx.org/"
+    },
+    {
+      "from": "node_modules/hyperscript.org/dist/**/*",
+      "to": "../recipesite/static/js/hyperscript.org/"
+    }
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "copy-files-from-to": "^3.2.2",
+    "htmx.org": "^1.6.1",
+    "hyperscript.org": "^0.9.0",
+    "material-ui-colors": "^1.0.0",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.0.2",
+    "postcss-minify": "^1.1.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^2.2.19"
+  }
+}

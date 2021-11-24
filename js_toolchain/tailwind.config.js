@@ -1,12 +1,8 @@
 const colors = require('material-ui-colors')
 module.exports = {
+  mode: "jit",
   purge: [
-    './src/**/*.html',
-    './src/**/*.jsx',
-    './src/**/*.vue',
-    './../**/*.html',
-    './../**/*.jsx',
-    './../**/*.vue',
+    '../recipesite/**/*.html',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -35,9 +31,6 @@ module.exports = {
         '-10': '-10',
       }
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

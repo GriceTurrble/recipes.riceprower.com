@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .top-bar-btn {
+    @apply border rounded text-indigo-100 border-indigo-100 hover:bg-white hover:text-indigo-500 hover:border-transparent;
+  }
+
+  .tiny-mce-content ol {
+    @apply list-decimal;
+  }
+
+  .tiny-mce-content ul {
+    @apply list-disc;
+  }
+
+  .tiny-mce-content ul,
+  .tiny-mce-content ol {
+    @apply ml-5;
+  }
+
+  .tiny-mce-content ul li,
+  .tiny-mce-content ol li {
+    @apply pl-3;
+  }
+
+  .tiny-mce-content ul:not(:last-child),
+  .tiny-mce-content ol:not(:last-child),
+  .tiny-mce-content ul li:not(:last-child),
+  .tiny-mce-content ol li:not(:last-child),
+  .tiny-mce-content p:not(:last-child) {
+    @apply mb-3;
+  }
+
+  /* Special styles for ordered lists in directions only */
+  .rec-directions .tiny-mce-content ol li::marker {
+    @apply font-bold italic;
+  }
+
+
+  /* Recipe search result lines with some snazzy hover effects */
+  .rec-search-result-line {
+    @apply relative block transform transition-transform hover:-translate-y-2 hover:translate-x-2;
+  }
+
+  .rec-search-result-line::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full -z-10 bg-indigo-500 transition-top-left;
+  }
+
+  .rec-search-result-line:hover::after {
+    @apply top-2 -left-2;
+  }
+}

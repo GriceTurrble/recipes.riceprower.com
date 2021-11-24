@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
             model_name="recipe",
             name="nutrition_label",
             field=models.ImageField(
-                blank=True, default="", upload_to="nutrition_labels/"
+                blank=True,
+                default="",
+                upload_to="nutrition_labels/",
             ),
         ),
     ]

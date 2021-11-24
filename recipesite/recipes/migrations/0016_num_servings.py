@@ -19,8 +19,9 @@ class Migration(migrations.Migration):
                 help_text="Number of servings this recipe makes.",
                 validators=[
                     django.core.validators.MinValueValidator(
-                        1, message="Cannot have less than 1 serving."
-                    )
+                        1,
+                        message="Cannot have less than 1 serving.",
+                    ),
                 ],
                 verbose_name="servings",
             ),
@@ -30,7 +31,11 @@ class Migration(migrations.Migration):
             name="num_servings_text",
             field=models.CharField(
                 blank=True,
-                help_text="An optional name for the type of serving this recipe makes, i.e. 'cupcake'.<br/>If none provided, defaults to 'serving' in output.<br/><strong>Please only use the SINGULAR form in this field.</strong>",
+                help_text=(
+                    "An optional name for the type of serving this recipe makes, i.e. 'cupcake'."
+                    "<br/>If none provided, defaults to 'serving' in output."
+                    "<br/><strong>Please only use the SINGULAR form in this field.</strong>"
+                ),
                 max_length=255,
                 null=True,
                 verbose_name="serving description",
@@ -41,7 +46,12 @@ class Migration(migrations.Migration):
             name="num_servings_text_plural",
             field=models.CharField(
                 blank=True,
-                help_text="An optional name for the type of serving this recipe makes in its plural form, i.e. 'cupcakes'.<br/>If none provided, <strong>Serving description</strong> will be pluralized automatically (or the default 'servings' will be used).<br/><strong>Please only use the PLURAL form in this field.</strong>",
+                help_text=(
+                    "An optional name for the type of serving this recipe makes in its plural form, i.e. 'cupcakes'."
+                    "<br/>If none provided, <strong>Serving description</strong> will be pluralized automatically "
+                    "(or the default 'servings' will be used)."
+                    "<br/><strong>Please only use the PLURAL form in this field.</strong>"
+                ),
                 max_length=255,
                 null=True,
                 verbose_name="serving description (plural)",

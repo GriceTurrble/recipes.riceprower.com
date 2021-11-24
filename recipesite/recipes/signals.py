@@ -5,9 +5,8 @@
 # `apps.RecipesConfig.ready`.
 ###############
 
-from django.dispatch import receiver
-
-from django.db.models.signals import post_save
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
 
 # for all Django signals:
 # https://docs.djangoproject.com/en/3.0/ref/signals/

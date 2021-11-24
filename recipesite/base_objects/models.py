@@ -1,7 +1,7 @@
 """Base abstract models that all project models should inherit from."""
 
-from django.db import models
 from django.conf import settings
+from django.db import models
 
 from .managers import (
     OwnedModelManager,
@@ -32,7 +32,9 @@ class OwnedModel(models.Model):
     objects = OwnedModelManager()
 
     owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="+"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="+",
     )
     """User who owns this model instance."""
 

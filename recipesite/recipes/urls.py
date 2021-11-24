@@ -1,9 +1,8 @@
 """Urls for `recipes` app."""
 
-from django.urls import path, include
+from django.urls import path
 
 from . import views
-
 
 # Default app name to use for namespacing this app's URLs.
 # (a template url must include `recipes:` as a prefix to reach here).

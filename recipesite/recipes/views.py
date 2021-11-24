@@ -3,22 +3,11 @@
 # Reference for all CBV classes available:
 # https://docs.djangoproject.com/en/3.1/ref/class-based-views/
 
-from typing import (
-    Any,
-    Dict,
-)
+from typing import Any
 
-from django.contrib.postgres.search import (
-    SearchVector,
-    SearchQuery,
-    SearchRank,
-)
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.db.models.query import QuerySet
-from django.views.generic import (
-    ListView,
-    DetailView,
-)
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView, ListView
 
 from .models import Recipe
 
@@ -59,7 +48,7 @@ class RecipeListView(ListView):
             )
         return qs
 
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["search_term"] = self.request.GET.get("query")
         count_qs = self.model.objects.all()

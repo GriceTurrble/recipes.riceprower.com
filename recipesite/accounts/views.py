@@ -1,14 +1,14 @@
-from django.contrib.auth import logout
-
 # from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth import views as auth_views
 
 # from django.views.generic import CreateView
 from django.shortcuts import redirect
 
+from .forms import LoginForm
+
 # from django.urls import reverse_lazy
 
-from .forms import LoginForm
 
 # from .forms import RegisterForm
 

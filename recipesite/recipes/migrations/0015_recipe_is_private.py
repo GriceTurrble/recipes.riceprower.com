@@ -15,7 +15,10 @@ class Migration(migrations.Migration):
             name="is_private",
             field=models.BooleanField(
                 default=True,
-                help_text="If True (default), this recipe can only be viewed by logged-in members of this site. If False, unauthenticated guests can view this recipe, as well.",
+                help_text=(
+                    "If True (default), this recipe can only be viewed by logged-in members of this site. "
+                    "If False, unauthenticated guests can view this recipe, as well."
+                ),
                 verbose_name="members only",
             ),
         ),

@@ -1,14 +1,12 @@
 """Admin for `recipes` app."""
 
+from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.db import models
-
-from adminsortable2.admin import SortableInlineAdminMixin
-from django.db.models import query
 from django.db.models.query import QuerySet
 from django.http.request import HttpRequest
 
-from .models import Recipe, RecipeIngredient, IngredientType, IngredientSection
+from .models import IngredientSection, IngredientType, Recipe, RecipeIngredient
 
 
 class RecipeIngredientInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -44,34 +42,44 @@ class RecipeAdmin(admin.ModelAdmin):
     search_fields = ["title", "subtitle"]
     # fmt: off
     fieldsets = (
-        (None, {
-            "fields": (
-                ("title", "slug"),
-                "subtitle",
-                "is_private",
-            ),
-        }),
-        ("Description", {
-            "classes": ("collapse",),
-            "fields": ("description",),
-        }),
-        ("Directions", {
-            "classes": ("collapse", "open"),
-            "fields": ("directions",),
-        }),
-        ("Footnotes", {
-            "classes": ("collapse",),
-            "fields": ("footnotes",),
-        }),
-        ("Stats", {
-            "fields": (
-                ("time_to_prep", "time_to_cook"),
-                "num_servings",
-                "num_servings_text",
-                "num_servings_text_plural",
-                "nutrition_label",
-            ),
-        }),
+        (
+            None, {
+                "fields": (
+                    ("title", "slug"),
+                    "subtitle",
+                    "is_private",
+                ),
+            },
+        ),
+        (
+            "Description", {
+                "classes": ("collapse",),
+                "fields": ("description",),
+            },
+        ),
+        (
+            "Directions", {
+                "classes": ("collapse", "open"),
+                "fields": ("directions",),
+            },
+        ),
+        (
+            "Footnotes", {
+                "classes": ("collapse",),
+                "fields": ("footnotes",),
+            },
+        ),
+        (
+            "Stats", {
+                "fields": (
+                    ("time_to_prep", "time_to_cook"),
+                    "num_servings",
+                    "num_servings_text",
+                    "num_servings_text_plural",
+                    "nutrition_label",
+                ),
+            },
+        ),
     )
     # fmt: on
 

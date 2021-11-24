@@ -1,4 +1,5 @@
 from typing import Optional
+
 from django import template
 
 register = template.Library()

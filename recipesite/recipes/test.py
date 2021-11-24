@@ -1,3 +1,3 @@
 """Tests for `recipes` app."""
 
-from django.test import TestCase
+# from django.test import TestCase

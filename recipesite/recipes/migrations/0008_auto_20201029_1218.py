@@ -15,7 +15,11 @@ class Migration(migrations.Migration):
             name="order",
             field=models.PositiveIntegerField(
                 default=0,
-                help_text="Order in which this ingredient appears in the list of ingredients for a recipe. If ordering doesn't matter, just leave this alone; but know that this list will sort based on this field",
+                help_text=(
+                    "Order in which this ingredient appears in the list of ingredients for a recipe. "
+                    "If ordering doesn't matter, just leave this alone; "
+                    "but know that this list will sort based on this field"
+                ),
             ),
         ),
     ]

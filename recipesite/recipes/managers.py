@@ -1,8 +1,8 @@
 """Custom managers for recipes models."""
 
+from base_objects.managers import TimeTrackedModelManager
 from django.db import models
 
-from base_objects.managers import TimeTrackedModelManager
 from .querysets import IngredientSectionQueryset
 
 

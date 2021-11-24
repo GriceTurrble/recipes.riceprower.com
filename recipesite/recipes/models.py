@@ -8,19 +8,15 @@
 
 import datetime
 from fractions import Fraction
-from typing import Tuple
-
-from django.contrib.auth import default_app_config, get_user_model
-from django.core.validators import MinValueValidator
-from django.db import models
-from django.db.models.fields import related
-from django.urls import reverse as reverse_url
-
-from djfractions.models import DecimalFractionField
-from djfractions import get_fraction_parts
-from tinymce.models import HTMLField
 
 from base_objects.models import TimeTrackedModel
+from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator
+from django.db import models
+from django.urls import reverse as reverse_url
+from djfractions import get_fraction_parts
+from djfractions.models import DecimalFractionField
+from tinymce.models import HTMLField
 
 from .managers import IngredientSectionManager
 
@@ -98,7 +94,9 @@ class Recipe(TimeTrackedModel):
     directions = HTMLField(blank=True)
     footnotes = HTMLField(blank=True)
     nutrition_label = models.ImageField(
-        upload_to="nutrition_labels/", blank=True, default=""
+        upload_to="nutrition_labels/",
+        blank=True,
+        default="",
     )
     is_private = models.BooleanField(
         "members only",
@@ -148,7 +146,7 @@ class Recipe(TimeTrackedModel):
         return reverse_url("recipes:recipe-detail", kwargs={"slug": self.slug})
 
     @staticmethod
-    def delta_hours_minutes(delta: datetime.timedelta) -> Tuple[int, int]:
+    def delta_hours_minutes(delta: datetime.timedelta) -> tuple[int, int]:
         """Return hours and minutes within a timedelta object as integers."""
         seconds = delta.total_seconds()
         hours = int(seconds // 3600)

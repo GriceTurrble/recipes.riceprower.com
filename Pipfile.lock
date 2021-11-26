@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2ebff06e82aff2ae65229175fda819316b83b9fa7c3d4e50d5e9788855623d3b"
+            "sha256": "d7ca80ed0886f51c42941766d1fe7398fdb8f4b10ed3efba4bee351e2b7419f5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -74,11 +74,11 @@
         },
         "django-tinymce": {
             "hashes": [
-                "sha256:3684d6611162cd3566b068cfeaf9309d415f1d415191a1f8a8c9140246774679",
-                "sha256:77cca137e97e92e43e42c98a232df3e66b80c987ad0f03709a4b73435f8e4060"
+                "sha256:275653dbf09fbd3347928757d6baf29040b42fe5c5d95396418c36aa4b1517eb",
+                "sha256:4241eb201c670892aa8980a130652f4ae818ba24702f078336296d25e9e1658b"
             ],
             "index": "pypi",
-            "version": "==3.3.0"
+            "version": "==3.4.0"
         },
         "djangorestframework": {
             "hashes": [
@@ -208,6 +208,14 @@
             "index": "pypi",
             "version": "==0.3.0"
         },
+        "setuptools": {
+            "hashes": [
+                "sha256:157d21de9d055ab9e8ea3186d91e7f4f865e11f42deafa952d90842671fc2576",
+                "sha256:4adde3d1e1c89bde1c643c64d89cdd94cbfd8c75252ee459d4500bccb9c7d05d"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==59.2.0"
+        },
         "sqlparse": {
             "hashes": [
                 "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae",
@@ -226,14 +234,6 @@
         }
     },
     "develop": {
-        "atomicwrites": {
-            "hashes": [
-                "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197",
-                "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==1.4.0"
-        },
         "attrs": {
             "hashes": [
                 "sha256:149e90d6d8ac20db7a955ad60cf0e6881a3f20d37096140088356da6c716b0b1",
@@ -273,14 +273,6 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==8.0.3"
-        },
-        "colorama": {
-            "hashes": [
-                "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
-                "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
-            ],
-            "markers": "sys_platform == 'win32' and platform_system == 'Windows'",
-            "version": "==0.4.4"
         },
         "distlib": {
             "hashes": [

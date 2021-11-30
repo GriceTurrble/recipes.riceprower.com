@@ -11,7 +11,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: recipes_riceprower_com
+  REPO: ${{ github.repository }}
 
 jobs:
   image_publish:
@@ -40,6 +40,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: lowercase REPO for build-push
+        run: |
+          echo "REPO_LOWER=${REPO,,}" >> ${GITHUB_ENV}
+
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -47,4 +51,4 @@ jobs:
           push: true
           tags:
             # user/app:latest
-            ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:latest
+            ghcr.io/${{ env.REPO_LOWER }}:latest

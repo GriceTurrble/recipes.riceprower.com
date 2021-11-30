@@ -55,7 +55,6 @@ jobs:
             type=schedule,pattern=nightly
             type=ref,event=branch
             type=ref,event=pr
-            type=sha
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

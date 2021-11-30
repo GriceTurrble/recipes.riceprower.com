@@ -49,13 +49,12 @@ jobs:
           images: |
             ghcr.io/${{ env.REPO_LOWER }}
           # generate Docker tags based on the following events/attributes
+          flavor: |
+            latest=true
           tags: |
-            type=schedule
+            type=schedule,pattern=nightly
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
             type=sha
 
       - name: Set up QEMU

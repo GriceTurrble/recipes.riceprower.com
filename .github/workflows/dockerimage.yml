@@ -17,6 +17,8 @@ on:
   push:
     branches:
       - 'main'
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - 'main'
@@ -49,12 +51,13 @@ jobs:
           images: |
             ghcr.io/${{ env.REPO_LOWER }}
           # generate Docker tags based on the following events/attributes
-          flavor: |
-            latest=true
           tags: |
             type=schedule,pattern=nightly
             type=ref,event=branch
             type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=edge
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -81,6 +84,6 @@ jobs:
           # attempt to pull new images every time
           pull: true
           # ignore the cache (to avoid insecure cached layers)
-          no-cache: true
+          no-cache: ${{ github.event_name == 'schedule' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "~=3.2.9"
+django = "~=3.2.10"
 django-admin-sortable2 = "~=1.0"
 django-csp = "~=3.7"
 django-environ = "~=0.8.1"

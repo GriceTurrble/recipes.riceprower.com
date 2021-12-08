@@ -21,7 +21,7 @@ wheel = "~=0.37.0"
 
 [dev-packages]
 pytest = "~=6.2.5"
-pytest-django = "~=4.5.1"
+pytest-django = "~=4.5.2"
 flake8 = "~=3.9.0"
 black = "==21.12b0"
 pre-commit = "~=2.16.0"

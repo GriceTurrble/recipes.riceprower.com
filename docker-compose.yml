@@ -15,7 +15,7 @@ services:
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
   database:
-    image: "postgres:latest"
+    image: "postgres:14"
     ports:
       - "5432:5432"
     environment:

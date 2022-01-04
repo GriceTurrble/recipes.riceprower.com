@@ -5,9 +5,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DJANGO_DEBUG=True
-      - DJANGO_SECRET_KEY=Tot4llyInsecur3SecretKey-DO-NOT-USE-IN-PRODUCTION
-      - DJANGO_POSTGRES_URL=postgresql://django_app_user:django_app_password@database:5432/django_app_db
+      - DJ_DEBUG=True
+      - DJ_SECRET_KEY=Tot4llyInsecur3SecretKey-DO-NOT-USE-IN-PRODUCTION
+      - DJ_DB_URL=postgresql://django_app_user:django_app_password@database:5432/django_app_db
     volumes:
       - ./recipesite:/home/appuser/recipesite
     depends_on:

@@ -13,14 +13,14 @@ from pathlib import Path
 import environ
 
 env = environ.Env(
-    DJANGO_DEBUG=(bool, False),
-    DJANGO_SECRET_KEY=(str, "Tot4llyInsecur3SecretKey-DO-NOT-USE-IN-PRODUCTION"),
-    DJANGO_ALLOWED_HOSTS=(list, []),
-    DJANGO_POSTGRES_URL=(str, ""),
-    DJANGO_TIMEZONE=(str, "US/Eastern"),
+    DJ_DEBUG=(bool, False),
+    DJ_SECRET_KEY=(str, "Tot4llyInsecur3SecretKey-DO-NOT-USE-IN-PRODUCTION"),
+    DJ_ALLOWED_HOSTS=(list, []),
+    DJ_DB_URL=(str, ""),
+    DJ_TIMEZONE=(str, "US/Eastern"),
 )
 
-DEBUG = env("DJANGO_DEBUG")
+DEBUG = env("DJ_DEBUG")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = env("DJ_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS")
+ALLOWED_HOSTS = env("DJ_ALLOWED_HOSTS")
 
 # Application definition
 INSTALLED_APPS = [
@@ -109,7 +109,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
-    "default": env.db_url("DJANGO_POSTGRES_URL"),
+    "default": env.db_url("DJ_DB_URL"),
 }
 
 
@@ -132,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = env("DJANGO_TIMEZONE")
+TIME_ZONE = env("DJ_TIMEZONE")
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True

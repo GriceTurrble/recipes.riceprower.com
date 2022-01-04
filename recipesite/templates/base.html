@@ -21,7 +21,7 @@
 
   {## HEAD JS - deferred scripts only! ##}
   {# Alpine JS #}
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.1/dist/alpine.js" integrity="sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I=" crossorigin="anonymous"></script>
+  <script src="{% static 'js/hyperscript.org/_hyperscript_w9y.min.js' %}"></script>
   {% block head_js %}{% endblock head_js %}
 
   <title>{% block head_title_override %}{% block head_title %}{% endblock head_title %} | Rice-Prower Recipes{% endblock head_title_override %}</title>

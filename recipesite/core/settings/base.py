@@ -68,8 +68,6 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    # CSP middleware: https://django-csp.readthedocs.io/en/latest/installation.html
-    "csp.middleware.CSPMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -201,53 +199,6 @@ TINYMCE_DEFAULT_CONFIG = {
         "removeformat | help"
     ),
 }
-
-
-## CSP policies via django-csp
-# See: https://django-csp.readthedocs.io/en/latest/configuration.html
-
-# Enabled by the MIDDLEWARE "csp.middleware.CSPMiddleware"
-
-# Details on CSP via Google Web Fundamentals, which is great reading material:
-# https://developers.google.com/web/fundamentals/security/csp
-
-# Spec from W3:
-# https://www.w3.org/TR/CSP3/
-
-# Set default to self domain and https: only
-CSP_DEFAULT_SRC = [
-    "'self'",
-    "'unsafe-inline'",
-    "'unsafe-eval'",
-]
-CSP_SCRIPT_SRC = [
-    "'self'",
-    "https:",
-    "'sha256-wO9diDJWQhgGNe7+ZOCTsjDauLCvQkD2rE0AIBOHE7I='",
-    "'sha256-eB8zFOmMMFp7pQaAQ9h2C1RxNPAUVRUQdUd5E1pXghc='",
-    "'unsafe-eval'",
-]
-# Allow unsafe-eval and unsafe-inline scripting
-# Note: CSP directives do not inherit, but we can approximate it
-# by combining lists:
-CSP_STYLE_SRC = [
-    "'self'",
-    "'unsafe-inline'",
-    "https://kit.fontawesome.com",
-]
-CSP_IMG_SRC = [
-    "'self'",
-    "https:",
-    "data:",
-]
-CSP_CONNECT_SRC = [
-    "'self'",
-    "https://ka-f.fontawesome.com",
-]
-CSP_FONT_SRC = [
-    "'self'",
-    "https://ka-f.fontawesome.com",
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

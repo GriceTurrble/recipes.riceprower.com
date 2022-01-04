@@ -1,10 +1,6 @@
 {% load static %}
 
-{% comment %}
-  Using alpineJs for open/close control
-  https://github.com/alpinejs/alpine/
-{% endcomment %}
-<header class="print:hidden" x-data="{ isOpen: false }">
+<header class="print:hidden">
   <nav class="flex p-6 items-center justify-between flex-wrap bg-indigo-500">
     <a
       href="{% url 'recipes:recipe-list' %}"
@@ -14,11 +10,21 @@
       <span class="font-semibold text-xl tracking-tight">RicePrower Recipes</span>
     </a>
     <div class="block lg:hidden">
-      <button class="top-bar-btn flex items-center px-3 py-2" @click="isOpen = !isOpen">
-        <i class="fas fa-bars"></i>
+      <button
+        class="top-bar-btn flex items-center px-3 py-2"
+        _="on click toggle .hidden on #header-mini-menu
+           then toggle between .fa-bars and .fa-times on #header-mini-menu-icon"
+      >
+        <i
+          id="header-mini-menu-icon"
+          class="fas fa-bars fa-fw"
+        ></i>
       </button>
     </div>
-    <div class="w-full block lg:flex lg:items-center lg:w-auto" :class="{ 'hidden': !isOpen }">
+    <div
+      id="header-mini-menu"
+      class="w-full lg:flex lg:items-center lg:w-auto hidden"
+    >
       <div class="flex flex-col lg:block text-center">
         {% if request.user.is_staff %}
         <a

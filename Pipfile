@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 django = "~=4.0.1"
 django-admin-sortable2 = "~=1.0"
-django-csp = "~=3.7"
 django-environ = "~=0.8.1"
 django-filter = "~=21.1"
 django-fractions = "~=2.0.0"

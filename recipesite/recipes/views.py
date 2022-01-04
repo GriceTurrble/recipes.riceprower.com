@@ -1,7 +1,7 @@
 """Views for `recipes` app."""
 
 # Reference for all CBV classes available:
-# https://docs.djangoproject.com/en/3.2/ref/class-based-views/
+# https://docs.djangoproject.com/en/4.0/ref/class-based-views/
 
 from typing import Any
 

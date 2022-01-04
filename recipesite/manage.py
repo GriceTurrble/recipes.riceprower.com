@@ -5,6 +5,11 @@ import sys
 
 
 def main():
+    # Remove when django-fractions updates for Django 4.0 compatibility
+    from core.monkeypatching import patch_lazy_translation
+
+    patch_lazy_translation()
+
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
     try:
         from django.core.management import execute_from_command_line

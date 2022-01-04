@@ -5,6 +5,7 @@
 
 version: 2
 updates:
+  # Python dependencies
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
@@ -14,6 +15,7 @@ updates:
     assignees:
     - griceturrble
 
+  # Node dependencies
   - package-ecosystem: "npm"
     directory: "/recipesite/assets"
     schedule:
@@ -23,8 +25,16 @@ updates:
     assignees:
     - griceturrble
 
-  # Maintain dependencies for GitHub Actions
+  # GitHub Actions
   - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "08:00"
+      timezone: "US/Eastern"
+
+  # Docker stuff
+  - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"

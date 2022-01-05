@@ -17,7 +17,7 @@ updates:
 
   # Node dependencies
   - package-ecosystem: "npm"
-    directory: "/recipesite/assets"
+    directory: "/js_toolchain"
     schedule:
       interval: "daily"
       time: "08:00"

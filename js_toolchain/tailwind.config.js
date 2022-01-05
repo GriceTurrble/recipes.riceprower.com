@@ -1,10 +1,8 @@
 const colors = require('material-ui-colors')
 module.exports = {
-  mode: "jit",
-  purge: [
+  content: [
     '../recipesite/**/*.html',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: { ...colors },

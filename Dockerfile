@@ -26,9 +26,6 @@ RUN adduser appuser
 WORKDIR /home/appuser
 USER appuser:appuser
 
-RUN echo "Upgrading pip"
-RUN python -m pip install --upgrade pip --no-cache-dir
-
 RUN echo "Installing pipenv"
 RUN pip install --user pipenv --no-cache-dir
 # Adjust path to include .local/bin, so it can find `pipenv` command later

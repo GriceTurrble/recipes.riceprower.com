@@ -12,8 +12,6 @@ updates:
       interval: "daily"
       time: "08:00"
       timezone: "US/Eastern"
-    assignees:
-    - griceturrble
 
   # Node dependencies
   - package-ecosystem: "npm"
@@ -22,8 +20,6 @@ updates:
       interval: "daily"
       time: "08:00"
       timezone: "US/Eastern"
-    assignees:
-    - griceturrble
 
   # GitHub Actions
   - package-ecosystem: "github-actions"

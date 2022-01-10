@@ -17,7 +17,7 @@
     }
   ],
   "devDependencies": {
-    "autoprefixer": "^10.4.1",
+    "autoprefixer": "^10.4.2",
     "copy-files-from-to": "^3.2.2",
     "htmx.org": "^1.6.1",
     "hyperscript.org": "^0.9.3",

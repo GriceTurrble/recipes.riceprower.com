@@ -1,0 +1,50 @@
+# GitHub Action Workflow enforcing code style
+# Borrowed and adapted from workflow designed for Python Discord Summer 2021 Code Jam
+
+name: Code quality checks
+
+on: [push, pull_request]
+
+concurrency: code-quality-${{ github.sha }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    env:
+      # Set an environment variable to select pip's cache directory for us to actually cache between runs.
+      PIP_CACHE_DIR: /tmp/pip-cache-dir
+      # The Python version your project uses.
+      PYTHON_VERSION: "3.10"
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        id: python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Restore pip cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.PIP_CACHE_DIR }}
+          key: "python-pip-${{ runner.os }}-\
+          ${{ steps.python.outputs.python-version }}-\
+          ${{ hashFiles('./pyproject.toml', './poetry.lock') }}"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies via Poetry
+        run: |
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: Run pre-commit checks
+        run: pre-commit run --all-files
+        env:
+          # Force pre-commit to do a system install.
+          PIP_USER: 0

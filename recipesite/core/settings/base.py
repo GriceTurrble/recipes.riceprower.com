@@ -52,11 +52,10 @@ INSTALLED_APPS = [
     "djfractions",
     "tinymce",
     # Accounts app, for custom user authentication
-    "accounts.apps.AccountsConfig",
+    "accounts",
     # Base objects app, required by downstream.
-    "base_objects.apps.BaseObjectsConfig",
     # Put your new apps here!
-    "recipes.apps.RecipesConfig",
+    "recipes",
 ]
 
 SITE_ID = 1

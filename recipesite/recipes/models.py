@@ -9,7 +9,7 @@
 import datetime
 from fractions import Fraction
 
-from base_objects.models import TimeTrackedModel
+from core.models import TimeTrackedModel
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models

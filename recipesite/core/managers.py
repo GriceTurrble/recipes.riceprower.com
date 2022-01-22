@@ -1,5 +1,6 @@
 """Custom querysets and managers for base abstract models."""
 
+from core.typing import DTType
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -8,7 +9,6 @@ from .querysets import (
     OwnedTimeTrackedModelQuerySet,
     TimeTrackedModelQuerySet,
 )
-from .typing import DTType
 
 User = get_user_model()
 

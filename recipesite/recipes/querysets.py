@@ -1,6 +1,6 @@
 """Custom querysets recipes models."""
 
-from base_objects.querysets import TimeTrackedModelQuerySet
+from core.querysets import TimeTrackedModelQuerySet
 from django.db import models
 
 

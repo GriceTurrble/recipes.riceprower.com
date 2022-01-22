@@ -11,13 +11,11 @@ on:
   schedule:
     - cron: '0 6 * * *'  # daily at 6am UTC (roughly 1am US/Eastern)
 
-  # pushes to the main branch
-  push:
-    branches:
-      - 'main'
-
-  # pull requests against the main branch
-  pull_request:
+  # successful code quality checks on the main branch (from ci workflow)
+  # (which runs on pushes and PRs)
+  workflow_run:
+    workflows: ["Code quality checks"]
+    types: [completed]
     branches:
       - 'main'
 

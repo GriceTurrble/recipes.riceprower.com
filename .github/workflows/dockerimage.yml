@@ -5,7 +5,7 @@
 # https://github.com/docker/build-push-action/blob/master/docs/advanced/tags-labels.md
 
 
-name: Build and publish a Docker image to ghcr.io
+name: Docker build & publish
 on:
   # Nightly builds (uses no-cache option for the build process; see below)
   schedule:

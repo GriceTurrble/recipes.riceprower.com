@@ -125,14 +125,14 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-admin-sortable2"
-version = "1.0.3"
+version = "1.0.4"
 description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-Django = ">=3.2,<4.1"
+Django = ">=2.2,<4.1"
 
 [[package]]
 name = "django-environ"
@@ -648,8 +648,8 @@ django = [
     {file = "Django-4.0.2.tar.gz", hash = "sha256:110fb58fb12eca59e072ad59fc42d771cd642dd7a2f2416582aa9da7a8ef954a"},
 ]
 django-admin-sortable2 = [
-    {file = "django-admin-sortable2-1.0.3.tar.gz", hash = "sha256:fbc193dbb169d9e05c1325e567158e4da7568b6d121d149f6665e692fafc7857"},
-    {file = "django_admin_sortable2-1.0.3-py3-none-any.whl", hash = "sha256:40a9942317d66db2c5cee289d284754ae3f95470143f4914afa06fb864d38fb4"},
+    {file = "django-admin-sortable2-1.0.4.tar.gz", hash = "sha256:f96044003176c6684c5f969792ca833a505d654fa0f7b24232a0a610e4332a53"},
+    {file = "django_admin_sortable2-1.0.4-py3-none-any.whl", hash = "sha256:e22956889533b48a35a7f02859ae3a939753fa9a7d7d532cefc2835b41bdcebb"},
 ]
 django-environ = [
     {file = "django-environ-0.8.1.tar.gz", hash = "sha256:6f0bc902b43891656b20486938cba0861dc62892784a44919170719572a534cb"},

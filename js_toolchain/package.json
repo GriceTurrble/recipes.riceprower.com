@@ -25,7 +25,7 @@
     "onchange": "^7.1.0",
     "postcss-cli": "^9.1.0",
     "postcss-minify": "^1.1.0",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.6",
     "tailwindcss": "^3.0.18"
   }
 }

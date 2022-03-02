@@ -31,7 +31,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Adapted from:
       # https://github.community/t/additional-function-s-lowercase-uppercase/140632/4

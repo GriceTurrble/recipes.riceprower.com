@@ -1,5 +1,5 @@
 # Building static assets from Node
-FROM node:17-slim AS node-assets
+FROM node:17-bullseye-slim AS node-assets
 
 # Update system packages as needed (security measure)
 # Periodically rebuild image with `docker build --pull --no-cache` to ensure updates
@@ -15,7 +15,7 @@ RUN npm run build:prod
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Customize our python base image in-flight
-FROM python:3-slim AS python-base
+FROM python:3.10-slim-bullseye AS python-base
 RUN apt-get update && \
     apt-get upgrade -y
 RUN python -m pip install --upgrade pip

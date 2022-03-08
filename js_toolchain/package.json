@@ -19,7 +19,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "copy-files-from-to": "^3.2.2",
-    "daisyui": "^2.6.2",
+    "daisyui": "^2.6.3",
     "htmx.org": "^1.7.0",
     "hyperscript.org": "^0.9.5",
     "material-ui-colors": "^1.0.0",

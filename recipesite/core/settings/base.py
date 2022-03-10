@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     # Other dependencies
+    "fontawesomefree",
     "adminsortable2",
     "djfractions",
     "tinymce",

@@ -19,7 +19,7 @@
       This check should not have to exist, but for now just in case, we'll avoid
       some frontend confusion if the backend is all fucky.
     {% endcomment %}
-    {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+    {% include 'recipes/partials/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
   {% endif %}
   {% if forloop.last %}
   </ul>
@@ -38,7 +38,7 @@
       Hack. Same shit as above.
     {% endcomment %}
     {% if ingredient.recipe == recipe %}
-      {% include 'recipes/components/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
+      {% include 'recipes/partials/recipe_detail/ingredient_detail_line.html' with ingredient=ingredient %}
     {% endif %}
     {% if forloop.last %}
     </ul>

@@ -19,7 +19,7 @@
     class="rounded-l-md border border-r-0 border-transparent bg-orange-100 px-2 py-1"
     title="Admin privileges"
   >
-    <i class="fas fa-user-shield"></i>
+    <i class="fa-solid fa-user-shield"></i>
   </span>
 
 {# Modes #}
@@ -28,7 +28,7 @@
     href="{% url 'admin:recipes_recipe_add' %}"
     class="{{ admin_btn_classes }}"
   >
-    <i class="fas fa-plus"></i>
+    <i class="fa-solid fa-plus"></i>
     Add new recipe
   </a>
 {% elif mode == "edit" %}
@@ -36,7 +36,7 @@
     href="{% url 'admin:recipes_recipe_change' recipe_pk %}"
     class="{{ admin_btn_classes }}"
   >
-    <i class="fas fa-pen"></i>
+    <i class="fa-solid fa-pen"></i>
     Change this recipe
   </a>
 {% endif %}

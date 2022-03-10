@@ -4,7 +4,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html data-theme="lemonade" lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +16,8 @@
   {# Extra JS from downstream apps goes here #}
   {% block head_css %}{% endblock %}
 
-  {# FontAwesome 5 kit via CDN #}
-  <script src="https://kit.fontawesome.com/4f678b0cb8.js" crossorigin="anonymous"></script>
+  {# FontAwesome 6 https://fontawesome.com/ #}
+  <script defer src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 
   {## HEAD JS - deferred scripts only! ##}
   {# Alpine JS #}
@@ -28,14 +28,14 @@
 </head>
 <body class="flex flex-col h-full" id="recipe-site-app">
   {% block full_body_override %}
-  {% include "components/base_header.html" %}
+  {% include "partials/base_header.html" %}
 
   {# All main content resides within a container #}
   <main role="main" class="{% block main_body_classes %}flex-1 mx-auto p-8 container{% endblock main_body_classes %}">
     {% block body_content %}{% endblock body_content %}
   </main>
 
-  {% include "components/base_footer.html" %}
+  {% include "partials/base_footer.html" %}
 
   {## JAVASCRIPT LOADED AFTER BODY ##}
   {% block body_js %}{% endblock body_js %}

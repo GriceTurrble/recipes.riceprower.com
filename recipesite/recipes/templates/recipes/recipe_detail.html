@@ -20,18 +20,18 @@ And feel free to remove blocks you don't need to change.
 
   {# Controls #}
   <section class="rec-controls">
-    {% include 'recipes/components/recipe_detail/controls.html' with recipe=recipe %}
+    {% include 'recipes/partials/recipe_detail/controls.html' with recipe=recipe %}
   </section>
 
   {# Header #}
   <section class="rec-header">
-    {% include 'recipes/components/recipe_detail/header.html' with recipe=recipe %}
+    {% include 'recipes/partials/recipe_detail/header.html' with recipe=recipe %}
   </section>
 
   <div class="m-auto max-w-2xl">
     {# Stats #}
     <section class="rec-stats flex md:justify-between flex-wrap m-auto my-4 print:my-0">
-      {% include 'recipes/components/recipe_detail/stats.html' with recipe=recipe %}
+      {% include 'recipes/partials/recipe_detail/stats.html' with recipe=recipe %}
     </section>
 
     {% if recipe.description %}
@@ -49,7 +49,7 @@ And feel free to remove blocks you don't need to change.
       <h2 class="text-2xl text-indigo-500 uppercase font-bold mb-2">
         Ingredients
       </h2>
-      {% include 'recipes/components/recipe_detail/ingredients.html' with recipe=recipe %}
+      {% include 'recipes/partials/recipe_detail/ingredients.html' with recipe=recipe %}
     </section>
     {% endif %}
 

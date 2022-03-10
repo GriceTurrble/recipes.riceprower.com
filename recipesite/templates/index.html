@@ -38,7 +38,7 @@
   <div class="flex bg-indigo-500 text-white p-10">
     <div class="mb-auto mt-auto max-w-lg">
       <h1 class="font-semibold sm:text-4xl text-3xl">
-        {% include 'components/logo_svg.html' with classes="fill-current h-10 inline-block sm:h-14" %}
+        {% include 'partials/logo_svg.html' with classes="fill-current h-10 inline-block sm:h-14" %}
         RP Recipes
       </h1>
       <div class="mt-6">
@@ -47,7 +47,7 @@
           href="{% url 'recipes:recipe-list' %}"
           class="block sm:inline-block text-center rounded-md py-3 px-5 border bg-indigo-300 border-transparent text-white hover:bg-white hover:text-indigo-500 text-lg"
         >
-          <i class="fas fa-utensils"></i>
+          <i class="fa-solid fa-utensils"></i>
           What's on the menu?
         </a>
       </div>
@@ -56,7 +56,7 @@
           href="{% url 'login' %}"
           class="block sm:inline-block text-center rounded-md py-2 px-3 border bg-transparent border-white text-white hover:bg-white hover:text-indigo-500 text-sm"
         >
-          <i class="fas fa-sign-in-alt"></i>
+          <i class="fa-solid fa-sign-in-alt"></i>
           Member login
         </a>
       </div>

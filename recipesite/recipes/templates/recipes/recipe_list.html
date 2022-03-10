@@ -8,32 +8,34 @@
   {# Admin controls #}
   {% if perms.recipes.add_recipe %}
   <div class="flex justify-end -mt-5 mb-3">
-    {% include "recipes/components/admin_control.html" with mode="add" %}
+    {% include "recipes/partials/admin_control.html" with mode="add" %}
   </div>
   {% endif %}
 
-  {# Search bar #}
-  {% include "recipes/components/recipe_list/search.html" with search_term=search_term %}
-
-  <div class="px-5">
+  <div class="grid grid-flow-row md:grid-cols-2 lg:grid-cols-3 gap-4">
     {# Search results #}
     {% for recipe in recipes %}
-      {% include "recipes/components/recipe_list/recipe_search_result.html" with recipe=recipe %}
+      {% include "recipes/partials/recipe_list/recipe_card.html" with recipe=recipe %}
     {% empty %}
-    <div class="flex justify-between items-center my-2 px-3 py-2 border border-indigo-100 rounded-md bg-gray-50 text-lg">
-      <div class="italic">
-        No recipes {% if search_term %}found matching <strong>{{ search_term }}</strong>{% else %}available{% if not request.user.is_authenticated %} for public viewing{% endif %}{% endif %}.</div>
-      {% if search_term %}
-      <div>
-        {% include "recipes/components/recipe_list/clear_search_btn.html" %}
+      <div class="alert alert-warning shadow-lg mt-2">
+        <div>
+          No recipes
+          {% if search_term %}
+          found matching <strong>{{ search_term }}</strong>
+          {% else %}
+          available
+            {% if not request.user.is_authenticated %}
+              for public viewing
+            {% endif %}
+          {% endif %}
+        </div>
+
       </div>
-      {% endif %}
-    </div>
     {% endfor %}
 
-    {# Pagination #}
-    {% include "recipes/components/recipe_list/pagination_controls.html" %}
   </div>
+  {# Pagination #}
+  {% include "recipes/partials/recipe_list/pagination_controls.html" %}
 {% endblock recipe_body_content %}
 
 {% block recipe_body_js %}{% endblock recipe_body_js %}

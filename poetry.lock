@@ -277,7 +277,7 @@ flake8 = "*"
 
 [[package]]
 name = "fontawesomefree"
-version = "6.0.0"
+version = "6.1.0"
 description = "Font Awesome Free"
 category = "main"
 optional = false
@@ -704,7 +704,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "69ec814662fee7e6f2360ce2bad2f91abf068f5184787b5c6ec8b9c8115759b1"
+content-hash = "ef30c71d8f65755bcb615978e7e05d8cc4c4944c536d3fb1fe421ab879c9b31a"
 
 [metadata.files]
 asgiref = [
@@ -821,7 +821,7 @@ flake8-polyfill = [
     {file = "flake8_polyfill-1.0.2-py2.py3-none-any.whl", hash = "sha256:12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9"},
 ]
 fontawesomefree = [
-    {file = "fontawesomefree-6.0.0-py3-none-any.whl", hash = "sha256:a4407ff3147fbb23c9c06929eacec6a7f9c45decca42d7c1a006c96746cb7fc0"},
+    {file = "fontawesomefree-6.1.0-py3-none-any.whl", hash = "sha256:8580f84bc3a6d2debb2d063a6bf8790ab831d17af0969e5274552626b5efb3ce"},
 ]
 gitdb = [
     {file = "gitdb-4.0.9-py3-none-any.whl", hash = "sha256:8033ad4e853066ba6ca92050b9df2f89301b8fc8bf7e9324d412a63f8bf1a8fd"},

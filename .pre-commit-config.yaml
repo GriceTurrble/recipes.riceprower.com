@@ -4,13 +4,22 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
     hooks:
+      - id: check-case-conflict
       - id: check-toml
       - id: check-yaml
-      - id: check-byte-order-marker
-      - id: check-case-conflict
       - id: end-of-file-fixer
+      - id: fix-byte-order-marker
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.9.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-no-eval
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.12.1
+    hooks:
+      - id: blacken-docs
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.31.1
     hooks:
@@ -21,10 +30,6 @@ repos:
     hooks:
       - id: add-trailing-comma
         args: [--py36-plus]
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0
-    hooks:
-      - id: python-check-blanket-noqa
   - repo: https://github.com/psf/black
     rev: 22.1.0
     hooks:
@@ -42,12 +47,12 @@ repos:
           - flake8-bandit~=3.0.0
           - flake8-docstrings~=1.6.0
           - flake8-isort~=4.1.1
+  - repo: https://github.com/PyCQA/bandit/
+    rev: 1.7.4
+    hooks:
+      - id: bandit
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v2.21.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
-  - repo: https://github.com/PyCQA/bandit/
-    rev: 1.7.4
-    hooks:
-      - id: bandit

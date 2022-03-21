@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Restore pip cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.PIP_CACHE_DIR }}
           key: "python-pip-${{ runner.os }}-\

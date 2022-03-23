@@ -21,7 +21,7 @@ psycopg2-binary = "^2.9.3"
 secure = "^0.3.0"
 uvicorn = "^0.17.6"
 wheel = "^0.37.1"
-fontawesomefree = "^6.1.0"
+fontawesomefree = "^6.1.1"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.4"

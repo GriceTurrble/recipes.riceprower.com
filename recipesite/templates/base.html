@@ -16,12 +16,12 @@
   {# Extra JS from downstream apps goes here #}
   {% block head_css %}{% endblock %}
 
+  {## HEAD JS - deferred scripts only! ##}
   {# FontAwesome 6 https://fontawesome.com/ #}
   <script defer src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 
-  {## HEAD JS - deferred scripts only! ##}
-  {# Alpine JS #}
-  <script src="{% static 'js/hyperscript.org/_hyperscript_w9y.min.js' %}"></script>
+  {# Webpack bundled JS #}
+  <script defer src="{% static 'js/bundle.js' %}"></script>
   {% block head_js %}{% endblock head_js %}
 
   <title>{% block head_title_override %}{% block head_title %}{% endblock head_title %} | Rice-Prower Recipes{% endblock head_title_override %}</title>

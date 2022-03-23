@@ -1,24 +1,16 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:dev && onchange \"tailwind.config.js\" \"../recipesite/**/*.html\" -- npm run build:dev",
-    "postinstall": "copy-files-from-to",
-    "build:dev": "postcss ./src/**/*.css -o ../recipesite/static/css/tailwind/styles.css",
-    "build:prod": "postcss ./src/**/*.css -o ../recipesite/static/css/tailwind/styles.css --env production"
+    "start": "npm run build:dev && onchange \"tailwind.config.js\" \"../recipesite/**/*.html\" -- npm run styles:dev",
+    "pack:dev": "webpack --mode=development",
+    "pack:prod": "webpack --mode=production",
+    "styles:dev": "postcss ./src/**/*.css -o ../recipesite/static/css/styles.css",
+    "styles:prod": "postcss ./src/**/*.css -o ../recipesite/static/css/styles.css --env production",
+    "build:dev": "npm run pack:dev && npm run styles:dev",
+    "build:prod": "npm run pack:prod && npm run styles:prod"
   },
-  "copyFiles": [
-    {
-      "from": "node_modules/htmx.org/dist/**/*",
-      "to": "../recipesite/static/js/htmx.org/"
-    },
-    {
-      "from": "node_modules/hyperscript.org/dist/**/*",
-      "to": "../recipesite/static/js/hyperscript.org/"
-    }
-  ],
   "devDependencies": {
     "autoprefixer": "^10.4.4",
-    "copy-files-from-to": "^3.2.2",
     "daisyui": "^2.11.0",
     "htmx.org": "^1.7.0",
     "hyperscript.org": "^0.9.5",
@@ -27,6 +19,8 @@
     "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
     "postcss-minify": "^1.1.0",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }

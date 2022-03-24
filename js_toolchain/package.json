@@ -1,25 +1,25 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:dev && onchange \"tailwind.config.js\" \"../recipesite/**/*.html\" -- npm run styles:dev",
-    "pack:dev": "webpack --mode=development",
-    "pack:prod": "webpack --mode=production",
-    "styles:dev": "postcss ./src/**/*.css -o ../recipesite/static/css/styles.css",
-    "styles:prod": "postcss ./src/**/*.css -o ../recipesite/static/css/styles.css --env production",
-    "build:dev": "npm run pack:dev && npm run styles:dev",
-    "build:prod": "npm run pack:prod && npm run styles:prod"
+    "watch": "npm run build:dev && onchange \"tailwind.config.js\" \"../recipesite/**/*.html\" -- npm run build:dev",
+    "build": "npm run build:prod",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.4",
-    "daisyui": "^2.11.0",
+    "css-loader": "^6.7.1",
+    "daisyui": "^2.12.0",
     "htmx.org": "^1.7.0",
     "hyperscript.org": "^0.9.5",
     "material-ui-colors": "^1.0.0",
     "onchange": "^7.1.0",
     "postcss": "^8.4.12",
-    "postcss-cli": "^9.1.0",
+    "postcss-loader": "^6.2.1",
     "postcss-minify": "^1.1.0",
+    "postcss-nested": "^5.0.6",
+    "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.23",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"

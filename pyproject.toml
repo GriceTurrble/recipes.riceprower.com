@@ -25,7 +25,7 @@ fontawesomefree = "^6.1.1"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.4"
-black = "^22.3"
+black = "^22.3.0"
 flake8 = "~=4.0.1"
 flake8-annotations = "~=2.7.0"
 flake8-bandit = "~=3.0.0"

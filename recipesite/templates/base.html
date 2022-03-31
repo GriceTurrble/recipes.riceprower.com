@@ -18,8 +18,9 @@
   {# FontAwesome 6 https://fontawesome.com/ #}
   <script defer src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
 
-  {# Webpack bundled JS #}
+  {# Webpack bundles #}
   <script defer src="{% static 'js/bundle.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
   {# Extra JS from downstream apps goes here #}
   {% block head_js %}{% endblock head_js %}

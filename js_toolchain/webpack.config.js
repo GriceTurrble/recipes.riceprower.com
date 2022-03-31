@@ -1,6 +1,7 @@
 const path = require("path");
 const isProduction = process.env.NODE_ENV === "production";
 const djangoAppName = "recipesite";
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: "./src/index.js",
@@ -9,23 +10,17 @@ const config = {
     path: path.resolve(__dirname, "..", djangoAppName, "static", "js"),
     clean: true
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "../css/styles.css"
+    })
+  ],
   module: {
     rules: [
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1
-            }
-          },
-          { loader: "postcss-loader" }
-        ]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       }
     ]
   }

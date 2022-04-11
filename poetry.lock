@@ -108,7 +108,7 @@ python-versions = "*"
 
 [[package]]
 name = "django"
-version = "4.0.3"
+version = "4.0.4"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -709,7 +709,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3565ae30986c4c604972317c2102e4d45e9e6c7ca193fc829c23e6b7c6d5f56f"
+content-hash = "7330fa9e7db5f87d5c5abf0c02b38e8701b783cce41e54e71b6ac78fc672c94c"
 
 [metadata.files]
 asgiref = [
@@ -770,8 +770,8 @@ distlib = [
     {file = "distlib-0.3.4.zip", hash = "sha256:e4b58818180336dc9c529bfb9a0b58728ffc09ad92027a3f30b7cd91e3458579"},
 ]
 django = [
-    {file = "Django-4.0.3-py3-none-any.whl", hash = "sha256:1239218849e922033a35d2a2f777cb8bee18bd725416744074f455f34ff50d0c"},
-    {file = "Django-4.0.3.tar.gz", hash = "sha256:77ff2e7050e3324c9b67e29b6707754566f58514112a9ac73310f60cd5261930"},
+    {file = "Django-4.0.4-py3-none-any.whl", hash = "sha256:07c8638e7a7f548dc0acaaa7825d84b7bd42b10e8d22268b3d572946f1e9b687"},
+    {file = "Django-4.0.4.tar.gz", hash = "sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5"},
 ]
 django-admin-sortable2 = [
     {file = "django-admin-sortable2-2.0.3.tar.gz", hash = "sha256:8b819a35896c2d73d4b9d8d5464e0cbbadcb59fdabfb6f05c2af0cd60b6bdf39"},

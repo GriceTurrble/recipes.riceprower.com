@@ -1,5 +1,5 @@
 # Building static assets from Node
-FROM node:17-bullseye-slim AS node-assets
+FROM node:18-bullseye-slim AS node-assets
 
 # Update system packages as needed (security measure)
 # Periodically rebuild image with `docker build --pull --no-cache` to ensure updates

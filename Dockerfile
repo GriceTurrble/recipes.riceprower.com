@@ -1,5 +1,7 @@
+# ---------------------------------------------------------------------------------------
 # Building static assets from Node
 FROM node:18-bullseye-slim AS node-assets
+ARG APP_DIR=recipesite
 
 # Update system packages as needed (security measure)
 # Periodically rebuild image with `docker build --pull --no-cache` to ensure updates
@@ -7,33 +9,46 @@ RUN apt-get update && \
     apt-get upgrade -y
 
 COPY js_toolchain /code/js_toolchain
-COPY recipesite /code/recipesite
+COPY $APP_DIR /code/$APP_DIR
 WORKDIR /code/js_toolchain
 RUN npm ci
 RUN npm run build:prod
-# This creates assets we'll find at -> /django_app/static/
+# This creates assets we'll find at -> /code/$APP_DIR/static/
+# (see js_toolchain/package.json for details)
 
-# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 # Customize our python base image in-flight
 FROM python:3.10-slim-bullseye AS python-base
+
+# Update system packages as needed (security measure)
+# Periodically rebuild image with `docker build --pull --no-cache` to ensure updates
 RUN apt-get update && \
     apt-get upgrade -y
+
+# Upgrade pip to latest
 RUN python -m pip install --upgrade pip
 
-# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 # Generate workable requirements.txt from Poetry dependencies
 FROM python-base as requirements
 
-RUN apt-get install -y --no-install-recommends build-essential gcc
+# Dependencies for Poetry to operate
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    gcc
+
+# Install poetry from PyPI
 RUN python -m pip install --no-cache-dir --upgrade poetry
 
-WORKDIR /src
+# Generate `requirements.txt`, which we'll copy later
 COPY pyproject.toml poetry.lock ./
-RUN poetry export -f requirements.txt --without-hashes -o /src/requirements.txt
+RUN poetry export -f requirements.txt --without-hashes -o requirements.txt
 
-# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 # Final app image
 FROM python-base as webapp
+ARG APP_DIR=recipesite
 
 # Switching to non-root user appuser
 RUN adduser appuser
@@ -41,18 +56,18 @@ WORKDIR /home/appuser
 USER appuser:appuser
 
 # Install requirements
-COPY --from=requirements /src/requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+COPY --from=requirements requirements.txt /home/appuser/requirements.txt
+RUN pip install --no-cache-dir --user -r /home/appuser/requirements.txt
+
 # Site code
-COPY recipesite/ /home/appuser/recipesite/
-# Generated static files from node-assets layer
-COPY --from=node-assets /code/recipesite/static/ /home/appuser/recipesite/static/
+COPY $APP_DIR/ /home/appuser/$APP_DIR/
+# Generated static files
+COPY --from=node-assets /code/$APP_DIR/static/ /home/appuser/$APP_DIR/static/
 # Gunicorn config file
 COPY gunicorn.conf.py /home/appuser/gunicorn.conf.py
-RUN echo $PATH
 
 # Change to directory containing manage.py (for running management commands more easily)
-WORKDIR /home/appuser/recipesite
+WORKDIR /home/appuser/$APP_DIR
 
 # Start with gunicorn, configured via our config file.
 CMD ["python", "-m", "gunicorn", "-c", "/home/appuser/gunicorn.conf.py", "core.asgi:application"]

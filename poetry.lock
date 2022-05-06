@@ -399,7 +399,7 @@ plugins = ["setuptools"]
 
 [[package]]
 name = "markdown"
-version = "3.3.6"
+version = "3.3.7"
 description = "Python implementation of Markdown."
 category = "main"
 optional = false
@@ -803,7 +803,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "5637ed99edf13719f069484e41643a8dafdacf8fd2413af63afda3b334d0859a"
+content-hash = "c429de85ef5a60e17db9f7d1c07c1aac21ce192977309a7a9cfd12eb1dfcdb05"
 
 [metadata.files]
 anyio = [
@@ -995,8 +995,8 @@ isort = [
     {file = "isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
 ]
 markdown = [
-    {file = "Markdown-3.3.6-py3-none-any.whl", hash = "sha256:9923332318f843411e9932237530df53162e29dc7a4e2b91e35764583c46c9a3"},
-    {file = "Markdown-3.3.6.tar.gz", hash = "sha256:76df8ae32294ec39dcf89340382882dfa12975f87f45c3ed1ecdb1e8cefc7006"},
+    {file = "Markdown-3.3.7-py3-none-any.whl", hash = "sha256:f5da449a6e1c989a4cea2631aa8ee67caa5a2ef855d551c88f9e309f4634c621"},
+    {file = "Markdown-3.3.7.tar.gz", hash = "sha256:cbb516f16218e643d8e0a95b309f77eb118cb138d39a4f27851e6a63581db874"},
 ]
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},

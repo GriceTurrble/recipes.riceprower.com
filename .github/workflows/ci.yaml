@@ -1,14 +1,22 @@
 # GitHub Action Workflow enforcing code style
 # Borrowed and adapted from workflow designed for Python Discord Summer 2021 Code Jam
 
-name: Code quality checks
+name: CI/CD
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *" # daily at 6am UTC (roughly 1am US/Eastern)
 
 concurrency: code-quality-${{ github.sha }}
 
+env:
+  REPO: ${{ github.repository }}
+
 jobs:
-  lint:
+  linting:
+    name: Code quality checks
     runs-on: ubuntu-latest
 
     env:
@@ -32,8 +40,8 @@ jobs:
         with:
           path: ${{ env.PIP_CACHE_DIR }}
           key: "python-pip-${{ runner.os }}-\
-          ${{ steps.python.outputs.python-version }}-\
-          ${{ hashFiles('./pyproject.toml', './poetry.lock') }}"
+            ${{ steps.python.outputs.python-version }}-\
+            ${{ hashFiles('./pyproject.toml', './poetry.lock') }}"
 
       - name: Install Poetry
         run: pip install poetry
@@ -48,3 +56,65 @@ jobs:
         env:
           # Force pre-commit to do a system install.
           PIP_USER: 0
+
+  docker_build_publish:
+    name: Build and publish Docker image GHCR
+    needs: linting
+    runs-on: "ubuntu-latest"
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Adapted from:
+      # https://github.community/t/additional-function-s-lowercase-uppercase/140632/4
+      - name: lowercase REPO for build-push
+        run: |
+          echo "REPO_LOWER=${REPO,,}" >> ${GITHUB_ENV}
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            ghcr.io/${{ env.REPO_LOWER }}
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=schedule,pattern=nightly
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=edge
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # - name: Build image
+      #   run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Login to GHCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          # push to registry
+          push: ${{ github.event_name != 'pull_request' }}
+          # attempt to pull new images every time
+          pull: true
+          # ignore the cache (to avoid insecure cached layers)
+          no-cache: ${{ github.event_name == 'schedule' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

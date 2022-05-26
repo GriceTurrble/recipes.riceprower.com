@@ -11,9 +11,6 @@ on:
 
 concurrency: code-quality-${{ github.sha }}
 
-env:
-  REPO: ${{ github.repository }}
-
 jobs:
   linting:
     name: Code quality checks
@@ -68,19 +65,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Adapted from:
-      # https://github.community/t/additional-function-s-lowercase-uppercase/140632/4
-      - name: lowercase REPO for build-push
-        run: |
-          echo "REPO_LOWER=${REPO,,}" >> ${GITHUB_ENV}
-
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/${{ env.REPO_LOWER }}
+            ghcr.io/${{ github.repository }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule,pattern=nightly

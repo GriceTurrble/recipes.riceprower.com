@@ -1,6 +1,6 @@
 """Admin for `recipes` app."""
 
-from adminsortable2.admin import SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from django.contrib import admin
 from django.db import models
 from django.db.models.query import QuerySet
@@ -29,7 +29,7 @@ class RecipeIngredientInline(SortableInlineAdminMixin, admin.TabularInline):
 
 
 @admin.register(Recipe)
-class RecipeAdmin(admin.ModelAdmin):
+class RecipeAdmin(SortableAdminBase, admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = [
         RecipeIngredientInline,

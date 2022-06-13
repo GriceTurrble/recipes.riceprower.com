@@ -22,6 +22,6 @@
     "postcss-nested": "^5.0.6",
     "tailwindcss": "^3.1.2",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.10.0"
   }
 }

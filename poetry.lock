@@ -153,7 +153,7 @@ Django = ">=4.0"
 
 [[package]]
 name = "django-environ"
-version = "0.8.1"
+version = "0.9.0"
 description = "A package that allows you to utilize 12factor inspired environment variables to configure your Django application."
 category = "main"
 optional = false
@@ -803,7 +803,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "37332882c8b66cbff0593385df0d736781cc5c06e7995e20de5ed1e785ce08fe"
+content-hash = "c6a1ffd6ac3fdabc942521846250d556866bcb9cb020dee5ab3f7936f81f23bf"
 
 [metadata.files]
 anyio = [
@@ -876,8 +876,8 @@ django-admin-sortable2 = [
     {file = "django_admin_sortable2-2.0.4-py3-none-any.whl", hash = "sha256:65e9cef37d2925637cde1614515da81440ad2720c340b2702ffd3f0f4a61b928"},
 ]
 django-environ = [
-    {file = "django-environ-0.8.1.tar.gz", hash = "sha256:6f0bc902b43891656b20486938cba0861dc62892784a44919170719572a534cb"},
-    {file = "django_environ-0.8.1-py2.py3-none-any.whl", hash = "sha256:42593bee519a527602a467c7b682aee1a051c2597f98c45f4f4f44169ecdb6e5"},
+    {file = "django-environ-0.9.0.tar.gz", hash = "sha256:bff5381533056328c9ac02f71790bd5bf1cea81b1beeb648f28b81c9e83e0a21"},
+    {file = "django_environ-0.9.0-py2.py3-none-any.whl", hash = "sha256:f21a5ef8cc603da1870bbf9a09b7e5577ab5f6da451b843dbcc721a7bca6b3d9"},
 ]
 django-filter = [
     {file = "django-filter-21.1.tar.gz", hash = "sha256:632a251fa8f1aadb4b8cceff932bb52fe2f826dd7dfe7f3eac40e5c463d6836e"},

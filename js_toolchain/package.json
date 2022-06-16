@@ -14,7 +14,7 @@
     "htmx.org": "^1.7.0",
     "hyperscript.org": "^0.9.5",
     "material-ui-colors": "^1.0.0",
-    "mini-css-extract-plugin": "^2.6.0",
+    "mini-css-extract-plugin": "^2.6.1",
     "onchange": "^7.1.0",
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.0",

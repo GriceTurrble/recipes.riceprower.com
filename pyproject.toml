@@ -19,7 +19,7 @@ markdown = "~=3.3.7"
 pillow = "~=9.1.1"
 psycopg2-binary = "~=2.9.3"
 secure = "~=0.3.0"
-uvicorn = {version = "~=0.18.1", extras = ["standard"]}
+uvicorn = {version = "~=0.18.2", extras = ["standard"]}
 wheel = "~=0.37.1"
 fontawesomefree = "~=6.1.1"
 

@@ -11,7 +11,7 @@
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.7.1",
     "daisyui": "^2.19.0",
-    "htmx.org": "^1.7.0",
+    "htmx.org": "^1.8.0",
     "hyperscript.org": "^0.9.5",
     "material-ui-colors": "^1.0.0",
     "mini-css-extract-plugin": "^2.6.1",

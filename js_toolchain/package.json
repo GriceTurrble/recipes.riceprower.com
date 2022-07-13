@@ -7,7 +7,7 @@
     "build:prod": "webpack --mode=production --node-env=production"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.7.1",
     "daisyui": "^2.19.0",

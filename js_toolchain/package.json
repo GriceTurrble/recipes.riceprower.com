@@ -10,7 +10,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.7.1",
-    "daisyui": "^2.19.0",
+    "daisyui": "^2.19.1",
     "htmx.org": "^1.8.0",
     "hyperscript.org": "^0.9.7",
     "material-ui-colors": "^1.0.0",

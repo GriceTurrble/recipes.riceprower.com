@@ -177,7 +177,7 @@ Django = ">=3.2"
 
 [[package]]
 name = "django-fractions"
-version = "2.0.0"
+version = "3.0.0"
 description = "Fraction display and form fields for Django"
 category = "main"
 optional = false
@@ -437,8 +437,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-dev = ["pre-commit", "tox"]
-testing = ["pytest", "pytest-benchmark"]
+testing = ["pytest-benchmark", "pytest"]
+dev = ["tox", "pre-commit"]
 
 [[package]]
 name = "pre-commit"
@@ -734,7 +734,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "7bad4fb36fdec56a2dbacd471e6436fdf3fc0329f2ab9c09fd96c5ea2f08bb78"
+content-hash = "816671422335c50ecb887fdae1928410128cc2c46121f356aac9cdf8742027d1"
 
 [metadata.files]
 anyio = [
@@ -815,8 +815,8 @@ django-filter = [
     {file = "django_filter-22.1-py3-none-any.whl", hash = "sha256:ed429e34760127e3520a67f415bec4c905d4649fbe45d0d6da37e6ff5e0287eb"},
 ]
 django-fractions = [
-    {file = "django-fractions-2.0.0.tar.gz", hash = "sha256:85a60156026fb73a856af7a33457768b6429bd67a82ff7e3cdb7b6cc285ef005"},
-    {file = "django_fractions-2.0.0-py2.py3-none-any.whl", hash = "sha256:3f3f67cf847c00a7e5781f28344ab1d41178aa3c105bf07e5acb4f5dcaf3ebe5"},
+    {file = "django-fractions-3.0.0.tar.gz", hash = "sha256:9a2422ebbf969889480b8a9e591f9565c8e00e90099ac631e6137d591a707230"},
+    {file = "django_fractions-3.0.0-py2.py3-none-any.whl", hash = "sha256:e88a869c84d2811bc13c663e432494fcf0e99e1b1cbf707b11690c67515df255"},
 ]
 django-tinymce = [
     {file = "django-tinymce-3.4.0.tar.gz", hash = "sha256:275653dbf09fbd3347928757d6baf29040b42fe5c5d95396418c36aa4b1517eb"},

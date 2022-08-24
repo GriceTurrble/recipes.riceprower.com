@@ -62,7 +62,7 @@ jobs:
   deploy:
     # Only run this job on main branch
     # (but run all prior jobs on all branches for CI purposes)
-    if: github.ref == 'refs/head/main'
+    if: github.ref == 'refs/heads/main'
     name: "Deploy site"
     environment:
       name: github-pages

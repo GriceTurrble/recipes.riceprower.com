@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/static/css/styles.css?v={{ 'now' | date: '%Y%m%d%H%M' }}" />
+
+  <title>{{ page.title }} | Rice-Prower Recipes</title>
+</head>
+<body
+  class="relative min-h-screen pb-[60px]"
+>
+  <div class="container mx-auto">
+    <div
+      id="content-area"
+      class="prose max-w-full pt-4 px-8 text-black text-lg"
+    >
+      <div>
+        {{ content }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-center lg:text-left absolute bottom-0 left-0 w-full">
+    <div class="text-gray-700 p-4 flex justify-between">
+      <span class="text-left">
+        © {{ 'now' | date: '%Y' }} Copyright:
+        <strong>Galen Rice</strong>
+      </span>
+      <span class="text-right">
+        <!-- FA icon for GitHub -->
+        <!-- Link to GitHub -->
+        <!-- Check this area shrunk, re-order -->
+        See this code on Github!
+      </span>
+    </div>
+  </footer>
+  <!-- END Footer -->
+</body>
+</html>

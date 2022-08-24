@@ -9,17 +9,17 @@ email: griceturrble@protonmail.com
 github_username: griceturrble
 
 # https://jekyllrb.com/docs/collections/
-# collections:
-#   tabs:
-#     output: true
-#     # sort_by: order  # Doesn't appear to work in GH Pages; use `| sort` filter in the layout, instead
+collections:
+  recipe:
+    output: true
+    permalink: /r/:name
 
-# defaults:
-#   - scope:
-#       path: ""
-#       type: "tabs"
-#     values:
-#       layout: "default"
+defaults:
+  - scope:
+      path: ""
+      type: "recipe"
+    values:
+      layout: "recipe"
 
 # Exclude certain files and directories from the build
 # https://jekyllrb.com/docs/configuration/options/#global-configuration
@@ -37,3 +37,6 @@ exclude:
   - package*.json
   - README.md
   - Makefile
+
+plugins:
+  - jekyll-redirect-from

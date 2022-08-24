@@ -38,3 +38,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # No longer a built in gem in Ruby 3.0: have to include directly
 gem "webrick", "~> 1.7"
+
+gem "jekyll-redirect-from", "~> 0.16.0"

@@ -60,7 +60,9 @@ jobs:
         uses: actions/upload-pages-artifact@v1
 
   deploy:
-    if: github.ref == 'main'
+    # Only run this job on main branch
+    # (but run all prior jobs on all branches for CI purposes)
+    if: github.ref == 'refs/head/main'
     name: "Deploy site"
     environment:
       name: github-pages

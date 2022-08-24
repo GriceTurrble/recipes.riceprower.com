@@ -31,7 +31,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v2
 
       # Start by building our JS/CSS static assets via Node
       - name: Setup Node

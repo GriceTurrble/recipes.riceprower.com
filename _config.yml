@@ -31,7 +31,7 @@ exclude:
   - docs
   - Gemfile
   - gulpfile.js
-  - js_toolsß
+  - js_tools
   - LICENSE
   - node_modules
   - package*.json

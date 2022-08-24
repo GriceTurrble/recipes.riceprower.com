@@ -6,30 +6,37 @@ SITE_DIR=_site
 # Needed locally, but not in the CI/CD workflow.
 # `actions/setup-ruby` does that for us.
 install_gems:
-	gem install jekyll bundle
-	bundle install
+	@echo ">> Installing Ruby gems..."
+	@gem install jekyll bundle
+	@bundle install
 
 install_node_modules:
+	@echo ">> Installing Node dependencies..."
 	@cd js_tools; \
 	npm ci
 
 install: install_gems install_node_modules
 
 build_static:
+	@echo ">> Building static assets (via Node)..."
 	@cd js_tools; \
 	npm run build
 
 build_site:
-	bundle exec jekyll build --config "$(CONFIG_YML)" --destination "$(SITE_DIR)"
+	@echo ">> Building jekyll site..."
+	@bundle exec jekyll build --config "$(CONFIG_YML)" --destination "$(SITE_DIR)"
 
 build: build_static build_site
 
 serve_site:
-	bundle exec jekyll serve
+	@echo ">> Serving jekyll site locally (with rebuilds)..."
+	@bundle exec jekyll serve
 
 serve_static:
+	@echo ">> Serving Node assets locally (with rebuilds)..."
 	@cd js_tools; \
 	npm run start
 
 test:
-	bundle exec htmlproofer --disable-external --allow_hash_href "$(SITE_DIR)"
+	@echo ">> Running tests..."
+	@bundle exec htmlproofer --disable-external --allow_hash_href "$(SITE_DIR)"

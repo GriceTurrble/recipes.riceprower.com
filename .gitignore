@@ -7,3 +7,4 @@ vendor
 .vscode/*
 !.vscode/tasks.json
 [Gg]emfile.lock
+static/

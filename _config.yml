@@ -1,0 +1,38 @@
+title: Rice-Prower Recipe site
+description: >- # this means to ignore newlines until "baseurl:"
+  We make good things.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://recipes.riceprower.com/" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Some contact info
+email: griceturrble@protonmail.com
+github_username: griceturrble
+
+# https://jekyllrb.com/docs/collections/
+# collections:
+#   tabs:
+#     output: true
+#     # sort_by: order  # Doesn't appear to work in GH Pages; use `| sort` filter in the layout, instead
+
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "tabs"
+#     values:
+#       layout: "default"
+
+# Exclude certain files and directories from the build
+# https://jekyllrb.com/docs/configuration/options/#global-configuration
+exclude:
+  - .github
+  - .vscode
+  - '*.gem'
+  - '*.gemspec'
+  - docs
+  - Gemfile
+  - gulpfile.js
+  - js_toolsß
+  - LICENSE
+  - node_modules
+  - package*.json
+  - README.md

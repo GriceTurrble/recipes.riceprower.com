@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run build:dev && onchange \"src/styles.css\" \"tailwind.config.js\" \"../*.html\" \"../*.md\" \"../_layouts/*.html\" \"../_layouts/*.md\" \"../_tabs/*.html\" \"../_tabs/*.md\" -- npm run build:dev",
+    "start": "npm run build:dev && onchange \"src/styles.css\" \"tailwind.config.js\" \"../*.html\" \"../*.md\" \"../_layouts/*.html\" \"../_layouts/*.md\" \"../_includes/*.html\" \"../_includes/*.md\" -- npm run build:dev",
     "build": "postcss ./src/**/*.css -o ../static/css/styles.css --env production",
     "build:dev": "postcss ./src/**/*.css -o ../static/css/styles.css",
     "build:prod": "postcss ./src/**/*.css -o ../static/css/styles.css --env production"

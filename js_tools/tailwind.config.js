@@ -7,8 +7,8 @@ module.exports = {
     "../*.md",
     "../_layouts/**/*.html",
     "../_layouts/**/*.md",
-    "../_tabs/**/*.html",
-    "../_tabs/**/*.md",
+    "../_includes/**/*.html",
+    "../_includes/**/*.md",
   ],
   theme: {
     extend: {

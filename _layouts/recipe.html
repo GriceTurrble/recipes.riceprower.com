@@ -2,17 +2,6 @@
 layout: default
 ---
 
-<div class="flex space-x-2 justify-center">
-  <a
-    class="no-underline inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-    href="/"
-  >
-    <!-- FA icons not working as expected. Need a fix here! -->
-    <i class="fas fa-angles-left"></i>
-    Home
-  </a>
-</div>
-
 {% assign the_content = content | strip_newlines %}
 {% if the_content != "" %}
 <div class="border border-1">
@@ -20,14 +9,20 @@ layout: default
 </div>
 {% endif %}
 
-<h1>{{ page.title }}</h1>
+<div class="not-prose">
+  <p class="text-gray-400 uppercase text-sm">
+    Recipe / <strong>{{ page.title }}</strong>
+  </p>
+</div>
 
-<h2>Ingredients</h2>
+<h2>{{ page.title }}</h2>
+
+<h3>Ingredients</h3>
 <ul>
   <li>b</li>
 </ul>
 
-<h2>Directions</h2>
+<h3>Directions</h3>
 <ol>
   <li>a</li>
   <li>b</li>

@@ -1,44 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-screen">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/static/css/styles.css?v={{ 'now' | date: '%Y%m%d%H%M' }}" />
+
   <script src="{{ site.fontawesome_kit_url }}" crossorigin="anonymous"></script>
 
   <title>{{ page.title }} | Rice-Prower Recipes</title>
 </head>
 <body
-  class="relative min-h-screen pb-[60px]"
+  class="bg-gray-300 h-screen flex flex-col"
 >
-  <div class="container mx-auto">
+  {% include header.html %}
+
+  <main class="container bg-white mx-auto grow">
     <div
       id="content-area"
-      class="prose max-w-full pt-4 px-8 text-black text-lg"
+      class="prose prose-headings:text-deepPurple-500 max-w-full py-4 px-8 text-black text-lg"
     >
-      <div>
-        {{ content }}
-      </div>
+      {{ content }}
     </div>
-  </div>
+  </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-200 text-center lg:text-left absolute bottom-0 left-0 w-full">
-    <div class="text-gray-700 p-4 flex justify-between">
-      <span class="text-left">
-        © {{ 'now' | date: '%Y' }} Copyright:
-        <strong>Galen Rice</strong>
-      </span>
-      <span class="text-right">
-        <!-- FA icon for GitHub -->
-        <!-- Link to GitHub -->
-        <!-- Check this area shrunk, re-order -->
-        See this code on Github!
-      </span>
-    </div>
-  </footer>
-  <!-- END Footer -->
+  {% include footer.html %}
 </body>
 </html>

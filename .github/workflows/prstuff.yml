@@ -1,0 +1,11 @@
+name: "Temporary PR workflow testing"
+on:
+  pull_request:
+    types:
+      - ready_for_review
+
+jobs:
+  test-it-out:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello!"

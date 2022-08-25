@@ -40,3 +40,5 @@ exclude:
 
 plugins:
   - jekyll-redirect-from
+
+fontawesome_kit_url: https://kit.fontawesome.com/4f678b0cb8.js

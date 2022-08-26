@@ -1,30 +1,57 @@
 ---
 layout: default
 ---
-
-{% assign the_content = content | strip_newlines %}
-{% if the_content != "" %}
-<div class="border border-1">
-  {{ the_content }}
-</div>
-{% endif %}
-
 <div class="not-prose">
   <p class="text-gray-400 uppercase text-sm">
-    Recipe / <strong>{{ page.title }}</strong>
+    <a
+      href="/r/all"
+      class="hover:text-deepPurple-400 hover:underline transition ease-in-out"
+    >
+      Recipes</a> / <strong>{{ page.title }}</strong>
   </p>
 </div>
 
 <h2>{{ page.title }}</h2>
 
+{% assign the_content = content | strip_newlines %}
+{% if the_content != "" %}
+<div class="block p-6 rounded-lg shadow-lg bg-deepPurple-100 bg-opacity-50 max-w-3xl">
+  <div class="prose prose-headings:text-deepPurple-500 max-w-none">
+    {{ the_content }}
+  </div>
+</div>
+{% endif %}
+
+{% if page.ingredients %}
 <h3>Ingredients</h3>
 <ul>
-  <li>b</li>
+  {% for ingredient in page.ingredients %}
+  <li>{{ ingredient }}</li>
+  {% endfor %}
 </ul>
+{% endif %}
 
+{% if page.directions %}
 <h3>Directions</h3>
-<ol>
-  <li>a</li>
-  <li>b</li>
-  <li>c</li>
+<ol class="marker:italic">
+  {% for direction in page.directions %}
+  <li>{{ direction }}</li>
+  {% endfor %}
 </ol>
+{% endif %}
+
+{% if page.footnotes %}
+<h3>Footnotes</h3>
+<div>
+  {% for footnote in page.footnotes %}
+  <div class="flex flex-row mb-8">
+    <div class="w-7 text-center text-[color:var(--tw-prose-counters)]">
+      <i class="fa-solid fa-caret-right"></i>
+    </div>
+    <div class="grow prose prose-headings:text-deepPurple-500 max-w-none ml-1">
+      {{ footnote | markdownify }}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

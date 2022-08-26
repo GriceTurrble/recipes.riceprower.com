@@ -1,17 +1,9 @@
 ---
 layout: default
 ---
-<div class="not-prose">
-  <p class="text-gray-400 uppercase text-sm">
-    <a
-      href="/r/all"
-      class="hover:text-deepPurple-400 hover:underline transition ease-in-out"
-    >
-      Recipes</a> / <strong>{{ page.title }}</strong>
-  </p>
-</div>
+{% include recipe_breadcrumb.html %}
 
-<h2>{{ page.title }}</h2>
+<h1>{{ page.title }}</h1>
 
 {% assign the_content = content | strip_newlines %}
 {% if the_content != "" %}

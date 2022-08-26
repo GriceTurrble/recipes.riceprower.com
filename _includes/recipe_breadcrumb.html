@@ -1,0 +1,12 @@
+<div class="not-prose">
+  <p class="text-gray-400 uppercase text-sm">
+    <a
+      href="/r/all"
+      class="hover:text-deepPurple-400 hover:underline transition ease-in-out"
+    >
+      Recipes</a>
+    {% if page.url != "/r/all" %}
+     / <strong>{{ page.title }}</strong>
+    {% endif %}
+  </p>
+</div>

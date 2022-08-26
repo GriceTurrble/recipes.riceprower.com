@@ -10,14 +10,14 @@ github_username: griceturrble
 
 # https://jekyllrb.com/docs/collections/
 collections:
-  recipe:
+  recipes:
     output: true
     permalink: /r/:name
 
 defaults:
   - scope:
       path: ""
-      type: "recipe"
+      type: "recipes"
     values:
       layout: "recipe"
 

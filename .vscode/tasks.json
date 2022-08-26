@@ -1,0 +1,66 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "site:serve",
+      "detail": "Serve the Jekyll site for local development",
+      "type": "shell",
+      "command": "make serve_site",
+      "problemMatcher": [
+        "$jekyll-error-watch",
+        "$jekyll-warning-watch"
+      ],
+      "group": "build",
+      "presentation": {
+        "group": "serviceTasks",
+        "close": true
+      }
+    },
+    {
+      "label": "static:serve",
+      "detail": "Serve the NPM static builder for local development",
+      "type": "shell",
+      "command": "make serve_static",
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "group": "serviceTasks",
+        "close": true
+      }
+    },
+    {
+      "label": "site:open",
+      "detail": "Open the site for local development",
+      "type": "shell",
+      "command": "open http://localhost:4000",
+      "osx": {
+        "command": "open http://localhost:4000"
+      },
+      "group": "build",
+      "presentation": {
+        "group": "serviceTasks",
+        "close": true
+      },
+    },
+    {
+      "label": "ALL:serve",
+      "detail": "Serve both static and Jekyll builders for local development",
+      "dependsOn": [
+        "static:serve",
+        "site:serve",
+        "site:open",
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "group": "serviceTasks",
+        "close": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

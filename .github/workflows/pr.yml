@@ -24,5 +24,24 @@ jobs:
 
       - name: Comment failure on PR
         if: failure()
-        run: |
-          echo "Hello!"
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## Non-conventional commit messages detected.
+
+                ✋ Some commit messages in this PR do not follow Conventional Commit standards.
+
+                Please revise these commits locally using one of the following methods:
+
+                - \`something\`
+                - something else
+
+                \`\`\`
+                Is this possible as well?
+                \`\`\``
+            })

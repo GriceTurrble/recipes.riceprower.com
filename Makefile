@@ -47,3 +47,7 @@ test:
 		--allow_hash_href \
 		--enforce-https=$(ENFORCE_HTTPS_IN_TESTS) \
 		"$(SITE_DIR)"
+
+clean:
+	@echo ">> Cleaning up Jekyll generated files..."
+	@bundle exec jekyll clean

@@ -22,26 +22,31 @@ jobs:
           checkAllCommitMessages: 'true'
           accessToken: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Comment success on PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          header: pr-conventional-commit-check
+          delete: true
+
       - name: Comment failure on PR
         if: failure()
-        uses: actions/github-script@v3
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `## Non-conventional commit messages detected.
+          recreate: true
+          header: pr-conventional-commit-check
+          message: |
+            ## ✋ Non-conventional commit messages detected.
 
-                ✋ Some commit messages in this PR do not follow Conventional Commit standards.
+            Some commit messages in this PR do not follow Conventional Commit standards.
 
-                Please revise these commits locally using one of the following methods:
+            Please revise these commits locally using one of the following methods:
 
-                - \`something\`
-                - something else
+            - `git commit --amend` - rewrite the message of the LAST commit using your text editor
+            - `git rebase -i HEAD~<N>` - rebase interactively the previous `N` commits.
+              - Choose the `reword` option beside the commit(s) with incorrect formatting.
+            - `git reset --soft HEAD~<N>` - reset your branch back `N` commits.
+              - All changes from reset commits will remain staged.
+              - You can write *new* commits from those staged changes.
 
-                \`\`\`
-                Is this possible as well?
-                \`\`\``
-            })
+            After **any** of the above changes, use `git push --force-with-lease` to push your new commits.

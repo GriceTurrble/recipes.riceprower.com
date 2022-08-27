@@ -2,6 +2,8 @@
 title: Stuff!
 permalink: /r/all
 layout: default
+redirect_from:
+  - /r
 ---
 {% include recipe_breadcrumb.html %}
 

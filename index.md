@@ -1,9 +1,6 @@
 ---
 title: Home
 layout: default
-redirect_from:
-  # Pull recipes index back to here
-  - /r
 ---
 
 # Hello world!

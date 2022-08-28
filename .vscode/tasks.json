@@ -38,6 +38,9 @@
       "osx": {
         "command": "open http://localhost:4000"
       },
+      "windows": {
+        "command": "start http://localhost:4000"
+      },
       "group": "build",
       "presentation": {
         "group": "serviceTasks",

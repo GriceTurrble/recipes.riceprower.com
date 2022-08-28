@@ -13,15 +13,15 @@ install_gems:
 
 install_node_modules:
 	@echo ">> Installing Node dependencies..."
-	@cd js_tools; \
-	npm ci
+	@cd js_tools && \
+		npm ci
 
 install: install_gems install_node_modules
 
 build_static:
 	@echo ">> Building static assets (via Node)..."
-	@cd js_tools; \
-	npm run build
+	@cd js_tools && \
+		npm run build
 
 build_site:
 	@echo ">> Building jekyll site..."
@@ -37,8 +37,8 @@ serve_site:
 
 serve_static:
 	@echo ">> Serving Node assets locally (with rebuilds)..."
-	@cd js_tools; \
-	npm run start
+	@cd js_tools && \
+		npm run start
 
 test:
 	@echo ">> Running tests..."

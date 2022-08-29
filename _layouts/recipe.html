@@ -14,23 +14,30 @@ layout: default
 </div>
 {% endif %}
 
-{% if page.ingredients %}
-<h3>Ingredients</h3>
-<ul>
-  {% for ingredient in page.ingredients %}
-  <li>{{ ingredient }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+<div class="grid grid-flow-col auto-cols-fr gap-4">
+  {% if page.ingredients %}
+  <div>
+    <h3 class="my-0">Ingredients</h3>
+    <ul>
+      {% for ingredient in page.ingredients %}
+      <li class="print:leading-tight print:my-0">{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 
-{% if page.directions %}
-<h3>Directions</h3>
-<ol class="marker:italic">
-  {% for direction in page.directions %}
-  <li>{{ direction }}</li>
-  {% endfor %}
-</ol>
-{% endif %}
+  {% if page.directions %}
+  <div>
+    <h3 class="my-0">Directions</h3>
+    <ol class="marker:text-2xl marker:font-semibold text-lg">
+      {% for direction in page.directions %}
+      <li>{{ direction }}</li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endif %}
+</div>
+
 
 {% if page.footnotes %}
 <h3>Footnotes</h3>

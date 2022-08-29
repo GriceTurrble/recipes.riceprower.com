@@ -6,7 +6,9 @@ url: "https://recipes.riceprower.com/" # the base hostname & protocol for your s
 
 # Some contact info
 email: griceturrble@protonmail.com
-github_username: griceturrble
+github:
+  username: griceturrble
+  repo: recipes.riceprower.com
 
 # https://jekyllrb.com/docs/collections/
 collections:

@@ -12,29 +12,12 @@ redirect_from:
 These are the things I know I know, *these* are the things I know.
 
 <div
-  class="grid grid-flow-row-dense gap-2
-         grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4"
 >
 {% for page in site.recipes %}
-  {% assign num=20 %}
-  {% for i in (1..num) %}
-  <a
-    href="{{ page.url }}"
-    class="
-      block
-      px-6
-      py-2
-      border border-deepPurple-A100
-      w-full
-      hover:bg-deepPurple-500 hover:text-white
-      focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
-      transition
-      ease-in-out
-      rounded-lg
-      cursor-pointer
-      no-underline
-    "
-  >{{ page.title }}</a>
+  {% assign num=0 %}
+  {% for thing in (i..num) %}
+  {% include recipe_list_card.html page=page %}
   {% endfor %}
 {% endfor %}
 </div>

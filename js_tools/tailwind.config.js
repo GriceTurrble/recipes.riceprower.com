@@ -8,12 +8,12 @@ module.exports = {
     "../_layouts/**/*.html",
     "../_layouts/**/*.md",
     "../_includes/**/*.html",
-    "../_includes/**/*.md",
+    "../_includes/**/*.md"
   ],
   theme: {
     extend: {
       colors: { ...colors }
-    },
+    }
   },
-  plugins: [require("@tailwindcss/typography")]
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")]
 };

@@ -3,9 +3,7 @@ layout: default
 ---
 {% include recipe_breadcrumb.html %}
 
-<h1
-  class="sticky md:static bg-white top-[52px] h-[56px] py-2 shadow-b-md z-20"
->{{ page.title }}</h1>
+<h1>{{ page.title }}</h1>
 
 {% assign the_content = content | strip_newlines %}
 {% if the_content != "" %}
@@ -20,7 +18,7 @@ layout: default
             print:grid print:grid-flow-col print:auto-cols-fr print:gap-4">
   {% if page.ingredients %}
   <div>
-    <h2 class="my-0 z-10 md:static sticky top-[calc(52px+56px)] pb-2 bg-white">Ingredients</h2>
+    <h2>Ingredients</h2>
     <ul class="list-none pl-0">
       {% for ingredient in page.ingredients %}
       <li class="print:leading-tight print:my-0 ml-0 pl-0">
@@ -28,12 +26,12 @@ layout: default
           <input
             type="checkbox"
             class="peer mr-3 mt-1.5
-                   rounded
-                   bg-gray-200
-                   border-transparent
-                   focus:border-transparent focus:bg-gray-200
-                   text-gray-700
-                   focus:ring-1 focus:ring-offset-2 focus:ring-gray-500"
+                  rounded
+                  bg-gray-200
+                  border-transparent
+                  focus:border-transparent focus:bg-gray-200
+                  text-gray-700
+                  focus:ring-1 focus:ring-offset-2 focus:ring-gray-500"
           />
           <span class="peer-checked:line-through peer-checked:text-gray-200 transition ease-in-out">{{ ingredient }}</span>
         </label>
@@ -45,7 +43,7 @@ layout: default
 
   {% if page.directions %}
   <div>
-    <h2 class="my-0 z-10 md:static sticky top-[calc(52px+56px)] pb-2 bg-white">Directions</h2>
+    <h2>Directions</h2>
     <ol class="marker:text-2xl marker:font-semibold text-lg">
       {% for direction in page.directions %}
       <li>{{ direction | markdownify }}</li>
@@ -57,7 +55,7 @@ layout: default
 
 
 {% if page.footnotes %}
-<h2 class="z-10 md:static sticky top-[calc(52px+56px)] pb-2 bg-white">Footnotes</h2>
+<h2>Footnotes</h2>
 <div>
   {% for footnote in page.footnotes %}
   <div class="flex flex-row mb-8">

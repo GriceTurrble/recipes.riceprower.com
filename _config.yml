@@ -53,3 +53,9 @@ algolia:
   search_api_key: "75093c3e6d1abf1e90085b0e99d8d2cd"
   # This API key is safe to be public facing, as it has read-only access to Algolia.
   index_name: "dev_recipes_riceprower_com"
+  settings:
+    searchableAttributes:
+      - title
+      - subtitle
+      - ingredients, directions, footnotes
+      - content

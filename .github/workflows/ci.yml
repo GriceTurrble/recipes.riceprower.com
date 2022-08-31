@@ -94,3 +94,23 @@ jobs:
           # Zone is required by both authentication methods
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_CACHE_TOKEN }}
+
+  push-search-index:
+    name: "Push content to Algolia index"
+    needs:
+      - deploy
+    env:
+      ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Push search content
+        run: |
+          bundle exec jekyll algolia

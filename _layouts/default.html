@@ -5,9 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="{{ site.tooling.google_font_kit }}" rel="stylesheet">
+
+  <!-- Our styles -->
   <link rel="stylesheet" href="/static/css/styles.css?v={{ 'now' | date: '%Y%m%d%H%M' }}" />
 
-  <script src="{{ site.fontawesome_kit_url }}" crossorigin="anonymous"></script>
+  <!-- Algolia search -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css"> -->
+  <script src="{{ site.tooling.algolia_instant_search }}"></script>
+
+  <!-- FontAwesome kit -->
+  <script src="{{ site.tooling.fontawesome_kit_url }}" crossorigin="anonymous"></script>
 
   <title>{{ page.title }} | Rice-Prower Recipes</title>
 </head>

@@ -11,6 +11,10 @@ module.exports = {
     "../_includes/**/*.md"
   ],
   theme: {
+    fontFamily: {
+      sans: ["'Work Sans'", ...defaultTheme.fontFamily.sans],
+      serif: ["'Modern Antiqua'", ...defaultTheme.fontFamily.sans]
+    },
     extend: {
       colors: { ...colors }
     }

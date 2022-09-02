@@ -9,7 +9,7 @@ image:
     name: pexels.com
 ingredients:
   - 2 lb ground beef, preferably 80-85% lean
-  - 2 lb hot Italian sausage, ground or skinless (or casings removed)
+  - 2 lb hot Italian sausage, ground or skinless
   - ~2 tbsp Worcestershire sauce
   - 4 medium yellow onions, chopped
   - 4 cloves garlic, minced
@@ -18,12 +18,12 @@ ingredients:
   - Hot peppers; 5 serranos OR 2 long hots, or whatever combo you like; chopped
   - 48 oz crushed tomato
   - 6 oz tomato paste
-  - 60 oz canned beans (I like a mix of kidney, pinto, black, and cannellini beans, 1 15oz can each)
+  - 60 oz canned beans (see footnotes)
   - 30 oz whole kernel corn (if canned, drain the water)
   - 1 heaping tbsp salt
   - 2 tbsp dark brown sugar
   - 1 tbsp cocoa powder
-  - 1/2 cup chili powder (yes, that says "cup")
+  - 1/2 cup chili powder
   - 1 heaping tbsp ground cumin
   - 1 heaping tbsp crushed red pepper
   - 1 heaping tsp ground cayenne pepper
@@ -49,7 +49,10 @@ directions:
   - |
     Serve and enjoy.
 footnotes:
-  - For chili powder, not just any store brand will do. I like using [El Diente Southwestern Seasoning from Savory Spice](https://www.savoryspiceshop.com/products/el-diente-southwestern-seasoning). It bills itself as a seasoning or rub, but I find it can just replace chili powder in any recipe calling for it, to great success.
+  - |
+    **Beans**: I like a mix of dark red kidney, pinto, black, and cannellini beans; one 15oz can each.
+  - |
+    **Chili powder**: not just any store brand will do. I like using [El Diente Southwestern Seasoning from Savory Spice](https://www.savoryspiceshop.com/products/el-diente-southwestern-seasoning). It bills itself as a seasoning or rub, but I find it can just replace chili powder in any recipe calling for it, to great success.
 ---
 
 My own personal chili recipe. More than just meat and beans in a sauce, the balance of spices, the bell peppers, the touch of sweetness; all comes together into a melting pot of excellence. Serve with rice or pasta, with some cheese, some sour cream, maybe even some chips. Not so good on hot dogs, I'm afraid.

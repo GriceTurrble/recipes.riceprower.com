@@ -22,7 +22,9 @@ defaults:
       type: "recipes"
     values:
       layout: "recipe"
-      image: "https://place-hold.it/1200x800"
+      image:
+        href: "https://place-hold.it/1200x800"
+        alt_text: "image of some food (this has not been replaced for this recipe!)"
 
 # Exclude certain files and directories from the build
 # https://jekyllrb.com/docs/configuration/options/#global-configuration

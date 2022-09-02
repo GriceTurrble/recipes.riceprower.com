@@ -5,17 +5,17 @@ layout: default
 
 <h1>{{ page.title }}</h1>
 
-<img src="{{ page.image }}"/>
-{% if page.image_source %}
+<img src="{{ page.image.href }}" alt="{{ page.image.alt_text }}"/>
+{% if page.image.attribution %}
 <p
   class="text-sm -mt-6 mb-0 italic text-gray-400"
 >
   Image source:
   <a
     class="text-gray-400"
-    href="{{ page.image_source }}"
+    href="{{ page.image.attribution }}"
   >
-    {{ page.image_source }}
+    {{ page.image.attribution }}
   </a>
 </p>
 {% endif %}

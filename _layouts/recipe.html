@@ -3,37 +3,58 @@ layout: default
 ---
 {% include recipe_breadcrumb.html %}
 
-<h1>{{ page.title }}</h1>
+<div class="md:grid md:grid-flow-row-dense md:grid-cols-4 md:gap-4
+            print:grid print:grid-flow-row-dense print:grid-cols-4 print:gap-4">
 
-<img src="{{ page.image.href }}" alt="{{ page.image.alt_text }}"/>
-{% if page.image.attribution %}
-<p
-  class="text-sm -mt-6 mb-0 italic text-gray-400"
->
-  Image source:
-  <a
-    class="text-gray-400"
-    href="{{ page.image.attribution }}"
+  <div
+    id="recipe-title"
+    class="col-span-3 md:-order-1
+           print:col-span-3 print:-order-1"
   >
-    {{ page.image.attribution }}
-  </a>
-</p>
-{% endif %}
-
-{% assign the_content = content | strip_newlines %}
-{% if the_content != "" %}
-<div class="block p-6 rounded-lg shadow-lg bg-deepPurple-100 bg-opacity-50 max-w-3xl">
-  <div class="prose prose-headings:text-deepPurple-500 max-w-none">
-    {{ the_content }}
+    <h1>
+      {{ page.title }}
+      <div class="text-gray-400 text-sm font-normal">{{ page.subtitle }}</div>
+    </h1>
+    <div class="-mt-5">
+      {{ content }}
+    </div>
   </div>
-</div>
-{% endif %}
+  <!-- image -->
+  <div
+    id="recipe-image"
+    class="md:-order-2 md:mr-4
+           print:-order-2 print:mr-4"
+  >
+    <img
+      class="m-0 rounded-lg object-contain w-full h-auto"
+      src="{{ page.image.href }}"
+      alt="{{ page.image.alt_text }}"
+    />
+    {% if page.image.attribution %}
+    <p
+      class="text-sm mt-0 italic text-gray-400"
+    >
+      Image source:
+      <a
+        class="text-gray-400"
+        href="{{ page.image.attribution.href }}"
+      >
+        {{ page.image.attribution.name }}
+      </a>
+    </p>
+    {% endif %}
+  </div>
+  <!-- END image -->
 
-<div class="md:grid md:grid-flow-col md:auto-cols-fr md:gap-4
-            print:grid print:grid-flow-col print:auto-cols-fr print:gap-4">
-  {% if page.ingredients %}
-  <div>
-    <h2>Ingredients</h2>
+
+
+
+  <!-- ingredients -->
+  <div
+    id="recipe-ingredients"
+    class="col-span-2 print:col-span-2"
+  >
+    <h2 class="md:mt-0">Ingredients</h2>
     <ul class="list-none pl-0">
       {% for ingredient in page.ingredients %}
       <li class="print:leading-tight print:my-0 ml-0 pl-0">
@@ -54,18 +75,22 @@ layout: default
       {% endfor %}
     </ul>
   </div>
-  {% endif %}
+  <!-- END ingredients -->
 
-  {% if page.directions %}
-  <div>
-    <h2>Directions</h2>
+  <!-- directions -->
+  <div
+    id="recipe-directions"
+    class="col-span-2 print:col-span-2"
+  >
+    <h2 class="md:mt-0">Directions</h2>
     <ol class="marker:text-2xl marker:font-semibold text-lg">
       {% for direction in page.directions %}
       <li>{{ direction | markdownify }}</li>
       {% endfor %}
     </ol>
   </div>
-  {% endif %}
+  <!-- END directions -->
+
 </div>
 
 

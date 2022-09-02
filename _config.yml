@@ -23,7 +23,7 @@ defaults:
     values:
       layout: "recipe"
       image:
-        href: "https://place-hold.it/1200x800"
+        href: "https://place-hold.it/1200x800&text=Pineapple_Pizza&fontsize=36"
         alt_text: "image of some food (this has not been replaced for this recipe!)"
 
 # Exclude certain files and directories from the build

@@ -95,16 +95,14 @@ layout: default
 
 
 {% if page.footnotes %}
-<h2>Footnotes</h2>
-<div>
+<h2 class="mb-4">Footnotes</h2>
+<div class="grid grid-cols-[1rem_1fr] gap-y-4 gap-x-1">
   {% for footnote in page.footnotes %}
-  <div class="flex flex-row mb-8">
-    <div class="w-7 text-center text-[color:var(--tw-prose-counters)]">
-      <i class="fa-solid fa-caret-right"></i>
-    </div>
-    <div class="grow prose prose-headings:text-deepPurple-500 max-w-none ml-1">
-      {{ footnote | markdownify }}
-    </div>
+  <div class="text-[color:var(--tw-prose-counters)]">
+    <i class="fa-solid fa-caret-right"></i>
+  </div>
+  <div class="grow prose prose-headings:text-deepPurple-500 max-w-none ml-1">
+    {{ footnote | markdownify }}
   </div>
   {% endfor %}
 </div>

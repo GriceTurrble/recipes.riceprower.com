@@ -3,10 +3,10 @@ title: G's Chili Con Carne
 subtitle: Simply the best.
 image:
   href: https://user-images.githubusercontent.com/9964605/188196194-dba08c1f-4a7b-459d-ace4-21abb82a0fe5.jpeg
+  alt_text: "bowl of chili, via Pexels"
   attribution:
     href: https://www.pexels.com/photo/meat-dish-1618906/
     name: pexels.com
-  alt_text: "bowl of chili, via Pexels"
 ingredients:
   - 2 lb ground beef, preferably 80-85% lean
   - 2 lb hot Italian sausage, ground or skinless (or casings removed)
@@ -51,3 +51,5 @@ directions:
 footnotes:
   - For chili powder, not just any store brand will do. I like using [El Diente Southwestern Seasoning from Savory Spice](https://www.savoryspiceshop.com/products/el-diente-southwestern-seasoning). It bills itself as a seasoning or rub, but I find it can just replace chili powder in any recipe calling for it, to great success.
 ---
+
+My own personal chili recipe. More than just meat and beans in a sauce, the balance of spices, the bell peppers, the touch of sweetness; all comes together into a melting pot of excellence. Serve with rice or pasta, with some cheese, some sour cream, maybe even some chips. Not so good on hot dogs, I'm afraid.

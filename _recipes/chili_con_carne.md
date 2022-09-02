@@ -1,6 +1,7 @@
 ---
 title: G's Chili Con Carne
 subtitle: Simply the best.
+image: https://user-images.githubusercontent.com/9964605/188196194-dba08c1f-4a7b-459d-ace4-21abb82a0fe5.jpeg
 ingredients:
   - 2 lb ground beef, preferably 80-85% lean
   - 2 lb hot Italian sausage, ground or skinless (or casings removed)

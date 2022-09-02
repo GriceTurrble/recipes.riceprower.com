@@ -12,10 +12,6 @@
     }
   }
 
-  #sitesearch-hits {
-    @apply columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4;
-  }
-
   #sitesearch-pagination-container {
     @apply flex justify-center mt-8;
     ul {

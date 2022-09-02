@@ -57,6 +57,7 @@ algolia:
   # This API key is safe to be public facing, as it has read-only access to Algolia.
   index_name: "dev_recipes_riceprower_com"
   settings:
+    hitsPerPage: 10
     searchableAttributes:
       - title
       - subtitle

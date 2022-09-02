@@ -51,7 +51,3 @@ directions:
 footnotes:
   - For chili powder, not just any store brand will do. I like using [El Diente Southwestern Seasoning from Savory Spice](https://www.savoryspiceshop.com/products/el-diente-southwestern-seasoning). It bills itself as a seasoning or rub, but I find it can just replace chili powder in any recipe calling for it, to great success.
 ---
-
-Something or other
-
-Things and stuff!

@@ -1,5 +1,6 @@
 ---
 title: Kansas City Ribs
+subtitle: A great spice rub pairs with slow-baked ribs that you can make any time.
 image:
   href: https://user-images.githubusercontent.com/9964605/188225490-dd94809c-2c10-42fb-8e23-f46fa644f55b.jpeg
   alt_text: "rack of ribs, via Pexels"
@@ -30,5 +31,3 @@ directions:
 footnotes:
   - You can store any excess spice mix in an airtight container for up to 6 months in a cool, dark place.
 ---
-
-A great spice rub pairs with slow-baked ribs that you can make any time.

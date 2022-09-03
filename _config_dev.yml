@@ -1,0 +1,3 @@
+# Overrides for config used in development environment.
+algolia:
+  index_name: "dev_recipes_riceprower_com"

@@ -8,3 +8,4 @@ vendor
 !.vscode/tasks.json
 [Gg]emfile.lock
 static/
+_algolia_api_key

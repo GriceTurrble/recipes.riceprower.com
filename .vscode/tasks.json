@@ -8,14 +8,10 @@
       "detail": "Serve the Jekyll site for local development",
       "type": "shell",
       "command": "make serve_site",
-      "problemMatcher": [
-        "$jekyll-error-watch",
-        "$jekyll-warning-watch"
-      ],
+      "problemMatcher": ["$jekyll-error-watch", "$jekyll-warning-watch"],
       "group": "build",
       "presentation": {
-        "group": "serviceTasks",
-        "close": true
+        "group": "serviceTasks"
       }
     },
     {
@@ -26,8 +22,7 @@
       "problemMatcher": [],
       "group": "build",
       "presentation": {
-        "group": "serviceTasks",
-        "close": true
+        "group": "serviceTasks"
       }
     },
     {
@@ -45,25 +40,31 @@
       "presentation": {
         "group": "serviceTasks",
         "close": true
-      },
+      }
     },
     {
       "label": "ALL:serve",
       "detail": "Serve both static and Jekyll builders for local development",
-      "dependsOn": [
-        "static:serve",
-        "site:serve",
-        "site:open",
-      ],
+      "dependsOn": ["static:serve", "site:serve", "site:open"],
       "group": {
         "kind": "build",
         "isDefault": true
       },
       "presentation": {
-        "group": "serviceTasks",
-        "close": true
+        "group": "serviceTasks"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "site:push_search_content",
+      "detail": "Update the Algolia DEV search index for local testing",
+      "type": "shell",
+      "command": "make push_search_content",
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "group": "serviceTasks"
+      }
     }
   ]
 }

@@ -55,11 +55,11 @@ algolia:
   application_id: "TM5MJ9QNSU"
   search_api_key: "75093c3e6d1abf1e90085b0e99d8d2cd"
   # This API key is safe to be public facing, as it has read-only access to Algolia.
-  index_name: "dev_recipes_riceprower_com"
+  index_name: "prod_recipes_riceprower_com"
   settings:
     hitsPerPage: 5
     searchableAttributes:
       - title
       - subtitle
-      - ingredients, directions, footnotes
+      - ingredients,directions,footnotes
       - content

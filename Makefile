@@ -42,6 +42,7 @@ build: build_static build_site
 
 serve_site:
 	@echo ">> Serving jekyll site locally (with rebuilds)..."
+	@echo ">> Using CONFIG=$(CONFIG_YML)"
 	@bundle exec jekyll serve \
 		--config=$(CONFIG_YML)
 

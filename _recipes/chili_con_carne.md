@@ -53,6 +53,9 @@ footnotes:
     **Beans**: I like a mix of dark red kidney, pinto, black, and cannellini beans; one 15oz can each.
   - |
     **Chili powder**: not just any store brand will do. I like using [El Diente Southwestern Seasoning from Savory Spice](https://www.savoryspiceshop.com/products/el-diente-southwestern-seasoning). It bills itself as a seasoning or rub, but I find it can just replace chili powder in any recipe calling for it, to great success.
+prep_time: 15
+cook_time: 30
+servings: 20
 ---
 
 My own personal chili recipe. More than just meat and beans in a sauce, the balance of spices, the bell peppers, the touch of sweetness; all comes together into a melting pot of excellence. Serve with rice or pasta, with some cheese, some sour cream, maybe even some chips. Not so good on hot dogs, I'm afraid.

@@ -47,6 +47,28 @@ layout: default
   <!-- END image -->
 
 
+  <div
+    id="recipe-time-and-servings"
+    class="col-span-4 print:col-span-4 border rounded py-2 px-4"
+  >
+    <em>Work in progress!</em> Numbers here are fudged:
+    {% assign total_time = page.prep_time | plus: page.cook_time %}
+    {% assign minutes = total_time | modulo: 60 %}
+    {% assign hours = total_time | divided_by: 60 %}
+    <p class="m-0">
+      <i class="fa-regular fa-clock"></i>
+      {% if hours > 0 %}{{ hours }} hour{% if hours > 1 %}s{% endif %}{% endif %}{% if minutes > 0 %} {{ minutes }} minutes{% endif %}
+
+      <i class="fa-solid fa-mortar-pestle"></i>
+      {{ page.prep_time }} minutes
+
+      <i class="fa-solid fa-fire-burner"></i>
+      {{ page.cook_time }} minutes
+
+      <i class="fa-solid fa-spoon"></i>
+      {{ page.servings }} servings
+    </p>
+  </div>
 
 
   <!-- ingredients -->

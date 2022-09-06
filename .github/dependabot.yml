@@ -7,7 +7,7 @@ version: 2
 updates:
   # Node dependencies
   - package-ecosystem: "npm"
-    directory: "/js_toolchain"
+    directory: "/js_tools"
     schedule:
       interval: "daily"
       time: "06:00"
@@ -15,6 +15,14 @@ updates:
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "US/Eastern"
+
+  # Ruby Bundler
+  - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "daily"

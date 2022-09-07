@@ -58,7 +58,7 @@ These are the things I know I know, *these* are the things I know.
     container: '#sitesearch-hits',
     templates: {
       empty: 'No results',
-      item: `{% include recipe_search_item.html %}`
+      item: `{% include recipe/search_item.html %}`
     }
   });
   search.addWidget(hitBoxWidget);

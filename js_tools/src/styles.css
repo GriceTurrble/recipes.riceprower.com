@@ -33,4 +33,23 @@
       }
     }
   }
+
+  /*
+    For print alone, the very first direction needs to have its top margin collapsed,
+    but that margin is applied automatically by .prose within some generated Markdown content.
+    So, access it through this deep nested rule, and stick the same margin-top 0 on the LI and the P,
+    but ONLY the first children of each!
+  */
+  @media print {
+    #recipe-directions {
+      > ol {
+        > li:first-child {
+          @apply mt-0;
+          > p:first-child {
+            @apply mt-0;
+          }
+        }
+      }
+    }
+  }
 }

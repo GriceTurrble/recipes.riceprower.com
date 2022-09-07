@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-{% include recipe_breadcrumb.html %}
+{% include recipe/breadcrumb.html %}
 
 <div
   class="grid grid-cols-1 lg:grid-cols-4 gap-x-4 gap-y-6
-         print:grid print:grid-flow-row-dense print:grid-cols-4 print:gap-x-4 print:gap-y-6"
+         print:grid print:grid-cols-4 print:gap-x-4 print:gap-y-6"
 >
 
   <section
@@ -13,19 +13,19 @@ layout: default
     class="lg:col-span-3 lg:-order-1
            print:col-span-3 print:-order-1"
   >
-    <h1>
+    <h1 class="print:text-xl print:mb-1">
       {{ page.title }}
-      <div class="text-gray-400 text-sm font-normal">{{ page.subtitle }}</div>
+      <div class="text-gray-400 text-sm print:text-md font-normal">{{ page.subtitle }}</div>
     </h1>
-    <div class="-mt-5">
+    <div class="-mt-5 print:text-sm print:mt-0">
       {{ content }}
     </div>
 
-  <!-- sm: prep time and servings -->
-  <div class="hidden lg:block">
-    {% include recipe/stats.html %}
-  </div>
-  <!-- END sm: prep time and servings -->
+    <!-- lg: prep time and servings -->
+    <div class="hidden lg:block">
+      {% include recipe/stats.html %}
+    </div>
+    <!-- END lg: prep time and servings -->
   </section>
   <!-- image -->
   <section
@@ -56,7 +56,7 @@ layout: default
 
 
   <!-- sm: prep time and servings -->
-  <div class="lg:hidden">
+  <div class="lg:hidden print:col-span-4 print:-mt-8 print:-mb-2 print:border-deepPurple-50 print:rounded print:border">
     {% include recipe/stats.html %}
   </div>
   <!-- END sm: prep time and servings -->
@@ -67,24 +67,10 @@ layout: default
     id="recipe-ingredients"
     class="lg:col-span-2 print:col-span-2"
   >
-    <h2 class="mt-0">Ingredients</h2>
+    <h2 class="mt-0 print:text-xl print:mb-1">Ingredients</h2>
     <ul class="list-none pl-0">
       {% for ingredient in page.ingredients %}
-      <li class="print:leading-tight print:my-0 ml-0 pl-0">
-        <label class="flex flex-row items-start">
-          <input
-            type="checkbox"
-            class="peer mr-3 mt-1.5
-                  rounded
-                  bg-gray-200
-                  border-transparent
-                  focus:border-transparent focus:bg-gray-200
-                  text-gray-700
-                  focus:ring-1 focus:ring-offset-2 focus:ring-gray-500"
-          />
-          <span class="peer-checked:line-through peer-checked:text-gray-200 transition ease-in-out">{{ ingredient }}</span>
-        </label>
-      </li>
+        {% include recipe/ingredient_line.html %}
       {% endfor %}
     </ul>
   </section>
@@ -95,10 +81,10 @@ layout: default
     id="recipe-directions"
     class="lg:col-span-2 print:col-span-2"
   >
-    <h2 class="mt-0">Directions</h2>
-    <ol class="marker:text-2xl marker:font-semibold text-lg">
+    <h2 class="mt-0 print:text-xl print:mb-1">Directions</h2>
+    <ol class="marker:text-2xl print:marker:text-lg marker:font-semibold text-lg">
       {% for direction in page.directions %}
-      <li>{{ direction | markdownify }}</li>
+        {% include recipe/direction_line.html %}
       {% endfor %}
     </ol>
   </section>
@@ -108,15 +94,10 @@ layout: default
 
 
 {% if page.footnotes %}
-<h2 class="mb-4">Footnotes</h2>
+<h2 class="mb-4 print:text-xl print:mt-0 print:mb-1">Footnotes</h2>
 <div class="grid grid-cols-[1rem_1fr] gap-y-4 gap-x-1">
   {% for footnote in page.footnotes %}
-  <div class="text-[color:var(--tw-prose-counters)]">
-    <i class="fa-solid fa-caret-right"></i>
-  </div>
-  <div class="grow prose prose-headings:text-deepPurple-500 max-w-none ml-1">
-    {{ footnote | markdownify }}
-  </div>
+    {% include recipe/footnote_line.html %}
   {% endfor %}
 </div>
 {% endif %}

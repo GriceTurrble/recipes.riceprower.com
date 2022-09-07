@@ -3,12 +3,14 @@ layout: default
 ---
 {% include recipe_breadcrumb.html %}
 
-<div class="md:grid md:grid-flow-row-dense md:grid-cols-4 md:gap-4
-            print:grid print:grid-flow-row-dense print:grid-cols-4 print:gap-4">
+<div
+  class="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-6
+         print:grid print:grid-flow-row-dense print:grid-cols-4 print:gap-x-4 print:gap-y-6"
+>
 
-  <div
+  <section
     id="recipe-title"
-    class="col-span-3 md:-order-1
+    class="md:col-span-3 md:-order-1
            print:col-span-3 print:-order-1"
   >
     <h1>
@@ -18,9 +20,15 @@ layout: default
     <div class="-mt-5">
       {{ content }}
     </div>
+
+  <!-- sm: prep time and servings -->
+  <div class="hidden md:block">
+    {% include recipe/stats.html %}
   </div>
+  <!-- END sm: prep time and servings -->
+  </section>
   <!-- image -->
-  <div
+  <section
     id="recipe-image"
     class="md:-order-2 md:mr-4
            print:-order-2 print:mr-4"
@@ -32,7 +40,7 @@ layout: default
     />
     {% if page.image.attribution %}
     <p
-      class="text-sm mt-0 italic text-gray-400"
+      class="text-sm m-0 italic text-gray-400"
     >
       Image source:
       <a
@@ -43,40 +51,23 @@ layout: default
       </a>
     </p>
     {% endif %}
-  </div>
+  </section>
   <!-- END image -->
 
 
-  <div
-    id="recipe-time-and-servings"
-    class="col-span-4 print:col-span-4 border rounded py-2 px-4"
-  >
-    <em>Work in progress!</em> Numbers here are fudged:
-    {% assign total_time = page.prep_time | plus: page.cook_time %}
-    {% assign minutes = total_time | modulo: 60 %}
-    {% assign hours = total_time | divided_by: 60 %}
-    <p class="m-0">
-      <i class="fa-regular fa-clock"></i>
-      {% if hours > 0 %}{{ hours }} hour{% if hours > 1 %}s{% endif %}{% endif %}{% if minutes > 0 %} {{ minutes }} minutes{% endif %}
-
-      <i class="fa-solid fa-mortar-pestle"></i>
-      {{ page.prep_time }} minutes
-
-      <i class="fa-solid fa-fire-burner"></i>
-      {{ page.cook_time }} minutes
-
-      <i class="fa-solid fa-spoon"></i>
-      {{ page.servings }} servings
-    </p>
+  <!-- sm: prep time and servings -->
+  <div class="md:hidden">
+    {% include recipe/stats.html %}
   </div>
+  <!-- END sm: prep time and servings -->
 
 
   <!-- ingredients -->
-  <div
+  <section
     id="recipe-ingredients"
-    class="col-span-2 print:col-span-2"
+    class="md:col-span-2 print:col-span-2"
   >
-    <h2 class="md:mt-0">Ingredients</h2>
+    <h2 class="mt-0">Ingredients</h2>
     <ul class="list-none pl-0">
       {% for ingredient in page.ingredients %}
       <li class="print:leading-tight print:my-0 ml-0 pl-0">
@@ -96,21 +87,21 @@ layout: default
       </li>
       {% endfor %}
     </ul>
-  </div>
+  </section>
   <!-- END ingredients -->
 
   <!-- directions -->
-  <div
+  <section
     id="recipe-directions"
-    class="col-span-2 print:col-span-2"
+    class="md:col-span-2 print:col-span-2"
   >
-    <h2 class="md:mt-0">Directions</h2>
+    <h2 class="mt-0">Directions</h2>
     <ol class="marker:text-2xl marker:font-semibold text-lg">
       {% for direction in page.directions %}
       <li>{{ direction | markdownify }}</li>
       {% endfor %}
     </ol>
-  </div>
+  </section>
   <!-- END directions -->
 
 </div>

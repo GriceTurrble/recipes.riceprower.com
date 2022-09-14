@@ -1,8 +1,6 @@
 ---
 title: Home
 layout: default
-redirect_from:
-  - /r/all
 ---
 # Recipes from the Rice-Prower household
 

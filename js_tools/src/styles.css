@@ -4,6 +4,29 @@
 
 
 @layer base {
+  /* Navbar menu */
+  nav .mini-menu {
+    @apply sm:hidden w-full;
+
+    .dropdown {
+      + .dropdown-menu:not(:hover) {
+        @apply hidden;
+      }
+      &:focus + .dropdown-menu,
+      &:focus-within + .dropdown-menu {
+        @apply block;
+      }
+    }
+    .dropdown-menu {
+      @apply transition ease-in-out w-full -mb-3 pb-3 px-8;
+
+      &:hover, &:focus {
+        @apply block;
+      }
+    }
+  }
+
+  /* Site search components, for Algolia stuff */
   #sitesearch-search-box {
     @apply mb-8 drop-shadow-md;
 

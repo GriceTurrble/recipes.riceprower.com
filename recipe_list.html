@@ -1,0 +1,34 @@
+---
+title: Site index
+layout: default
+permalink: /r/all
+---
+
+<h1>Site Index</h1>
+<p>All recipes available on the site.</p>
+<div
+  class="p-4 bg-deepPurple-100 rounded"
+>
+  <i class="fa-solid fa-circle-info"></i>
+  Know what to look for? Try the <a href="/">search on the front page</a>, instead!
+</div>
+
+{% assign recipes = site.recipes | sort:"title" %}
+{% assign curr_section = nil %}
+{% assign prev_section = nil %}
+
+{% for recipe in recipes %}
+  {% assign curr_section = recipe.title | slice: 0 | upcase  %}
+  {% if curr_section != prev_section %}
+    {% if prev_section != nil %}</ul>{% endif %}
+  <h2 class="mt-4 mb-1">{{ curr_section }}</h2>
+  <ul class="mb-3 pl-5">
+  {% endif %}
+    <li class="my-1">
+      <a href="{{ recipe.url }}">
+        {{ recipe.title }}
+      </a>
+    </li>
+  {% assign prev_section = recipe.title | slice: 0 | upcase  %}
+{% endfor %}
+</ul>

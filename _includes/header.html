@@ -2,15 +2,42 @@
   class="sticky top-0 z-10 w-full flex flex-wrap items-center justify-between py-3 bg-deepPurple-500 text-white
          print:static print:bg-transparent print:text-black print:py-0"
 >
-  <div class="container print:w-full print:max-w-full mx-auto w-full flex flex-wrap items-center justify-between px-8 print:px-2">
+  <div class="container print:w-full print:max-w-full mx-auto w-full flex flex-wrap items-center px-8 print:px-2 gap-4 justify-between sm:justify-start relative">
     <div class="container-fluid">
       <a
         class="text-lg sm:text-xl font-semibold overflow-x-hidden whitespace-nowrap"
         href="/"
+        ><i class="fa-solid fa-pizza-slice mr-2"></i>
+        {{ site.title }}</a
       >
-        <i class="fa-solid fa-pizza-slice mr-2"></i>
-        {{ site.title }}
-      </a>
     </div>
+    <div
+      class="navbar-links hidden sm:block"
+    >
+      <ul>
+        <li>
+          <a
+            class="nav-link text-white opacity-60 hover:opacity-100 focus:opacity-100 p-0"
+            href="/r/all"
+            >Site index</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mini-menu">
+    <button
+      class="dropdown absolute right-8 top-3"
+      ><i class="fa-solid fa-bars"></i></button
+    >
+    <ul class="dropdown-menu">
+      <li>
+        <a
+          class="nav-link text-white opacity-60 hover:opacity-100 focus:opacity-100 p-0"
+          href="/r/all"
+          >Site index</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

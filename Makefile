@@ -1,7 +1,6 @@
 JEKYLL_ENV?=development
 SITE_DIR=_site
 CONFIG_YML=_config.yml
-ENFORCE_HTTPS_IN_TESTS?=false
 ifneq ($(JEKYLL_ENV),production)
 	CONFIG_YML=_config.yml,_config_dev.yml
 endif
@@ -58,7 +57,6 @@ test:
 	@bundle exec htmlproofer \
 		--disable-external \
 		--allow_hash_href \
-		--enforce-https=$(ENFORCE_HTTPS_IN_TESTS) \
 		$(SITE_DIR)
 
 

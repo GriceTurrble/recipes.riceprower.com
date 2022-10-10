@@ -27,7 +27,6 @@ jobs:
       SITE_DIR: "_site"
       CONFIG_YML: "_config.yml"
       JEKYLL_ENV: "production"
-      ENFORCE_HTTPS_IN_TESTS: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v3

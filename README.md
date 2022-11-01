@@ -19,13 +19,14 @@ This project uses **Make** for all steps.
 
 To get started:
 
-1. Run `make build` to install dependencies.
-2. Open *two (2) terminal windows*, then:
+1. Run `make install` to install dependencies.
+2. Run `make build` to build the site and static assets the first time.
+3. Open *two (2) terminal windows*, then:
 
    1. run `make serve_static` to build and auto-rebuild static assets;
    2. run `make serve_site` to build and auto-rebuild the site content.
 
-3. Open your browser to `http://localhost:4000` to view the running site.
+4. Open your browser to `http://localhost:4000` to view the running site.
 
 That's it! Make changes as you see fit while these two processes are running, and you'll see those changes live after refreshes.
 

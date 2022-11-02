@@ -75,5 +75,5 @@ clean:
 # you should NOT be using a shared admin key for both indices.
 push_search_content:
 	@bundle exec jekyll algolia \
-		--config=$(CONFIG_YML)
+		--config=$(CONFIG_YML) \
 		--force-settings

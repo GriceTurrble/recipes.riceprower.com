@@ -7,6 +7,9 @@ image:
   attribution:
     href: https://www.pexels.com/photo/grilled-meat-410648/
     name: pexels.com
+prep_time: 15
+cook_time: 240
+servings: 6
 ingredients:
   - Rack of pork ribs
   - 1/2 cup brown sugar
@@ -30,7 +33,4 @@ directions:
     Place ribs, meat facing up, on a baking tray, then bake for 3-1/2 to 4 hours.
 footnotes:
   - You can store any excess spice mix in an airtight container for up to 6 months in a cool, dark place.
-prep_time: 15
-cook_time: 240
-servings: 6
 ---

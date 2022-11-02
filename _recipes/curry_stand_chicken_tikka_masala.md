@@ -7,6 +7,9 @@ image:
   attribution:
     href: https://www.pexels.com/photo/bread-with-soup-2474661/
     name: pexels.com
+prep_time: 15
+cook_time: 65
+servings: 6
 ingredients:
   - 2 tbsp ghee (clarified butter)
   - 1 onion, finely chopped
@@ -33,9 +36,6 @@ directions:
     Heat vegetable oil in a separate skillet over medium heat. Stir chicken into hot oil; add curry powder. Sear chicken until lightly browned but still pink inside, about 3 minutes; stir often.
   - |
     Transfer chicken and any pan juices into sauce. Simmer chicken in sauce until no longer pink, about 30 minutes; adjust sugar and salt to taste.
-prep_time: 15
-cook_time: 65
-servings: 6
 ---
 
 From [AllRecipes.com](https://www.allrecipes.com/recipe/228293/curry-stand-chicken-tikka-masala-sauce/):

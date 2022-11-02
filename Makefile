@@ -76,3 +76,4 @@ clean:
 push_search_content:
 	@bundle exec jekyll algolia \
 		--config=$(CONFIG_YML)
+		--force-settings

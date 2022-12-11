@@ -21,7 +21,7 @@ To get started:
 
 1. Run `make install` to install dependencies.
 2. Run `make build` to build the site and static assets the first time.
-3. Open *two (2) terminal windows*, then:
+3. Open _two (2) terminal windows_, then:
 
    1. run `make serve_static` to build and auto-rebuild static assets;
    2. run `make serve_site` to build and auto-rebuild the site content.
@@ -31,7 +31,7 @@ To get started:
 That's it! Make changes as you see fit while these two processes are running, and you'll see those changes live after refreshes.
 
 - **Note1**: We're not fancy; there's no hot-reloading on the site itself. You'll have to actually push F5 yourself.
-- **Note2**: Often when making changes, the site will rebuild immediately, followed by Tailwind generating new styles, and the site rebuilding *again* to pick up the generated styles. If things seem wonky, just refresh the browser again!
+- **Note2**: Often when making changes, the site will rebuild immediately, followed by Tailwind generating new styles, and the site rebuilding _again_ to pick up the generated styles. If things seem wonky, just refresh the browser again!
 
 ## Available Make targets
 
@@ -54,3 +54,10 @@ That's it! Make changes as you see fit while these two processes are running, an
 - `make serve_site`: serve the site locally (at `http://localhost:4000`) with automatic rebuilds.
 - `make serve_static`: builds static assets and watches for changes to both the source files and the site source files, auto-rebuilding static assets (such as Tailwind).
 - `make test`: run tests on the site content, specifically HTMLProofer to check for common HTML issues in the generated content.
+- `make push_search_content`: pushes content to search index handled by Algolia. Requires an API key loaded as environment variable `ALGOLIA_API_KEY` or in a text file named `_algolia_api_key`.
+
+  > To obtain the API key you need, login to [Algolia dashboard](https://www.algolia.com/dashboard), then go to **Settings > API Keys**, and click on **All API Keys**. Copy the key you need for the environment (typically the key for pushing to `dev_recipes_riceprower_com` for local development).
+
+  **Note**: pushes to different indices - `prod` or `dev` - depending on the variable `JEKYLL_ENV`. If this is set to `"production"`, the `prod` index is chosen via `_config.yaml`; otherwise, `_config_dev.yaml` is included, which selects the `dev` index.
+
+  The `dev` index must be updated when running locally. The `prod` index should only be updated by deployments via GitHub Actions.

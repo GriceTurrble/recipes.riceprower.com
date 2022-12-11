@@ -104,6 +104,8 @@ jobs:
       # Must specify ENVIRONMENT variable
       JEKYLL_ENV: "production"
       ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_PROD_PUSH_API_KEY }}
+      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+      ALGOLIA_INDEX: ${{ secrets.ALGOLIA_PROD_INDEX_NAME }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -116,6 +118,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Push search content
+      - name: Clear old and push new search records
         run: |
-          make push_search_content
+          make clear_and_push

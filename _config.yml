@@ -44,6 +44,7 @@ exclude:
   - node_modules
   - package*.json
   - README.md
+  - scripts
 
 plugins:
   - jekyll-redirect-from

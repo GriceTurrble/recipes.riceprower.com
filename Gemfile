@@ -43,3 +43,5 @@ gem "http_parser.rb", "~> 0.8.0", :platforms => [:jruby]
 gem "webrick", "~> 1.7.0"
 
 gem "jekyll-redirect-from", "~> 0.16.0"
+
+gem "algolia", "~> 2.3"

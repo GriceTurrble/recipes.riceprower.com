@@ -4,16 +4,20 @@ CONFIG_YML=_config.yml
 ifneq ($(JEKYLL_ENV),production)
 	CONFIG_YML=_config.yml,_config_dev.yml
 endif
+export ALGOLIA_APPLICATION_ID?=TM5MJ9QNSU
+export ALGOLIA_INDEX?=dev_recipes_riceprower_com
 
-.PHONY: install_gems install_node_modules install build_static build_site build serve_site serve_static test clean push_search_content
+.PHONY: install build serve_site serve_static test clean clear_and_push
 
 
+.PHONY: install_gems
 install_gems:
 	@echo ">> Installing Ruby gems..."
 	@gem install jekyll bundle
 	@bundle install
 
 
+.PHONY: install_node_modules
 install_node_modules:
 	@echo ">> Installing Node dependencies..."
 	@cd js_tools && \
@@ -23,12 +27,14 @@ install_node_modules:
 install: install_gems install_node_modules
 
 
+.PHONY: build_static
 build_static:
 	@echo ">> Building static assets (via Node)..."
 	@cd js_tools && \
 		npm run build
 
 
+.PHONY: build_site
 build_site:
 	@echo ">> Building jekyll site..."
 	@bundle exec jekyll build \
@@ -66,6 +72,7 @@ clean:
 		--config=$(CONFIG_YML)
 
 
+.PHONY: push_search_records
 # Refer here for env variable details:
 # https://community.algolia.com/jekyll-algolia/commandline.html#environment-variables
 # - In DEV (development), the overrides in _config_dev.yml should take precedence.
@@ -73,7 +80,13 @@ clean:
 # - In PROD (production), the env variable for ALGOLIA_API_KEY should be used with a secret in the CI.
 # Note that the push keys for DEV and PROD are distinct for this project:
 # you should NOT be using a shared admin key for both indices.
-push_search_content:
+push_search_records:
 	@bundle exec jekyll algolia \
 		--config=$(CONFIG_YML) \
 		--force-settings
+
+.PHONY: clear_search_records
+clear_search_records:
+	@ruby scripts/clear_algolia_index.rb
+
+clear_and_push: clear_search_records push_search_records

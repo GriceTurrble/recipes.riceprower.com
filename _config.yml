@@ -68,3 +68,7 @@ algolia:
       - subtitle
       - ingredients,directions,footnotes
       - content
+    customRanking:
+      - desc(last_modified_timestamp)
+      - desc(custom_ranking.heading)
+      - desc(custom_ranking.position)

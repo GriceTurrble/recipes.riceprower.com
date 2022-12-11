@@ -50,6 +50,15 @@
     // hits widget
     instantsearch.widgets.hits({
       container: '#sitesearch-hits',
+      transformItems(items) {
+        return items.map(item => ({
+          ...item,
+          last_modified_date: () => {
+            const date = new Date(item.last_modified_date);
+            return date.toLocaleDateString('en-us', {month: 'short', day: 'numeric', year: 'numeric'});
+          },
+        }));
+      },
       templates: {
         empty: `No results for <q>{{ query }}</q>`,
         item: `{% include recipe/search_item.html %}`,

@@ -12,10 +12,16 @@
     </a>
     <div>
       <a href="{{url}}" class="no-underline">
-        <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
+        <h5 class="text-gray-900 text-xl leading-tight font-medium mb-1">
           {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
         </h5>
       </a>
+      <p class="text-gray-400 text-sm mb-4 mt-0">
+        Updated
+        <span class="font-bold">
+          {{last_modified_date}}
+        </span>
+      </p>
       <p class="text-gray-700 text-base mb-4 mt-0">
         {{subtitle}}
       </p>

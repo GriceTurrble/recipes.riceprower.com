@@ -15,7 +15,17 @@ layout: default
   >
     <h1 class="print:text-xl print:mb-1">
       {{ page.title }}
-      <div class="text-gray-400 text-sm print:text-md font-normal">{{ page.subtitle }}</div>
+      <div class="font-normal">
+        <p class="text-gray-400 text-sm mb-4 mt-0">
+          Updated
+          <span class="font-bold">
+            {{ page.last_modified_date | date: '%b %-d, %Y' }}
+          </span>
+        </p>
+        <p class="text-gray-700 text-xl mb-9 mt-0">
+          {{ page.subtitle }}
+        </p>
+      </div>
     </h1>
     <div class="-mt-5 print:text-sm print:mt-0">
       {{ content }}
@@ -40,7 +50,7 @@ layout: default
     />
     {% if page.image.attribution %}
     <p
-      class="text-sm m-0 italic text-gray-400"
+      class="text-sm m-0 italic text-gray-400 overflow-x-visible whitespace-nowrap"
     >
       Image source:
       <a
@@ -56,7 +66,7 @@ layout: default
 
 
   <!-- sm: prep time and servings -->
-  <div class="lg:hidden print:col-span-4 print:-mt-8 print:-mb-2 print:border-deepPurple-50 print:rounded print:border">
+  <div class="lg:hidden print:col-span-4 print:-mt-5 print:-mb-4 print:border-deepPurple-50 print:rounded print:border">
     {% include recipe/stats.html %}
   </div>
   <!-- END sm: prep time and servings -->

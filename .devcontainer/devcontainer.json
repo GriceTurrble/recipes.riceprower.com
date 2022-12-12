@@ -26,6 +26,11 @@
     },
     "ghcr.io/devcontainers/features/ruby:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11",
+      "installTools": false
     }
-  }
+  },
+  "postCreateCommand": "python -m pip install -U pre-commit && pre-commit install"
 }

@@ -16,7 +16,7 @@
     "autoprefixer": "^10.4.13",
     "material-ui-colors": "^1.0.0",
     "onchange": "^7.1.0",
-    "postcss": "^8.4.19",
+    "postcss": "^8.4.20",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
     "postcss-minify": "^1.1.0",

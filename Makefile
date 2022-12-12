@@ -87,6 +87,6 @@ push_search_records:
 
 .PHONY: clear_search_records
 clear_search_records:
-	@ruby scripts/clear_algolia_index.rb
+	@bundle exec ruby scripts/clear_algolia_index.rb
 
 clear_and_push: clear_search_records push_search_records

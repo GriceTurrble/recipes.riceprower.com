@@ -40,7 +40,7 @@ gem "wdm", "~> 0.1.1" if Gem.win_platform?
 gem "http_parser.rb", "~> 0.8.0", :platforms => [:jruby]
 
 # No longer a built in gem in Ruby 3.0: have to include directly
-gem "webrick", "~> 1.7.0"
+gem "webrick", "~> 1.8.0"
 
 gem "jekyll-redirect-from", "~> 0.16.0"
 

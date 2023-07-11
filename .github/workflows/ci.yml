@@ -63,7 +63,7 @@ jobs:
       # If tests pass, upload the site artifact
       # (to be pulled in during deploy stage)
       - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
 
   deploy:
     # Only run this job on main branch

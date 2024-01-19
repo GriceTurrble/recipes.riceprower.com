@@ -40,4 +40,5 @@ directions:
 
 From [AllRecipes.com](https://www.allrecipes.com/recipe/228293/curry-stand-chicken-tikka-masala-sauce/):
 
-> A tikka masala sauce from a classic curry-stand recipe. This is not haute cuisine; it's the kind of nuclear-orange tikka masala you crave when you stumble out of a pub at 2 a.m. I make vast quantities of this sauce at one time as it freezes well. I also use more cayenne pepper than 1 teaspoon, but I give out the recipe like this for people who don't like heat.
+!!! quote
+    A tikka masala sauce from a classic curry-stand recipe. This is not haute cuisine; it's the kind of nuclear-orange tikka masala you crave when you stumble out of a pub at 2 a.m. I make vast quantities of this sauce at one time as it freezes well. I also use more cayenne pepper than 1 teaspoon, but I give out the recipe like this for people who don't like heat.

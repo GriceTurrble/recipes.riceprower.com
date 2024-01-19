@@ -8,18 +8,26 @@
 }
 
 .recipe-contents {
-  @apply prose prose-headings:text-deepPurple-500;
+  @apply prose prose-headings:text-deepPurple-500 max-w-none;
+  --tw-prose-bold: var(--md-typeset-color);
+  --tw-prose-body: var(--md-typeset-color);
+  & img {
+    @apply mb-0;
+  }
 }
 
 /* Ingredients list */
 .recipe-ingredients {
   @apply text-xs;
   & .task-list {
-    .task-list-item {
+    & .task-list-item {
       @apply flex flex-row items-start;
       @apply transition ease-in-out;
       & input[type="checkbox"] {
         @apply ml-1 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
+        &:checked {
+          @apply bg-gray-700;
+        }
       }
       &:has(input[type="checkbox"]:checked) {
         @apply line-through text-gray-200;
@@ -31,11 +39,29 @@
   }
 }
 
+[data-md-color-scheme=slate] {
+  @apply prose-headings:text-deepPurple-200;
+  .recipe-ingredients {
+    .task-list {
+      .task-list-item {
+        &:has(input[type="checkbox"]:checked) {
+          @apply text-gray-700;
+        }
+      }
+    }
+  }
+}
+
 
 .recipe-directions {
-  ol {
+  @apply text-xs;
+  & ol {
     @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
   }
+}
+
+.recipe-footnotes {
+  @apply text-sm;
 }
 
 /* TODO get the other components in here!

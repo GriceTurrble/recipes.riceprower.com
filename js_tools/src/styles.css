@@ -2,77 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles mess with the md toggle inputs that should be hidden */
+.md-toggle {
+  display: none;
+}
 
-@layer base {
-  /* Navbar menu */
-  nav .mini-menu {
-    @apply sm:hidden w-full;
+.recipe-contents {
+  @apply prose prose-headings:text-deepPurple-500;
+}
 
-    .dropdown {
-      + .dropdown-menu:not(:hover) {
-        @apply hidden;
+/* Ingredients list */
+.recipe-ingredients {
+  @apply text-xs;
+  & .task-list {
+    .task-list-item {
+      @apply flex flex-row items-start;
+      @apply transition ease-in-out;
+      & input[type="checkbox"] {
+        @apply ml-1 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
       }
-      &:focus + .dropdown-menu,
-      &:focus-within + .dropdown-menu {
-        @apply block;
-      }
-    }
-    .dropdown-menu {
-      @apply transition ease-in-out w-full -mb-3 pb-3 px-8;
-
-      &:hover, &:focus {
-        @apply block;
-      }
-    }
-  }
-
-  /* Site search components, for Algolia stuff */
-  #sitesearch-search-box {
-    @apply mb-8 drop-shadow-md;
-
-    input.searchbox-input {
-      @apply mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0;
-    }
-  }
-
-  #sitesearch-pagination-container {
-    @apply flex justify-center mt-8;
-    ul {
-      @apply flex list-none;
-      li {
-        a,span {
-          @apply py-1.5 px-3 relative block border-0 bg-transparent outline-none transition ease-in-out rounded-md text-gray-800 hover:bg-gray-200 focus:shadow-none;
-        }
-      }
-      li.disabled {
-        a,span {
-          @apply text-gray-500 hover:bg-transparent pointer-events-none;
-        }
-      }
-      li.active {
-        a,span {
-          @apply bg-deepPurple-500 text-white hover:bg-deepPurple-500;
-        }
+      &:has(input[type="checkbox"]:checked) {
+        @apply line-through text-gray-200;
       }
     }
   }
-
-  /*
-    For print alone, the very first direction needs to have its top margin collapsed,
-    but that margin is applied automatically by .prose within some generated Markdown content.
-    So, access it through this deep nested rule, and stick the same margin-top 0 on the LI and the P,
-    but ONLY the first children of each!
-  */
-  @media print {
-    #recipe-directions {
-      > ol {
-        > li:first-child {
-          @apply mt-0;
-          > p:first-child {
-            @apply mt-0;
-          }
-        }
-      }
-    }
+  & mark {
+    @apply mx-0.5;
   }
 }
+
+
+.recipe-directions {
+  ol {
+    @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
+  }
+}
+
+/* TODO get the other components in here!
+Prep times,
+footnotes,
+etc.
+
+Double check the old layouts
+
+Then of course, need to roll through the CI and change that to a mkdocs deployment. :shrug:
+*/

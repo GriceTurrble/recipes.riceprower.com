@@ -90,3 +90,11 @@ clear_search_records:
 	@bundle exec ruby scripts/clear_algolia_index.rb
 
 clear_and_push: clear_search_records push_search_records
+
+.PHONY: rundocs deps
+deps:
+	poetry install
+
+rundocs: deps
+	@echo ">> Serving docs locally using 'poetry run mkdocs serve'..."
+	@poetry run mkdocs serve

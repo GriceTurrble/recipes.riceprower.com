@@ -1,11 +1,11 @@
-{% assign recipe=page %}
+{% set recipe=page.meta %}
 <div
   class="recipe-stats grid grid-cols-2 md:grid-cols-4 items-center gap-y-4 p-4 rounded bg-deepPurple-50
          print:grid print:grid-cols-4 print:p-2"
 >
-  {% assign total_time = recipe.prep_time | plus: recipe.cook_time %}
-  {% assign total_minutes = total_time | modulo: 60 %}
-  {% assign total_hours = total_time | divided_by: 60 %}
+  {% set total_time = recipe.prep_time + recipe.cook_time %}
+  {% set total_minutes = total_time % 60 %}
+  {% set total_hours = total_time / 60 %}
 
   <!-- total time -->
   <div class="flex items-center mx-auto">
@@ -48,8 +48,8 @@
   <!-- END total time -->
 
 
-  {% assign prep_minutes = recipe.prep_time | modulo: 60 %}
-  {% assign prep_hours = recipe.prep_time | divided_by: 60 %}
+  {% set prep_minutes = recipe.prep_time % 60 %}
+  {% set prep_hours = recipe.prep_time / 60 %}
   <!-- prep time -->
   <div class="flex items-center mx-auto">
     <svg
@@ -82,8 +82,8 @@
   <!-- END prep time -->
 
 
-  {% assign cook_minutes = recipe.cook_time | modulo: 60 %}
-  {% assign cook_hours = recipe.cook_time | divided_by: 60 %}
+  {% set cook_minutes = recipe.cook_time % 60 %}
+  {% set cook_hours = recipe.cook_time / 60 %}
   <!-- cook time -->
   <div class="flex items-center mx-auto">
     <svg

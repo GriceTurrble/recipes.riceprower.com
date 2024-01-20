@@ -1,0 +1,56 @@
+# Configuration: https://docs.astral.sh/ruff/configuration/
+# Settings: https://docs.astral.sh/ruff/settings/
+# Rules definitions: https://docs.astral.sh/ruff/rules/
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "B",    # flake8-bugbear
+    "S",    # flake8-bandit (security checks)
+    "PL",   # Pylint
+    "FLY",  # flynt
+    "NPY",  # numpy-specific
+    "PERF", # performance
+    "N",    # pep8-naming
+    "UP",   # pyupgrade (pre-commit hook for pyupgrade should fix most)
+]
+# TODO consider SLF (SLF001, private-member-access)
+# TODO consider TRY ruleset
+#   mishandling exceptions, like raising broad `Exception` or including a `return` inside `try` blocks.
+
+# Ignore certain rules across the entire repo
+# (after selecting a set of rules like 'E', ignore subsets of those rules here)
+ignore = [
+    "E203",    # whitespace-before-punctuation
+    "F401",    # unused-import (pycln will remove these)
+    "F811",    # redefined-while-unused
+    "PLR0913", # too-many-arguments
+    "S101",    # assert (usage of the assert statement)
+    "S113",    # request-without-timeout
+    "S602",    # subprocess-popen-with-shell-equals-true
+    "S603",    # subprocess-without-shell-equals-true
+    "S607",    # start-process-with-partial-path
+    "S608",    # hardcoded-sql-expression
+]
+# Attempt to auto-fix if running `ruff check . --fix`
+fixable = [
+    "UP", # pyupgrade
+]
+# Avoid fixing these when using `--fix`.
+unfixable = [
+    "B", # flake8-bugbear
+]
+
+# Match our Black formatting
+target-version = "py311"
+
+# Skip checking any files matching glob patterns:
+# exclude = ["**/test/**/*.*"]
+
+# Exclude rules from being applied to files matching glob patterns:
+[per-file-ignores]
+"**/*test.py" = [
+    "F811",    # redefined-while-unused
+    "N",       # pep8-naming
+    "PLR2004", # magic-value-comparison
+]

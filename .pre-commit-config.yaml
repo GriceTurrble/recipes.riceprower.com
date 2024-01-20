@@ -1,14 +1,51 @@
 default_language_version:
-  python: python3.10
+  python: python3.12
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: "v4.5.0"
     hooks:
+      - id: check-added-large-files
+      - id: check-ast
       - id: check-case-conflict
+      - id: check-json
+        exclude: \.vscode
+      - id: check-merge-conflict
       - id: check-toml
       - id: check-yaml
+        args: [-m]
         exclude: mkdocs.yml
+      - id: debug-statements
+      - id: detect-private-key
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: trailing-whitespace
-        args: [--markdown-linebreak-ext=md]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: "v1.10.0"
+    hooks:
+      - id: python-check-blanket-noqa
+        exclude: conftest.py|.*_test.py
+      - id: python-no-eval
+  - repo: https://github.com/hadialqattan/pycln
+    rev: "v2.4.0"
+    hooks:
+      - id: pycln
+  - repo: https://github.com/asottile/pyupgrade
+    rev: "v3.15.0"
+    hooks:
+      - id: pyupgrade
+        args: [--py311-plus]
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: "v3.1.0"
+    hooks:
+      - id: add-trailing-comma
+  - repo: https://github.com/pycqa/docformatter
+    rev: "v1.7.5"
+    hooks:
+      - id: docformatter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.1.14"
+    hooks:
+      - id: ruff
+        args: [--fix, --config, ruff.toml]
+      - id: ruff-format
+        args: [--config, ruff.toml]

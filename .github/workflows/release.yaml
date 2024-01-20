@@ -28,7 +28,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - uses: ./.github/workflows/composite/setup-dev-dependencies
+      - uses: ./.github/workflows/composite/build-project
         with:
           site_dir: ${{ env.SITE_DIR }}
           node_version: ${{ env.NODE_VERSION }}

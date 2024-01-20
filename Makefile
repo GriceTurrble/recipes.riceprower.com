@@ -1,3 +1,5 @@
+SITE_DIR?=site
+
 .PHONY: deps build
 
 .PHONY: deps_static
@@ -18,7 +20,12 @@ build_static:
 	@cd js_tools && \
 		npm run build
 
-build: build_static
+.PHONY: build_site
+build_site:
+	@echo ">> Building site content (via Poetry)..."
+	@poetry run mkdocs build -d $(SITE_DIR)
+
+build: build_static build_site
 
 .PHONY: serve_static
 serve_static:

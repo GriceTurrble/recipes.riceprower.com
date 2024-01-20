@@ -19,14 +19,15 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  SITE_DIR: "site"
+  NODE_VERSION: 18.x
+  PYTHON_VERSION: 3.x
+
 jobs:
   build:
     name: "Build & upload site artifact"
     runs-on: ubuntu-latest
-    env:
-      SITE_DIR: "_site"
-      CONFIG_YML: "_config.yml"
-      JEKYLL_ENV: "production"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,29 +42,25 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Node assets
-        run: |
-          make install_node_modules
+        run: make deps_static
 
-      # With assets built, build the site proper
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+      - name: Build static assets
+        run: make build_static
 
-      - name: Build site
-        run: make build
-
-      # Run tests against the HTML output
-      - name: Test site
-        run: make test
+      - name: Build the site content
+        run: make build_site
+        env:
+          SITE_DIR: ${{ env.SITE_DIR }}
 
       # If tests pass, upload the site artifact
       # (to be pulled in during deploy stage)
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.SITE_DIR }}
 
   deploy:
     # Only run this job on main branch
@@ -95,29 +92,3 @@ jobs:
           # Zone is required by both authentication methods
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_CACHE_TOKEN }}
-
-  push-search-index:
-    name: "Push content to Algolia index"
-    needs:
-      - deploy
-    env:
-      # Must specify ENVIRONMENT variable
-      JEKYLL_ENV: "production"
-      ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_PROD_PUSH_API_KEY }}
-      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
-      ALGOLIA_INDEX: ${{ secrets.ALGOLIA_PROD_INDEX_NAME }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Clear old and push new search records
-        run: |
-          make clear_and_push

@@ -78,13 +78,3 @@ article .footnote {
     @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
   }
 }
-
-/* TODO get the other components in here!
-Prep times,
-footnotes,
-etc.
-
-Double check the old layouts
-
-Then of course, need to roll through the CI and change that to a mkdocs deployment. :shrug:
-*/

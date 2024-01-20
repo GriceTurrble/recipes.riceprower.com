@@ -1,0 +1,100 @@
+site_name: Rice-Prower Recipes
+repo_name: GriceTurrble/recipes.riceprower.com
+repo_url: https://github.com/GriceTurrble/recipes.riceprower.com/
+edit_uri: "blob/main/"
+
+# NOTE:
+#   The nav config is omitted, on purpose.
+#   If you add a nav, you must manually enter every page in the site, like below
+#   By omitting it, MkDocs automatically reads the structure of docs/ to build the nav.
+#   Take advantage of this and avoid some headaches!
+# nav:
+#   - Home: index.md
+#   - Recipes:
+#       - recipes/buffalo_wing_sauce.md
+#       - recipes/chili_con_carne.md
+#       - ...
+
+plugins:
+  - search
+  - blog:
+      blog_toc: true
+
+extra_css:
+  - stylesheets/tailwind.css
+
+watch:
+  - overrides
+
+theme:
+  name: "material"
+  custom_dir: overrides
+  icon:
+    annotation: material/plus-circle
+  features:
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - toc.follow
+    - toc.integrate
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.emoji:
+      # Do you see a YAML warning here? You can ignore it.
+      # See: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      clickable_checkbox: true

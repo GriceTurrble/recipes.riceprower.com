@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "recipes-riceprower-com"
+version = "0.1.0"
+description = "A collection of recipes made in the Rice-Prower home, and associated nerdy tools"
+authors = ["Galen Rice <griceturrble@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.5.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

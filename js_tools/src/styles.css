@@ -2,75 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles fixes that Tailwind is messing with */
+.md-toggle {
+  display: none;
+}
+.md-search__input {
+  background-color: transparent;
+}
+article .footnote {
+  @apply prose max-w-none;
+}
 
-@layer base {
-  /* Navbar menu */
-  nav .mini-menu {
-    @apply sm:hidden w-full;
-
-    .dropdown {
-      + .dropdown-menu:not(:hover) {
-        @apply hidden;
-      }
-      &:focus + .dropdown-menu,
-      &:focus-within + .dropdown-menu {
-        @apply block;
-      }
-    }
-    .dropdown-menu {
-      @apply transition ease-in-out w-full -mb-3 pb-3 px-8;
-
-      &:hover, &:focus {
-        @apply block;
-      }
-    }
+/* Custom styles for recipe content */
+.recipe-contents {
+  @apply prose prose-headings:text-deepPurple-500 max-w-none text-sm;
+  --tw-prose-bold: var(--md-typeset-color);
+  --tw-prose-body: var(--md-typeset-color);
+  & img {
+    @apply mb-0;
   }
 
-  /* Site search components, for Algolia stuff */
-  #sitesearch-search-box {
-    @apply mb-8 drop-shadow-md;
-
-    input.searchbox-input {
-      @apply mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0;
-    }
-  }
-
-  #sitesearch-pagination-container {
-    @apply flex justify-center mt-8;
-    ul {
-      @apply flex list-none;
-      li {
-        a,span {
-          @apply py-1.5 px-3 relative block border-0 bg-transparent outline-none transition ease-in-out rounded-md text-gray-800 hover:bg-gray-200 focus:shadow-none;
-        }
-      }
-      li.disabled {
-        a,span {
-          @apply text-gray-500 hover:bg-transparent pointer-events-none;
-        }
-      }
-      li.active {
-        a,span {
-          @apply bg-deepPurple-500 text-white hover:bg-deepPurple-500;
-        }
-      }
-    }
-  }
-
-  /*
-    For print alone, the very first direction needs to have its top margin collapsed,
-    but that margin is applied automatically by .prose within some generated Markdown content.
-    So, access it through this deep nested rule, and stick the same margin-top 0 on the LI and the P,
-    but ONLY the first children of each!
-  */
-  @media print {
-    #recipe-directions {
-      > ol {
-        > li:first-child {
-          @apply mt-0;
-          > p:first-child {
-            @apply mt-0;
+  /* Ingredients list */
+  & .recipe-ingredients {
+    @apply text-xs;
+    & .task-list {
+      & .task-list-item {
+        @apply flex flex-row items-center ml-4;
+        @apply transition ease-in-out;
+        & input[type="checkbox"] {
+          @apply ml-0 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
+          &:checked {
+            @apply bg-gray-700;
           }
+        }
+        &:has(input[type="checkbox"]:checked) {
+          @apply line-through text-gray-200;
+        }
+      }
+    }
+    & mark {
+      @apply mx-0.5;
+    }
+  }
+
+  & .recipe-stats-container {
+    @apply mt-2 md:mt-4 md:flex md:justify-center;
+    & .recipe-image {
+      @apply md:max-w-96 mb-4 md:mb-0 md:mr-2;
+      & img {
+        @apply m-0 rounded-lg object-contain w-full md:max-w-80 h-auto;
+      }
+    }
+    & .recipe-stats.cards {
+      @apply m-0 h-full;
+    }
+  }
+
+  & .recipe-directions {
+    @apply text-xs;
+    & ol {
+      @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
+    }
+    & .admonition.ingredients {
+      @apply mt-0 py-1 px-2;
+      & p {
+        @apply m-0 italic leading-4;
+        &.admonition-title {
+          /*
+            We don't want these titles for this particular block.
+            Adding an empty title (like `!!! ingredients ""`) omits it naturally.
+            In case we forget, though, we can just hide it here.
+          */
+          @apply hidden;
+        }
+      }
+    }
+  }
+}
+
+[data-md-color-scheme=slate] {
+  @apply prose-headings:text-deepPurple-200;
+  .recipe-ingredients {
+    .task-list {
+      .task-list-item {
+        &:has(input[type="checkbox"]:checked) {
+          @apply text-gray-700;
         }
       }
     }

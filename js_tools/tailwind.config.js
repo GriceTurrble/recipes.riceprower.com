@@ -2,10 +2,13 @@ const colors = require("material-ui-colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
   content: [
     "../*.{html,md}",
-    "../_layouts/**/*.{html,md}",
-    "../_includes/**/*.{html,md}",
+    "../overrides/**/*.{html,md}",
+    "../docs/**/*.{html,md}"
   ],
   theme: {
     fontFamily: {

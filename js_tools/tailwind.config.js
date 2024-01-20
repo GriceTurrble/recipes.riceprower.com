@@ -7,7 +7,8 @@ module.exports = {
   },
   content: [
     "../*.{html,md}",
-    "../overrides/**/*.{html,md}"
+    "../overrides/**/*.{html,md}",
+    "../docs/**/*.{html,md}"
   ],
   theme: {
     fontFamily: {

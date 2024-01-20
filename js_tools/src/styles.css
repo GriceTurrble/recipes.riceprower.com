@@ -21,6 +21,20 @@ article .footnote {
   & img {
     @apply mb-0;
   }
+  .admonition.ingredients {
+    @apply mt-0 py-1 px-2;
+    & p {
+      @apply m-0 italic;
+      &.admonition-title {
+        /*
+          We don't want these titles for this particular block.
+          Adding an empty title (like `!!! ingredients ""`) omits it naturally.
+          In case we forget, though, we can just hide it here.
+        */
+        @apply hidden;
+      }
+    }
+  }
 }
 
 /* Ingredients list */

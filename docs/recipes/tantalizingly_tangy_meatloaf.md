@@ -37,6 +37,10 @@ The perfect mid-week meal for the family. Simply, quick, and everyone loves it. 
 
 1. Preheat oven to 350 degrees F (175 degrees C).
 2. In a large bowl, combine ground beef, bread crumbs, egg, garlic powder, and Worcestershire sauce. Mix well by hand, then place into a 9x13-inch baking dish and form into a loaf shape.
+
+    !!! ingredients
+        1 lb ground beef; 1/2 bread crumbs; 1 egg; garlic powder to taste; dash Worcestershire sauce
+
 3. Bake in preheated oven for 30 minutes.
 
     !!! warning "Keep going!"

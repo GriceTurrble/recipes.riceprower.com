@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: release-recipes-riceprower-site
+  cancel-in-progress: true
+
 env:
   SITE_DIR: "site"
   NODE_VERSION: "18.x"

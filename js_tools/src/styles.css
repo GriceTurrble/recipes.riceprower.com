@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles mess with the md toggle inputs that should be hidden */
+/* Base styles fixes that Tailwind is messing with */
 .md-toggle {
   display: none;
 }
+.md-search__input {
+  background-color: transparent;
+}
 
+/* Custom styles for recipe content */
 .recipe-contents {
   @apply prose prose-headings:text-deepPurple-500 max-w-none;
   --tw-prose-bold: var(--md-typeset-color);
@@ -52,6 +56,18 @@
   }
 }
 
+.recipe-stats-container {
+  @apply mt-2 md:mt-4 md:flex md:justify-center;
+  & .recipe-image {
+    @apply md:max-w-96 mb-4 md:mb-0 md:mr-2;
+    & img {
+      @apply m-0 rounded-lg object-contain w-full h-auto;
+    }
+  }
+  & .recipe-stats.cards {
+    @apply m-0;
+  }
+}
 
 .recipe-directions {
   @apply text-xs;

@@ -10,6 +10,13 @@ SRC = DIR / "recipes"
 OUT = "recipes"
 
 
+def print_image(data: dict[str, Any], file):
+    href = data.get("image", {}).get("href") or "https://place-hold.it/400x300"
+    alt = data.get("image", {}).get("alt") or "Nothing to see here"
+    image_html = f'<div class="recipe-image"><img src="{href}" alt="{alt}"/></div>'
+    print(image_html, file=file)
+
+
 def print_stats(data: dict[str, Any], file):
     output = []
     total_prep = data.get("prep_time", 0) + data.get("cook_time", 0)
@@ -27,10 +34,9 @@ def print_stats(data: dict[str, Any], file):
             f"- :fork_and_knife: **{part} serving{'s' if part != 1 else ''}**"
         )
 
-    print('<div style="display: flex; justify-content: center;" markdown>', file=file)
-    img_src = data["image"]["href"]
-    print(f'<div class="recipe-image"><img style="margin-top: 1rem; height: 300px;" src="{img_src}"/></div>', file=file)
-    print('<div class="grid cards" markdown>\n', file=file)
+    print('<div class="recipe-stats-container" markdown>', file=file)
+    print_image(data=data, file=file)
+    print('<div class="recipe-stats grid cards" markdown>\n', file=file)
     [print(x, file=file) for x in output]
     print("</div>", file=file)
     print("</div>\n", file=file)
@@ -84,9 +90,9 @@ for file in SRC.rglob("*.md"):
 
         print('<div class="recipe-contents" markdown>\n', file=fd)
 
-        print_stats(data, file=fd)
-        print_ingredients(data, file=fd)
-        print_directions(data, file=fd)
-        print_footnotes(data, file=fd)
+        print_stats(data=data, file=fd)
+        print_ingredients(data=data, file=fd)
+        print_directions(data=data, file=fd)
+        print_footnotes(data=data, file=fd)
 
         print("</div>\n", file=fd)

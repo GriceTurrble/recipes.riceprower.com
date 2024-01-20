@@ -39,7 +39,7 @@ The perfect mid-week meal for the family. Simply, quick, and everyone loves it. 
 2. In a large bowl, combine ground beef, bread crumbs, egg, garlic powder, and Worcestershire sauce. Mix well by hand, then place into a 9x13-inch baking dish and form into a loaf shape.
 
     !!! ingredients
-        1 lb ground beef; 1/2 bread crumbs; 1 egg; garlic powder to taste; dash Worcestershire sauce
+        **Using:** 1 lb ground beef; 1/2 bread crumbs; 1 egg; garlic powder to taste; dash Worcestershire sauce
 
 3. Bake in preheated oven for 30 minutes.
 
@@ -47,6 +47,10 @@ The perfect mid-week meal for the family. Simply, quick, and everyone loves it. 
         Move on to the next step immediately! Yes I've made this mistake before!
 
 4. In a separate medium bowl, stir together ketchup, brown sugar, and apple cider vinegar.
+
+    !!! ingredients
+        **Using:** 1/3 cup ketchup; 1/4 cup dark brown sugar; 1 Tbsp apple cider vinegar
+
 5. Pour sauce mixture on top of meatloaf, then bake an additional 15 minutes or until a thermometer reads 160 degrees F (~72 degrees C) at the center of the loaf.
 6. Remove from oven and let rest for 5 to 10 minutes. Cut into slices and serve.
 

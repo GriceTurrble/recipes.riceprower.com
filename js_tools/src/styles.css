@@ -9,10 +9,13 @@
 .md-search__input {
   background-color: transparent;
 }
+article .footnote {
+  @apply prose max-w-none;
+}
 
 /* Custom styles for recipe content */
 .recipe-contents {
-  @apply prose prose-headings:text-deepPurple-500 max-w-none;
+  @apply prose prose-headings:text-deepPurple-500 max-w-none text-sm;
   --tw-prose-bold: var(--md-typeset-color);
   --tw-prose-body: var(--md-typeset-color);
   & img {
@@ -25,10 +28,10 @@
   @apply text-xs;
   & .task-list {
     & .task-list-item {
-      @apply flex flex-row items-start;
+      @apply flex flex-row items-center ml-4;
       @apply transition ease-in-out;
       & input[type="checkbox"] {
-        @apply ml-1 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
+        @apply ml-0 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
         &:checked {
           @apply bg-gray-700;
         }
@@ -61,11 +64,11 @@
   & .recipe-image {
     @apply md:max-w-96 mb-4 md:mb-0 md:mr-2;
     & img {
-      @apply m-0 rounded-lg object-contain w-full h-auto;
+      @apply m-0 rounded-lg object-contain w-full md:max-w-80 h-auto;
     }
   }
   & .recipe-stats.cards {
-    @apply m-0;
+    @apply m-0 h-full;
   }
 }
 
@@ -74,10 +77,6 @@
   & ol {
     @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
   }
-}
-
-.recipe-footnotes {
-  @apply text-sm;
 }
 
 /* TODO get the other components in here!

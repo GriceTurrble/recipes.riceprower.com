@@ -1,0 +1,28 @@
+<div class="recipe-image">
+  <figure>
+    {% if page.meta.image %}
+    <img
+      src="{{ page.meta.image.href | default("https://place-hold.it/400x300") }}"
+      alt="{{ page.meta.image.alt | default("Nothing to see here!") }}"
+    />
+      {% if page.meta.image.attribution %}
+      <figcaption>
+        <em>
+          Image source:
+          <a
+            class="text-gray-400"
+            href="{{ page.meta.image.attribution.href }}" target="_blank"
+          >
+            {{ page.meta.image.attribution.name }}
+          </a>
+        </em>
+      </figcaption>
+      {% endif %}
+    {% else %}
+    <img
+      src="https://place-hold.it/400x300"
+      alt="Nothing to see here!"
+    />
+    {% endif %}
+  </figure>
+</div>

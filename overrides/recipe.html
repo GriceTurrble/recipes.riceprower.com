@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div class="recipe-contents">
+    <!-- Tags -->
+    {% if "material/tags" in config.plugins and tags %}
+    {% include "partials/tags.html" %}
+    {% endif %}
+
+    <!-- Actions -->
+    {% include "partials/actions.html" %}
+
+    <!--
+      CUSTOM: no hack. Page title is now required in the metadata of the page.
+      We also add in the subtitle, if present in metadata.
+    -->
+    <h1
+      {% if page.meta.subtitle %}style="margin-bottom: 0"{% endif %}
+    >{{ page.title }}</h1>
+    {% if page.meta.subtitle %}
+    <p class="text-gray-400 mb-4 mt-0 not-prose"><em>{{ page.meta.subtitle }}</em></p>
+    {% endif %}
+
+    <!-- CUSTOM: inject our recipe stats below the title, above other content. -->
+    {% include "partials/recipes/stats.html" %}
+    <!-- END CUSTOM: following is copied from source -->
+
+    <!-- Page content -->
+    {{ page.content }}
+
+    <!-- Source file information -->
+    {% include "partials/source-file.html" %}
+
+    <!-- Was this page helpful? -->
+    {% include "partials/feedback.html" %}
+
+    <!-- Comment system -->
+    {% include "partials/comments.html" %}
+  </div>
+{% endblock %}

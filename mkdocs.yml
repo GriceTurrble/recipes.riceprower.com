@@ -3,24 +3,32 @@ repo_name: GriceTurrble/recipes.riceprower.com
 repo_url: https://github.com/GriceTurrble/recipes.riceprower.com/
 edit_uri: "blob/main/"
 
-nav:
-  - Home: index.md
-  - Recipes:
-      - recipes/chicken_corn_chowder.md
+# NOTE:
+#   The nav config is omitted, on purpose.
+#   If you add a nav, you must manually enter every page in the site, like below
+#   By omitting it, MkDocs automatically reads the structure of docs/ to build the nav.
+#   Take advantage of this and avoid some headaches!
+# nav:
+#   - Home: index.md
+#   - Recipes:
+#       - recipes/buffalo_wing_sauce.md
+#       - recipes/chili_con_carne.md
+#       - ...
 
 plugins:
   - search
-  - gen-files:
-      scripts:
-        - scripts/gen_recipes.py
-
+  - blog:
+      blog_toc: true
 
 extra_css:
   - stylesheets/tailwind.css
 
+watch:
+  - overrides
+
 theme:
   name: "material"
-  # custom_dir: overrides
+  custom_dir: overrides
   icon:
     annotation: material/plus-circle
   features:
@@ -65,6 +73,9 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - footnotes
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span

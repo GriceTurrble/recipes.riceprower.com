@@ -26,8 +26,27 @@ env:
   POETRY_VERSION: "1.7.1"
 
 jobs:
+  pre-commit:
+    name: "pre-commit"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.POETRY_VERSION }}
+
+      - name: Run pre-commit checks
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --all-files
+
   build:
     name: "Build & upload site artifact"
+    needs:
+      - pre-commit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -84,7 +103,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs:
+      - build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

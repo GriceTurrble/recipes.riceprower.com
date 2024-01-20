@@ -40,3 +40,7 @@ run_static: deps_static serve_static
 run_site: deps_poetry
 	@echo ">> Serving docs locally using 'poetry run mkdocs serve'..."
 	@poetry run mkdocs serve
+
+.PHONY: test
+test:
+	@echo ">> Doing nothing so far!"

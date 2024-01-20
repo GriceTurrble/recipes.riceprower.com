@@ -1,0 +1,51 @@
+name: "Build site files"
+
+inputs:
+  site_dir:
+    description: "Directory to which to build the site"
+    required: true
+  node_version:
+    description: "version of Node to use"
+    required: true
+  python_version:
+    description: "version of Python to use"
+    required: true
+  poetry_version:
+    description: "version of Poetry to use"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node_version }}
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python_version }}
+
+    - name: Setup Poetry
+      uses: abatilo/actions-poetry@v3
+      with:
+        poetry-version: ${{ inputs.poetry_version }}
+
+    - name: Install Node Dependencies
+      shell: bash
+      run: make deps_static
+
+    - name: Install Python Dependencies
+      shell: bash
+      run: make deps_poetry
+
+    - name: Build static assets
+      shell: bash
+      run: make build_static
+
+    - name: Build the site content
+      shell: bash
+      run: make build_site
+      env:
+        SITE_DIR: ${{ inputs.site_dir }}

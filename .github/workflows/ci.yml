@@ -21,8 +21,9 @@ permissions:
 
 env:
   SITE_DIR: "site"
-  NODE_VERSION: 18.x
-  PYTHON_VERSION: 3.x
+  NODE_VERSION: "18.x"
+  PYTHON_VERSION: "3.12"
+  POETRY_VERSION: "1.7.1"
 
 jobs:
   build:
@@ -38,14 +39,26 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      # Start by building our JS/CSS static assets via Node
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup Poetry
+        uses: abatilo/actions-poetry@v3
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install Node assets
+      - name: Install Node Dependencies
         run: make deps_static
+
+      - name: Install Python Dependencies
+        run: make deps_poetry
 
       - name: Build static assets
         run: make build_static

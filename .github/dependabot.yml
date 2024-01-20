@@ -5,14 +5,6 @@
 
 version: 2
 updates:
-  # Node dependencies
-  - package-ecosystem: "npm"
-    directory: "/js_tools"
-    schedule:
-      interval: "daily"
-      time: "06:00"
-      timezone: "US/Eastern"
-
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -20,11 +12,40 @@ updates:
       interval: "daily"
       time: "06:00"
       timezone: "US/Eastern"
+    groups:
+      actions:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
 
-  # Ruby Bundler
-  - package-ecosystem: "bundler"
+  # Python dependencies
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
       time: "06:00"
       timezone: "US/Eastern"
+    groups:
+      python:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+  # Node dependencies
+  - package-ecosystem: "npm"
+    directory: "/js_tools"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "US/Eastern"
+    groups:
+      node:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'

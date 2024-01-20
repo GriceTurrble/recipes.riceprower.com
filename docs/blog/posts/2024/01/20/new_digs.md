@@ -21,6 +21,7 @@ So I've done what any good dev would do: started from scratch! I've been using a
     If you don't care, I'm not offended. :slight_smile:
 
 ## Generating content from metadata
+### The old method
 
 One thing I got working quite well in the old system was using metadata in the recipe files to generate the page. The actual Markdown content of any one recipe is usually very small, while all the ingredients, directions, images, etc., are listed in the meta.
 
@@ -56,6 +57,7 @@ In the old site, I parsed this through a page template (coded in Liquid because 
   <figcaption>Example of the old site</figcaption>
 </figure>
 
+### The new method
 In the new setup, I initially started with a `mkdocs-gen-files` script to generate content, but as I finished it up I found that it was likely unsustainable. Yes it results in some clean YAML content for the recipe that drives a very standardized output, but any deviations from those standards would mean more tinkering with the internals to create new forks and such.
 
 Ultimately I landed on a very similar template:
@@ -106,3 +108,7 @@ Which generates:
 There's some extra work at play here, namely in some Tailwind styles hooked to the divs in the output, and a custom template that injects recipe stats below the title.
 
 I could have gone the route of generating all the content from metadata using the template system, but found that this content then no longer appears to the search plugin.
+
+## New recipes coming soon
+
+Now that the site is a lot easier to build, I can take more time tinkering with it, but of course also adding more recipe content that I've been meaning to. *Enjoy!*

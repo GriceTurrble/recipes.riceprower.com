@@ -3,6 +3,9 @@
 # This script displays help information for the Makefile.
 # Usage: ./help.sh Makefile
 
+# Adapted from:
+# https://medium.com/@vildmedpap/make-your-makefile-user-friendly-create-a-custom-make-help-target-88c9ef130879
+
 # Set colors for output
 col_off='\033[0m'
 target_col='\033[36m'

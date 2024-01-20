@@ -26,10 +26,10 @@ serve_static:
 	@cd js_tools && \
 		npm run start
 
-.PHONY: run_docs
-run_docs: deps_poetry
-	@echo ">> Serving docs locally using 'poetry run mkdocs serve'..."
-	@poetry run mkdocs serve
-
 .PHONY: run_static
 run_static: deps_static serve_static
+
+.PHONY: run_site
+run_site: deps_poetry
+	@echo ">> Serving docs locally using 'poetry run mkdocs serve'..."
+	@poetry run mkdocs serve

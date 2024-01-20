@@ -1,0 +1,59 @@
+# Workflow syntax: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+# Triggers: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+
+name: CI
+permissions: write-all
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches:
+      - main
+
+env:
+  SITE_DIR: "site"
+  NODE_VERSION: "18.x"
+  PYTHON_VERSION: "3.12"
+  POETRY_VERSION: "1.7.1"
+
+jobs:
+  pre-commit:
+    name: "pre-commit"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Run pre-commit checks
+        uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --all-files
+
+  build_test:
+    name: "Build & test"
+    needs:
+      - pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+
+      - uses: ./.github/workflows/composite/setup-dev-dependencies
+        with:
+          site_dir: ${{ env.SITE_DIR }}
+          node_version: ${{ env.NODE_VERSION }}
+          python_version: ${{ env.PYTHON_VERSION }}
+          poetry_version: ${{ env.POETRY_VERSION }}
+
+      - name: Run tests
+        run: make test

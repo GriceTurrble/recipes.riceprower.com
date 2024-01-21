@@ -1,7 +1,7 @@
 site_name: Rice-Prower Recipes
 repo_name: GriceTurrble/recipes.riceprower.com
 repo_url: https://github.com/GriceTurrble/recipes.riceprower.com/
-edit_uri: "blob/main/"
+edit_uri: "blob/main/docs/"
 
 # NOTE:
 #   The nav config is omitted, on purpose.

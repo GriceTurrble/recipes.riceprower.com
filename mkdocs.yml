@@ -18,7 +18,8 @@ edit_uri: "blob/main/"
 plugins:
   - search
   - blog:
-      blog_toc: true
+      # blog_toc: true
+      blog_dir: .
 
 extra_css:
   - stylesheets/tailwind.css
@@ -39,7 +40,6 @@ theme:
     - navigation.instant.prefetch
     - navigation.sections
     - navigation.top
-    - search.highlight
     - toc.follow
     - toc.integrate
   palette:

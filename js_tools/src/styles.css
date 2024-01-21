@@ -64,7 +64,7 @@ article .footnote {
       @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
     }
     & .admonition.ingredients {
-      @apply mt-0 py-1 px-2;
+      @apply mt-0 py-1 px-2 border-gray-300 text-gray-700/80;
       & p {
         @apply m-0 italic leading-4;
         &.admonition-title {
@@ -88,6 +88,13 @@ article .footnote {
         &:has(input[type="checkbox"]:checked) {
           @apply text-gray-700;
         }
+      }
+    }
+  }
+  & .recipe-contents {
+    .recipe-directions {
+      .admonition.ingredients {
+        @apply border-gray-700 text-gray-400;
       }
     }
   }

@@ -2,12 +2,6 @@
 template: recipe.html
 title: Tantalizingly Tangy Meatloaf
 subtitle: Meatloaf with a sauce that will keep them coming back for more.
-image:
-  href: https://user-images.githubusercontent.com/9964605/199397447-52232bb2-adb5-48ab-a757-1b61f12a0575.png
-  alt: meatloaf
-  attribution:
-    href: https://www.budgetbytes.com/classic-homemade-meatloaf/
-    name: budgetbytes.com
 stats:
   prep_minutes: 15
   cook_minutes: 30

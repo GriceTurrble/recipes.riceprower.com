@@ -2,12 +2,6 @@
 template: recipe.html
 title: Kansas City Ribs
 subtitle: A great spice rub pairs with slow-baked ribs that you can make any time.
-image:
-  href: https://user-images.githubusercontent.com/9964605/188225490-dd94809c-2c10-42fb-8e23-f46fa644f55b.jpeg
-  alt: "rack of ribs, via Pexels"
-  attribution:
-    href: https://www.pexels.com/photo/grilled-meat-410648/
-    name: pexels.com
 stats:
   prep_minutes: 15
   cook_minutes: 240

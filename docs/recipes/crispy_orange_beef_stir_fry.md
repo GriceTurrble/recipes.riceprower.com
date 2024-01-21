@@ -2,12 +2,6 @@
 template: recipe.html
 title: Crispy Orange Beef Stir Fry
 subtitle: Way better than takeout - this sticky-crispy-sweet Orange Beef is ready in 25 minutes!
-image:
-  href: https://user-images.githubusercontent.com/9964605/206910021-693ad5ad-5cb5-49b9-b315-83cfd4b573f4.png
-  alt: "beef stir fry"
-  attribution:
-    href: https://www.flickr.com/photos/joyosity/28265304420
-    name: flickr.com
 stats:
   prep_minutes: 10
   cook_minutes: 15

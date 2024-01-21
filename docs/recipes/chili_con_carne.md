@@ -2,12 +2,6 @@
 template: recipe.html
 title: G's Chili Con Carne
 subtitle: Simply the best.
-image:
-  href: https://user-images.githubusercontent.com/9964605/188196194-dba08c1f-4a7b-459d-ace4-21abb82a0fe5.jpeg
-  alt: "bowl of chili, via Pexels"
-  attribution:
-    href: https://www.pexels.com/photo/meat-dish-1618906/
-    name: pexels.com
 stats:
   prep_minutes: 30
   cook_minutes: 90

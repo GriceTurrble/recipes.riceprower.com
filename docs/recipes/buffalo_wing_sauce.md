@@ -2,12 +2,6 @@
 template: recipe.html
 title: Buffalo Wing Sauce
 subtitle: A classic Football Sunday tradition
-image:
-  href: https://user-images.githubusercontent.com/9964605/199360240-15ffcf52-eb13-46a5-b9e8-91d207537beb.png
-  alt: buffalo wings
-  attribution:
-    href: https://www.publicdomainpictures.net/en/view-image.php?image=98051&picture=buffalo-wings
-    name: publicdomainpictures.net
 stats:
   prep_minutes: 0
   cook_minutes: 5

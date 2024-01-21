@@ -2,12 +2,6 @@
 template: recipe.html
 title: Chicken Corn Chowder
 subtitle: Comfort food that warms the soul during the colder months.
-image:
-  href: https://user-images.githubusercontent.com/9964605/199381425-5d2f4af1-1e2f-4b87-b5d0-1fe71cc6842d.png
-  alt: bowl of chicken corn chowder
-  attribution:
-    href: https://allyscooking.com/2017/09/30/lightened-chicken-corn-chowder/
-    name: allyscooking.com
 stats:
   prep_minutes: 2
   cook_minutes: 1

@@ -2,12 +2,6 @@
 template: recipe.html
 title: Curry Stand Chicken Tikka Masala
 subtitle: A classic curry-stand recipe.
-image:
-  href: https://user-images.githubusercontent.com/9964605/188229786-078084b4-6e2d-4305-9f70-9b8e8a4511cf.jpeg
-  alt: "bread with soup, via Pexels"
-  attribution:
-    href: https://www.pexels.com/photo/bread-with-soup-2474661/
-    name: pexels.com
 stats:
   prep_minutes: 15
   cook_minutes: 65

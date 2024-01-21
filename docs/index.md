@@ -2,7 +2,7 @@
 title: Home
 ---
 
-# Welcome!
+# Rice-Prower Recipes
 
 Here you'll find recipes and blog content from the Rice-Prower household.
 

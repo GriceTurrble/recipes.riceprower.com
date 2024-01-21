@@ -1,4 +1,6 @@
 site_name: Rice-Prower Recipes
+site_description: "Recipes and foodie updates from the Rice-Prower household"
+site_url: https://recipes.riceprower.com
 repo_name: GriceTurrble/recipes.riceprower.com
 repo_url: https://github.com/GriceTurrble/recipes.riceprower.com/
 edit_uri: "blob/main/docs/"
@@ -17,6 +19,10 @@ edit_uri: "blob/main/docs/"
 
 plugins:
   - search
+  - social:
+      cards_layout_options:
+        description: My custom description
+
   - blog:
       # blog_toc: true
       blog_dir: .

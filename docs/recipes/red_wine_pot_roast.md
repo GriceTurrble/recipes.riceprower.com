@@ -6,6 +6,10 @@ stats:
   prep_minutes: 30
   cook_minutes: 240
   servings: 6
+tags:
+  - beef
+  - cuisine/american
+  - slow cook
 ---
 
 <!--

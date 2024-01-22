@@ -3,13 +3,15 @@ title: 'Added: Red Wine Pot Roast'
 date: 2024-01-21
 authors:
   - griceturrble
+categories:
+  - Added recipe
 ---
 
-<figure markdown>
-  ![Red Wine Pot Roast](../../../../img/red_wine_pot_roast.png){ width="500" }
-</figure>
+Check out the [Red Wine Pot Roast](../../../recipes/red_wine_pot_roast.md) recipe just added! It's a family favorite we've been making every couple weeks for the past year, and it's always a hit.
 
-Check out the [Red Wine Pot Roast](../../../../recipes/red_wine_pot_roast.md) recipe just added! It's a family favorite we've been making every couple weeks for the past year, and it's always a hit.
+<figure markdown>
+  ![Red Wine Pot Roast](../../../img/red_wine_pot_roast.png){ width="500" }
+</figure>
 
 <!-- more -->
 

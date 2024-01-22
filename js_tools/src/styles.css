@@ -13,92 +13,87 @@ article .footnote {
   @apply prose max-w-none;
 }
 
+/* .md-typeset { */
 /* Custom styles for recipe content */
-.recipe-contents {
-  /* Basic style overwrites, setting up `prose` but adjusting some colors back to MD's styles */
-  @apply prose prose-headings:text-deepPurple-500 max-w-none text-sm;
-  --tw-prose-bold: var(--md-typeset-color);
-  --tw-prose-body: var(--md-typeset-color);
-  & img {
-    @apply mb-0;
-  }
-
-  /* Ingredients list */
-  & .recipe-ingredients {
-    @apply text-xs;
-    & h3 {
-      @apply mb-0 font-bold;
+  .recipe-contents {
+    /* Basic style overwrites, setting up `prose` but adjusting some colors back to MD's styles */
+    @apply prose prose-headings:text-deepPurple-500 max-w-none;
+    & img {
+      @apply mb-0;
     }
-    /* Re-style the task list plugin output */
-    & .task-list {
-      @apply mt-0;
-      & .task-list-item {
-        @apply flex flex-row items-center ml-4;
-        @apply transition ease-in-out;
-        & input[type="checkbox"] {
-          @apply ml-0 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
-          &:checked {
-            @apply bg-gray-700;
+    & .md-tags {
+      @apply print:hidden;
+    }
+
+    /* Ingredients list */
+    & .recipe-ingredients {
+      @apply text-xs;
+      & h3 {
+        @apply mb-0 font-bold;
+      }
+      /* Re-style the task list plugin output */
+      & .task-list {
+        @apply mt-0;
+        & .task-list-item {
+          @apply ml-4;
+          @apply transition ease-in-out;
+          & input[type="checkbox"] {
+            @apply ml-0 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
+            &:checked {
+              @apply bg-gray-700;
+            }
+          }
+          &:has(input[type="checkbox"]:checked) {
+            @apply line-through text-gray-200;
           }
         }
-        &:has(input[type="checkbox"]:checked) {
-          @apply line-through text-gray-200;
+      }
+    }
+
+    /* Stats, including the hero image, prep times, etc. */
+    & .recipe-stats-container {
+      @apply grid sm:grid-cols-2 gap-1 sm:gap-2;
+      & .recipe-image {
+        @apply print:hidden; /* mb-4 md:mb-0 md:mr-2; */
+        & img {
+          @apply m-0 rounded-lg object-cover w-auto h-full;
         }
-        & sup {
-          /* Reference links to footnotes tend to get lost inside these items. */
-          @apply ml-1 -mt-2;
+      }
+      & .recipe-stat-container {
+        @apply grid grid-cols-2 auto-rows-min gap-1 text-xs;
+        @apply sm:gap-2 sm:grid-cols-1 sm:text-sm;
+        @apply sm:max-w-60;
+        & .recipe-stat-card {
+          @apply bg-deepPurple-700/10 m-0 py-2 px-4 rounded;
         }
       }
     }
-    & mark {
-      @apply mx-0.5;
-    }
-  }
 
-  /* Stats, including the hero image, prep times, etc. */
-  & .recipe-stats-container {
-    @apply mt-2 md:mt-4 md:flex md:justify-center;
-    & .recipe-image {
-      @apply md:max-w-96 mb-4 md:mb-0 md:mr-2;
-      & img {
-        @apply m-0 rounded-lg object-contain w-full md:max-w-80 h-auto;
+    /* Directions */
+    & .recipe-directions {
+      @apply text-xs;
+      & ol {
+        @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
       }
-    }
-    & .recipe-stats.cards {
-      @apply m-0 h-full;
-    }
-  }
-
-  /* Directions */
-  & .recipe-directions {
-    @apply text-xs;
-    & ol {
-      @apply marker:text-lg print:marker:text-lg marker:font-semibold text-sm;
-    }
-    & .admonition.ingredients {
-      @apply mt-0 py-1 px-2 border-gray-300 text-gray-700/80;
-      & p {
-        @apply m-0 italic leading-4;
-        &.admonition-title {
-          /*
-            We don't want these titles for this particular block.
-            Adding an empty title (like `!!! ingredients ""`) omits it naturally.
-            In case we forget, though, we can just hide it here.
-          */
-          @apply hidden;
+      & .admonition.ingredients {
+        @apply mt-0 py-1 px-2 border-gray-300 text-gray-700/80;
+        & p {
+          @apply m-0 italic leading-4;
+          &.admonition-title {
+            /*
+              We don't want these titles for this particular block.
+              Adding an empty title (like `!!! ingredients ""`) omits it naturally.
+              In case we forget, though, we can just hide it here.
+            */
+            @apply hidden;
+          }
         }
       }
     }
   }
+/* } */
 
-  /* other overrides */
-  sup .footnote-ref {
-    @apply py-1 px-1 rounded no-underline;
-    @apply hover:bg-deepPurple-500 hover:text-white;
-    @apply focus:bg-deepPurple-500 focus:text-white;
-  }
-}
-
+/* Small customizations on dark theme */
 [data-md-color-scheme=slate] {
   @apply prose-headings:text-deepPurple-200;
   .recipe-ingredients {
@@ -116,5 +111,19 @@ article .footnote {
         @apply border-gray-700 text-gray-400;
       }
     }
+  }
+}
+
+/* for blog post lists, make the Continue Reading link a button */
+nav.md-post__action {
+  & a {
+    @apply py-2 px-4 rounded border transition ease-in-out text-xs;
+
+
+    /* Match styles for md-button--primary */
+    @apply bg-[--md-primary-fg-color] border-[--md-primary-fg-color] text-gray-50/80;
+    /* ...and for the hover and focus states */
+    @apply hover:bg-[--md-accent-fg-color] hover:border-[--md-accent-fg-color] hover:text-[--md-accent-bg-color];
+    @apply focus:bg-[--md-accent-fg-color] focus:border-[--md-accent-fg-color] focus:text-[--md-accent-bg-color];
   }
 }

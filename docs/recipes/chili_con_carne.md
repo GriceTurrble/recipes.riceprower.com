@@ -6,6 +6,13 @@ stats:
   prep_minutes: 30
   cook_minutes: 90
   servings: 24
+tags:
+  - beef
+  - pork
+  - cuisine/american
+  - spicy
+  - slow cook
+  - G original
 ---
 
 My own personal chili recipe. More than just meat and beans in a sauce, the balance of spices, the bell peppers, the touch of sweetness; all comes together into a melting pot of excellence. Serve with rice or pasta, with some cheese, some sour cream, maybe even some chips. Not so good on hot dogs, I'm afraid.

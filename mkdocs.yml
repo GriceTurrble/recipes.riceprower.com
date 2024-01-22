@@ -19,15 +19,22 @@ edit_uri: "blob/main/docs/"
 
 plugins:
   - search
+  - tags:
+      tags_file: recipes/index.md
   - blog:
-      # blog_toc: true
+      blog_toc: true
       blog_dir: .
+      archive_name: Post archive
+      archive_date_format: MMM yyyy
+      archive_url_date_format: yyyy/MM
+      categories_name: Post categories
 
 extra_css:
   - stylesheets/tailwind.css
 
 watch:
   - overrides
+  - includes
 
 theme:
   name: "material"
@@ -36,14 +43,23 @@ theme:
     text: Roboto Condensed
     # code: Roboto Mono
   icon:
+    logo: fontawesome/solid/pizza-slice
+    menu: material/hamburger
     annotation: material/plus-circle
   features:
     - content.action.view
     - content.code.annotate
     - content.code.copy
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
     - navigation.instant
     - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - toc.follow
     - toc.integrate
@@ -53,7 +69,7 @@ theme:
       primary: deep purple
       accent: deep purple
       toggle:
-        icon: material/brightness-auto
+        icon: material/link
         name: Switch to light mode
 
     # Palette toggle for light mode
@@ -62,7 +78,7 @@ theme:
       primary: deep purple
       accent: deep purple
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
 
     # Palette toggle for dark mode
@@ -71,11 +87,12 @@ theme:
       primary: deep purple
       accent: deep purple
       toggle:
-        icon: material/brightness-4
+        icon: material/toggle-switch-off
         name: Switch to system preference
 
 markdown_extensions:
   - admonition
+  - abbr
   - attr_list
   - md_in_html
   - footnotes
@@ -87,7 +104,10 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.details
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

@@ -41,7 +41,7 @@ From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-gri
 ## Directions
 <div class="recipe-directions" markdown>
 
-1. In a large saucepan, bring the broth, milk, butter, salt and pepper to a boil. [^2]
+1. In a large saucepan, bring the broth, milk, butter, salt and pepper to a boil.
 
     !!! ingredients
         **Using:** 2 cups reduced-sodium chicken broth; 2 cups 2% milk; 1/3 cup butter, cubed; 3/4 teaspoon salt; 1/2 teaspoon pepper
@@ -72,5 +72,3 @@ From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-gri
         **Using:** 4 green onions, chopped.
 
 </div>
-
-[^2]: Test

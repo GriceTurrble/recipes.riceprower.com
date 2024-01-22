@@ -40,7 +40,7 @@ prep_minutes: 15
 cook_minutes: 240
 servings: 6
 ingredients:
-  - 1lb ground beef
+  - 1 lb ground beef
   - ...
 directions:
   - |

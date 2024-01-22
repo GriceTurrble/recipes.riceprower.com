@@ -6,6 +6,9 @@ stats:
   prep_minutes: 15
   cook_minutes: 30
   servings: 8
+tags:
+  - beef
+  - cuisine/american
 ---
 
 The perfect mid-week meal for the family. Simply, quick, and everyone loves it. Pair with the classic mashed potatoes and a hearty veg like green beans (buttered with a touch of lemon juice?).
@@ -20,7 +23,7 @@ The perfect mid-week meal for the family. Simply, quick, and everyone loves it. 
 - [ ] 1 dash Worcestershire sauce
 - [ ] 1/3 cup ketchup
 - [ ] 1/4 cup packed dark brown sugar
-- [ ] 1 Tbsp apple cider vinegar [^1]
+- [ ] 1 tbsp apple cider vinegar [^1]
 
 [^1]: The original form of this recipe calls for *1/4 cup pineapple preserves* instead of the apple cider vinegar, but that seemed wrong on a number of levels. The recipe above does the job just fine, thank you.
 
@@ -43,7 +46,7 @@ The perfect mid-week meal for the family. Simply, quick, and everyone loves it. 
 4. In a separate medium bowl, stir together ketchup, brown sugar, and apple cider vinegar.
 
     !!! ingredients
-        **Using:** 1/3 cup ketchup; 1/4 cup dark brown sugar; 1 Tbsp apple cider vinegar
+        **Using:** 1/3 cup ketchup; 1/4 cup dark brown sugar; 1 tbsp apple cider vinegar
 
 5. Pour sauce mixture on top of meatloaf, then bake an additional 15 minutes or until a thermometer reads 160 degrees F (~72 degrees C) at the center of the loaf.
 6. Remove from oven and let rest for 5 to 10 minutes. Cut into slices and serve.

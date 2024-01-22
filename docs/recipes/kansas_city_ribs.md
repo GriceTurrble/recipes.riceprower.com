@@ -6,6 +6,10 @@ stats:
   prep_minutes: 15
   cook_minutes: 240
   servings: 6
+tags:
+  - pork
+  - cuisine/bbq
+  - slow cook
 ---
 
 ## Ingredients

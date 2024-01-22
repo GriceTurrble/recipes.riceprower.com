@@ -6,6 +6,9 @@ stats:
   prep_minutes: 15
   cook_minutes: 65
   servings: 6
+tags:
+  - chicken
+  - cuisine/indian
 ---
 
 From [AllRecipes.com](https://www.allrecipes.com/recipe/228293/curry-stand-chicken-tikka-masala-sauce/):

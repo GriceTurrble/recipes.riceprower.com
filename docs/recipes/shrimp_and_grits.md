@@ -6,6 +6,10 @@ stats:
   prep_minutes: 15
   cook_minutes: 20
   servings: 4
+tags:
+  - seafood
+  - cuisine/southern
+  - fast
 ---
 
 From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-grits/):
@@ -23,7 +27,7 @@ From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-gri
 - [ ] 1/3 cup butter, cubed
 - [ ] 3/4 tsp salt
 - [ ] 1/2 tsp pepper
-- [ ] 3/4 cup uncooked old-fashioned grits [^1]
+- [ ] 3/4 cup uncooked old-fashioned grits[^1]
 - [ ] 1 cup shredded cheddar cheese
 
 [^1]: No, grits and polenta are not the same thing. Grits are white corn, polenta is yellow corn; grits are smooth, polenta is more course. If these are mixed up, it just won't be the same.

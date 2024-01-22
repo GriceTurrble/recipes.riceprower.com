@@ -6,6 +6,10 @@ stats:
   prep_minutes: 10
   cook_minutes: 15
   servings: 4
+tags:
+  - chicken
+  - cuisine/asian
+  - fast
 ---
 
 ## Ingredients

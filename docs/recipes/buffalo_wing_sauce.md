@@ -6,6 +6,11 @@ stats:
   prep_minutes: 0
   cook_minutes: 5
   servings: 8
+tags:
+  - sauce
+  - cuisine/american
+  - spicy
+  - fast
 ---
 
 !!! quote "Chef John, via AllRecipes.com"
@@ -16,7 +21,7 @@ stats:
 
 - [ ] 2/3 cup hot pepper sauce (Frank's RedHot)
 - [ ] 1/2 cup cold unsalted butter
-- [ ] 1 1/2 Tbsp white vinegar
+- [ ] 1 1/2 tbsp white vinegar
 - [ ] 1/4 tsp Worcestershire sauce
 - [ ] 1/4 tsp cayenne pepper
 - [ ] 1/8 tsp garlic powder

@@ -1,0 +1,2 @@
+*[tsp]: teaspoon
+*[tbsp]: tbsp

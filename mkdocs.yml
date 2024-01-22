@@ -19,15 +19,19 @@ edit_uri: "blob/main/docs/"
 
 plugins:
   - search
+  - tags:
+      tags_file: recipes/index.md
   - blog:
-      # blog_toc: true
+      blog_toc: true
       blog_dir: .
+      archive_name: Blog archive
 
 extra_css:
   - stylesheets/tailwind.css
 
 watch:
   - overrides
+  - includes
 
 theme:
   name: "material"
@@ -41,9 +45,11 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
+    - content.tooltips
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.sections
+    - navigation.tabs
     - navigation.top
     - toc.follow
     - toc.integrate
@@ -76,6 +82,7 @@ theme:
 
 markdown_extensions:
   - admonition
+  - abbr
   - attr_list
   - md_in_html
   - footnotes
@@ -87,7 +94,9 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.details
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

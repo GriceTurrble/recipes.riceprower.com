@@ -1,4 +1,5 @@
 name: "Build site files"
+description: "Sets up Node, Python, and Poetry, installs deps, and builds the sit to 'site_dir' directory within the runner."
 
 inputs:
   site_dir:

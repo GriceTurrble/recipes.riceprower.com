@@ -1,5 +1,6 @@
 const colors = require("material-ui-colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
+/** @type {import('tailwindcss').Config} */
 
 module.exports = {
   corePlugins: {
@@ -15,7 +16,16 @@ module.exports = {
       serif: ["'Modern Antiqua'", ...defaultTheme.fontFamily.sans]
     },
     extend: {
-      colors: { ...colors }
+      colors: { ...colors },
+      // Customizing typography's raw css for prose.
+      // Ref: https://tailwindcss.com/docs/typography-plugin#customizing-the-css
+      typography: {
+        DEFAULT: {
+          css: {
+            "line-height": "1.6"
+          }
+        }
+      }
     }
   },
   plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")]

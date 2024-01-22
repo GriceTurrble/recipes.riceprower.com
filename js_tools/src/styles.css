@@ -16,7 +16,7 @@ article .footnote {
 /* Custom styles for recipe content */
 .recipe-contents {
   /* Basic style overwrites, setting up `prose` but adjusting some colors back to MD's styles */
-  @apply prose prose-headings:text-deepPurple-500 max-w-none text-sm;
+  @apply prose prose-headings:text-deepPurple-500 max-w-none;
   --tw-prose-bold: var(--md-typeset-color);
   --tw-prose-body: var(--md-typeset-color);
   & img {

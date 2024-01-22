@@ -30,7 +30,9 @@ plugins:
       categories_name: Post categories
   - git-revision-date-localized:
       enable_creation_date: true
-  - git-authors
+  - git-committers:
+      repository: GriceTurrble/recipes.riceprower.com
+      branch: main
 
 extra_css:
   - stylesheets/tailwind.css

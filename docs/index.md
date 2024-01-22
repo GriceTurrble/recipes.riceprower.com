@@ -2,9 +2,10 @@
 title: Home
 ---
 
-# Rice-Prower Recipes
+# :fontawesome-solid-pizza-slice: Rice-Prower Recipes
 
-Here you'll find recipes and blog content from the Rice-Prower household.
+[See all recipes by cateory](recipes/index.md){ .md-button .md-button--primary }
 
-- Check out the **Recipes** section in the navigation, or use the **Search** feature on any page to find something
-- Read below for our super-exciting (not really) **Blog** of things and stuff. Hurray.
+Here you'll find recipes we like to make, as well as super-(un)interesting blog content from the Rice-Prower household.
+
+---

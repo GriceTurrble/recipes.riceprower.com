@@ -19,10 +19,6 @@ edit_uri: "blob/main/docs/"
 
 plugins:
   - search
-  - social:
-      cards_layout_options:
-        description: My custom description
-
   - blog:
       # blog_toc: true
       blog_dir: .

@@ -6,7 +6,6 @@ module.exports = {
     preflight: false,
   },
   content: [
-    "../*.{html,md}",
     "../overrides/**/*.{html,md}",
     "../docs/**/*.{html,md}"
   ],

@@ -19,10 +19,6 @@ edit_uri: "blob/main/docs/"
 
 plugins:
   - search
-  - social:
-      cards_layout_options:
-        description: My custom description
-
   - blog:
       # blog_toc: true
       blog_dir: .
@@ -36,6 +32,9 @@ watch:
 theme:
   name: "material"
   custom_dir: overrides
+  font:
+    text: Roboto Condensed
+    # code: Roboto Mono
   icon:
     annotation: material/plus-circle
   features:

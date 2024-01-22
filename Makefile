@@ -1,7 +1,10 @@
 .DEFAULT_GOAL := help
 SITE_DIR := site## Directory to build site content to
 
-.PHONY: deps build test run_static run_site help
+.PHONY: lock deps build test run_static run_site help
+
+lock:## `poetry lock`
+	poetry lock
 
 .PHONY: deps_static
 deps_static:## `npm ci` from `js_tools`; install Node dependencies

@@ -15,6 +15,7 @@ article .footnote {
 
 /* Custom styles for recipe content */
 .recipe-contents {
+  /* Basic style overwrites, setting up `prose` but adjusting some colors back to MD's styles */
   @apply prose prose-headings:text-deepPurple-500 max-w-none text-sm;
   --tw-prose-bold: var(--md-typeset-color);
   --tw-prose-body: var(--md-typeset-color);
@@ -25,7 +26,12 @@ article .footnote {
   /* Ingredients list */
   & .recipe-ingredients {
     @apply text-xs;
+    & h3 {
+      @apply mb-0 font-bold;
+    }
+    /* Re-style the task list plugin output */
     & .task-list {
+      @apply mt-0;
       & .task-list-item {
         @apply flex flex-row items-center ml-4;
         @apply transition ease-in-out;
@@ -38,6 +44,10 @@ article .footnote {
         &:has(input[type="checkbox"]:checked) {
           @apply line-through text-gray-200;
         }
+        & sup {
+          /* Reference links to footnotes tend to get lost inside these items. */
+          @apply ml-1 -mt-2;
+        }
       }
     }
     & mark {
@@ -45,6 +55,7 @@ article .footnote {
     }
   }
 
+  /* Stats, including the hero image, prep times, etc. */
   & .recipe-stats-container {
     @apply mt-2 md:mt-4 md:flex md:justify-center;
     & .recipe-image {
@@ -58,6 +69,7 @@ article .footnote {
     }
   }
 
+  /* Directions */
   & .recipe-directions {
     @apply text-xs;
     & ol {
@@ -77,6 +89,11 @@ article .footnote {
         }
       }
     }
+  }
+
+  /* other overrides */
+  sup .footnote-ref {
+    @apply py-1 px-1 bg-deepPurple-900 text-gray-400 rounded no-underline;
   }
 }
 

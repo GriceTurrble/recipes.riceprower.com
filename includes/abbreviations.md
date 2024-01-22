@@ -1,2 +1,4 @@
-*[tsp]: teaspoon
-*[tbsp]: tbsp
+*[tsp]: Teaspoon
+*[tbsp]: Tablespoon
+*[lb]: Pound
+*[oz]: Ounce

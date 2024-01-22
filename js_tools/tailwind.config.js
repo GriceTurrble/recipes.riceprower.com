@@ -8,7 +8,8 @@ module.exports = {
   },
   content: [
     "../overrides/**/*.{html,md}",
-    "../docs/**/*.{html,md}"
+    "../includes/**/*.{html,md}",
+    "../docs/**/*.{html,md}",
   ],
   theme: {
     fontFamily: {
@@ -22,9 +23,15 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            "line-height": "1.6"
+            "line-height": "1.6",
+            "--tw-prose-bold": "var(--md-typeset-color)",
+            "--tw-prose-body": "var(--md-typeset-color)",
+            "--tw-prose-links": "var(--md-typeset-a-color)",
           }
         }
+      },
+      screens: {
+        "xl": "1220px"
       }
     }
   },

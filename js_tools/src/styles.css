@@ -93,7 +93,9 @@ article .footnote {
 
   /* other overrides */
   sup .footnote-ref {
-    @apply py-1 px-1 bg-deepPurple-900 text-gray-400 rounded no-underline;
+    @apply py-1 px-1 rounded no-underline;
+    @apply hover:bg-deepPurple-500 hover:text-white;
+    @apply focus:bg-deepPurple-500 focus:text-white;
   }
 }
 

@@ -33,7 +33,7 @@ article .footnote {
     & .task-list {
       @apply mt-0;
       & .task-list-item {
-        @apply flex flex-row items-center ml-4;
+        @apply ml-4;
         @apply transition ease-in-out;
         & input[type="checkbox"] {
           @apply ml-0 -mt-1.5 rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-gray-200 focus:ring-1 focus:ring-offset-2 focus:ring-gray-50 text-gray-700;
@@ -43,10 +43,6 @@ article .footnote {
         }
         &:has(input[type="checkbox"]:checked) {
           @apply line-through text-gray-200;
-        }
-        & sup {
-          /* Reference links to footnotes tend to get lost inside these items. */
-          @apply ml-1 -mt-2;
         }
       }
     }
@@ -89,13 +85,6 @@ article .footnote {
         }
       }
     }
-  }
-
-  /* other overrides */
-  sup .footnote-ref {
-    @apply py-1 px-1 rounded no-underline;
-    @apply hover:bg-deepPurple-500 hover:text-white;
-    @apply focus:bg-deepPurple-500 focus:text-white;
   }
 }
 

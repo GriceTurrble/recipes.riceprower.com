@@ -3,11 +3,13 @@ title: New digs
 date: 2024-01-20
 authors:
   - griceturrble
+categories:
+  - Announcements
 ---
 
 # New digs
 
-The site has been refreshed with an honestly bland new look, but it's way easier for this techie to maintain.
+The site has been refreshed using **Material for MkDocs**, which makes life easier for this techie. And that means more frequent updates!
 
 <!-- more -->
 

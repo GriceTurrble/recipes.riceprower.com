@@ -28,6 +28,9 @@ plugins:
       archive_date_format: MMM yyyy
       archive_url_date_format: yyyy/MM
       categories_name: Post categories
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-authors
 
 extra_css:
   - stylesheets/tailwind.css

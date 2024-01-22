@@ -16,7 +16,7 @@ From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-gri
 ## Ingredients
 <div class="recipe-ingredients" markdown>
 
-### Grits
+### for Grits
 
 - [ ] 2 cups reduced-sodium chicken broth
 - [ ] 2 cups 2% milk
@@ -28,7 +28,7 @@ From [Taste of Home](https://www.tasteofhome.com/recipes/southern-shrimp-and-gri
 
 [^1]: No, grits and polenta are not the same thing. Grits are white corn, polenta is yellow corn; grits are smooth, polenta is more course. If these are mixed up, it just won't be the same.
 
-### Shrimp
+### for Shrimp
 
 - [ ] 8 thick-sliced bacon strips, chopped
 - [ ] 1 lb uncooked shrimp (31-40 per pound), peeled and deveined

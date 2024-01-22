@@ -32,6 +32,9 @@ watch:
 theme:
   name: "material"
   custom_dir: overrides
+  font:
+    text: Roboto Condensed
+    # code: Roboto Mono
   icon:
     annotation: material/plus-circle
   features:

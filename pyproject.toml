@@ -9,13 +9,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 mkdocs = "^1.5.3"
-mkdocs-material = "^9.5.10"
+mkdocs-material = "^9.5.11"
 mkdocs-git-revision-date-localized-plugin = "^1.2.4"
-mkdocs-git-committers-plugin-2 = "^2.2.3"
+mkdocs-git-committers-plugin-2 = "^2.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
+pytest = "^8.0.2"
 ipykernel = "^6.29.2"
 
 [build-system]

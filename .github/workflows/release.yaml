@@ -30,7 +30,7 @@ jobs:
       # Setup GitHub pages, ready to update stuff
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - uses: ./.github/workflows/composite/build-project
         with:

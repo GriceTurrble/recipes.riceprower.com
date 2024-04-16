@@ -15,7 +15,7 @@ env:
   SITE_DIR: "site"
   NODE_VERSION: "18.x"
   PYTHON_VERSION: "3.12"
-  POETRY_VERSION: "1.7.1"
+  POETRY_VERSION: "1.8.2"
 
 jobs:
   build:

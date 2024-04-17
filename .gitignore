@@ -164,3 +164,4 @@ cython_debug/
 node_modules/
 .vscode/*
 docs/stylesheets/tailwind.css
+.DS_Store

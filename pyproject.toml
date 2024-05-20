@@ -16,7 +16,7 @@ mkdocs-git-committers-plugin-2 = "^2.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.2.0"
+pytest = "^8.2.1"
 ipykernel = "^6.29.4"
 
 [build-system]

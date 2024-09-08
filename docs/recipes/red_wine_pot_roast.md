@@ -66,12 +66,12 @@ From [sweetandsavorymeals.com](https://sweetandsavorymeals.com/red-wine-pot-roas
 <!--
     Should be an ordered list at the top level
 -->
-1. Preheat the oven to 325 degrees F. Season the chuck roast with salt and pepper.
+1. Adjust oven rack to lowest level to allow space for a large pot. Preheat the oven to 325 degrees F. Season the chuck roast with salt and pepper.
 
     !!! ingredients
         **Using:** chuck roast; salt and pepper to taste.
 
-2. Place a large **dutch oven** over medium heat and add the canola oil. Once hot, add the meat and brown it, 3-4 minutes on each side. Set the roast aside on a plate.
+2. Place a large **dutch oven**, or other large **oven-safe** pot, over medium heat and add the canola oil. Once hot, add the meat and brown it, 3-4 minutes on each side. Set the roast aside on a plate.
 
     !!! ingredients
         **Using:** 2 tbsp canola oil.
@@ -104,4 +104,4 @@ From [sweetandsavorymeals.com](https://sweetandsavorymeals.com/red-wine-pot-roas
     !!! ingredients
         **Using:** 1 yellow onion, quartered; 4 cloves garlic, whole; 2 cups carrots; 3 sprigs fresh rosemary; 2 bay leaves.
 
-8. Cover and cook in the oven for 3-4 hours or until fork-tender.
+8. Cover the pot first with aluminum foil, then a tight-fitting pot lid, to keep in as much moisture as possible. Place the sealed pot in the oven and cook for 3-4 hours until fork tender. Allow to rest for at least 15 minutes before serving to allow for proper cooling.
